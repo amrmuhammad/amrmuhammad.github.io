@@ -30,6 +30,9 @@ SOFTWARE.
 For the portions of the code that make use of
 Synaptic library
 
+http://synaptic.juancazala.com/
+
+
 The MIT License (MIT)
 
 Copyright (c) 2014 Juan Cazala (juancazala.com)
