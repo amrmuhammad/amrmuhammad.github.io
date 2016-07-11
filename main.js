@@ -4,7 +4,7 @@
 /////////////////////////////////////////
 
 // Neuron#1: element_id  // if zero, 
-             the element does not exist
+//           the element does not exist
           
 // Neuron#2: parent_element_id
 // Neuron#3: html_element_type
@@ -32,6 +32,15 @@
 
 // so that's 200*10*2 + 200*50*2= 
 // 4000 + 20,000 = 24, 000 input neurons
+//
+//
+//
+// neuron#x: overall feedback on the design
+// neuron#x+1: action to perform
+
+// total no. Of nrurons= 24000+600+2=
+// 24602
+//
 
 
 
@@ -75,8 +84,10 @@ function Perceptron(input, hidden, output)
 Perceptron.prototype = new Network(); 
 Perceptron.prototype.constructor = Perceptron;
 
-var no_of_neurons = ;
-var myPerceptron = new Perceptron(2,3,1);
+var no_of_neurons = 24602;
+var myPerceptron = new Perceptron(
+  no_of_neurons, no_of_neurons, 
+  no_of_neurons);
 
 
 //////////////////////////////////////////
