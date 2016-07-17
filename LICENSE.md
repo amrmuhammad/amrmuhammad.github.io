@@ -57,14 +57,13 @@ SOFTWARE.
 
 ///////////////////////////////////////////
 "This software or document includes material copied from or derived from 
-[title
+[
+W3C HTML 5.1 W3C Candidate Recommendation, 21 June 2016
 https://www.w3.org/TR/html51/
 ]. 
 Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)." 
 
-Disclaimers
 
-THIS
 For the portions of the code that make
 use of the HTML 5.1 specification
 
@@ -76,6 +75,7 @@ W3C Software and Document Notice and License
 Status: This license takes effect 13 May, 2015.
 
 This work is being provided by the copyright holders under the following license.
+
 License
 
 By obtaining and/or copying this work, you (the licensee) agree that you have read, understood, and will comply with the following terms and conditions.
