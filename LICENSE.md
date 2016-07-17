@@ -56,6 +56,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ///////////////////////////////////////////
+----
+
 "This software or document includes material copied from or derived from 
 [
 W3C HTML 5.1 W3C Candidate Recommendation, 21 June 2016
@@ -104,3 +106,4 @@ Previous version: http://www.w3.org/Consortium/Legal/2002/copyright-software-200
 This version makes clear that the license is applicable to both software and text, by changing the name and substituting "work" for instances of "software and its documentation." It moves "notice of changes or modifications to the files" to the copyright notice, to make clear that the license is compatible with other liberal licenses.
 
 ///////////////////////////////////////////////
+----
