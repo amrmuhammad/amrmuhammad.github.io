@@ -156,7 +156,8 @@ the terms above.
 
 -------------------------
 
-For portions of the code that use content
+For portions of the code that use content or
+Sample code
 From jquery.com
 
 ----
@@ -209,11 +210,7 @@ licenses; we recommend you read them, as their terms may differ from the
 terms above.
 
 ----
-Copyright and related rights for JQuery sample code on JQuery.com are waived via CC0. Sample
-code is defined as all source code displayed within the prose of the
-documentation.
 
-CC0: https://creativecommons.org/publicdomain/zero/1.0/
 
 ------------------------------
 
