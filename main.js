@@ -125,4 +125,10 @@ for (var i = 0; i < 20000; i++)
 **************************/
 ////////////////////////////////////
 
-var html_output = <div id= user_
+var html_output = "<div id=\"user_feedback_div\"> \
+ 
+  <input id=\"user_feedback_text\" type=\"text\"></input> \
+  <input id=\"user_action_text\" type=\"text\"></input> \
+</div>"
+
+
