@@ -33,7 +33,7 @@
       }
 
       var jszip = new JSZip();
-      jszip.file("hello world.pdf", "file contents);
+      jszip.file("hello world.pdf", "file contents");
 
       jszip.generateAsync({type:"blob"})
       .then(function(contents) {
