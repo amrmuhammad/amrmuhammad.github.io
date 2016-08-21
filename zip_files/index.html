@@ -18,6 +18,9 @@
     <link rel="stylesheet" type="text/css" 
       href="js/lib/dropzone/dropzone.css">
 
+    <script src="js/lib/jslib/jszip.js">
+      </script>
+
     <form id="upload-form" action="/upload-target" 
       class="dropzone">
     </form>
@@ -28,6 +31,15 @@
         addRemoveLinks:true
 
       }
+
+      var jszip = new JSZip();
+      jszip.file("hello world.pdf", "file contents);
+
+      jszip.generateAsync({type:"blob"})
+      .then(function(contents) {
+        saveAs(contents, "zip-file.zip");
+      });
+      
     </script> 
 
   </body>
