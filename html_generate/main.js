@@ -128,6 +128,8 @@ for (var i = 0; i < 20000; i++)
 
 $(document).ready(function() {
 
+  window.alert ("document.ready.handler started");
+
   var html_output = "<div id=\"user_feedback_div\"> \
  
     <input id=\"user_feedback_text\" type=\"text\"></input> \
