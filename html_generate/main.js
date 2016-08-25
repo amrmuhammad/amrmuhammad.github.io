@@ -127,6 +127,9 @@ for (var i = 0; i < 20000; i++)
 
 if(typeof $ === 'undefined') {
   window.alert('jquery is undefined');
+} else {
+  window.alert('jquery is defined');
+
 }
 
 //var jquey_as_string = JSON.stringify($);
