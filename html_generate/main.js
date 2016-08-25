@@ -145,10 +145,9 @@ $(document).ready(function() {
   window.alert ("document.ready.handler started");
 
   var html_output = "<div id=\"user_feedback_div\"> \
- 
     <input id=\"user_feedback_text\" type=\"text\"></input> \
     <input id=\"user_action_text\" type=\"text\"></input> \
-  </div>"
+  </div>";
 
   $("body").append(html_output);
 });
