@@ -47,6 +47,7 @@
 
 
 
+/**********
 
 /////////////////////////////////////////
 var synaptic = require('synaptic'); 
@@ -88,6 +89,9 @@ var no_of_neurons = 24602;
 var myPerceptron = new Perceptron(
   no_of_neurons, no_of_neurons, 
   no_of_neurons);
+
+********/
+
 
 
 //////////////////////////////////////////
