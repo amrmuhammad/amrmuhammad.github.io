@@ -125,10 +125,17 @@ for (var i = 0; i < 20000; i++)
 **************************/
 ////////////////////////////////////
 
-var html_output = "<div id=\"user_feedback_div\"> \
+
+$(document).ready(function() {
+
+  var html_output = "<div id=\"user_feedback_div\"> \
  
-  <input id=\"user_feedback_text\" type=\"text\"></input> \
-  <input id=\"user_action_text\" type=\"text\"></input> \
-</div>"
+    <input id=\"user_feedback_text\" type=\"text\"></input> \
+    <input id=\"user_action_text\" type=\"text\"></input> \
+  </div>"
+
+  $("body").append(html_output);
+});
+
 
 
