@@ -128,24 +128,26 @@ for (var i = 0; i < 20000; i++)
 }
 **************************/
 ////////////////////////////////////
-
+/**
 if(typeof $ === 'undefined') {
   window.alert('jquery is undefined');
 } else {
   window.alert('jquery is defined');
 
 }
-
+**/
 //var jquey_as_string = JSON.stringify($);
 
 
 
 $(document).ready(function() {
 
-  window.alert ("document.ready.handler started");
+  //window.alert ("document.ready.handler started");
 
   var html_output = "<div id=\"user_feedback_div\"> \
+    <label for=\"user_feedback_text\"> User feedback </label> \
     <input id=\"user_feedback_text\" type=\"text\"></input> \
+    <label for=\"user_action_text\"> User action </label> \
     <input id=\"user_action_text\" type=\"text\"></input> \
   </div>";
 
