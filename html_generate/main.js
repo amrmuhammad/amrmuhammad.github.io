@@ -47,11 +47,19 @@
 var $ = window.$;
 
 
-/**********
 
+var synaptic = undefined;
 /////////////////////////////////////////
-var synaptic = require('synaptic'); 
+if (typeof window !== 'undefined' && 
+window['synaptic'] !== 'undefined) {
 
+  synaptic = window['synaptic'];
+   
+}
+
+// require('synaptic');
+
+//////////////////////////////////////////
 // this line is not needed in the browser 
 var Neuron = synaptic.Neuron, 
 Layer = synaptic.Layer, 
@@ -90,7 +98,7 @@ var myPerceptron = new Perceptron(
   no_of_neurons, no_of_neurons, 
   no_of_neurons);
 
-********/
+
 
 
 
@@ -156,3 +164,4 @@ $(document).ready(function() {
 
 
 
+ 
