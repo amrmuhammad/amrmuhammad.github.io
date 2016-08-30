@@ -229,5 +229,13 @@ terms above.
 
 ------------------------------
 
+For portions of the code that make use of 
+the viewport meta tag:
+
+Using the viewport meta tag to control layout on mobile browsers
+
+Mozilla Contributors: <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag$history"> link </a>
+
+
 
 
