@@ -232,8 +232,7 @@ terms above.
 For portions of the code that make use of 
 the viewport meta tag:
 
-<a href="https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag"> Using the viewport meta tag to control layout on mobile browsers </a> by <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag$history"> Mozilla Contributors</a>
-
+<a href="https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag"> Using the viewport meta tag to control layout on mobile browsers </a> by <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag$history"> Mozilla Contributors</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5.</a>
 
 
 
