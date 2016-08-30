@@ -50,12 +50,12 @@ var $ = window.$;
 
 var synaptic = undefined;
 /////////////////////////////////////////
-if (typeof window !== 'undefined' && 
-window['synaptic'] !== 'undefined') {
+// if (typeof window !== 'undefined' && 
+// window['synaptic'] !== 'undefined') {
 
   synaptic = window['synaptic'];
    
-}
+// }
 
 // require('synaptic');
 
