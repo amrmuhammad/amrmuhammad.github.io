@@ -70,6 +70,21 @@ For the portions of the code that make
 use of the HTML 5.1 specification
 
 https://www.w3.org/TR/html51/
+
+----
+
+"This software or document includes material copied from or derived from 
+[
+Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification
+https://www.w3.org/TR/CSS2/
+]. 
+Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)." 
+
+For the portions of the code that make
+use of the CSS 2.1 specification
+
+https://www.w3.org/TR/CSS2/
+
 ----
 
 W3C Software and Document Notice and License
