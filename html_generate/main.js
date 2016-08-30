@@ -51,7 +51,7 @@ var $ = window.$;
 var synaptic = undefined;
 /////////////////////////////////////////
 if (typeof window !== 'undefined' && 
-window['synaptic'] !== 'undefined) {
+window['synaptic'] !== 'undefined') {
 
   synaptic = window['synaptic'];
    
