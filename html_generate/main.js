@@ -60,6 +60,10 @@ var synaptic = undefined;
 // require('synaptic');
 
 //////////////////////////////////////////
+
+// Debug 
+Debug.write ('testing debug code');
+
 // this line is not needed in the browser 
 var Neuron = synaptic.Neuron, 
 Layer = synaptic.Layer, 
