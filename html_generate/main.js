@@ -62,7 +62,7 @@ var synaptic = undefined;
 //////////////////////////////////////////
 
 // Debug 
-var Debug = window['Debug'];
+var Debug = window.Debug;
 
 Debug.write ('testing debug code');
 
