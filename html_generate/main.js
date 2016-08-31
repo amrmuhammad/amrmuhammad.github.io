@@ -64,6 +64,7 @@ var synaptic = undefined;
 // Debug 
 Debug.write ('testing debug code');
 
+/******
 // this line is not needed in the browser 
 var Neuron = synaptic.Neuron, 
 Layer = synaptic.Layer, 
@@ -103,7 +104,7 @@ var myPerceptron = new Perceptron(
   no_of_neurons);
 
 
-
+*****/
 
 
 //////////////////////////////////////////
