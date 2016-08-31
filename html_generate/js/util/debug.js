@@ -38,3 +38,6 @@ var Debug = {
     
   }
 };
+
+
+window ['Debug'] = Debug;
