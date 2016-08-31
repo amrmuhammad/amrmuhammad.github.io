@@ -24,11 +24,15 @@ var Debug = {
       div_el = body_el.createElement('div');
       div_el.setAttribute('id', 'debug_div');
       div_el.setIdAttribute ('id', true);
+      div_el.textContent = "";
 
     } 
     
-    
-    div
+    // refer to DOM 3 specs for more info
+    // on the textContent attribute
+    // of objects of type Element
+    // and other types of DOM nodes
+    div_el.textContent += message;
 
     
     
