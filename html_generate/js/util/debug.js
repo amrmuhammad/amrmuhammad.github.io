@@ -16,11 +16,19 @@ var Debug = {
     // check whether a div tag with
     // id debug_div already exists
 
-    var div_el = document.getElementsById('debug_div');
+    var div_el = document.getElementById('debug_div');
+
+    // construct the element if it does not exist
+    if (div_el == null) {  
     
-    div_el = body_el.createElement('div');
-    div_el.setAttribute('id', 'debug_div');
-    div_el.setIdAttribute ('id', true);
+      div_el = body_el.createElement('div');
+      div_el.setAttribute('id', 'debug_div');
+      div_el.setIdAttribute ('id', true);
+
+    } 
+    
+    
+    div
 
     
     
