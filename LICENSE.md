@@ -87,6 +87,17 @@ https://www.w3.org/TR/CSS2/
 
 ----
 
+"This software or document includes material copied from or derived from 
+[
+
+Document Object Model (DOM) Level 3 Core Specification
+https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/
+]. 
+Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)." 
+
+
+----
+
 W3C Software and Document Notice and License
 
 Status: This license takes effect 13 May, 2015.
