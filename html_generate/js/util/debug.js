@@ -40,4 +40,4 @@ var Debug = {
 };
 
 
-window ['Debug'] = Debug;
+window['Debug'] = Debug;
