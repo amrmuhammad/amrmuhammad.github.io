@@ -53,7 +53,7 @@ var synaptic = undefined;
 // if (typeof window !== 'undefined' && 
 // window['synaptic'] !== 'undefined') {
 
-  synaptic = window['synaptic'];
+  //synaptic = window['synaptic'];
    
 // }
 
@@ -62,9 +62,9 @@ var synaptic = undefined;
 //////////////////////////////////////////
 
 // Debug 
-var Debug = window.Debug;
+//var Debug = window.Debug;
 
-Debug.write ('testing debug code');
+//Debug.write ('testing debug code');
 
 /******
 // this line is not needed in the browser 
