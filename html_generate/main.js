@@ -65,7 +65,7 @@ var $ = window.$;
 // Debug 
 //var Debug = window.Debug;
 
-Debug.write('testing debug code');
+//Debug.write('testing debug code');
 
 
 // this line is not needed in the browser 
@@ -75,7 +75,7 @@ Network = synaptic.Network,
 Trainer = synaptic.Trainer, 
 Architect = synaptic.Architect;
 /////////////////////////////////////////
-/******
+
 function Perceptron(input, hidden, output) 
 { 
   // create the layers 
@@ -107,7 +107,7 @@ var myPerceptron = new Perceptron(
   no_of_neurons);
 
 
-*****/
+
 
 
 //////////////////////////////////////////
