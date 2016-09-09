@@ -8,7 +8,7 @@
           
 // Neuron#2: parent_element_id
 // Neuron#3: html_element_type
-// Neuron#4: html_element_attribute_id
+// Neuron#4: html_element_attribute_name
 // Neuron#5: html_element_attribute_type
 // .
 // .
