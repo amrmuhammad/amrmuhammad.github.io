@@ -1,5 +1,15 @@
 
 
+///////////////////////////////////////////
+
+
+var HTML_elements_types = {
+1.0/HTML_elements_types_count : "div",
+2.0/HTML_elements_types_count : "input"
+
+
+}
+
 
 /////////////////////////////////////////
 
