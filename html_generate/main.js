@@ -48,7 +48,8 @@ var $ = window.$;
 
 
 
-var synaptic = undefined;
+//var synaptic = undefined;
+var synaptic = window.synaptic;
 /////////////////////////////////////////
 // if (typeof window !== 'undefined' && 
 // window['synaptic'] !== 'undefined') {
