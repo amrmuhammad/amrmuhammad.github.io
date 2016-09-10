@@ -6,9 +6,23 @@
 var HTML_elements_types = {
 1.0/HTML_elements_types_count : "div",
 2.0/HTML_elements_types_count : "input"
+3.0/HTML_elements_types_count : "textarea"
 
 
-}
+},
+
+HTML_attribute_names = {
+
+1.0/HTML_attribute_names_count : "id",
+
+
+
+
+
+},
+
+CSS_property_names 
+
 
 
 /////////////////////////////////////////
@@ -164,7 +178,7 @@ if(typeof $ === 'undefined') {
 **/
 //var jquey_as_string = JSON.stringify($);
 
-
+ 
 
 $(document).ready(function() {
 
