@@ -3,6 +3,10 @@
 ///////////////////////////////////////////
 
 
+var HTML_elements_types_count = 3;
+var HTML_attribute_names_count = 1;
+var CSS_property_names_count = 3;
+
 var HTML_elements_types = {
 1.0/HTML_elements_types_count : "div",
 2.0/HTML_elements_types_count : "input"
