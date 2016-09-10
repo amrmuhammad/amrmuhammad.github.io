@@ -205,8 +205,10 @@ $(document).ready(function() {
   $("body").append(html_output);
 });
 
-$("user_feedback_submit").onclick(function() {
+$("user_feedback_submit").onclick(function(e) {
 
+  var user_feedback = $("user_feedback_text).val();
+  
 
 });
 
