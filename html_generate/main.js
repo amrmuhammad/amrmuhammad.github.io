@@ -21,7 +21,13 @@ HTML_attribute_names = {
 
 },
 
-CSS_property_names 
+CSS_property_names = {
+
+1.0/CSS_property_names_count : "background-color",
+2.0/CSS_property_names_count : "top",
+3.0/CSS_property_names_count : "left",
+
+}
 
 
 
