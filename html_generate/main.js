@@ -199,7 +199,7 @@ $(document).ready(function() {
     <input id=\"user_feedback_text\" type=\"text\"></input> \
     <label for=\"user_action_text\"> User action </label> \
     <input id=\"user_action_text\" type=\"text\"></input> \
-    <button id=\"user_feedback_submit\" > </button>
+    <button id=\"user_feedback_submit\" > </button> \
   </div>";
 
   $("body").append(html_output);
