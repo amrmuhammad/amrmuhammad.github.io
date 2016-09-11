@@ -208,10 +208,16 @@ $(document).ready(function() {
 $("user_feedback_submit").onclick(function(e) {
 
   var user_feedback = $("user_feedback_text").val();
+
+  var learningRate = 0.3;
+
+   
+  myPerceptron.activate([0,1]); 
+  myPerceptron.propagate(learningRate, [1]); 
   
-
+    
 });
-
+ 
 
 
  
