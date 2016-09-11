@@ -214,7 +214,10 @@ $("user_feedback_submit").onclick(function(e) {
    
   var body_tag_children = $("body").children();
 
-  
+  body_tag_children.each (function () {
+
+
+  });
   
   myPerceptron.activate([0,1]); 
   myPerceptron.propagate(learningRate, [1]); 
