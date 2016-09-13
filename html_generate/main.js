@@ -216,6 +216,8 @@ $("user_feedback_submit").onclick(function(e) {
 
   body_tag_children.each (function () {
 
+    var node_name = $(this).prop("nodeName");
+    
 
   });
   
