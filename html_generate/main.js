@@ -216,8 +216,11 @@ $("user_feedback_submit").onclick(function(e) {
 
   body_tag_children.each (function () {
 
+    // get the tagname
     var node_name = $(this).prop("nodeName");
-    
+    // find html element encoding
+
+    var elem_encoding = _.findKey (HTML_elements_
 
   });
   
