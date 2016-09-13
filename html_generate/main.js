@@ -207,6 +207,8 @@ $(document).ready(function() {
 
 $("user_feedback_submit").onclick(function(e) {
 
+  var dom_tree_array = [];
+
   var user_feedback = $("user_feedback_text").val();
 
   var learningRate = 0.3;
@@ -218,9 +220,14 @@ $("user_feedback_submit").onclick(function(e) {
 
     // get the tagname
     var node_name = $(this).prop("nodeName");
-    // find html element encoding
 
-    var elem_encoding = _.findKey (HTML_elements_
+    // find html element encoding
+    var elem_encoding = _.findKey(HTML_elements_types, nodeName);
+
+    var elem_id
+    dom_tree_array.push(elem_encoding);
+
+
 
   });
   
