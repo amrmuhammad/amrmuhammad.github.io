@@ -213,7 +213,8 @@ $("user_feedback_submit").onclick(function(e) {
 
   var learningRate = 0.3;
 
-   
+  var elem_id = 1;
+
   var body_tag_children = $("body").children();
 
   body_tag_children.each (function () {
@@ -224,8 +225,9 @@ $("user_feedback_submit").onclick(function(e) {
     // find html element encoding
     var elem_encoding = _.findKey(HTML_elements_types, nodeName);
 
-    var elem_id
+    dom_tree_array.push(elem_id);
     dom_tree_array.push(elem_encoding);
+
 
 
 
