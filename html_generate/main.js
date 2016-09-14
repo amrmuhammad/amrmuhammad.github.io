@@ -228,6 +228,9 @@ $("user_feedback_submit").onclick(function(e) {
     dom_tree_array.push(elem_id);
     dom_tree_array.push(elem_encoding);
 
+    var attributes = $(this).prop("attributes");
+
+    
 
 
 
