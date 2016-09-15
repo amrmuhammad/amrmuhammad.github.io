@@ -51,7 +51,7 @@ CSS_property_names = {
 // Neuron#2: parent_element_id
 // Neuron#3: html_element_type
 // Neuron#4: html_element_attribute_name
-// Neuron#5: html_element_attribute_type
+// Neuron#5: html_element_attribute_value
 // .
 // .
 // .
@@ -223,6 +223,8 @@ $("user_feedback_submit").onclick(function(e) {
 
   var elem_id = 1;
 
+  var current_index = 0;
+
   var body_tag_children = $("body").children();
 
   body_tag_children.each (function () {
@@ -233,8 +235,12 @@ $("user_feedback_submit").onclick(function(e) {
     // find html element encoding
     var elem_encoding = _.findKey(HTML_elements_types, nodeName);
 
-    dom_tree_array.push(elem_id);
-    dom_tree_array.push(elem_encoding);
+    // $dom_tree_array.push(elem_id);
+    // dom_tree_array.push(elem_encoding);
+
+    dom_tree_array[current_index++] = elem_id;
+    don_tree_array[current_index++] = parent_element_id;
+    dom_tree_array[current_index++]  = elem_encoding;
 
     var attributes = $(this).prop("attributes");
 
