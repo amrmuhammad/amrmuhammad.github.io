@@ -1,4 +1,12 @@
+///////////////////////////////////////////
 
+
+var HTMLConfiguration = {
+
+  // # of allowed attributes per HTML element
+  element_attributes_count : 10
+
+};
 
 ///////////////////////////////////////////
 
@@ -230,7 +238,15 @@ $("user_feedback_submit").onclick(function(e) {
 
     var attributes = $(this).prop("attributes");
 
+    for (var i=0;
+      i < HTMLConfiguration.element_attributes_count;
+      i++) {
     
+      dom_tree_array[current_index++] = attributes[i].name;
+      dom_tree_array [current_index++] = attributes [i].value;
+    
+
+    }
 
 
 
