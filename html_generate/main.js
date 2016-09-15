@@ -4,7 +4,8 @@
 var HTMLConfiguration = {
 
   // # of allowed attributes per HTML element
-  element_attributes_count : 10
+  element_attributes_count : 10,
+  css_properties_count : 50
 
 };
 
@@ -242,6 +243,7 @@ $("user_feedback_submit").onclick(function(e) {
     don_tree_array[current_index++] = parent_element_id;
     dom_tree_array[current_index++]  = elem_encoding;
 
+    /////////////
     var attributes = $(this).prop("attributes");
 
     for (var i=0;
@@ -253,6 +255,21 @@ $("user_feedback_submit").onclick(function(e) {
     
 
     }
+    //////////////
+    var css_properties;
+
+    for (var j=0; 
+      j < HTMLConfiguration.css_properties_count;
+      j++) {
+
+      dom_tree_array [current_index++] = css_properties[i].name;
+      dom_tree_array [currebt_index++] = css_properties[i].value;
+     
+
+    }
+
+
+    
 
 
 
