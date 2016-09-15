@@ -256,7 +256,7 @@ $("user_feedback_submit").onclick(function(e) {
 
     }
     //////////////
-    var css_properties;
+    var css_properties $(this).attr ("style");
 
     for (var j=0; 
       j < HTMLConfiguration.css_properties_count;
