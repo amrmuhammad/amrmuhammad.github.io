@@ -260,7 +260,7 @@ $("user_feedback_submit").onclick(function(e) {
     css_properties = css_properties.split (";", 
       HTMLConfiguration.css_properties_count);
 
-    var css_properties_map;
+    var css_properties_map = {};
 
     css_properties_map = _.reduce(css_properties, 
       function (css_properties_map, property) {
@@ -277,7 +277,7 @@ $("user_feedback_submit").onclick(function(e) {
       j++) {
 
       dom_tree_array [current_index++] = css_properties[i].name;
-      dom_tree_array [currebt_index++] = css_properties[i].value;
+      dom_tree_array [current_index++] = css_properties[i].value;
      
 
     }
