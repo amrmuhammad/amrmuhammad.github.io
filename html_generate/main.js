@@ -260,8 +260,16 @@ $("user_feedback_submit").onclick(function(e) {
     css_properties = css_properties.split (";", 
       HTMLConfiguration.css_properties_count);
 
-    var css_properties_map = _.reduce(css_properties, 
-      function (value) { }, css_properties_map);
+    var css_properties_map;
+
+    css_properties_map = _.reduce(css_properties, 
+      function (css_properties_map, property) {
+       
+        property_name_value = property.split(":", 2);
+        css_properties_map[property_name_value [0]]
+         = property_name_value [1];
+
+      }, css_properties_map);
 
 
     for (var j=0; 
