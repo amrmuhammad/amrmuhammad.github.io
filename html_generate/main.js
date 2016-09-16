@@ -260,6 +260,9 @@ $("user_feedback_submit").onclick(function(e) {
     css_properties = css_properties.split (";", 
       HTMLConfiguration.css_properties_count);
 
+    var css_properties_map = _.reduce(css_properties, 
+      function (value) { }, css_properties_map);
+
 
     for (var j=0; 
       j < HTMLConfiguration.css_properties_count;
