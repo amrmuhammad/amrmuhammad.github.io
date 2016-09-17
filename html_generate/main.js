@@ -230,6 +230,41 @@ function() update_attributes (elem, dom_tree_array, current_index) {
 
 }
 
+function update_css_properties(elem, dom_tree_array, current_index) {
+
+  var css_properties = $(elem).attr ("style");
+  css_properties = css_properties.split (";", 
+    HTMLConfiguration.css_properties_count);
+
+    //var css_properties_map = {};
+
+  dom_tree_array = _.reduce(css_properties, 
+      function (dom_tree_array, property) {
+       
+        property_name_value = property.split(":", 2);
+        //css_properties_map[property_name_value [0]]
+        //  = property_name_value [1];
+
+
+        dom_tree_array [current_index++] = property_name_value [0];
+        dom_tree_array [current_index++] = property_name_value[1];
+     
+      }, dom_tree_array);
+
+/**********
+    for (var j=0; 
+      j < HTMLConfiguration.css_properties_count;
+      j++) {
+
+      dom_tree_array [current_index++] = css_properties[i].name;
+      dom_tree_array [current_index++] = css_properties[i].value;
+     
+
+    }
+*************/
+
+}
+
 $("user_feedback_submit").onclick(function(e) {
 
   var dom_tree_array = [];
@@ -263,37 +298,8 @@ $("user_feedback_submit").onclick(function(e) {
 
     update_attributes (this, dom_tree_array, current_index);
     //////////////
-    var css_properties = $(this).attr ("style");
-    css_properties = css_properties.split (";", 
-      HTMLConfiguration.css_properties_count);
 
-    //var css_properties_map = {};
-
-    dom_tree_array = _.reduce(css_properties, 
-      function (dom_tree_array, property) {
-       
-        property_name_value = property.split(":", 2);
-        //css_properties_map[property_name_value [0]]
-        //  = property_name_value [1];
-
-
-        dom_tree_array [current_index++] = property_name_value [0];
-        dom_tree_array [current_index++] = property_name_value[1];
-     
-      }, dom_tree_array);
-
-/**********
-    for (var j=0; 
-      j < HTMLConfiguration.css_properties_count;
-      j++) {
-
-      dom_tree_array [current_index++] = css_properties[i].name;
-      dom_tree_array [current_index++] = css_properties[i].value;
-     
-
-    }
-*************/
-
+    update_css_properties (this, dom_tree_array, current_index);
     
 
 
