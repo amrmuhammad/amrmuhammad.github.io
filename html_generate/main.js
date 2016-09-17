@@ -214,6 +214,22 @@ $(document).ready(function() {
   $("body").append(html_output);
 });
 
+function() update_attributes (elem, dom_tree_array, current_index) {
+
+    var attributes = $(elem).prop("attributes");
+
+    for (var i=0;
+      i < HTMLConfiguration.element_attributes_count;
+      i++) {
+    
+      dom_tree_array[current_index++] = attributes[i].name;
+      dom_tree_array [current_index++] = attributes [i].value;
+    
+
+    }
+
+}
+
 $("user_feedback_submit").onclick(function(e) {
 
   var dom_tree_array = [];
@@ -244,17 +260,8 @@ $("user_feedback_submit").onclick(function(e) {
     dom_tree_array[current_index++]  = elem_encoding;
 
     /////////////
-    var attributes = $(this).prop("attributes");
 
-    for (var i=0;
-      i < HTMLConfiguration.element_attributes_count;
-      i++) {
-    
-      dom_tree_array[current_index++] = attributes[i].name;
-      dom_tree_array [current_index++] = attributes [i].value;
-    
-
-    }
+    update_attributes (this, dom_tree_array, current_index);
     //////////////
     var css_properties = $(this).attr ("style");
     css_properties = css_properties.split (";", 
