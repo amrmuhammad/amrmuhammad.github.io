@@ -265,6 +265,36 @@ function update_css_properties(elem, dom_tree_array, current_index) {
 
 }
 
+function process_child_element (elem) {
+
+    // get the tagname
+    var node_name = $(elem).prop("nodeName");
+
+    // find html element encoding
+    var elem_encoding = _.findKey(HTML_elements_types, nodeName);
+
+    // $dom_tree_array.push(elem_id);
+    // dom_tree_array.push(elem_encoding);
+
+    dom_tree_array[current_index++] = elem_id;
+    don_tree_array[current_index++] = parent_element_id;
+    dom_tree_array[current_index++]  = elem_encoding;
+
+    /////////////
+
+    update_attributes (elem, dom_tree_array, current_index);
+    //////////////
+
+    update_css_properties (elem, dom_tree_array, current_index);
+    
+
+
+
+ 
+ 
+}
+
+
 $("user_feedback_submit").onclick(function(e) {
 
   var dom_tree_array = [];
@@ -292,32 +322,7 @@ $("user_feedback_submit").onclick(function(e) {
   }
   ////////////////////////////
 
-  body_tag_children.each (function () {
-
-    // get the tagname
-    var node_name = $(this).prop("nodeName");
-
-    // find html element encoding
-    var elem_encoding = _.findKey(HTML_elements_types, nodeName);
-
-    // $dom_tree_array.push(elem_id);
-    // dom_tree_array.push(elem_encoding);
-
-    dom_tree_array[current_index++] = elem_id;
-    don_tree_array[current_index++] = parent_element_id;
-    dom_tree_array[current_index++]  = elem_encoding;
-
-    /////////////
-
-    update_attributes (this, dom_tree_array, current_index);
-    //////////////
-
-    update_css_properties (this, dom_tree_array, current_index);
-    
-
-
-
-  });
+  body_tag_children.each (process_child_element);
   
   myPerceptron.activate([0,1]); 
   myPerceptron.propagate(learningRate, [1]); 
