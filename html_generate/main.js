@@ -277,7 +277,20 @@ $("user_feedback_submit").onclick(function(e) {
 
   var current_index = 0;
 
-  var body_tag_children = $("body").children();
+  //var body_tag_children = $("body").children();
+
+  var queue = buckets.Queue();
+  queue.enqueue ($("body"));
+
+  //////////////////////////
+  while (queue.length > 0) {
+
+    var elem = queue.dequeue ():
+    var elem_children = elem.children ();
+    
+   
+  }
+  ////////////////////////////
 
   body_tag_children.each (function () {
 
