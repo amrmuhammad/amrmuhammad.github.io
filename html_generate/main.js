@@ -317,12 +317,12 @@ $("user_feedback_submit").onclick(function(e) {
 
     var elem = queue.dequeue ():
     var elem_children = elem.children ();
-    
+    elem.each (process_child_element);
    
   }
   ////////////////////////////
 
-  body_tag_children.each (process_child_element);
+  //body_tag_children.each (process_child_element);
   
   myPerceptron.activate([0,1]); 
   myPerceptron.propagate(learningRate, [1]); 
