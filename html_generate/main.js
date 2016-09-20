@@ -342,7 +342,9 @@ $("user_feedback_submit").onclick(function(e) {
     //elem.each (process_child_element);
 
     context = _.reduce (elem_children, 
-      process_child_element, context).
+      process_child_element, context);
+
+    context.parent_elem_id++;
     
    
   }
