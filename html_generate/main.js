@@ -239,7 +239,7 @@ function update_css_properties(elem, dom_tree_array, current_index) {
     //var css_properties_map = {};
 
   dom_tree_array = _.reduce(css_properties, 
-      function (dom_tree_array, property) {
+      function (dom_tree_array, property, index, css_properties) {
        
         property_name_value = property.split(":", 2);
         //css_properties_map[property_name_value [0]]
@@ -248,6 +248,8 @@ function update_css_properties(elem, dom_tree_array, current_index) {
 
         dom_tree_array [current_index++] = property_name_value [0];
         dom_tree_array [current_index++] = property_name_value[1];
+
+        return dom_tree_array;
      
       }, dom_tree_array);
 
@@ -265,7 +267,8 @@ function update_css_properties(elem, dom_tree_array, current_index) {
 
 }
 
-function process_child_element (elem) {
+function process_child_element (context_obj, 
+  elem, index, children_elements) {
 
     // get the tagname
     var node_name = $(elem).prop("nodeName");
@@ -275,6 +278,12 @@ function process_child_element (elem) {
 
     // $dom_tree_array.push(elem_id);
     // dom_tree_array.push(elem_encoding);
+
+    var dom_tree_array = context_obj.dom_tree_array; 
+    var parent_elem_id = context_obj.parent_elem_id;
+    var current_index = context_obj.current_index;
+
+
 
     dom_tree_array[current_index++] = elem_id;
     don_tree_array[current_index++] = parent_element_id;
@@ -317,7 +326,11 @@ $("user_feedback_submit").onclick(function(e) {
 
     var elem = queue.dequeue ():
     var elem_children = elem.children ();
-    elem.each (process_child_element);
+    //elem.each (process_child_element);
+
+    var context = _.reduce (elem_children, 
+      process_child_element, context).
+    
    
   }
   ////////////////////////////
