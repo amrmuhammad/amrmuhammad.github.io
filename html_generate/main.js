@@ -313,22 +313,35 @@ $("user_feedback_submit").onclick(function(e) {
   var learningRate = 0.3;
 
   var elem_id = 1;
+  var parent_elem_id = 0;
 
   var current_index = 0;
 
   //var body_tag_children = $("body").children();
 
+
+  //////////////////////////
+  //  Breadth first traversal for DOM tree
+  
+  var context = {
+  
+    dom_tree_array : dom_tree_array,
+    parent_elem_id : parent_elem_id,
+    current_index : current_index
+
+
+  };
+
   var queue = buckets.Queue();
   queue.enqueue ($("body"));
 
-  //////////////////////////
   while (queue.length > 0) {
 
     var elem = queue.dequeue ():
     var elem_children = elem.children ();
     //elem.each (process_child_element);
 
-    var context = _.reduce (elem_children, 
+    context = _.reduce (elem_children, 
       process_child_element, context).
     
    
