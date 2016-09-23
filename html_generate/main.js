@@ -310,7 +310,7 @@ function process_child_element (context_obj,
     update_css_properties (elem, dom_tree_array, current_index);
     
 
-    elem_id++;
+    context_obj.elem_id++;
 
  
  
