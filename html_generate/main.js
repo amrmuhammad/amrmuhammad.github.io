@@ -303,8 +303,8 @@ function process_child_element (context_obj,
  
 }
 
+function user_feedback_submit_handler (e) {
 
-$("user_feedback_submit").onclick(function(e) {
 
   var dom_tree_array = [];
 
@@ -354,9 +354,11 @@ $("user_feedback_submit").onclick(function(e) {
   
   myPerceptron.activate([0,1]); 
   myPerceptron.propagate(learningRate, [1]); 
-  
-    
-});
+
+}
+
+
+$("user_feedback_submit").onclick(user_feedback_submit_handler);
  
 
 
