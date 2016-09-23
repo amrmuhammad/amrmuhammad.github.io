@@ -227,7 +227,7 @@ $(document).ready(function() {
   $("body").append(html_output);
 });
 
-function() update_attributes (elem, dom_tree_array, current_index) {
+function update_attributes (elem, dom_tree_array, current_index) {
 
     var attributes = $(elem).prop("attributes");
 
@@ -316,6 +316,18 @@ function process_child_element (context_obj,
  
 }
 
+function update_dom (dom_tree_array) {
+
+  // remove all children of body tag
+  $("body").empty ();
+  
+  for (i=0; i <HTML_configuration.elements_count) {
+  
+    
+  
+  }
+}
+
 function user_feedback_submit_handler (e) {
 
 
@@ -374,8 +386,9 @@ function user_feedback_submit_handler (e) {
 
 
   // update_dom using new array 
-  
+  update_dom(updated_dom_tree_array);
 
+  
 }
 
 
