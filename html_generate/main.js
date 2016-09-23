@@ -54,6 +54,8 @@ User_actions_types = {
   
 }
 
+
+
 /////////////////////////////////////////
 
 // Neuron#1: element_id  // if zero, 
@@ -159,7 +161,8 @@ var myPerceptron = new Perceptron(
   no_of_neurons, no_of_neurons, 
   no_of_neurons);
 
-
+overall_feedback_index = no_of_neurons-2;
+user_action_index = no_of_neurons-1;
 
 
 
@@ -359,10 +362,15 @@ function user_feedback_submit_handler (e) {
    
   }
   ////////////////////////////
+  dom_tree_array [overall_feedback_index] = user_feedback;
+  dom_tree_array[user_action] = 1.0/User_action_types_count;
 
   //body_tag_children.each (process_child_element);
   
-  myPerceptron.activate([0,1]); 
+   var updated_dom_tree _array = myPerceptron.activate(dom_tree_array); 
+  
+  
+
   myPerceptron.propagate(learningRate, [1]); 
 
 }
