@@ -42,7 +42,17 @@ CSS_property_names = {
 
 }
 
+User_action_types_count = 6;
 
+User_actions_types = {
+  "add_div_elem", 1.0/User_action_types_count,
+  "add_form_elem", 2.0/User_action_types_count,
+  "add_button_elem", 3.0/User_action_types_count,
+  "add_text_input_elem", 4.0/User_action_types_count,
+  "add_text_area_elem", 5.0/User_action_types_count,
+  "move_element", 6.0/User_action_types_count
+  
+}
 
 /////////////////////////////////////////
 
@@ -297,7 +307,7 @@ function process_child_element (context_obj,
     update_css_properties (elem, dom_tree_array, current_index);
     
 
-
+    elem_id++;
 
  
  
