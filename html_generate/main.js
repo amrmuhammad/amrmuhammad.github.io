@@ -367,11 +367,14 @@ function user_feedback_submit_handler (e) {
 
   //body_tag_children.each (process_child_element);
   
-   var updated_dom_tree _array = myPerceptron.activate(dom_tree_array); 
-  
-  
+  // activate NN
+  var updated_dom_tree_array = myPerceptron.activate(dom_tree_array); 
+  // propagate desired output
+  myPerceptron.propagate(learningRate, updated_dom_tree_array); 
 
-  myPerceptron.propagate(learningRate, [1]); 
+
+  // update_dom using new array 
+  
 
 }
 
