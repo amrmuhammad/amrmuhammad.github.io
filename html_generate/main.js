@@ -320,13 +320,15 @@ function update_dom (dom_tree_array) {
 
   // remove all children of body tag
   $("body").empty ();
+
+  var current_index = 0;
   
   for (var i=0; i <HTML_configuration.elements_count) {
 
-    var elem_id = dom_tree_array [i+0];
-    var parent_elem_id = dom_tree_array [i+1];
+    var elem_id = dom_tree_array [current_index++];
+    var parent_elem_id = dom_tree_array [current_index++];
   
-    var elem_encoding = dom_tree_array [i+2];
+    var elem_encoding = dom_tree_array [current_index++];
     var tag_name = HTML_elements_types[elem_encoding];
 
     $("body").append (tag_name);
@@ -335,14 +337,18 @@ function update_dom (dom_tree_array) {
       j < HTML_configuration.element_attributes_count;
       j++) {
 
-      var attr_index = i*3 + j;
-      var attr_name = dom_tree_array [attr_index];
-      var attr_value = dom_tree_array [attr_index+1];
+      
+      var attr_name = dom_tree_array [current_index++];
+      var attr_value = dom_tree_array [current_index++];
+
       $("body "+ tag_name + " id=" + elem_id).attr 
         (attr_name) = attr_value;
 
 
     }
+
+
+    elem_id++;
     
     
   
