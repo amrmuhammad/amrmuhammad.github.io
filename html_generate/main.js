@@ -3,6 +3,7 @@
 
 var HTMLConfiguration = {
 
+  html_elements_count : 200,
   // # of allowed attributes per HTML element
   element_attributes_count : 10,
   css_properties_count : 50
@@ -323,7 +324,7 @@ function update_dom (dom_tree_array) {
 
   var current_index = 0;
   
-  for (var i=0; i <HTML_configuration.elements_count) {
+  for (var i=0; i <HTML_configuration.html_elements_count) {
 
     var elem_id = dom_tree_array [current_index++];
     var parent_elem_id = dom_tree_array [current_index++];
@@ -346,6 +347,22 @@ function update_dom (dom_tree_array) {
 
 
     }
+
+    var style_attr ="";
+
+    for (var j=0;
+      j < HTML_configuration.css_properties_count;
+      j++) {
+
+      
+      style_attr += dom_tree_array [current_index++]
+        + ":" + dom_tree_array [current_index++];   
+
+    }
+
+    $("body "+ tag_name + " id=" + elem_id).attr 
+        ("style") = style_attr;
+    
 
 
     elem_id++;
