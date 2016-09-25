@@ -18,16 +18,16 @@ var HTML_attribute_names_count = 1;
 var CSS_property_names_count = 3;
 
 var HTML_elements_types = {
-  1.0/HTML_elements_types_count : "div",
-  2.0/HTML_elements_types_count : "input",
-  3.0/HTML_elements_types_count : "textarea"
+  "div" : 1.0/HTML_elements_types_count,
+  "input" : 2.0/HTML_elements_types_count,
+  "textarea" : 3.0/HTML_elements_types_count
 
 
 };
 
 HTML_attribute_names = {
 
-  1.0/HTML_attribute_names_count : "id"
+  "id" : 1.0/HTML_attribute_names_count
 
 
 
@@ -37,9 +37,9 @@ HTML_attribute_names = {
 
 CSS_property_names = {
 
-  1.0/CSS_property_names_count : "background-color",
-  2.0/CSS_property_names_count : "top",
-  3.0/CSS_property_names_count : "left"
+  "background-color" : 1.0/CSS_property_names_count,
+  "top" : 2.0/CSS_property_names_count,
+  "left" : 3.0/CSS_property_names_count
 
 };
 
@@ -236,7 +236,8 @@ function update_attributes (elem, dom_tree_array, current_index) {
       i < HTMLConfiguration.element_attributes_count;
       i++) {
     
-      dom_tree_array[current_index++] = attributes[i].name;
+      attr_name_encoding = HTML_attribute_names [attributes [i].name];
+      dom_tree_array[current_index++] = attr_name_encoding;
       dom_tree_array [current_index++] = attributes [i].value;
     
 
@@ -250,34 +251,27 @@ function update_css_properties(elem, dom_tree_array, current_index) {
   css_properties = css_properties.split (";", 
     HTMLConfiguration.css_properties_count);
 
-    //var css_properties_map = {};
+  var added_properties_count = 0;
 
   dom_tree_array = _.reduce(css_properties, 
       function (dom_tree_array, property, index, css_properties) {
        
-        property_name_value = property.split(":", 2);
-        //css_properties_map[property_name_value [0]]
-        //  = property_name_value [1];
 
+        if (added_properties_count < 
+          HTML_configuration.css_properties_count) {
 
-        dom_tree_array [current_index++] = property_name_value [0];
-        dom_tree_array [current_index++] = property_name_value[1];
-
+          property_name_value = property.split(":", 2);
+        
+          property_name_encoding = property_name_value [0];
+        
+          dom_tree_array [current_index++] = property_name_encoding;
+          dom_tree_array [current_index++] = property_name_value[1];
+        }
+          
         return dom_tree_array;
-     
+        
       }, dom_tree_array);
 
-/**********
-    for (var j=0; 
-      j < HTMLConfiguration.css_properties_count;
-      j++) {
-
-      dom_tree_array [current_index++] = css_properties[i].name;
-      dom_tree_array [current_index++] = css_properties[i].value;
-     
-
-    }
-*************/
 
 }
 
