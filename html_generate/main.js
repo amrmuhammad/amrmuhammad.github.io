@@ -31,8 +31,6 @@ HTML_attribute_names = {
 
 
 
-
-
 };
 
 CSS_property_names = {
@@ -266,6 +264,8 @@ function update_css_properties(elem, dom_tree_array, current_index) {
         
           dom_tree_array [current_index++] = property_name_encoding;
           dom_tree_array [current_index++] = property_name_value[1];
+
+          added_properties_count++;
         }
           
         return dom_tree_array;
@@ -282,7 +282,7 @@ function process_child_element (context_obj,
     var node_name = $(elem).prop("nodeName");
 
     // find html element encoding
-    var elem_encoding = _.findKey(HTML_elements_types, nodeName);
+    var elem_encoding = HTML_elements_types[nodeName];
 
     // $dom_tree_array.push(elem_id);
     // dom_tree_array.push(elem_encoding);
@@ -343,8 +343,18 @@ function update_dom (dom_tree_array) {
       j < HTML_configuration.element_attributes_count;
       j++) {
 
-      
-      var attr_name = dom_tree_array [current_index++];
+      var attr_name_encoding = dom_tree_array [current_index++];
+
+      // TODO: shortest distance decoding
+      var attr_name = _.findKey (HTML_attribute_names, attr_name_encoding ];
+
+      //var attr_name = dom_tree_array [current_index++];
+
+      if (attr_name === "id") {
+        // skip attribute aling with its value
+        current_index++;
+        continue;
+      }
       var attr_value = dom_tree_array [current_index++];
 
       $("body "+ tag_name + "#" + elem_id).attr 
