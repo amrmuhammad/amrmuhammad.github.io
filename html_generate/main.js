@@ -332,7 +332,18 @@ function update_dom (dom_tree_array) {
     var elem_encoding = dom_tree_array [current_index++];
     var tag_name = HTML_elements_types[elem_encoding];
 
-    $("body").append (tag_name);
+
+    var parent_node = "#" + parent_elem_id;
+
+    if (parent_elem_id == 0) {
+
+      parent_node = "body";
+
+    }
+
+    $(parent_node).append (tag_name);
+    $(parent_node + " " + tag_name).
+      attr("id") = elem_id;
 
     for(var j=0; 
       j < HTML_configuration.element_attributes_count;
@@ -342,7 +353,7 @@ function update_dom (dom_tree_array) {
       var attr_name = dom_tree_array [current_index++];
       var attr_value = dom_tree_array [current_index++];
 
-      $("body "+ tag_name + " id=" + elem_id).attr 
+      $("body "+ tag_name + "#" + elem_id).attr 
         (attr_name) = attr_value;
 
 
@@ -360,12 +371,12 @@ function update_dom (dom_tree_array) {
 
     }
 
-    $("body "+ tag_name + " id=" + elem_id).attr 
+    $("body "+ tag_name + "#" + elem_id).attr 
         ("style") = style_attr;
     
 
 
-    elem_id++;
+   // elem_id++;
     
     
   
