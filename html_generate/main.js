@@ -18,30 +18,30 @@ var HTML_attribute_names_count = 1;
 var CSS_property_names_count = 3;
 
 var HTML_elements_types = {
-1.0/HTML_elements_types_count : "div",
-2.0/HTML_elements_types_count : "input"
-3.0/HTML_elements_types_count : "textarea"
+  1.0/HTML_elements_types_count : "div",
+  2.0/HTML_elements_types_count : "input",
+  3.0/HTML_elements_types_count : "textarea"
 
 
-},
+};
 
 HTML_attribute_names = {
 
-1.0/HTML_attribute_names_count : "id",
+  1.0/HTML_attribute_names_count : "id"
 
 
 
 
 
-},
+};
 
 CSS_property_names = {
 
-1.0/CSS_property_names_count : "background-color",
-2.0/CSS_property_names_count : "top",
-3.0/CSS_property_names_count : "left",
+  1.0/CSS_property_names_count : "background-color",
+  2.0/CSS_property_names_count : "top",
+  3.0/CSS_property_names_count : "left"
 
-}
+};
 
 User_action_types_count = 6;
 
