@@ -260,7 +260,7 @@ function update_css_properties(elem, dom_tree_array, current_index) {
 
           property_name_value = property.split(":", 2);
         
-          property_name_encoding = property_name_value [0];
+          property_name_encoding = CSS_property_names[property_name_value [0]];
         
           dom_tree_array [current_index++] = property_name_encoding;
           dom_tree_array [current_index++] = property_name_value[1];
@@ -324,7 +324,7 @@ function update_dom (dom_tree_array) {
     var parent_elem_id = dom_tree_array [current_index++];
   
     var elem_encoding = dom_tree_array [current_index++];
-    var tag_name = HTML_elements_types[elem_encoding];
+    var tag_name = _.findKey(HTML_elements_types, elem_encoding);
 
 
     var parent_node = "#" + parent_elem_id;
@@ -369,8 +369,11 @@ function update_dom (dom_tree_array) {
       j < HTML_configuration.css_properties_count;
       j++) {
 
-      
-      style_attr += dom_tree_array [current_index++]
+      var css_property_name_encoding = 
+        dom_tree_array [current_index++]:
+      var css_property_name = 
+        _.findKey (CSS_property_names, css_property_name_encoding);
+      style_attr += css_property_name
         + ":" + dom_tree_array [current_index++];   
 
     }
