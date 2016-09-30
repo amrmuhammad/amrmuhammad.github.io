@@ -32,7 +32,7 @@ HTML_attribute_names = {
 
 
 };
-
+///////////////////////////
 CSS_property_names = {
 
   "background-color" : 1.0/CSS_property_names_count,
@@ -40,6 +40,33 @@ CSS_property_names = {
   "left" : 3.0/CSS_property_names_count
 
 };
+//////////////////////////////
+
+function decode_css_property_value (encoded_val, css_property_name) {
+
+
+  if (css_property_name === "background-color") {
+     decode_backgroundcolor_property_value (encoded_val);
+  }
+}
+
+function decode_backgroundcolor_property_value (encoded_val) {
+  // assume encoded values will take this form:
+  // numbers with 12 digits after the decimal point
+  // each two digits encode one of the 6 hex characters
+  // in the rgb value
+  // example
+  // 0.151413121110 encodes the rgb value fedcba
+  // 0.000102030405 encodes the rgb value 012345
+  // 0.000102035506 is not a valid encoding as it has
+  // 55 which is not a valid encoding for a hex character
+  // only values between 0 and 15 are valid, the NN should
+  // be trained NOT to generate such values
+
+  var rgb = encoded_val * 1000000 * 1000000;
+  
+}
+//////////////////////////////
 
 User_action_types_count = 6;
 
