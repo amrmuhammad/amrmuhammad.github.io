@@ -378,7 +378,7 @@ function update_dom (dom_tree_array) {
 
   var current_index = 0;
   
-  for (var i=0; i <HTML_configuration.html_elements_count, ++i) {
+  for (var i=0; i <HTML_configuration.html_elements_count; ++i) {
 
     var elem_id = dom_tree_array [current_index++];
     var parent_elem_id = dom_tree_array [current_index++];
