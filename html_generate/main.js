@@ -64,7 +64,18 @@ function decode_backgroundcolor_property_value (encoded_val) {
   // be trained NOT to generate such values
 
   var rgb = encoded_val * 1000000 * 1000000;
-  
+  var rgb_base10_enc = rgb; 
+
+  for (var i=0; i <6; ++i) {
+
+    var hex_base10_enc = rgb % 100;
+    var hex_character = 
+      base10_num_to_hex_char(hex_base10_enc);
+
+    rgb_base10_enc -= hex_base10_enc;
+    rgb_base10_enc = rgb_base10_enc / 100;
+
+  }
 }
 //////////////////////////////
 
