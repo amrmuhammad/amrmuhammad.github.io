@@ -44,7 +44,7 @@ CSS_property_names = {
 
 function base10_num_to_hex_char(num) {
 
-  var af_arr = ['A', 'B', 'C', 'D, 'E, 'F'];
+  var af_arr = ['A', 'B', 'C', 'D, 'E', 'F'];
 
   for (var i=0; i < 16; i++) {
 
