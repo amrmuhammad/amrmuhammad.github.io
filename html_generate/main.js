@@ -430,7 +430,7 @@ function update_dom (dom_tree_array) {
       j++) {
 
       var css_property_name_encoding = 
-        dom_tree_array [current_index++]:
+        dom_tree_array [current_index++];
       var css_property_name = 
         _.findKey (CSS_property_names, css_property_name_encoding);
       style_attr += css_property_name
