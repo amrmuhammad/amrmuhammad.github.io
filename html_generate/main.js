@@ -406,7 +406,7 @@ function update_dom (dom_tree_array) {
       var attr_name_encoding = dom_tree_array [current_index++];
 
       // TODO: shortest distance decoding
-      var attr_name = _.findKey (HTML_attribute_names, attr_name_encoding ];
+      var attr_name = _.findKey (HTML_attribute_names, attr_name_encoding );
 
       //var attr_name = dom_tree_array [current_index++];
 
