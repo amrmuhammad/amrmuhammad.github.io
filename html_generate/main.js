@@ -179,7 +179,7 @@ var $ = window.$;
 // Debug 
 //var Debug = window.Debug;
 
-//Debug.write('testing debug code');
+Debug.write('testing debug code');
 
 
 // this line is not needed in the browser 
