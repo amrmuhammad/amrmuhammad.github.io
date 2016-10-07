@@ -42,6 +42,19 @@ CSS_property_names = {
 };
 //////////////////////////////
 
+function base10_num_to_hex_char(num) {
+
+  if(num === 1)
+    return "01";
+  else if (num === 2)
+    return "02";
+  
+
+  else 
+    return "undefined";
+
+}
+
 function decode_css_property_value (encoded_val, css_property_name) {
 
 
