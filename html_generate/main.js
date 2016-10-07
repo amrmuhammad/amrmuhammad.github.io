@@ -44,14 +44,23 @@ CSS_property_names = {
 
 function base10_num_to_hex_char(num) {
 
-  if(num === 1)
-    return "01";
-  else if (num === 2)
-    return "02";
-  
+  var af_arr = ['A', 'B', 'C', 'D, 'E, 'F'];
 
-  else 
-    return "undefined";
+  for (var i=0; i < 16; i++) {
+
+    if(i===num) {
+
+      if (i <=9)
+        return "" + i; 
+      else {
+        return "" + af_arr [i-10];
+        
+      }
+    }
+
+  }
+      
+  return "undefined";
 
 }
 
