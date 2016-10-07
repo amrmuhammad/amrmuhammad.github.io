@@ -21,10 +21,11 @@ var Debug = {
     // construct the element if it does not exist
     if (div_el == null) {  
     
-      div_el = body_el.createElement('div');
+      div_el = document.createElement('div');
       div_el.setAttribute('id', 'debug_div');
       div_el.setIdAttribute ('id', true);
       div_el.textContent = "";
+      body_el.appendChild (div_el);
 
     } 
     
