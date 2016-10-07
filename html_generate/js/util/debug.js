@@ -23,7 +23,7 @@ var Debug = {
     
       div_el = document.createElement('div');
       div_el.setAttribute('id', 'debug_div');
-      div_el.setIdAttribute ('id', true);
+     // div_el.setIdAttribute ('id', true);
       div_el.textContent = "";
       body_el.appendChild (div_el);
 
