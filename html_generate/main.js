@@ -484,7 +484,7 @@ function user_feedback_submit_handler (e) {
 
   while (queue.length > 0) {
 
-    var elem = queue.dequeue ():
+    var elem = queue.dequeue ();
     var elem_children = elem.children ();
     //elem.each (process_child_element);
 
