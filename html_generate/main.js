@@ -214,7 +214,7 @@ function Perceptron(input, hidden, output)
 // extend the prototype chain 
 Perceptron.prototype = new Network(); 
 Perceptron.prototype.constructor = Perceptron;
-
+/**********
 var no_of_neurons = 24602;
 var myPerceptron = new Perceptron(
   no_of_neurons, no_of_neurons, 
@@ -223,7 +223,7 @@ var myPerceptron = new Perceptron(
 overall_feedback_index = no_of_neurons-2;
 user_action_index = no_of_neurons-1;
 
-
+*************/
 
 //////////////////////////////////////////
 // var myTrainer = new Trainer(myPerceptron); 
