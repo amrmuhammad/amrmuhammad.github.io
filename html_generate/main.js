@@ -286,6 +286,7 @@ $(document).ready(function() {
   $("body").append(html_output);
 });
 
+/************
 function update_attributes (elem, dom_tree_array, current_index) {
 
     var attributes = $(elem).prop("attributes");
@@ -517,5 +518,5 @@ function user_feedback_submit_handler (e) {
 $("user_feedback_submit").onclick(user_feedback_submit_handler);
  
 
-
+**********/
  
