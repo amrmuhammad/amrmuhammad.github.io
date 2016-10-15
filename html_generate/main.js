@@ -230,7 +230,7 @@ function Perceptron(input, hidden, output)
 Perceptron.prototype = new Network(); 
 Perceptron.prototype.constructor = Perceptron;
 
-var no_of_neurons = NNConfiguration.input_neurons_count;
+var no_of_neurons = 5; //NNConfiguration.input_neurons_count;
 //24602;
 var myPerceptron = new Perceptron(
   no_of_neurons, no_of_neurons, 
