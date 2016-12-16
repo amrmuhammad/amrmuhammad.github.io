@@ -1,5 +1,5 @@
 
-<todo>
+<matrix>
 
   <h3>{ opts.title }</h3>
 
@@ -22,39 +22,6 @@
   <!-- this script tag is optional -->
   <script>
     this.items = opts.items
-
-    edit(e) {
-      this.text = e.target.value
-    }
-
-    add(e) {
-      if (this.text) {
-        this.items.push({ title: this.text })
-        this.text = this.refs.input.value = ''
-      }
-      e.preventDefault()
-    }
-
-    removeAllDone(e) {
-      this.items = this.items.filter(function(item) {
-        return !item.done
-      })
-    }
-
-    // an two example how to filter items on the list
-    whatShow(item) {
-      return !item.hidden
-    }
-
-    onlyDone(item) {
-      return item.done
-    }
-
-    toggle(e) {
-      var item = e.item
-      item.done = !item.done
-      return true
-    }
   </script>
 
-</todo>
+</matrix>
