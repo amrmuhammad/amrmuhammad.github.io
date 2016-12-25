@@ -1,5 +1,5 @@
-var Vuejs = require ('../lib/vuejs/vue.js')
-
+var Vue = require ('../lib/vuejs/vue.js')
+var VueApp = require ('./app.vue')
 
 Vue.component('matrix', {
   props: ['rows'],
