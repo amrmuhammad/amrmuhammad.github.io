@@ -3,9 +3,9 @@ var Vue = require ('../lib/vuejs/vue.js')
 
 
 var matrix_template = '\
-    <template v-for="r in rows-count">\
+    <template v-for="r in 3">\
       <div id="row">\
-        <input v-for="c in cols-count" type="text">\
+        <input v-for="c in 3" type="text">\
       </div>\
     </template>\
     '
