@@ -13,7 +13,7 @@ var matrix_template =
     '
 */
 
-var matrix_template = 'hello'
+var matrix_template = '<div>hello</div>'
 
 Vue.component ('matrix',  {
   template: matrix_template, 
