@@ -24,7 +24,9 @@ Vue.component ('matrix',  {
 var app = new Vue({
   el: '#app',
   
-  template: '<matrix> </matrix>',
+  template: '<matrix rows-count="1" ' \
+    'cols-count="3" elems="" >' \
+    '</matrix>',
   
   data: {
     elems: [
