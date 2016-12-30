@@ -1,13 +1,12 @@
 var Vue = require ('../lib/vuejs/vue.js')
 //var VueApp = require ('./app.vue')
 
+var matrix_template = ''
 
-
-Vue.component ({
-  template : matrix_template, 
-  data : {
-  }
-  
+Vue.component ('matrix',  {
+  template: matrix_template, 
+  props: ['rows-count', 'cols-count',
+          'elems']
 })
 
 var app = new Vue({
