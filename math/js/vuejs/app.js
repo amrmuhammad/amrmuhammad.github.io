@@ -9,7 +9,7 @@ var matrix_template = '\
           <input v-for="c in 3" type="text">\
         </div>\
       </template>\
-    </div>
+    </div>\
     '
 
 
