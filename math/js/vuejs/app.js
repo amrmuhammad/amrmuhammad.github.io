@@ -1,6 +1,7 @@
 var Vue = require ('../lib/vuejs/vue.js')
 //var VueApp = require ('./app.vue')
 
+/*
 var matrix_template = 
     ' \
     <template v-for="r in rows-count"> \
@@ -10,6 +11,9 @@ var matrix_template =
       </div> \
     </template> \
     '
+*/
+
+var matrix_template = 'hello'
 
 Vue.component ('matrix',  {
   template: matrix_template, 
