@@ -1,6 +1,14 @@
 var Vue = require ('../lib/vuejs/vue.js')
-var VueApp = require ('./app.vue')
+//var VueApp = require ('./app.vue')
 
+
+
+Vue.component ({
+  template : matrix_template, 
+  data : {
+  }
+  
+})
 
 var app = new Vue({
   el: '#app',
