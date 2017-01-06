@@ -24,10 +24,10 @@ var matrix_style_object = {
 var mso = matrix_style_object
 
 var matrix_template = '\
-    <div id="matrix" class="container" v-bind=style="mso.container">\
+    <div id="matrix" class="container" v-bind:style="mso.container">\
       <template v-for="r in 3">\
-        <div id="row" class="row">\
-          <div v-for="c in 3" class="col-xs-2">\
+        <div id="row" class="row" v-bind:style="mso.row">\
+          <div v-for="c in 3" class="col-xs-2" v-bind:style="mso.col">\
             <input type="text" >\
           </div>\
         </div>\
