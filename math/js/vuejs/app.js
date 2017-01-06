@@ -1,9 +1,30 @@
 var Vue = require ('../lib/vuejs/vue.js')
 //var VueApp = require ('./app.vue')
 
+var matrix_data_object = {
+    rows_count : 3,
+    cols_count : 3
+}
+
+var mdo = matrix_data_object
+
+var matrix_style_object = {
+    container : {
+        width:'100%'
+    },
+    row : {
+        height : 100/mdo.rows_count + '%'
+    },
+    cols : {
+        width : 100/mdo.cols_count + '%'
+    }
+        
+}
+
+var mso = matrix_style_object
 
 var matrix_template = '\
-    <div id="matrix" class="container">\
+    <div id="matrix" class="container" style=mso>\
       <template v-for="r in 3">\
         <div id="row" class="row">\
           <div v-for="c in 3" class="col-xs-2">\
@@ -32,7 +53,9 @@ var app = new Vue({
     elems: [
       [1, 2, 3], 
       [4, 5, 6]
-    ]
+    ],
+      
+    mso : mso // matrix style object
   }
   
 })
