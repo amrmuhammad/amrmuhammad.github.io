@@ -24,7 +24,7 @@ var matrix_style_object = {
 var mso = matrix_style_object
 
 var matrix_template = '\
-    <div id="matrix" class="container" v-bind:style="mso.container">\
+    <div id="matrix" class="container" v-bind:style="container">\
       <template v-for="r in 3">\
         <div id="row" class="row" v-bind:style="mso.row">\
           <div v-for="c in 3" class="col-xs-2" v-bind:style="mso.col">\
@@ -55,7 +55,9 @@ var app = new Vue({
       [4, 5, 6]
     ],
       
-    mso : mso // matrix style object
+    mso : mso,  // matrix style object
+    
+    container : mso.container
   }
   
 })
