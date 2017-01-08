@@ -10,6 +10,7 @@ var mdo = matrix_data_object
 
 var matrix_style_object = {
     container : {
+        position : 'relative',
         width:'100%',
         height : '50%'
     },
