@@ -16,7 +16,7 @@ var matrix_style_object = {
     row : {
         height : 100/mdo.rows_count + '%'
     },
-    cols : {
+    col : {
         width : 100/mdo.cols_count + '%'
     }
         
@@ -58,9 +58,8 @@ var app = new Vue({
       [4, 5, 6]
     ],
       
-    mso : mso,  // matrix style object
+    mso : mso // matrix style object
     
-    container : {width : '100%' } // mso.container
   }
   
 })
