@@ -10,7 +10,8 @@ var mdo = matrix_data_object
 
 var matrix_style_object = {
     container : {
-        width:'100%'
+        width:'100%',
+        height : '50%'
     },
     row : {
         height : 100/mdo.rows_count + '%'
