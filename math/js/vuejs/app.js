@@ -24,7 +24,7 @@ var matrix_style_object = {
 var mso = matrix_style_object
 
 var matrix_template = '\
-    <div id="matrix" class="container" v-bind:style="container">\
+    <div id="matrix" class="container" v-bind:style="mso.container">\
       <template v-for="r in 3">\
         <div id="row" class="row" v-bind:style="mso.row">\
           <div v-for="c in 3" class="col-xs-2" v-bind:style="mso.col">\
@@ -41,13 +41,15 @@ var matrix_template = '\
 Vue.component ('matrix',  {
   template: matrix_template, 
   props: ['rows-count', 'cols-count',
-          'elems']
+          'elems',
+          'mso' // matrix style object
+         ]
 })
 
 var app = new Vue({
   el: '#app',
   
-  template: '<matrix rows-count="1" cols-count="3" elems="" ></matrix>',
+  template: '<matrix rows-count="1" cols-count="3" elems="" v-bind:mso="mso"></matrix>',
   
   data: {
     elems: [
