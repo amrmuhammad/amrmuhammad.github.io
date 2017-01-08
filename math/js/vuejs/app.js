@@ -57,7 +57,7 @@ var app = new Vue({
       
     mso : mso,  // matrix style object
     
-    container : mso.container
+    container : {width : '100%' } // mso.container
   }
   
 })
