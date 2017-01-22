@@ -443,3 +443,15 @@ THE SOFTWARE.
 
 ---
 
+
+
+"This software or document includes material copied from or derived from [Flexible Box Layout Module Level 1
+W3C Candidate Recommendation, 26 May 2016 http://www.w3.org/TR/2016/CR-css-flexbox-1-20160526/  ]. 
+
+
+Copyright © 2016 W3C® (MIT, ERCIM, Keio, Beihang). W3C liability, trademark and document use rules apply
+
+
+"
+
+---
