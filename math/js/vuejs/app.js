@@ -18,7 +18,7 @@ var matrix_style_object = {
     },
     row : {
         height : 100/mdo.rows_count + '%',
-        flex : auto
+        flex : 'auto'
     },
     col : {
         width : 100/mdo.cols_count + '%'
