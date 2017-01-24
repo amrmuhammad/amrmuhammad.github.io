@@ -10,8 +10,8 @@ var mdo = matrix_data_object
 
 var matrix_style_object = {
     container : {
-        //display : 'flex', 
-        //flex-flow : 'row wrap',
+        display : 'flex', 
+        flex-flow : 'row wrap',
         position : 'relative',
         width:'100%',
         height : '50%'
