@@ -21,7 +21,8 @@ var matrix_style_object = {
         flex : 'auto'
     },
     col : {
-        width : 100/mdo.cols_count + '%'
+        //width : 100/mdo.cols_count + '%'
+        width : 30px;
     }
         
 }
