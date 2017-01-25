@@ -22,7 +22,7 @@ var matrix_style_object = {
     },
     col : {
         //width : 100/mdo.cols_count + '%'
-        width : '30px'
+        width : '10px'
     }
         
 }
