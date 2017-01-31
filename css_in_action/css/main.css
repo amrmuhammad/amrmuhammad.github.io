@@ -2,7 +2,7 @@
 #example1 {
   display : flex,
   flex-flow : row wrap,
-  background-color : #000000
+  background-color : #000000,
   width : 50%
 }
 
