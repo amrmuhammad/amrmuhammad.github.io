@@ -4,7 +4,8 @@
   flex-flow : row wrap;
   background-color : #000000;
   width : 50%;
-  height : 30%
+  height : 30%;
+  justify-content : space-around
 }
 
 #div1, #div2, #div3 {
