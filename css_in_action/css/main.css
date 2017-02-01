@@ -3,11 +3,13 @@
   display : flex;
   flex-flow : row wrap;
   background-color : #000000;
-  width : 50%
+  width : 50%;
+  height : 30%
 }
 
 #div1, #div2, #div3 {
   background-color : #ffffff;
-  width : 40%
+  width : 40%;
+  border-color : #000044
    
 }
