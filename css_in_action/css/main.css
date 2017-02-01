@@ -11,6 +11,7 @@
 #div1, #div2, #div3 {
   background-color : #ffffff;
   width : 40%;
-  border-color : #000044
+  border-color : #000044;
+  margin : 5px;
    
 }
