@@ -1,13 +1,13 @@
 
 #example1 {
-  display : flex,
-  flex-flow : row wrap,
-  background-color : #000000,
+  display : flex;
+  flex-flow : row wrap;
+  background-color : #000000;
   width : 50%
 }
 
 #div1, #div2, #div3 {
-  background-color : #ffffff,
+  background-color : #ffffff;
   width : 40%
-    
+   
 }
