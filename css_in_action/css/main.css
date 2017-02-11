@@ -27,10 +27,13 @@
 }
 
 .matrix_row {
+  display : flex;
+  flex-flow : row wrap;
   background-color : #000000;
   width : 90%;
   border-color : #000044;
   margin : 5px;
+  justify-content : space-around
 }
 
 .matrix_element {
