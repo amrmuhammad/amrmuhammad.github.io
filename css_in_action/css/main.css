@@ -26,6 +26,13 @@
 
 }
 
+.matrix_row {
+  background-color : #000000;
+  width : 90%;
+  border-color : #000044;
+  margin : 5px;
+}
+
 .matrix_element {
   background-color : #ffffff;
   width : 20%;
