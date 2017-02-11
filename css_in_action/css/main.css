@@ -25,3 +25,10 @@
   justify-content : space-around
 
 }
+
+.matrix_element {
+  background-color : #ffffff;
+  width : 20%;
+  border-color : #000044;
+  margin : 5px;
+}
