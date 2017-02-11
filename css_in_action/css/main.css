@@ -33,6 +33,7 @@
   flex-flow : row wrap;
   background-color : #000000;
   width : 90%;
+  height : 30%;
   border-color : #000044;
   margin : 5px;
   justify-content : space-around
@@ -41,6 +42,7 @@
 .matrix_element {
   background-color : #ffffff;
   width : 20%;
+  height : 50%;
   border-color : #000044;
   margin : 5px;
 }
