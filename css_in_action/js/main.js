@@ -9,7 +9,7 @@ function generate_example2_html() {
     for (var j=0; j<3; j++) {
       htmlString += '<input type="text" id="elem_' + i + '_' + j + '">'
     }
-    htmlString += '/div'
+    htmlString += '</div>'
   }
   
   htmlString += '</div>'
