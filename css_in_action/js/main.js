@@ -7,7 +7,7 @@ function generate_example2_html() {
   for (var i=0; i<3; i++) {
     htmlString += '<div id="row' + i + '">'
     for (var j=0; j<3; j++) {
-      htmlString += '<input type="text" id="elem_' + i + '_' + j + '">'
+      htmlString += '<input type="text" class="matrix_element" id="elem_' + i + '_' + j + '">'
     }
     htmlString += '</div>'
   }
