@@ -12,7 +12,7 @@ function generate_example2_html() {
     htmlString += '</div>'
   }
   
-  htmlString += '<input type="button" >'
+  htmlString += '<input type="button" value="change colours">'
   
   htmlString += '</div>'
   
