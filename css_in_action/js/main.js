@@ -12,6 +12,8 @@ function generate_example2_html() {
     htmlString += '</div>'
   }
   
+  htmlString += '<input type="button" >'
+  
   htmlString += '</div>'
   
   $('body').append(htmlString)
