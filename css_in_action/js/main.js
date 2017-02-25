@@ -23,7 +23,7 @@ function attach_example2_handlers() {
   
   $("example2").on("click", function() {
     var bg_colour = $(this).css("background-color")
-    $(this).css("background-color, bg_colour)
+    $(this).css("background-color", bg_colour)
   }
   
 }
