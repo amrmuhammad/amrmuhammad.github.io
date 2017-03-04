@@ -25,6 +25,9 @@ function generate_html() {
 
 function attach_example2_handlers() {
   $("#example2 > input").click(function() {
+    
+    var bg_color = $("#example2").css("background-color")
+    $("#example2").css("background-color")
   })
   
 }
