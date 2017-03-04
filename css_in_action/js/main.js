@@ -34,3 +34,4 @@ function attach_event_handlers() {
 }
 
 generate_html()
+attach_event_handlers()
