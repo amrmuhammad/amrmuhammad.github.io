@@ -23,4 +23,12 @@ function generate_html() {
   generate_example2_html()
 }
 
+function attach_example2_handlers() {
+
+}
+
+function attach_event_handlers() {
+  attach_example2_handlers()
+}
+
 generate_html()
