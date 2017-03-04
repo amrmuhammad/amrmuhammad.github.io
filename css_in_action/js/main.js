@@ -24,7 +24,9 @@ function generate_html() {
 }
 
 function attach_example2_handlers() {
-
+  $("#example2 > input").click(function() {
+  })
+  
 }
 
 function attach_event_handlers() {
