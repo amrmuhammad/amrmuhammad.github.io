@@ -19,20 +19,8 @@ function generate_example2_html() {
   $('body').append(htmlString)
 }
 
-function attach_example2_handlers() {
-  
-  $("example2").on("click", function() {
-    var bg_colour = $(this).css("background-color")
-    $(this).css("background-color", bg_colour)
-  }
-  
-}
-
 function generate_html() {
   generate_example2_html()
-}
-
-function attach_event_handlers() {
 }
 
 generate_html()
