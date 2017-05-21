@@ -26,7 +26,14 @@
     
     <script src="js/lib/systemjs/system.js">
     </script>
+    
+    
     <script>  
+      
+      SystemJS.config(
+        { baseURL: './' }
+      ); 
+      
       SystemJS.import('js/main.js');
     </script>
     
