@@ -8,7 +8,7 @@ Vue.component('matrix', {
   template: '<div id="matrix1" > ' +
               '<template v-for="1 to rows">' +
               '<tr>' +
-                '<template v-for="1 to cols"> +
+                '<template v-for="1 to cols">' +
                 '<td>' +
                 '<input type="text">' +
                 '</td>' +
