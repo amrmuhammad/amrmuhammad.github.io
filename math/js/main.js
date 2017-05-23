@@ -30,3 +30,6 @@ var app = new Vue({
     message: 'Hello Vue!'
   }
 })
+/////////////////////
+
+$('#app').append("<matrix></matrix>")
