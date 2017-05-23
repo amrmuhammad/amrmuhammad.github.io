@@ -15,10 +15,13 @@ Vue.component('matrix', {
               '</tr>' +
               '</template' +
             '</div>',
-  data: {
-    message: 'hello',
-    rows : 3,
-    cols : 3
+  
+  data: function() {
+    return {
+      message: 'hello',
+      rows : 3,
+      cols : 3
+    }
   }
 })
 
