@@ -36,6 +36,10 @@ var app = new Vue({
 })
 /////////////////////
 */
+
+var rows = 3
+var cols = 3
+
 var html_code = '<div id="matrix1">' 
 for (i=0; i< rows; i++) {
    html_code += '<tr>'
