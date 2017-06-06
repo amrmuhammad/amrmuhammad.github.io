@@ -39,7 +39,8 @@ var app = new Vue({
 
 var rows = 3
 var cols = 3
-
+///////////////////////////////////
+// Construct the matrix DOM elements
 var html_code = '<div id="matrix1">' 
 for (i=0; i< rows; i++) {
    html_code += '<tr>'
@@ -50,8 +51,11 @@ for (i=0; i< rows; i++) {
    }
    html_code += '</tr>'
 }
-            
-  
+///////////////////////////////////
+// Add an input textbox to select 
+// background color
+html_code += '<br>'
+html_code +=  '<input type="text">'
 //$('#app').append("<matrix></matrix>")
 $("#app").append(html_code)
 
