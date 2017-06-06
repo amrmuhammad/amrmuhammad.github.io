@@ -54,7 +54,8 @@ for (i=0; i< rows; i++) {
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
-html_code += '<br>'
+html_code += '<br> <br> <br> '
+html_code += "background-color:"
 html_code +=  '<input type="text">'
 //$('#app').append("<matrix></matrix>")
 $("#app").append(html_code)
