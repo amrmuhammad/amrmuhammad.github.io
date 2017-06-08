@@ -56,8 +56,11 @@ for (i=0; i< rows; i++) {
 // background color
 html_code += '<br> <br> <br> '
 html_code += "background-color:"
-html_code +=  '<input type="text">'
+html_code +=  '<input id="bg_input" type="text">'
 //$('#app').append("<matrix></matrix>")
+bg_value = $("bg_input").val
+$("matrix1").css("background-color",
+                 bg_value)
 $("#app").append(html_code)
 
 
