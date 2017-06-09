@@ -59,12 +59,12 @@ html_code += "background-color:"
 html_code +=  '<input id="bg_input" type="text">'
 //$('#app').append("<matrix></matrix>")
 var bg_value = ""
-$("bg_input").change(function(){
-  alert("background changed")
+$("#bg_input").change(function(){
+  //alert("background changed")
   var bg_value = $("bg_input").val()
   if(bg_value.length == 6) {
     bg_value = "#" + bg_value
-    $("matrix1").css("background-color",
+    $("#matrix1").css("background-color",
                  bg_value)
   }
 })
