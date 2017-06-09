@@ -63,8 +63,8 @@ $("bg_input").change(function(){
   
   var bg_value = $("bg_input").val()
   if(bg_value.length == 6) {
-  //  $("matrix1").css("background-color",
-  //               bg_value
+    $("matrix1").css("background-color",
+                 bg_value)
   }
 })
 $("#app").append(html_code)
