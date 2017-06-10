@@ -58,6 +58,12 @@ html_code += '<br> <br> <br> '
 html_code += "background-color:"
 html_code +=  '<input id="bg_input" type="text">'
 //$('#app').append("<matrix></matrix>")
+//////////////////////////
+// Attach elements to DOM
+$("#app").append(html_code)
+//////////////////////////
+// Attach event handlers to
+// DOM elements
 var bg_value = ""
 $("#bg_input").change(function(){
   alert("background changed")
@@ -68,6 +74,7 @@ $("#bg_input").change(function(){
                  bg_value)
   }
 })
+//////////////////////////^
 $("#app").append(html_code)
 
 
