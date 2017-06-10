@@ -61,8 +61,8 @@ html_code +=  '<input id="bg_input" type="text">'
 //$('#app').append("<matrix></matrix>")
 /////////////////////////
 function add_css_experimenting_section(html_code) {
-  html_code += '<div id="css_exp_section"> 
-  html_code += 'Element id # : <input id="elem_id" type="text">
+  html_code += '<div id="css_exp_section">'
+  html_code += 'Element id # : <input id="elem_id" type="text">'
   
   html_code += '</div>'
   
