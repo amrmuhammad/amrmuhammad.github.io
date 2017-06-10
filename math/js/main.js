@@ -75,6 +75,6 @@ $("#bg_input").change(function(){
   }
 })
 //////////////////////////^
-$("#app").append(html_code)
+//$("#app").append(html_code)
 
 
