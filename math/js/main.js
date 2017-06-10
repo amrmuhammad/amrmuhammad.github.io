@@ -51,6 +51,7 @@ for (i=0; i< rows; i++) {
    }
    html_code += '</tr>'
 }
+html_code += '</div>'
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
