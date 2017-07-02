@@ -66,6 +66,8 @@ function add_css_experimenting_section(html_code) {
   
   html_code += '</div>'
   
+  return html_code
+  
 }
 html_code = add_css_experimenting_section(html_code)
 //////////////////////////
