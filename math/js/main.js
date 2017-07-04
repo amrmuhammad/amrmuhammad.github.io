@@ -63,8 +63,10 @@ html_code +=  '<input id="bg_input" type="text">'
 function add_css_experimenting_section(html_code) {
   html_code += '<div id="css_exp_section">'
   html_code += 'Element id # : <input id="elem_id" type="text">'
-  html_code += 'CSS property name : <input id="css_prop_name" type="text">'
-  
+  html_code += 'CSS property name : <select id="css_prop_name">'
+  html_code += '  <option value="1">top</option>'
+  html_code += '  <option value="2">left</option>'
+  html_code += '</select>'
   html_code += '</div>'
   
   return html_code
