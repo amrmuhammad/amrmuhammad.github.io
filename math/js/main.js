@@ -67,6 +67,9 @@ function add_css_experimenting_section(html_code) {
   html_code += 'CSS property name : <select id="css_prop_name">'
   html_code += '  <option value="1">top</option>'
   html_code += '  <option value="2">left</option>'
+  html_code += '  <option value="3">right</option>'
+  html_code += '  <option value="4">bottom</option>'
+  html_code += '  <option value="5">position</option>'
   html_code += '</select>'
   html_code += '</div>'
   
