@@ -70,6 +70,9 @@ function add_css_experimenting_section(html_code) {
   html_code += '  <option value="3">right</option>'
   html_code += '  <option value="4">bottom</option>'
   html_code += '  <option value="5">position</option>'
+  html_code += '  <option value="6">float</option>'
+  html_code += '  <option value="7">clear</option>'
+  html_code += '  <option value="8">z-index</option>'
   html_code += '</select>'
   html_code += '</div>'
   
