@@ -46,7 +46,7 @@ for (i=0; i< rows; i++) {
    html_code += '<tr>'
    for (j=0; j< cols; j++) {
      html_code += '<td>'
-     html_code += '<input type="text">'
+     html_code += '<input type="text" class="matrix_element">'
      html_code += '</td'
    }
    html_code += '</tr>'
