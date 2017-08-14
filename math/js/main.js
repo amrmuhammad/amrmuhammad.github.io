@@ -39,10 +39,13 @@ var app = new Vue({
 
 var rows = 3
 var cols = 3
+var html_code = ""
 ///////////////////////////////////
 // Construct the matrix DOM elements
-var html_code = '<div id="matrix1">' 
-for (i=0; i< rows; i++) {
+function construct_matrix(matrix_id)
+{
+  var html_code += '<div id="' + matrix_id + '">' 
+  for (i=0; i< rows; i++) {
    html_code += '<tr>'
    for (j=0; j< cols; j++) {
      html_code += '<td>'
@@ -50,8 +53,15 @@ for (i=0; i< rows; i++) {
      html_code += '</td'
    }
    html_code += '</tr>'
+  }
+  html_code += '</div>'
+  
+  return html_code
 }
-html_code += '</div>'
+
+html_code += construct_matrix("matrix1")
+html_code += construct_matrix("matrix2")
+                 
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
