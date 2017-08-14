@@ -83,6 +83,12 @@ html_code = add_css_experimenting_section(html_code)
 //////////////////////////
 // Attach elements to DOM
 $("#app").append(html_code)
+///////////////////////////
+function init_css()
+{
+  $(".matrix_element").("width", "30%")
+}
+init_css()
 //////////////////////////
 // Attach event handlers to
 // DOM elements
