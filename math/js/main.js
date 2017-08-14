@@ -44,7 +44,7 @@ var html_code = ""
 // Construct the matrix DOM elements
 function construct_matrix(matrix_id)
 {
-  var html_code += '<div id="' + matrix_id + '">' 
+  var html_code = '<div id="' + matrix_id + '">' 
   for (i=0; i< rows; i++) {
    html_code += '<tr>'
    for (j=0; j< cols; j++) {
