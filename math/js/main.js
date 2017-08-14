@@ -88,6 +88,7 @@ function init_css()
 {
   $(".matrix_element").css("width", "30%")
   $(".matrix_element").css("height", "40px")
+  $(".matrix_element").css("margin", "2px")
 }
 init_css()
 //////////////////////////
