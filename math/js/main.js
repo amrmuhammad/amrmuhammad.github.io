@@ -87,6 +87,7 @@ $("#app").append(html_code)
 function init_css()
 {
   $(".matrix_element").css("width", "30%")
+  $(".matrix_element").css("height", "40px")
 }
 init_css()
 //////////////////////////
