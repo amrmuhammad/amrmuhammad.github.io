@@ -42,15 +42,16 @@ var cols = 3
 var html_code = ""
 ///////////////////////////////////
 // Construct the matrix DOM elements
-function construct_matrix(matrix_id)
+function construct_matrix(matrix_id, matrix_label)
 {
   var html_code = '<div id="' + matrix_id + '">' 
+  html_code += '<div>' + matrix_label + '</div>'
   for (i=0; i< rows; i++) {
    html_code += '<tr>'
    for (j=0; j< cols; j++) {
      html_code += '<td>'
      html_code += '<input type="text" class="matrix_element">'
-     html_code += '</td'
+     html_code += '</td>'
    }
    html_code += '</tr>'
   }
@@ -59,8 +60,9 @@ function construct_matrix(matrix_id)
   return html_code
 }
 
-html_code += construct_matrix("matrix1")
-html_code += construct_matrix("matrix2")
+html_code += construct_matrix("matrix1", "First matrix:")
+html_code += '<br />'
+html_code += construct_matrix("matrix2", "Second matrix:")
                  
 ///////////////////////////////////
 // Add an input textbox to select 
