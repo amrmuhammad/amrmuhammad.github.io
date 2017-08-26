@@ -64,7 +64,7 @@ html_code += construct_matrix("matrix1", "First matrix:")
 html_code += '<br />'
 html_code += construct_matrix("matrix2", "Second matrix:")
 
-html_code += '<button id="matrices_multiply_button"/>'                 
+html_code += '<button id="matrices_multiply_button">Multiply matrices</button>'                 
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
@@ -102,6 +102,8 @@ function init_css()
   $(".matrix_element").css("width", "30%")
   $(".matrix_element").css("height", "40px")
   $(".matrix_element").css("margin", "2px")
+  
+  $("#multiply_matrices_button").css("width", "40%")
 }
 init_css()
 //////////////////////////
