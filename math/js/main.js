@@ -104,6 +104,7 @@ function init_css()
   $(".matrix_element").css("margin", "2px")
   
   $("#multiply_matrices_button").css("width", "40%")
+  $("#multiply_matrices_button").css("height", "30px")
 }
 init_css()
 //////////////////////////
