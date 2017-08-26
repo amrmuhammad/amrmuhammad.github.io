@@ -64,7 +64,7 @@ html_code += construct_matrix("matrix1", "First matrix:")
 html_code += '<br />'
 html_code += construct_matrix("matrix2", "Second matrix:")
 
-html_code += '<button id="matrices_multiply_button">Multiply matrices</button>'                 
+html_code += '<button id="multiply_matrices_button">Multiply matrices</button>'                 
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
