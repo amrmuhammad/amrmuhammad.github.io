@@ -107,7 +107,7 @@ function init_css()
   $("#multiply_matrices_button").css("height", "30px")
   $("#multiply_matrices_button").css("left-margin", "30%")
   $("#multiply_matrices_button").css("right-margin", "30%")
-  $("#multiply_matrices_button").css("background-color", "#0000aa")
+  $("#multiply_matrices_button").css("background-color", "#000076")
   $("#multiply_matrices_button").css("color", "#ffffff")
 }
 init_css()
