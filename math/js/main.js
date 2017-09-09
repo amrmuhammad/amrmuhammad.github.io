@@ -50,7 +50,7 @@ function construct_matrix(matrix_id, matrix_label)
    html_code += '<tr>'
    for (j=0; j< cols; j++) {
      html_code += '<td>'
-     html_code += '<input type="text" class="matrix_element" id="' + (i+1) + '_' + (j+1) + '">'
+     html_code += '<input type="text" class="matrix_element" id="mat_elem_' + (i+1) + '_' + (j+1) + '">'
      html_code += '</td>'
    }
    html_code += '</tr>'
@@ -123,6 +123,10 @@ $("#bg_input").change(function(){
     $("#matrix1").css("background-color",
                  bg_value)
   }
+})
+
+$("#multiply_matrices_button").click(function() {
+  
 })
 //////////////////////////^
 //$("#app").append(html_code)
