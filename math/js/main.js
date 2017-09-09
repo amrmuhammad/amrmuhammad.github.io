@@ -126,9 +126,20 @@ $("#bg_input").change(function(){
 })
 
 $("#multiply_matrices_button").click(function() {
+   
+  var mat_array = new Array(rows)
+  for(var i=0; i<rows; i++) {
+    mat_array[i] = new Array(cols)
+    
+    for(var j=0; j<cols; j++) {
+      mat_array[i][j] = $("#matrix1 > #mat_elem_" + 
+                          (i+1) + "_" + (j+1)")
+    }
+  }
+  
   
 })
-//////////////////////////^
+//////////////////////////////
 //$("#app").append(html_code)
 
 
