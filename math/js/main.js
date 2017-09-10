@@ -137,7 +137,7 @@ $("#multiply_matrices_button").click(function() {
     
     for(var j=0; j<cols; j++) {
       mat_array[i][j] = $("#matrix1 > #mat_elem_" +                              
-                         (i+1) + "_" + (j+1))
+                         (i+1) + "_" + (j+1)).val()
      
      $("#matrix3 > #mat_elem_" + 
       (i+1) + "_" + (j+1)).val = 1
