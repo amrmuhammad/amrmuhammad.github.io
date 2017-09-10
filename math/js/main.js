@@ -142,7 +142,8 @@ function create_mat_array(matrix_id, rows, cols) {
       
       if(mat_array[i][j] === undefined || mat_array[i][j] === ""
        /*|| typeof(mat_array[i][j]) !== "number"*/
-        || $.isNumeric(mat_array[i][j]) == false) {
+        || $.isNumeric(mat_array[i][j]) == false
+        || typeof(mat_array[i][j] = Number(mat_array[i][j])) !== "number") {
         valid_matrix = false
         break
       }
