@@ -57,6 +57,7 @@ function construct_matrix(matrix_id, matrix_label)
   }
   html_code += '</div>'
   
+  html_code += 'div id="' + matrix_id + '_error_messages"></div>'
   return html_code
 }
 
@@ -157,7 +158,8 @@ $("#multiply_matrices_button").click(function() {
   }
   
   if(valid_matrix == false) {
-      // display error message
+    // display error message
+    $("matrix1_error_messages").val("Invalid matrix")
   }
   
 })
