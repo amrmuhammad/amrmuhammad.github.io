@@ -141,7 +141,7 @@ $("#multiply_matrices_button").click(function() {
       mat_array[i][j] = $("#matrix1 > #mat_elem_" +                              
                          (i+1) + "_" + (j+1)).val()
       
-      if(mat_array[i][j] === undefined) {
+      if(mat_array[i][j] === undefined || mat_array[i][j] === "") {
         valid_matrix = false
         break
       }
