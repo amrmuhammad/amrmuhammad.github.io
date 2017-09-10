@@ -131,7 +131,7 @@ $("#multiply_matrices_button").click(function() {
    
   var rows = 3
   var cols = 3
-  var valid_matrix = True
+  var valid_matrix = true
   
   var mat_array = new Array(rows)
   for(var i=0; i<rows; i++) {
@@ -142,7 +142,7 @@ $("#multiply_matrices_button").click(function() {
                          (i+1) + "_" + (j+1)).val()
       
       if(mat_array[i][j] == undefined) {
-        valid_matrix = False
+        valid_matrix = false
         break
       }
       
@@ -151,12 +151,12 @@ $("#multiply_matrices_button").click(function() {
       
     }
     
-    if(valid_matrix == False) {
+    if(valid_matrix == false) {
       break
     }
   }
   
-  if(valid_matrix == False) {
+  if(valid_matrix == false) {
       // display error message
   }
   
