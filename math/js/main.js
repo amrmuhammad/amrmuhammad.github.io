@@ -129,7 +129,7 @@ $("#bg_input").change(function(){
 })
 
 function create_mat_array(matrix_id, rows, cols) {
-  
+  /*
   var valid_matrix = true
   
   var mat_array = new Array(rows)
@@ -164,7 +164,7 @@ function create_mat_array(matrix_id, rows, cols) {
   } else {
     return mat_array
   }
-  
+  */
   
 }  
   
