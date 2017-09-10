@@ -128,13 +128,14 @@ $("#bg_input").change(function(){
   }
 })
 
-function create_mat_array() {
+function create_mat_array(matrix_id, rows, cols) {
+  
   var mat_array = new Array(rows)
   for(var i=0; i<rows; i++) {
     mat_array[i] = new Array(cols)
     
     for(var j=0; j<cols; j++) {
-      mat_array[i][j] = $("#matrix1 > #mat_elem_" +                              
+      mat_array[i][j] = $("#" + matrix_id + " > #mat_elem_" +                              
                          (i+1) + "_" + (j+1)).val()
       
       if(mat_array[i][j] === undefined || mat_array[i][j] === ""
@@ -155,7 +156,11 @@ function create_mat_array() {
   
   if(valid_matrix == false) {
     // display error message
-    $("#matrix1_error_messages").append("<strong>Invalid matrix: All matrix elements should be numbers</strong>")
+    $("#" + matrix_id + "_error_messages").append("<strong>Invalid matrix: All matrix elements should be numbers</strong>")
+    return undefined
+                       
+  } else {
+    return mat_array
   }
   
   
@@ -166,7 +171,9 @@ $("#multiply_matrices_button").click(function() {
   var cols = 3
   var valid_matrix = true
   
-  create_mat_array()
+  mat1_array = create_mat_array("matrix1", 3, 3)
+  mat2_array = create_mat_array("matrix2", 3, 3)
+  
 })
 //////////////////////////////
 //$("#app").append(html_code)
