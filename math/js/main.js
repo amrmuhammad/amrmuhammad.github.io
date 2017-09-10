@@ -129,7 +129,7 @@ $("#bg_input").change(function(){
 })
 
 function create_mat_array(matrix_id, rows, cols) {
-  /*
+  
   var valid_matrix = true
   
   var mat_array = new Array(rows)
@@ -141,7 +141,7 @@ function create_mat_array(matrix_id, rows, cols) {
                          (i+1) + "_" + (j+1)).val()
       
       if(mat_array[i][j] === undefined || mat_array[i][j] === ""
-        || typeof(mat_array[i][j] !== "number") {
+        || typeof(mat_array[i][j]) !== "number") {
         valid_matrix = false
         break
       }
@@ -164,7 +164,7 @@ function create_mat_array(matrix_id, rows, cols) {
   } else {
     return mat_array
   }
-  */
+  
   
 }  
   
