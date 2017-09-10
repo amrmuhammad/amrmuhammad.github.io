@@ -173,8 +173,8 @@ $("#multiply_matrices_button").click(function() {
   var cols = 3
   
   
-  //mat1_array = create_mat_array("matrix1", rows, cols)
-  //mat2_array = create_mat_array("matrix2", rows, cols)
+  var mat1_array = create_mat_array("matrix1", rows, cols)
+  var mat2_array = create_mat_array("matrix2", rows, cols)
   
 })
 //////////////////////////////
