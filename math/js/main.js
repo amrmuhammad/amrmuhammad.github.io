@@ -170,13 +170,29 @@ function create_mat_array(matrix_id, rows, cols) {
   
 }  
   
+function multiply_matrices(mat_objs_array) {
+  
+}
+
 $("#multiply_matrices_button").click(function() {
   var rows = 3
   var cols = 3
   
   
   var mat1_array = create_mat_array("matrix1", rows, cols)
+  var mat1_obj = {"mat_array" : mat1_array, 
+                  "rows" : rows,
+                  "cols" : cols 
+                 }
+               
   var mat2_array = create_mat_array("matrix2", rows, cols)
+  var mat2_obj = {"mat_array" : mat2_array,
+                  "rows" : rows,
+                  "cols" : cols
+                 }
+  
+  var mat_objs_array = [mat1_obj mat2_obj]
+  var result_matrix = multiply_matrices(mat_objs_array)
   
 })
 //////////////////////////////
