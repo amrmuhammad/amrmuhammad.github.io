@@ -140,7 +140,7 @@ $("#multiply_matrices_button").click(function() {
                          (i+1) + "_" + (j+1)).val()
      
      $("#matrix3 > #mat_elem_" + 
-      (i+1) + "_" + (j+1)).val = 1
+      (i+1) + "_" + (j+1)).val(1)
       
     }
   }
