@@ -57,7 +57,7 @@ function construct_matrix(matrix_id, matrix_label)
   }
   html_code += '</div>'
   
-  html_code += 'div id="' + matrix_id + '_error_messages"></div>'
+  html_code += '<div id="' + matrix_id + '_error_messages"></div>'
   return html_code
 }
 
