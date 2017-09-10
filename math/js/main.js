@@ -129,6 +129,8 @@ $("#bg_input").change(function(){
 
 $("#multiply_matrices_button").click(function() {
    
+  var rows = 3
+  var cols = 3
   var mat_array = new Array(rows)
   for(var i=0; i<rows; i++) {
     mat_array[i] = new Array(cols)
