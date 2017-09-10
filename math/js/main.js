@@ -159,7 +159,7 @@ $("#multiply_matrices_button").click(function() {
   
   if(valid_matrix == false) {
     // display error message
-    $("matrix1_error_messages").val("Invalid matrix")
+    $("matrix1_error_messages").text("Invalid matrix")
   }
   
 })
