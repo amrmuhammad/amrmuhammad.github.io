@@ -130,6 +130,8 @@ $("#bg_input").change(function(){
 
 function create_mat_array(matrix_id, rows, cols) {
   
+  var valid_matrix = true
+  
   var mat_array = new Array(rows)
   for(var i=0; i<rows; i++) {
     mat_array[i] = new Array(cols)
@@ -169,10 +171,10 @@ function create_mat_array(matrix_id, rows, cols) {
 $("#multiply_matrices_button").click(function() {
   var rows = 3
   var cols = 3
-  var valid_matrix = true
   
-  mat1_array = create_mat_array("matrix1", 3, 3)
-  mat2_array = create_mat_array("matrix2", 3, 3)
+  
+  mat1_array = create_mat_array("matrix1", rows, cols)
+  mat2_array = create_mat_array("matrix2", rows, cols)
   
 })
 //////////////////////////////
