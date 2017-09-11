@@ -73,8 +73,8 @@ html_code += construct_matrix("matrix3", "Result matrix:")
 // background color
 html_code += '<br> <br> <br> '
 
-html_code += "background-color:"
-html_code +=  '<input id="bg_input" type="text">'
+//html_code += "background-color:"
+//html_code +=  '<input id="bg_input" type="text">'
 //$('#app').append("<matrix></matrix>")
 /////////////////////////
 function add_css_experimenting_section(html_code) {
@@ -96,7 +96,7 @@ function add_css_experimenting_section(html_code) {
   return html_code
   
 }
-html_code = add_css_experimenting_section(html_code)
+//html_code = add_css_experimenting_section(html_code)
 //////////////////////////
 // Attach elements to DOM
 $("#app").append(html_code)
