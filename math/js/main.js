@@ -230,12 +230,24 @@ $("#multiply_matrices_button").click(function() {
   
   var mat1_array = create_mat_array("matrix1", rows, cols)
   
+  if(mat1_array === undefined) {
+    
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: mat1_array is undefined</strong>")
+    return
+  }
+  
   var mat1_obj = {"mat_array" : mat1_array, 
                   "rows" : rows,
                   "cols" : cols 
                  }
               
   var mat2_array = create_mat_array("matrix2", rows, cols)
+  
+  if(mat2_array === undefined) {
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: mat2_array is undefined</strong>")
+    return
+  }
+  
   var mat2_obj = {"mat_array" : mat2_array,
                   "rows" : rows,
                   "cols" : cols
