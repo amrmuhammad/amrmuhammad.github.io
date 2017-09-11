@@ -241,7 +241,7 @@ $("#multiply_matrices_button").click(function() {
                   "cols" : cols
                  }
   
-  var mat_objs_array = [mat1_obj mat2_obj]
+  var mat_objs_array = [mat1_obj, mat2_obj]
   
   
   
