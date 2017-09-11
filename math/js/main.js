@@ -173,7 +173,7 @@ function create_mat_array(matrix_id, rows, cols) {
   
 function multiply_matrices(mat_objs_array) {
   
-  /*
+  
   mat1_obj = mat_objs_array[0]
   mat2_obj = mat_objs_array[1]
   
@@ -207,11 +207,11 @@ function multiply_matrices(mat_objs_array) {
   
   mat_obj_result.mat_array = mat_array_result
   return mat_obj_result
-  */
+  
 }
 
 function update_result_matrix_with_data(mat_obj) {
-  /*
+  
   var mat_array = mat_obj.mat_array
   for (var i=0; i<mat_obj.rows; i++) {
     for (var j=0; j<mat_obj.cols; j++) {
@@ -220,7 +220,7 @@ function update_result_matrix_with_data(mat_obj) {
        (i+1) + "_" + (j+1)).val(mat_array[i][j])      
     }
   }
-  */
+  
 }
 
 $("#multiply_matrices_button").click(function() {
