@@ -72,8 +72,9 @@ html_code += construct_matrix("matrix3", "Result matrix:")
 // Add an input textbox to select 
 // background color
 html_code += '<br> <br> <br> '
-html_code += "background-color:"
-html_code +=  '<input id="bg_input" type="text">'
+
+//html_code += "background-color:"
+//html_code +=  '<input id="bg_input" type="text">'
 //$('#app').append("<matrix></matrix>")
 /////////////////////////
 function add_css_experimenting_section(html_code) {
@@ -95,7 +96,7 @@ function add_css_experimenting_section(html_code) {
   return html_code
   
 }
-html_code = add_css_experimenting_section(html_code)
+//html_code = add_css_experimenting_section(html_code)
 //////////////////////////
 // Attach elements to DOM
 $("#app").append(html_code)
@@ -171,7 +172,33 @@ function create_mat_array(matrix_id, rows, cols) {
 }  
   
 function multiply_matrices(mat_objs_array) {
+  mat1_obj = mat_objs_array[0]
+  mat2_obj = mat_objs_array[1]
   
+  var mat_obj_result = {}
+  
+  if(mat1_obj.cols !== mat2_obj.rows) {
+    mat_obj_result.errors_list = [
+      "Number of columns of first matrix should be equal to number of rows of second matrix"]
+  }
+  
+  mat_obj_result.rows = mat1_obj.rows
+  mat_obj_result.cols = mat2_obj.cols
+  
+  var mat1_array = mat1_obj.mat_array
+  var mat2_array = mat2_obj.mat_array
+  
+  var mat_array_result = new Array(mat_obj_result.rows)
+  for (var i=0; i<mat_obj_result.rows; i++) {
+    for (var j=0; j<mat_obj_result.cols; j++) {
+      
+      mat_array_result[i][j] = 0
+      for (var k=0; k<mat1_obj.cols; k++) {
+        mat_array_result[i][j] += 
+          mat1_array[i][k] * mat2_array[k][j]
+      }
+    }
+  }
 }
 
 $("#multiply_matrices_button").click(function() {
