@@ -227,8 +227,9 @@ $("#multiply_matrices_button").click(function() {
   var rows = 3
   var cols = 3
   
-  /*
+  
   var mat1_array = create_mat_array("matrix1", rows, cols)
+  /*
   var mat1_obj = {"mat_array" : mat1_array, 
                   "rows" : rows,
                   "cols" : cols 
