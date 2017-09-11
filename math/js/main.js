@@ -234,13 +234,13 @@ $("#multiply_matrices_button").click(function() {
                   "rows" : rows,
                   "cols" : cols 
                  }
-   /*            
+              
   var mat2_array = create_mat_array("matrix2", rows, cols)
   var mat2_obj = {"mat_array" : mat2_array,
                   "rows" : rows,
                   "cols" : cols
                  }
-  
+  /*
   var mat_objs_array = [mat1_obj mat2_obj]
   
   */
