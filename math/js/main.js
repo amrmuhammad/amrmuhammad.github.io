@@ -73,8 +73,8 @@ html_code += construct_matrix("matrix3", "Result matrix:")
 // background color
 html_code += '<br> <br> <br> '
 
-//html_code += "background-color:"
-//html_code +=  '<input id="bg_input" type="text">'
+html_code += "background-color:"
+html_code +=  '<input id="bg_input" type="text">'
 //$('#app').append("<matrix></matrix>")
 /////////////////////////
 function add_css_experimenting_section(html_code) {
@@ -96,7 +96,7 @@ function add_css_experimenting_section(html_code) {
   return html_code
   
 }
-//html_code = add_css_experimenting_section(html_code)
+html_code = add_css_experimenting_section(html_code)
 //////////////////////////
 // Attach elements to DOM
 $("#app").append(html_code)
@@ -211,7 +211,7 @@ function multiply_matrices(mat_objs_array) {
 }
 
 function update_result_matrix_with_data(mat_obj) {
-  
+  /*
   var mat_array = mat_obj.mat_array
   for (var i=0; i<mat_obj.rows; i++) {
     for (var j=0; j<mat_obj.cols; j++) {
@@ -220,7 +220,7 @@ function update_result_matrix_with_data(mat_obj) {
        (i+1) + "_" + (j+1)).val(mat_array[i][j])      
     }
   }
-  
+  */
 }
 
 $("#multiply_matrices_button").click(function() {
