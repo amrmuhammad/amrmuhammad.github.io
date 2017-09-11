@@ -416,6 +416,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For the portions of the code that use Bluebird
 
 
+https://github.com/petkaantonov/bluebird
+
 
 The MIT License (MIT)
 
