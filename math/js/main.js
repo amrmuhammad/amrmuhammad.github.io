@@ -159,13 +159,15 @@ function create_mat_array(matrix_id, rows, cols) {
     }
   }
   
+  $("#" + matrix_id + "_error_messages").empty()
+  
   if(valid_matrix == false) {
     // display error message
     $("#" + matrix_id + "_error_messages").append("<strong>Invalid matrix: All matrix elements should be numbers</strong>")
     return undefined
                        
   } else {
-    $("#" + matrix_id + "_error_messages").empty()
+    
     return mat_array
   }
   
@@ -231,6 +233,7 @@ $("#multiply_matrices_button").click(function() {
   var rows = 3
   var cols = 3
   
+  $("#" + "matrix3" + "_error_messages").empty()
   
   var mat1_array = create_mat_array("matrix1", rows, cols)
   
@@ -238,10 +241,7 @@ $("#multiply_matrices_button").click(function() {
     
     $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: First matrix is not valid</strong>")
     return
-  } else { 
-    $("#" + "matrix3" + "_error_messages").empty()
-  }
-  
+  } 
   
   var mat1_obj = {"mat_array" : mat1_array, 
                   "rows" : rows,
@@ -253,9 +253,7 @@ $("#multiply_matrices_button").click(function() {
   if(mat2_array === undefined) {
     $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: Second matrix is not valid</strong>")
     return
-  } else {
-    $("#" + "matrix3" + "_error_messages").empty()
-  }
+  } 
   
   var mat2_obj = {"mat_array" : mat2_array,
                   "rows" : rows,
