@@ -190,6 +190,9 @@ function multiply_matrices(mat_objs_array) {
   
   var mat_array_result = new Array(mat_obj_result.rows)
   for (var i=0; i<mat_obj_result.rows; i++) {
+    
+    mat_array_result[i] = new Array(mat_obj_result.cols)
+    
     for (var j=0; j<mat_obj_result.cols; j++) {
       
       mat_array_result[i][j] = 0
@@ -199,6 +202,22 @@ function multiply_matrices(mat_objs_array) {
       }
     }
   }
+  
+  mat_obj_result.mat_array = mat_array_result
+  return mat_obj_result
+}
+
+function update_result_matrix_with_data(mat_obj) {
+  
+  var mat_array = mat_obj.mat_array
+  for (var i=0; i<mat_obj.rows; i++) {
+    for (var j=0; j<mat_obj.cols; j++) {
+      
+      $("#matrix3 > #mat_elem_" + 
+       (i+1) + "_" + (j+1)).val(mat_array[i][j])      
+    }
+  }
+  
 }
 
 $("#multiply_matrices_button").click(function() {
@@ -220,6 +239,8 @@ $("#multiply_matrices_button").click(function() {
   
   var mat_objs_array = [mat1_obj mat2_obj]
   var result_matrix = multiply_matrices(mat_objs_array)
+  
+  update_result_matrix_with_data(result_matrix)
   
 })
 //////////////////////////////
