@@ -1,7 +1,7 @@
 
 
 //var Vue = require('./lib/vuejs/v2_2_3/vue.js')
-var $ = require('./lib/jquery/v3_2_1/jquery.js')
+var $ = require('./lib/jquery/v3_2_1/jquery.min.js')
 
 /////////////////////
 /*
