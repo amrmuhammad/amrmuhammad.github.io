@@ -236,13 +236,7 @@ $("#multiply_matrices_button").click(function() {
   $("#" + "matrix3" + "_error_messages").empty()
   
   var mat1_array = create_mat_array("matrix1", rows, cols)
-  
-  if(mat1_array === undefined) {
-    
-    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: First matrix is not valid</strong>")
-    return
-  } 
-  
+   
   var mat1_obj = {"mat_array" : mat1_array, 
                   "rows" : rows,
                   "cols" : cols 
@@ -250,15 +244,26 @@ $("#multiply_matrices_button").click(function() {
               
   var mat2_array = create_mat_array("matrix2", rows, cols)
   
-  if(mat2_array === undefined) {
-    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: Second matrix is not valid</strong>")
-    return
-  } 
-  
   var mat2_obj = {"mat_array" : mat2_array,
                   "rows" : rows,
                   "cols" : cols
                  }
+  
+  
+  if(mat1_array === undefined) {
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: First matrix is not valid</strong>")
+    
+  } 
+  if(mat2_array === undefined) {
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: Second matrix is not valid</strong>")
+    
+  } 
+  
+  if(mat1_array === undefined ||
+     mat2_array === undefined) {
+    return
+  }
+    
   
   var mat_objs_array = [mat1_obj, mat2_obj]
   
