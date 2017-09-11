@@ -241,9 +241,9 @@ $("#multiply_matrices_button").click(function() {
                  }
   
   var mat_objs_array = [mat1_obj mat2_obj]
-  var result_matrix = multiply_matrices(mat_objs_array)
+  //var result_matrix = multiply_matrices(mat_objs_array)
   
-  update_result_matrix_with_data(result_matrix)
+  //update_result_matrix_with_data(result_matrix)
   
 })
 //////////////////////////////
