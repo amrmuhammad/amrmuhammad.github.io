@@ -206,6 +206,9 @@ function multiply_matrices(mat_objs_array) {
   }
   
   mat_obj_result.mat_array = mat_array_result
+  
+  $("#" + "matrix3" + "_error_messages").append("<br /><strong>multiply matrices concluded</strong>")
+  
   return mat_obj_result
   
 }
