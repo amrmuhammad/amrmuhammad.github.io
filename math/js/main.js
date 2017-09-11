@@ -149,8 +149,8 @@ function create_mat_array(matrix_id, rows, cols) {
         break
       }
       
-      $("#matrix3 > #mat_elem_" + 
-       (i+1) + "_" + (j+1)).val(1)
+      //$("#matrix3 > #mat_elem_" + 
+      // (i+1) + "_" + (j+1)).val(1)
       
     }
     
@@ -207,7 +207,7 @@ function multiply_matrices(mat_objs_array) {
   
   mat_obj_result.mat_array = mat_array_result
   
-  $("#" + "matrix3" + "_error_messages").append("<br /><strong>multiply matrices concluded</strong>")
+  //$("#" + "matrix3" + "_error_messages").append("<br /><strong>multiply matrices concluded</strong>")
   
   return mat_obj_result
   
