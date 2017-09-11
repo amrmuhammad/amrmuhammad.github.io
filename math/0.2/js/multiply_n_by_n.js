@@ -42,6 +42,9 @@ var app = new Vue({
 var rows = 3
 var cols = 3
 var html_code = ""
+
+///////////////////////////////////
+html_code += '<input id="mat_A_size" type="number">'
 ///////////////////////////////////
 // Construct the matrix DOM elements
 function construct_matrix(matrix_id, matrix_label)
