@@ -165,6 +165,7 @@ function create_mat_array(matrix_id, rows, cols) {
     return undefined
                        
   } else {
+    $("#" + matrix_id + "_error_messages").empty()
     return mat_array
   }
   
@@ -235,9 +236,12 @@ $("#multiply_matrices_button").click(function() {
   
   if(mat1_array === undefined) {
     
-    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: mat1_array is undefined</strong>")
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: First matrix is not valid</strong>")
     return
+  } else { 
+    $("#" + "matrix3" + "_error_messages").empty()
   }
+  
   
   var mat1_obj = {"mat_array" : mat1_array, 
                   "rows" : rows,
@@ -247,8 +251,10 @@ $("#multiply_matrices_button").click(function() {
   var mat2_array = create_mat_array("matrix2", rows, cols)
   
   if(mat2_array === undefined) {
-    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: mat2_array is undefined</strong>")
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: Second matrix is not valid</strong>")
     return
+  } else {
+    $("#" + "matrix3" + "_error_messages").empty()
   }
   
   var mat2_obj = {"mat_array" : mat2_array,
