@@ -45,6 +45,8 @@ var html_code = ""
 
 ///////////////////////////////////
 html_code += '<input id="mat_A_size" type="number">'
+html_code += '<input id="mat_B_size" type="number">'
+html_code += '<button id="set_matrices_size_button">Set matrices size</button>'
 ///////////////////////////////////
 // Construct the matrix DOM elements
 function construct_matrix(matrix_id, matrix_label)
