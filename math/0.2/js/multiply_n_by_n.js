@@ -308,9 +308,14 @@ $("#set_matrices_size_button").click(function() {
   var mat_B_rows = $("#mat_B_rows").val()
   var mat_B_cols = $("#mat_B_cols").val()
   
+  var fields = ["mat_A_rows", "mat_A_cols",
+                "mat_B_rows", "mat_B_cols"]
+  
   if (is_empty(mat_A_rows) == true) {
     $("#mat_A_rows").css("border-color", "#ff0000")
   }
+  
+  
   
 })
 
