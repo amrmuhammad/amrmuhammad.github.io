@@ -113,6 +113,12 @@ $("#app").append(html_code)
 ///////////////////////////
 function init_css()
 {
+  $("#mat_A_rows").css("width", "20%")
+  $("#mat_A_cols").css("width", "20%")
+  $("#mat_B_rows").css("width", "20%")
+  $("#mat_B_cols").css("width", "20%")
+  
+  
   $(".matrix_element").css("width", "30%")
   $(".matrix_element").css("height", "40px")
   $(".matrix_element").css("margin", "2px")
