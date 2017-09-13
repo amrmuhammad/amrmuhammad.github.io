@@ -46,7 +46,7 @@ var html_code = ""
 ///////////////////////////////////
 html_code += 'Matrix A size : <input id="mat_A_rows" type="number"> x <input id="mat_A_cols" type="number"'
 html_code += '<br />'
-html_code += 'Matrix B size : <input id="mat_B_rows" type="number">'
+html_code += 'Matrix B size : <input id="mat_B_rows" type="number"> x <input id="mat_B_cols" type="number"'
 html_code += '<br />'
 html_code += '<button id="set_matrices_size_button">Set matrices size</button>'
 html_code += '<br />'
