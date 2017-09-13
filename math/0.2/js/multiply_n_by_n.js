@@ -51,6 +51,8 @@ html_code += '<br /> <br />'
 html_code += '<button id="set_matrices_size_button">Set matrices size</button>'
 html_code += '<br /> <br />'
 ///////////////////////////////////
+
+///////////////////////////////////
 // Construct the matrix DOM elements
 function construct_matrix(matrix_id, matrix_label)
 {
@@ -290,6 +292,13 @@ $("#multiply_matrices_button").click(function() {
   update_result_matrix_with_data(result_matrix)
   
 })
+
+$("#set_matrices_size_button").click(function() {
+  
+  var mat_A_rows = $("#mat_A_rows").val()
+  
+})
+
 //////////////////////////////
 //$("#app").append(html_code)
 
