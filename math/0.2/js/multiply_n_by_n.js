@@ -44,8 +44,10 @@ var cols = 3
 var html_code = ""
 
 ///////////////////////////////////
-html_code += '<input id="mat_A_size" type="number">'
-html_code += '<input id="mat_B_size" type="number">'
+html_code += 'Matrix A size : <input id="mat_A_size" type="number">'
+html_code += '<br />'
+html_code += 'Matrix B size: <input id="mat_B_size" type="number">'
+html_code += '<br />'
 html_code += '<button id="set_matrices_size_button">Set matrices size</button>'
 ///////////////////////////////////
 // Construct the matrix DOM elements
