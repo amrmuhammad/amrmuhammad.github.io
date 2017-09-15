@@ -314,7 +314,7 @@ $("#set_matrices_size_button").click(function() {
                 {"sel" : "#mat_B_cols", "val" : mat_B_cols}
                ]
   
-  foreach(field in fields) {
+  for (var field in fields) {
   
     if (is_empty(field["val"]) == true) {
       $(field["sel"]).css("border-color", "#ff0000")
