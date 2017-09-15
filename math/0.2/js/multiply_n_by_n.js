@@ -310,12 +310,14 @@ $("#set_matrices_size_button").click(function() {
   
   var fields = [{"sel" : "#mat_A_rows", "val" : mat_A_rows},
                 {"sel" : "#mat_A_cols", "val" : mat_A_cols},
-                "#mat_B_rows", "#mat_B_cols"]
+                {"sel" : "#mat_B_rows", "val" : mat_B_rows},
+                {"sel" : "#mat_B_cols", "val" : mat_B_cols}
+               ]
   
   foreach(field in fields) {
   
-    if (is_empty(mat_A_rows) == true) {
-      $("#mat_A_rows").css("border-color", "#ff0000")
+    if (is_empty(field["val"]) == true) {
+      $(field["sel"]).css("border-color", "#ff0000")
     }
   
   }
