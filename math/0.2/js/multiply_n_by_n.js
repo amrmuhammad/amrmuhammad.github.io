@@ -48,6 +48,7 @@ html_code += 'Matrix A size : <input id="mat_A_rows" type="number"> x <input id=
 html_code += '<br />'
 html_code += 'Matrix B size : <input id="mat_B_rows" type="number"> x <input id="mat_B_cols" type="number">'
 html_code += '<br /> <br />'
+html_code += '<div id="set_matrices_size_error_messages"></div>'
 html_code += '<button id="set_matrices_size_button">Set matrices size</button>'
 html_code += '<br /> <br />'
 ///////////////////////////////////
@@ -309,20 +310,22 @@ $("#set_matrices_size_button").click(function() {
   var mat_B_cols = $("#mat_B_cols").val()
   
   var fields = [{"selec" : "#mat_A_rows",
-                 "val" : mat_A_rows
+                 "val" : mat_A_rows,
+                 "label" : "matrix A rows field"
                 } ,
                 {"selec" : "#mat_A_cols", 
-                 "val" : mat_A_cols
+                 "val" : mat_A_cols,
+                 "label" : "matrix A columns field"
                 } ,
                 {"selec" : "#mat_B_rows",
-                 "val" : mat_B_rows
+                 "val" : mat_B_rows,
+                 "label" : "matrix B rows field"
                 } ,
                 {"selec" : "#mat_B_cols", 
-                 "val" : mat_B_cols
+                 "val" : mat_B_cols,
+                 "label" : "matrix B columns field"
                 }
                ]
-  
-  $("#mat_A_rows").val(fields.length)
    
   
   for (var i=0; i<fields.length; i++) {
@@ -332,13 +335,13 @@ $("#set_matrices_size_button").click(function() {
     if (is_empty(val) == true) {
       
       var sel = fields[i].selec
-      if (sel === undefined) {
-        $("#mat_A_rows").css("border-color",
-                             "#0000ff")
-      }
       $(sel).css("border-color", "#ff0000")
       
-      
+      $("#set_matrices_size_error_messages")
+        .append("<strong>Invalid input: " + 
+                fields[i].label +
+                " is empty"
+                "</strong>")
     }
   
   }
