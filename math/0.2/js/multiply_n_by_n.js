@@ -340,7 +340,7 @@ $("#set_matrices_size_button").click(function() {
       $("#set_matrices_size_error_messages")
         .append("<strong>Invalid input: " + 
                 fields[i].label +
-                " is empty"
+                " is empty" +
                 "</strong>")
     }
   
