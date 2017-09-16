@@ -331,7 +331,7 @@ $("#set_matrices_size_button").click(function() {
       var sel = field.selec
       if (sel === undefined) {
         $("#mat_A_rows").css("border-color",
-                             "0000ff")
+                             "#0000ff")
       }
       $(sel).css("border-color", "#ff0000")
       
