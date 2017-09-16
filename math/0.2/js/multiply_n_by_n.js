@@ -310,18 +310,20 @@ $("#set_matrices_size_button").click(function() {
   
   var fields = [{"selec" : "#mat_A_rows",
                  "val" : mat_A_rows
-                },
+                } ,
                 {"selec" : "#mat_A_cols", 
                  "val" : mat_A_cols
-                },
+                } ,
                 {"selec" : "#mat_B_rows",
                  "val" : mat_B_rows
-                },
+                } ,
                 {"selec" : "#mat_B_cols", 
                  "val" : mat_B_cols
                 }
                ]
   
+  $("#mat_A_rows).val(fields.length)
+    
   for (var field in fields) {
   
     var val = field.val
