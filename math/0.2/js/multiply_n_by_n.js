@@ -304,7 +304,7 @@ function is_empty(field) {
 
 $("#set_matrices_size_button").click(function() {
  
-  $("#set_matrices_size_error_messages).empty()
+  $("#set_matrices_size_error_messages").empty()
     
   var mat_A_rows = $("#mat_A_rows").val()
   var mat_A_cols = $("#mat_A_cols").val()
