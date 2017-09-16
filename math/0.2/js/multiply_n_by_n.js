@@ -303,7 +303,9 @@ function is_empty(field) {
 }
 
 $("#set_matrices_size_button").click(function() {
-  
+ 
+  $("#set_matrices_size_error_messages).empty()
+    
   var mat_A_rows = $("#mat_A_rows").val()
   var mat_A_cols = $("#mat_A_cols").val()
   var mat_B_rows = $("#mat_B_rows").val()
@@ -338,7 +340,7 @@ $("#set_matrices_size_button").click(function() {
       $(sel).css("border-color", "#ff0000")
       
       $("#set_matrices_size_error_messages")
-        .append("<strong>Invalid input: " + 
+        .append("<br /><strong>Invalid input: " + 
                 fields[i].label +
                 " is empty" +
                 "</strong>")
