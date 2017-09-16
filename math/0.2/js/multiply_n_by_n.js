@@ -324,8 +324,8 @@ $("#set_matrices_size_button").click(function() {
   
   for (var field in fields) {
   
-    if (is_empty(field["val"]) == true) {
-      $(field["sel"]).css("border-color", "#ff0000")
+    if (is_empty(mat_A_rows) == true) {
+      $("#mat_A_rows").css("border-color", "#ff0000")
     }
   
   }
