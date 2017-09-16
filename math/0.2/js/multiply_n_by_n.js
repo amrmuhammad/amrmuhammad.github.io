@@ -323,8 +323,9 @@ $("#set_matrices_size_button").click(function() {
                ]
   
   $("#mat_A_rows").val(fields.length)
-    
-  for (var field in fields) {
+   
+  var field
+  for (field in fields) {
   
     var val = field.val
     
