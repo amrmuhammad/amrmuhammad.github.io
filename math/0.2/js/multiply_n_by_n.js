@@ -331,19 +331,21 @@ $("#set_matrices_size_button").click(function() {
    
   
   for (var i=0; i<fields.length; i++) {
-  
+    
     var val = fields[i].val
+    var sel = fields[i].selec
+    
+    $(sel).css("border-color", "#000000")
     
     if (is_empty(val) == true) {
       
-      var sel = fields[i].selec
       $(sel).css("border-color", "#ff0000")
       
       $("#set_matrices_size_error_messages")
-        .append("<br /><strong>Invalid input: " + 
+        .append("<br /><strong>Invalid input: </strong>'" + 
                 fields[i].label +
-                " is empty" +
-                "</strong>")
+                "' is empty")
+                
     }
   
   }
