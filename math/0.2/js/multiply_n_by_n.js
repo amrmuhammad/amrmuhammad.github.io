@@ -328,8 +328,10 @@ $("#set_matrices_size_button").click(function() {
                  "label" : "matrix B columns field"
                 }
                ]
-   
-  
+  ////////
+  var valid_input = true
+  ////////////////////////
+  // check for empty fields
   for (var i=0; i<fields.length; i++) {
     
     var val = fields[i].val
@@ -345,9 +347,37 @@ $("#set_matrices_size_button").click(function() {
         .append("<br /><strong>Invalid input: </strong>'" + 
                 fields[i].label +
                 "' is empty")
+      
+      valid_input = false
                 
+    } else if ($.isNumeric(val) == false) {
+      
+      $(sel).css("border-color", "#ff0000")
+      
+      $("#set_matrices_size_error_messages")
+        .append("<br /><strong>Invalid input: </strong>'" + 
+                fields[i].label +
+                "' should be a number.")
+      
+      valid_input = false
+      
+    } else {
+      fields[i].val = Number(val)
     }
   
+  } // end of for loop
+  //////////////////////
+  if (valid_input == false) {
+    return
+  }
+  //////////////////////
+  if (fields[1] != fields[2]) {
+    
+    $("#set_matrices_size_error_messages")
+      .append("<br /><strong>Invalid input: </strong>'" + 
+              "Matrix A columns should be equal to matrix B rows" )
+              
+    return
   }
   
   
