@@ -325,9 +325,17 @@ $("#set_matrices_size_button").click(function() {
   for (var field in fields) {
   
     var val = field.val
+    
     if (is_empty(val) == true) {
+      
       var sel = field.selec
+      if (sel === undefined) {
+        $("#mat_A_rows").css("border-color",
+                             "0000ff")
+      }
       $(sel).css("border-color", "#ff0000")
+      
+      
     }
   
   }
