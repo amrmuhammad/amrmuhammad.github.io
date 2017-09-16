@@ -326,7 +326,7 @@ $("#set_matrices_size_button").click(function() {
   
     if (is_empty(field.val) == true) {
       
-      $(field.selec).css("border-color", "#ff0000")
+      $("#mat_A_rows").css("border-color", "#ff0000")
     }
   
   }
