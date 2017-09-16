@@ -308,16 +308,16 @@ $("#set_matrices_size_button").click(function() {
   var mat_B_rows = $("#mat_B_rows").val()
   var mat_B_cols = $("#mat_B_cols").val()
   
-  var fields = [{"sel" : "#mat_A_rows",
+  var fields = [{"selec" : "#mat_A_rows",
                  "val" : mat_A_rows
                 },
-                {"sel" : "#mat_A_cols", 
+                {"selec" : "#mat_A_cols", 
                  "val" : mat_A_cols
                 },
-                {"sel" : "#mat_B_rows",
+                {"selec" : "#mat_B_rows",
                  "val" : mat_B_rows
                 },
-                {"sel" : "#mat_B_cols", 
+                {"selec" : "#mat_B_cols", 
                  "val" : mat_B_cols
                 }
                ]
@@ -325,8 +325,8 @@ $("#set_matrices_size_button").click(function() {
   for (var field in fields) {
   
     if (is_empty(field.val) == true) {
-      $("#mat_A_rows").val(field.sel + " ")
-     // $(field.sel).css("border-color", "#ff0000")
+      
+      $(field.selec).css("border-color", "#ff0000")
     }
   
   }
