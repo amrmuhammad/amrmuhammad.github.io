@@ -322,7 +322,7 @@ $("#set_matrices_size_button").click(function() {
                 }
                ]
   
-  $("#mat_A_rows).val(fields.length)
+  $("#mat_A_rows").val(fields.length)
     
   for (var field in fields) {
   
