@@ -308,10 +308,18 @@ $("#set_matrices_size_button").click(function() {
   var mat_B_rows = $("#mat_B_rows").val()
   var mat_B_cols = $("#mat_B_cols").val()
   
-  var fields = [{"sel" : "#mat_A_rows", "val" : mat_A_rows},
-                {"sel" : "#mat_A_cols", "val" : mat_A_cols},
-                {"sel" : "#mat_B_rows", "val" : mat_B_rows},
-                {"sel" : "#mat_B_cols", "val" : mat_B_cols}
+  var fields = [{"sel" : "#mat_A_rows",
+                 "val" : mat_A_rows
+                },
+                {"sel" : "#mat_A_cols", 
+                 "val" : mat_A_cols
+                },
+                {"sel" : "#mat_B_rows",
+                 "val" : mat_B_rows
+                },
+                {"sel" : "#mat_B_cols", 
+                 "val" : mat_B_cols
+                }
                ]
   
   for (var field in fields) {
