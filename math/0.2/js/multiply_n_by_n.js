@@ -324,14 +324,14 @@ $("#set_matrices_size_button").click(function() {
   
   $("#mat_A_rows").val(fields.length)
    
-  var field
-  for (field in fields) {
   
-    var val = field.val
+  for (var i=0; i<fields.length; i++) {
+  
+    var val = fields[i].val
     
     if (is_empty(val) == true) {
       
-      var sel = field.selec
+      var sel = fields[i].selec
       if (sel === undefined) {
         $("#mat_A_rows").css("border-color",
                              "#0000ff")
