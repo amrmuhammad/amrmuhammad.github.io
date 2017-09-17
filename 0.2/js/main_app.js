@@ -6,9 +6,9 @@ $("#site_language").change(function(){
   
   var lang = $("#site_language").val()
   
-  if(lang === "العربية") {
+  if(lang === "ar") {
     location.assign("/0.2/lang/ar/index.html")
-  } else if (lang === "English") {
+  } else if (lang === "en") {
     location.assign("/0.2/index.html")
   }
   
