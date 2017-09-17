@@ -44,6 +44,30 @@ Hello World.
     <option value="2">العربية</option>
   </select>
   
+   <!-- 
+      bluebird library is a promise fill
+      which is required before loading
+      Systemjs
+
+   --> 
+    
+  <script src="/math/0.2/js/lib/bluebird/v3_5_0/bluebird.min.js">
+  </script>
+    
+    
+  <script src="/math/0.2/js/lib/systemjs/system.js">
+  </script>
+    
+    
+  <script>  
+      
+    SystemJS.config(
+      { baseURL: '/math/0.2/' }
+    ); 
+      
+    SystemJS.import('js/main.js');
+  </script>
+  
 </body>
 
 </html>
