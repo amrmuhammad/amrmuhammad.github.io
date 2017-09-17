@@ -1,1 +1,69 @@
 
+
+
+
+
+<!DOCTYPE html>
+
+
+<html>
+  
+  <head>
+    <meta name="viewport"
+          content="user-scalable=no; initial-scale=1; maximum-scale=1">
+    
+    <title> آلة حاسبة لضرب المصفوفات</title>
+    
+    <h1>  
+    آلة حاسبة لضرب المصفوفات
+    </h1>
+    <h3>
+    -- ضرب مصفوفات 3 في 3
+    </h3>
+  </head>
+
+  <body>
+    
+    <div id="app">
+      
+    </div>
+    <!-- 
+    <ul>
+      
+      <li>
+        Matrix Size: 
+        rows
+        <input type="text" value="2">
+        X
+        columns
+        <input type="text" value="2">
+      </li>
+      
+    </ul>
+    -->
+    
+    <!-- 
+      bluebird library is a promise fill
+      which is required before loading
+      Systemjs
+    --> 
+    <script src="./js/lib/bluebird/v3_5_0/bluebird.min.js">
+    </script>
+    
+    
+    <script src="./js/lib/systemjs/system.js">
+    </script>
+    
+    
+    <script>  
+      
+      SystemJS.config(
+        { baseURL: './' }
+      ); 
+      
+      SystemJS.import('js/main.js');
+    </script>
+    
+  </body>
+  
+</html>
