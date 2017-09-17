@@ -13,5 +13,4 @@ $("#site_language").change(function(){
     location.assign(root_path + "0.2/index.html")
   }
   
-  $("body").append("<p>" + lang + "</p>")
 })
