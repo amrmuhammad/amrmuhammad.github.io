@@ -165,7 +165,7 @@ function create_mat_array(matrix_id, rows, cols) {
   
   if(valid_matrix == false) {
     // display error message
-    $("#" + matrix_id + "_error_messages").append("<strong>Invalid matrix: All matrix elements should be numbers</strong>")
+    $("#" + matrix_id + "_error_messages").append("<strong>مصفوفة غير صحيحة : كل عناصر المصفوفة يجب ان تكون ارقام</strong>")
     return undefined
                        
   } else {
@@ -186,7 +186,7 @@ function multiply_matrices(mat_objs_array) {
   
   if(mat1_obj.cols !== mat2_obj.rows) {
     mat_obj_result.errors_list = [
-      "Number of columns of first matrix should be equal to number of rows of second matrix"]
+      "عدد أعمدة المصفوفة الأولي يجب ان تساوي عدد صفوف المصفوفة الثانية"]
   }
   
   mat_obj_result.rows = mat1_obj.rows
@@ -253,11 +253,11 @@ $("#multiply_matrices_button").click(function() {
   
   
   if(mat1_array === undefined) {
-    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: First matrix is not valid</strong>")
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>حدث خطأ : المصفوفة الأولي غير صحيحة</strong>")
     
   } 
   if(mat2_array === undefined) {
-    $("#" + "matrix3" + "_error_messages").append("<br /><strong>Error occurred: Second matrix is not valid</strong>")
+    $("#" + "matrix3" + "_error_messages").append("<br /><strong>حدث خطأ : المصفوفة الثانية غير صحيحة</strong>")
     
   } 
   
