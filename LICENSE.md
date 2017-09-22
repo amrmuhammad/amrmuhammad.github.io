@@ -126,7 +126,7 @@ When space permits, inclusion of the full text of this NOTICE should be provided
 
 No right to create modifications or derivatives of W3C documents is granted pursuant to this license, except as follows: To facilitate implementation of the technical specifications set forth in this document, anyone may prepare and distribute derivative works and portions of this document in software, in supporting materials accompanying software, and in documentation of software, PROVIDED that all such works include the notice below. HOWEVER, the publication of derivative works of this document for use as a technical specification is expressly prohibited.
 
-In addition, "Code Components" —Web IDL in sections clearly marked as Web IDL; and W3C-defined markup (HTML, CSS, etc.) and computer programming language code clearly marked as code examples— are licensed under the W3C Software License.
+In addition, "Code Components" —Web IDL in sections clearly marked as Web IDL; and W3C-defined markup (HTML, CSS, etc.) and computer programming language code clearly marked as code examples— are licensed under the <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software License</a>.
 
 The notice is:
 
@@ -148,7 +148,7 @@ Notes
 Changes since the previous Document License
 
     This version grants limited permission to create and distribute derivative works except for use as technical specifications.
-    This version licenses Code Components under the W3C Software License.
+    This version licenses Code Components under the <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software License</a>.
 ----
 
 W3C Software and Document Notice and License
