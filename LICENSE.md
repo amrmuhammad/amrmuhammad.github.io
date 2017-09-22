@@ -98,6 +98,15 @@ Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)."
 
 ----
 
+"This software or document includes material copied from or derived from 
+[
+CSS Fonts Module Level 3
+https://www.w3.org/TR/css-fonts-3/
+]. 
+Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)."
+
+----
+
 W3C Software and Document Notice and License
 
 Status: This license takes effect 13 May, 2015.
