@@ -139,16 +139,17 @@ THIS DOCUMENT IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS
 COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.
 
 The name and trademarks of copyright holders may NOT be used in advertising or publicity pertaining to this document or its contents without specific, written prior permission. Title to copyright in this document will at all times remain with copyright holders.
+
 Notes
 
-    This version: https://www.w3.org/Consortium/Legal/2015/doc-license
-    Latest version: https://www.w3.org/Consortium/Legal/copyright-documents
-    Previous version: http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231
+  This version: https://www.w3.org/Consortium/Legal/2015/doc-license
+  Latest version: https://www.w3.org/Consortium/Legal/copyright-documents
+  Previous version: http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231
 
 Changes since the previous Document License
 
-    This version grants limited permission to create and distribute derivative works except for use as technical specifications.
-    This version licenses Code Components under the <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software License</a>.
+   This version grants limited permission to create and distribute derivative works except for use as technical specifications.
+   This version licenses Code Components under the <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software License</a>.
 ----
 
 W3C Software and Document Notice and License
