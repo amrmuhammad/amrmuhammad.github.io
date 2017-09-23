@@ -150,8 +150,8 @@ Previous version: http://www.w3.org/Consortium/Legal/2002/copyright-documents-20
 
 Changes since the previous Document Licens
 
-This version grants limited permission to create and distribute derivative works except for use as technical specifications.
-This version licenses Code Components under the <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software License</a>.
+    This version grants limited permission to create and distribute derivative works except for use as technical specifications.
+    This version licenses Code Components under the <a href="http://www.w3.org/Consortium/Legal/copyright-software">W3C Software License</a>.
 ----
 
 W3C Software and Document Notice and License
