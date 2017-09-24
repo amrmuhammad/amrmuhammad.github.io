@@ -142,11 +142,11 @@ The name and trademarks of copyright holders may NOT be used in advertising or p
 
 Notes
 
-This version: https://www.w3.org/Consortium/Legal/2015/doc-license
+<a href="https://www.w3.org/Consortium/Legal/2015/doc-license">This version</a>: https://www.w3.org/Consortium/Legal/2015/doc-license
 
-Latest version: https://www.w3.org/Consortium/Legal/copyright-documents
+<a href="https://www.w3.org/Consortium/Legal/copyright-documents">Latest version</a>: https://www.w3.org/Consortium/Legal/copyright-documents
 
-Previous version: http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231
+<a href="http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231">Previous version</a>: http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231
 
 Changes since the previous Document License
 
