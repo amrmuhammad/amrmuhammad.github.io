@@ -62,6 +62,7 @@ SOFTWARE.
 [
 W3C HTML 5.1 W3C Candidate Recommendation, 21 June 2016
 https://www.w3.org/TR/html51/
+Status : Recommendation
 ]. 
 Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)." 
 
@@ -77,6 +78,7 @@ https://www.w3.org/TR/html51/
 [
 Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification
 https://www.w3.org/TR/CSS2/
+Status: W3C Recommendation
 ]. 
 Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)." 
 
@@ -92,6 +94,7 @@ https://www.w3.org/TR/CSS2/
 
 Document Object Model (DOM) Level 3 Core Specification
 https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/
+Status: W3C Recommendation
 ]. 
 Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)." 
 
@@ -102,6 +105,7 @@ Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)."
 [
 CSS Fonts Module Level 3
 https://www.w3.org/TR/css-fonts-3/
+Status: Candidate Recommendation
 ]. 
 Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang)."
 
