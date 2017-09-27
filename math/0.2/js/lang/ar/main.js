@@ -72,7 +72,7 @@ html_code += '<br /> <br />'
 html_code += construct_matrix("matrix3", "مصفوفة الناتج:")
 html_code += '<br /> <br />'
 html_code += '<h2> مصادر : </h2>'
-html_code += '<a href="#"> ويكيبيديا : </a>
+html_code += '<a href="#"> ويكيبيديا : </a>'
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
