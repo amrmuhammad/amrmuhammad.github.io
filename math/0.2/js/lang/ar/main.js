@@ -74,7 +74,7 @@ html_code += '<br /> <br />'
 html_code += '<h2> مصادر : </h2>'
 html_code += '<a href="https://ar.m.wikipedia.org/wiki/%D9%85%D8%B5%D9%81%D9%88%D9%81%D8%A9_(%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A7%D8%AA)"> ويكيبيديا : مصفوفة (رياضيات)</a>'
 html_code += '<br /> <br />'
-html_code += 'Content is available under <a href="#">CC BY-SA 3.0</a>'
+html_code += 'Content is available under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>'
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
