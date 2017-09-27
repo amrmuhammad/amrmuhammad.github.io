@@ -72,7 +72,7 @@ html_code += '<br /> <br />'
 html_code += construct_matrix("matrix3", "مصفوفة الناتج:")
 html_code += '<br /> <br />'
 html_code += '<h2> مصادر : </h2>'
-html_code += '<a href="#"> ويكيبيديا : </a>'
+html_code += '<a href="https://ar.m.wikipedia.org/wiki/%D9%85%D8%B5%D9%81%D9%88%D9%81%D8%A9_(%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D8%A7%D8%AA)"> ويكيبيديا : مصفوفة (رياضيات)</a>'
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
