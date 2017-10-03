@@ -72,7 +72,7 @@ html_code += '<br /> <br />'
 html_code += construct_matrix("matrix3", "Result matrix:")
 html_code += '<br /> <br />'
 html_code += '<h2>References:</h2>'
-html_code += '[1] Introduction to higher Algebra, Maxim Bocher, E. P. L. Duval
+html_code += '[1] Introduction to higher Algebra, Maxim Bocher, E. P. L. Duval'
 ///////////////////////////////////
 // Add an input textbox to select 
 // background color
