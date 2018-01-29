@@ -1,0 +1,93 @@
+'use strict';
+
+2
+
+​
+
+3
+
+class CMapReaderFactory {
+
+4
+
+    constructor(param) {
+
+5
+
+        this.baseUrl = param.baseUrl;
+
+6
+
+        this.isCompressed = param.isCompressed;
+
+7
+
+    }
+
+8
+
+​
+
+9
+
+    fetch(param) {
+
+10
+
+        var name = param.name;
+
+11
+
+        if (!name) {
+
+12
+
+            return Promise.reject(new Error('CMap name must be specified.'));
+
+13
+
+        }
+
+14
+
+        return new Promise((resolve, reject) => {
+
+15
+
+            let url = this.baseUrl + name + (this.isCompressed ? '.bcmap' : '');
+
+16
+
+​
+
+17
+
+            let fs = require('fs');
+
+18
+
+            fs.readFile(url, (error, data) => {
+
+19
+
+                if (error || !data) {
+
+20
+
+                    reject(new Error('Unable to load ' +
+
+21
+
+                        (this.isCompressed ? 'binary ' : '') +
+
+22
+
+                        'CMap at: ' + url));
+
+23
+
+                    return;
+
+24
+
+        
