@@ -20,3 +20,8 @@ clayreimann.listStarredRepos(function(err, repos) {
    // look at all the starred repos!
 });
 */
+
+var sourceRepo = gh.getRepo('dunso', 'pdf-parser')
+sourceRepo.getContents('master', '', false, function() 
+  {
+  })
