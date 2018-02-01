@@ -22,6 +22,6 @@ clayreimann.listStarredRepos(function(err, repos) {
 */
 
 var sourceRepo = gh.getRepo('dunso', 'pdf-parser')
-sourceRepo.getContents('master', '', false, function() 
-  {
-  })
+sourceRepo.getContents('master', '', false, function(contents) {
+  $('body').addChild(contents)
+})
