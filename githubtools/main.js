@@ -1,7 +1,19 @@
+
+var ClientOAuth2 = require('client-oauth2')
+
+
 var GitHub = require('../github-tools/GitHubJS/Github.js');
 var $ = require('/math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
+var githubAuth = new ClientOAuth2({ 
+   clientId: 'abc', 
+   clientSecret: '123', 
+   accessTokenUri: 'https://github.com/login/oauth/access_token', 
+   authorizationUri: 'https://github.com/login/oauth/authorize', 
+   redirectUri: 'https://amrmuhammad.github.io/githubtools/auth/github/callback.html', 
+   scopes: ['notifications', 'gist'] 
 
+})
 
 // basic auth
 var gh = new GitHub({
@@ -11,6 +23,9 @@ var gh = new GitHub({
       token: 'MY_OAUTH_TOKEN'
     */
 });
+
+
+
 
 var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 me.listNotifications(function(err, notifications) {
