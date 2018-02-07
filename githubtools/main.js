@@ -17,6 +17,17 @@ var githubAuth = new ClientOAuth2({
 })
 */
 
+
+var html_code = ""
+
+///////////////////////////////////
+html_code += 'Github API personal access token : <input id="gh_pat" >'
+html_code += '<br />'
+////////////////////////////////////
+$('#app').append(html_code)
+////////////////////////////////////
+
+
 // basic auth
 var gh = new GitHub({
    //username: 'FOO',
