@@ -55,8 +55,8 @@ $('#gh_pat_ok').click(function() {
 
   var sourceRepo = gh.getRepo('dunso', 'pdf-parser')
   sourceRepo.getContents('master', '', false, function(error, result, response) {
-  $('#app').append(result)
-})
+    $('#app').append(result)
+  })
    
    
    
