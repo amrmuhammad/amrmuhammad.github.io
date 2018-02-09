@@ -33,7 +33,7 @@ $('#app').append(html_code)
 
 var gh = undefined
 
-$("#gh_pat_ok").click(function() {
+$('#gh_pat_ok').click(function() {
 
   // basic auth
   gh = new GitHub({
@@ -43,10 +43,13 @@ $("#gh_pat_ok").click(function() {
         token: 'MY_OAUTH_TOKEN'
       */
      username : $('#gh_username').val() ,
-     token : $('#gh_pat').val()
+     password : undefined
+     token : $('#gh_pat').val(),
+     
   })
    
-  $('body').append(gh)
+  $('body').append(gh.__auth.username)
+   $('body').append(gh.__auth.token)
   
   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 
