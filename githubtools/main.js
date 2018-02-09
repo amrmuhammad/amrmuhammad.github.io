@@ -43,8 +43,8 @@ $('#gh_pat_ok').click(function() {
         token: 'MY_OAUTH_TOKEN'
       */
      username : $('#gh_username').val() ,
-     password : undefined
-     token : $('#gh_pat').val(),
+     password : undefined,
+     token : $('#gh_pat').val()
      
   })
    
