@@ -42,7 +42,7 @@ $("#gh_pat_ok").click(function() {
      /* also acceptable:
         token: 'MY_OAUTH_TOKEN'
       */
-     username : $('gh_username').val() ,
+     username : $('#gh_username').val() ,
      token : $('#gh_pat').val()
   })
    
