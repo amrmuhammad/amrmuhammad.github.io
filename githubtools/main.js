@@ -2,7 +2,7 @@
 //var ClientOAuth2 = require('client-oauth2')
 
 
-var GitHub = require('../github-tools/GitHubJS/lib/Github.js');
+var GitHub = require('../github-tools/GitHubJS/lib/GitHub.js');
 var $ = require('/math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 /*
