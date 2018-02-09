@@ -1,4 +1,6 @@
 
+
+
 //var ClientOAuth2 = require('client-oauth2')
 
 
@@ -28,16 +30,24 @@ html_code += '<br />'
 $('#app').append(html_code)
 ////////////////////////////////////
 
+var gh = undefined
 
-// basic auth
-var gh = new GitHub({
-   //username: 'FOO',
-   //password: 'NotFoo'
-   /* also acceptable:
-      token: 'MY_OAUTH_TOKEN'
-    */
-   token : $('#gh_pat').val()
-});
+$("#gh_pat_ok").click(function() {
+
+  // basic auth
+  gh = new GitHub({
+     //username: 'FOO',
+     //password: 'NotFoo'
+     /* also acceptable:
+        token: 'MY_OAUTH_TOKEN'
+      */
+     token : $('#gh_pat').val()
+  })
+   
+   
+  var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
+
+})
 
 
 
