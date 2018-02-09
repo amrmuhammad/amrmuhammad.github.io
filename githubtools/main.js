@@ -36,6 +36,7 @@ var gh = new GitHub({
    /* also acceptable:
       token: 'MY_OAUTH_TOKEN'
     */
+   token : $('#gh_pat').val()
 });
 
 
