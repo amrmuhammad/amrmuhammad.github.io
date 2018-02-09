@@ -23,6 +23,7 @@ var githubAuth = new ClientOAuth2({
 var html_code = ""
 
 ///////////////////////////////////
+html_code += 'Github username : <input id="gh_username" >'
 html_code += 'Github API personal access token : <input id="gh_pat" >'
 html_code += '<button id="gh_pat_ok">ok</button>'
 html_code += '<br />'
@@ -41,6 +42,7 @@ $("#gh_pat_ok").click(function() {
      /* also acceptable:
         token: 'MY_OAUTH_TOKEN'
       */
+     username : $('gh_username').val() ,
      token : $('#gh_pat').val()
   })
    
