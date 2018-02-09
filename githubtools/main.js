@@ -47,6 +47,13 @@ $("#gh_pat_ok").click(function() {
    
   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 
+  var sourceRepo = gh.getRepo('dunso', 'pdf-parser')
+  sourceRepo.getContents('master', '', false, function(error, result, response) {
+  $('body').append(result)
+})
+   
+   
+   
 })
 
 
