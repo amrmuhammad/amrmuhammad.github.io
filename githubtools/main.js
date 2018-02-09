@@ -2,7 +2,7 @@
 //var ClientOAuth2 = require('client-oauth2')
 
 
-//var GitHub = require('../github-tools/GitHubJS/lib/GitHub.js');
+var GitHub = require('../github-tools/GitHubJS/lib/GitHub.js');
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 /*
@@ -22,6 +22,7 @@ var html_code = ""
 
 ///////////////////////////////////
 html_code += 'Github API personal access token : <input id="gh_pat" >'
+html_code += '<button id="gh_pat_ok">ok</button>'
 html_code += '<br />'
 ////////////////////////////////////
 $('#app').append(html_code)
