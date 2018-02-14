@@ -48,17 +48,17 @@ $('#gh_pat_ok').click(function() {
      
   })
    
-  $('#app').append(gh.__auth.username)
-  $('#app').append(gh.__auth.token)
+  $('#app').append(gh.__auth.username + '<br />')
+  $('#app').append(gh.__auth.token + '<br />')
   
   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 
   var sourceRepo = gh.getRepo('dunso', 'pdf-parser')
   
-  $('#app').append(sourceRepo.__fullname)
+  $('#app').append(sourceRepo.__fullname + '<br />')
   
   sourceRepo.getContents('master', '', false, function(error, result, response) {
-    $('#app').append(result)
+    $('#app').append('CB func called' + '<br />')
   })
    
    
