@@ -68,7 +68,10 @@ $('#gh_pat_ok').click(function() {
     log(JSON.stringify(result) + '<br />')
   })
    
-   
+  sourceRepo.getTree(treeSHA, function() {
+     
+  })
+
    
 })
 
