@@ -6,7 +6,13 @@
 
 var GitHub = require('../github-tools/GitHubJS/dist/GitHub.bundle.min.js');
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
+///////////
 
+function log(text) {
+   $('app').append(text)
+}
+
+///////////
 /*
 var githubAuth = new ClientOAuth2({ 
    clientId: 'abc', 
@@ -59,6 +65,7 @@ $('#gh_pat_ok').click(function() {
   
   sourceRepo.getContents('master', '', false, function(error, result, response) {
     $('#app').append('CB func called' + '<br />')
+    log(JSON.stringify(result) + '<br />')
   })
    
    
