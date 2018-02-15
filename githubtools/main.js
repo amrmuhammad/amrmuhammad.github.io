@@ -68,10 +68,14 @@ $('#gh_pat_ok').click(function() {
     log(JSON.stringify(result) + '<br />')
   })
    
+  var treeSHA = undefined
   sourceRepo.getSha('master', 'lib/cmaps', function(error, result, response) {
+     log(JSON.stringify(result) + '<br />')
+     treeSHA = result.sha
   })
    
-  sourceRepo.getTree(treeSHA, function() {
+  sourceRepo.getTree(treeSHA, function(error, result, response) {
+     log(JSON.stringify(result) + '<br />')
      
   })
 
