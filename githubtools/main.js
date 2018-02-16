@@ -37,7 +37,17 @@ html_code += '<br />'
 ////////////////////////////////////
 $('#app').append(html_code)
 ////////////////////////////////////
+function getTreeCb(error, result, response) {
+}
 
+function getTreeRecursiveCb(error, result, response) {
+    
+}
+
+function getTreeRecursive(repo, cb) {
+   
+}
+////////////////////////////////////
 var gh = undefined
 
 $('#gh_pat_ok').click(function() {
@@ -69,13 +79,24 @@ $('#gh_pat_ok').click(function() {
     log(JSON.stringify(result) + '<br />')
   })
    
-  var treeSHA = undefined
-  sourceRepo.getSha('master', 'lib/cmaps', function(error, result, response) {
-     log('getSha CB func called')
+  //var treeSHA = undefined
+  sourceRepo.getContents('master', 'lib', false, function(error, result, response) {
+     log('getContents for lib -- CB func called')
      log('typeof result: '+ typeof(result))
      log(JSON.stringify(result) + '<br />')
-     treeSHA = result.sha
+     
+     foreach(item in result) {
+        if(item.type === 'dir') {
+           var treeSha = item.sha
+           // get tree
+           getTreeRecursive(sourceRepo, treeSha, 
+             getTreeRecursiveCb)
+        } else if (item.type === 'file') {
+        }
+     }
+     //treeSHA = result.sha
   })
+   /*
   .then(() => {       
     sourceRepo.getTree(treeSHA, function(error, result, response) {
       log('getTree CB func called')
@@ -83,7 +104,7 @@ $('#gh_pat_ok').click(function() {
     })
      
   })
-
+  */
    
 })
 
