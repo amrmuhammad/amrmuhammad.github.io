@@ -44,7 +44,7 @@ function getTreeRecursiveCb(error, result, response) {
     
 }
 
-function getTreeRecursive(repo, cb) {
+function getTreeRecursive(repo, treeSha, cb) {
    
 }
 ////////////////////////////////////
@@ -89,6 +89,7 @@ $('#gh_pat_ok').click(function() {
         if(item.type === 'dir') {
            var treeSha = item.sha
            // get tree
+           log(item.path + ':' + tree.Sha)
            getTreeRecursive(sourceRepo, treeSha, 
              getTreeRecursiveCb)
         } else if (item.type === 'file') {
