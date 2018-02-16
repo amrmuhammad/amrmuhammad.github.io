@@ -8,8 +8,9 @@ var GitHub = require('../github-tools/GitHubJS/dist/GitHub.bundle.min.js');
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 ///////////
 
+var separator = '<br />*******<br />*******<br />'
 function log(text) {
-   $('#app').append(text)
+   $('#app').append(text + separator)
 }
 
 ///////////
@@ -54,27 +55,30 @@ $('#gh_pat_ok').click(function() {
      
   })
    
-  $('#app').append(gh.__auth.username + '<br />')
-  $('#app').append(gh.__auth.token + '<br />')
+  log(gh.__auth.username + '<br />')
+  log(gh.__auth.token + '<br />')
   
   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 
   var sourceRepo = gh.getRepo('dunso', 'pdf-parser')
   
-  $('#app').append(sourceRepo.__fullname + '<br />')
+  log(sourceRepo.__fullname + '<br />')
   
   sourceRepo.getContents('master', '', false, function(error, result, response) {
-    $('#app').append('CB func called' + '<br />')
+    log('getContents CB func called' + '<br />')
     log(JSON.stringify(result) + '<br />')
   })
    
   var treeSHA = undefined
   sourceRepo.getSha('master', 'lib/cmaps', function(error, result, response) {
+     log('getSha CB func called')
+     log('typeof result: '+ typeof(result))
      log(JSON.stringify(result) + '<br />')
      treeSHA = result.sha
   })
   .then(() => {       
     sourceRepo.getTree(treeSHA, function(error, result, response) {
+      log('getTree CB func called')
       log(JSON.stringify(result) + '<br />')
     })
      
