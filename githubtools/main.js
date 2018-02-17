@@ -87,6 +87,8 @@ $('#gh_pat_ok').click(function() {
      
      
      for(var item in result) {
+        log(item)
+        log(item.type)
         if(item.type === 'dir') {
            var treeSha = item.sha
            // get tree
