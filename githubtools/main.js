@@ -96,7 +96,7 @@ $('#gh_pat_ok').click(function() {
         if(item.type === 'dir') {
            var treeSha = item.sha
            // get tree
-           log(item.path + ':' + tree.Sha)
+           log(item.path + ':' + treeSha)
            getTreeRecursive(sourceRepo, treeSha, 
              getTreeRecursiveCb)
         } else if (item.type === 'file') {
