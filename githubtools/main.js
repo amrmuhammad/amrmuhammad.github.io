@@ -85,6 +85,7 @@ $('#gh_pat_ok').click(function() {
      log('typeof result: '+ typeof(result))
      log(JSON.stringify(result) + '<br />')
      
+     /*
      foreach(item in result) {
         if(item.type === 'dir') {
            var treeSha = item.sha
@@ -95,6 +96,7 @@ $('#gh_pat_ok').click(function() {
         } else if (item.type === 'file') {
         }
      }
+     */
      //treeSHA = result.sha
   })
    /*
