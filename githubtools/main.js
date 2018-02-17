@@ -85,18 +85,18 @@ $('#gh_pat_ok').click(function() {
      log('typeof result: '+ typeof(result))
      log(JSON.stringify(result) + '<br />')
      
-     /*
+     
      foreach(item in result) {
         if(item.type === 'dir') {
            var treeSha = item.sha
            // get tree
            log(item.path + ':' + tree.Sha)
-           getTreeRecursive(sourceRepo, treeSha, 
-             getTreeRecursiveCb)
+           //getTreeRecursive(sourceRepo, treeSha, 
+           // getTreeRecursiveCb)
         } else if (item.type === 'file') {
         }
      }
-     */
+     
      //treeSHA = result.sha
   })
    /*
