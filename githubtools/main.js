@@ -86,7 +86,11 @@ $('#gh_pat_ok').click(function() {
      log(JSON.stringify(result) + '<br />')
      
      
-     for(var item in result) {
+     //for(var item in result) {
+     
+     // assuming result is Array; call
+     // Array.prototype.forEach
+     result.forEach(function(item, index, arrayObj) {
         log(item)
         log(item.type)
         if(item.type === 'dir') {
@@ -97,7 +101,7 @@ $('#gh_pat_ok').click(function() {
              getTreeRecursiveCb)
         } else if (item.type === 'file') {
         }
-     }
+     })
      
      //treeSHA = result.sha
   })
