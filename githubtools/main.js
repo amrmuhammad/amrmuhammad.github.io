@@ -86,13 +86,13 @@ $('#gh_pat_ok').click(function() {
      log(JSON.stringify(result) + '<br />')
      
      
-     foreach(item in result) {
+     for(var item in result) {
         if(item.type === 'dir') {
            var treeSha = item.sha
            // get tree
            log(item.path + ':' + tree.Sha)
-           //getTreeRecursive(sourceRepo, treeSha, 
-           // getTreeRecursiveCb)
+           getTreeRecursive(sourceRepo, treeSha, 
+             getTreeRecursiveCb)
         } else if (item.type === 'file') {
         }
      }
