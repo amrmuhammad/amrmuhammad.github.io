@@ -562,6 +562,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 For portions of the code that use pdf-parser
 
+https://github.com/dunso/pdf-parser
 
 
                                  Apache License
