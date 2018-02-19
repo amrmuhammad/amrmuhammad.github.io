@@ -45,7 +45,7 @@ function getTreeRecursiveCb(error, result, response) {
 }
 
 function getTreeRecursive(repo, treeSha, cb) {
-  return repo._request('GET', `/repos/${repo.__fullname}/git/trees/${treeSha}`, null, cb);
+  return repo._request('GET', `/repos/${repo.__fullname}/git/trees/${treeSha}?recursive=1`, null, cb);
 }
 ////////////////////////////////////
 var gh = undefined
