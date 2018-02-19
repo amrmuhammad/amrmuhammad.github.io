@@ -41,7 +41,8 @@ function getTreeCb(error, result, response) {
 }
 
 function getTreeRecursiveCb(error, result, response) {
-    
+    log('getTreeRecursiveCb func called')
+    log(JSON.stringify(result) + '<br />')
 }
 
  /**
