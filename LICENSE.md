@@ -500,7 +500,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For the portions of the code that use Bluebird
 
-
 https://github.com/petkaantonov/bluebird
 
 
@@ -529,9 +528,9 @@ THE SOFTWARE.
 
 ---
 
-For portions of the code that use GithubJS
+For portions of the code that use Github.js
 
-
+https://github.com/github-tools/github
 
 Copyright (c) 2012 Michael Aufreiter, Development Seed
 All rights reserved.
