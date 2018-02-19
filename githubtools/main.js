@@ -44,6 +44,13 @@ function getTreeRecursiveCb(error, result, response) {
     
 }
 
+ /**
+    * Get a description of a git tree recursively
+    * @see https://developer.github.com/v3/git/trees/#get-a-tree
+    * @param {string} treeSha - the SHA of the tree to fetch
+    * @param {Requestable.callback} cb - will receive the callback data
+    * @return {Promise} - the promise for the http request
+    */
 function getTreeRecursive(repo, treeSha, cb) {
   return repo._request('GET', `/repos/${repo.__fullname}/git/trees/${treeSha}?recursive=1`, null, cb);
 }
