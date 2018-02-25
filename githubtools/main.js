@@ -30,10 +30,14 @@ var githubAuth = new ClientOAuth2({
 var html_code = ""
 
 ///////////////////////////////////
-html_code += 'Github username : <input id="gh_username" >'
-html_code += 'Github API personal access token : <input id="gh_pat" >'
+html_code += 'Github username : <input id="gh_username" > <br />'
+html_code += 'Github API personal access token : <input id="gh_pat" > <br />'
 html_code += '<button id="gh_pat_ok">ok</button>'
-html_code += '<br />'
+html_code += '<br /> <br />'
+html_code += '<hr>'
+html_code += '<button id="gh_operations">Operations</button>'
+html_code += '<hr>'
+
 ////////////////////////////////////
 $('#app').append(html_code)
 ////////////////////////////////////
