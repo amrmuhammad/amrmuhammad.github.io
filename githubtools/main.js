@@ -38,7 +38,7 @@ html_code += '<button id="gh_pat_ok">ok</button>'
 html_code += '<br /> <br />'
 html_code += '<hr>'
 html_code += '<div id="gh_operations_div">'
-html_code += '<button id="gh_operations_button">Operations</button>'
+html_code += '<button id="gh_operations_button">Operations</button> <br />'
 html_code += '</div>'
 html_code += '<hr>'
 
