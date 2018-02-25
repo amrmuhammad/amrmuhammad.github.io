@@ -37,12 +37,19 @@ html_code += 'Github API personal access token : <input id="gh_pat" > <br />'
 html_code += '<button id="gh_pat_ok">ok</button>'
 html_code += '<br /> <br />'
 html_code += '<hr>'
-html_code += '<button id="gh_operations">Operations</button>'
+html_code += '<div id="gh_operations_div">'
+html_code += '<button id="gh_operations_button">Operations</button>'
+html_code += '</div>'
 html_code += '<hr>'
 
 ////////////////////////////////////
 $('#app').append(html_code)
 ////////////////////////////////////
+$("#gh_operations_button").click(function() {
+  var html_code = '<a href="#">Copy files/folders between repositories</a>'
+  $("#gh_operations_div").append(html_code)
+})
+////////////////////////////////
 function getTreeCb(error, result, response) {
 }
 
