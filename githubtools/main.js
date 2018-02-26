@@ -45,10 +45,20 @@ html_code += '<hr>'
 ////////////////////////////////////
 $('#app').append(html_code)
 ////////////////////////////////////
+var model = {
+   gh_operations_menu_displayed : false
+}
+
 $("#gh_operations_button").click(function() {
-  var html_code = '<a href="#">Copy files/folders between repositories</a>'
-  $("#gh_operations_div").append(html_code)
+  if(model.gh_operations_menu_displayed === false) {
+    var html_code = '<a href="#" class="menu_item">Copy files/folders between repositories</a>'
+    $("#gh_operations_div").append(html_code)
+  } else {
+     model.gh_operations_menu_displayed = false
+     $("#gh_operations_div").remove()
+  }
 })
+
 ////////////////////////////////
 function getTreeCb(error, result, response) {
 }
