@@ -52,7 +52,7 @@ var model = {
 $("#gh_operations_button").click(function() {
   if(model.gh_operations_menu_displayed === false) {
     model.gh_operations_menu_displayed = true
-    var html_code = '<a href="#" id="gh_ops_copy" class="menu_item">Copy files/folders between repositories</a>'
+    var html_code = '<a href="" id="gh_ops_copy" class="menu_item">Copy files/folders between repositories</a>'
     $("#gh_operations_div").append(html_code)
   } else {
      model.gh_operations_menu_displayed = false
