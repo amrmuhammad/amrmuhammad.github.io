@@ -54,12 +54,20 @@ $("#gh_operations_button").click(function() {
     model.gh_operations_menu_displayed = true
     var html_code = '<a href="" id="gh_ops_copy" class="menu_item">Copy files/folders between repositories</a>'
     $("#gh_operations_div").append(html_code)
+     
+     // we can not add event handlers except after
+     // the element was added to DOM
+     // as the jquery selector won't find
+     // any matching elements
+    add_gh_ops_copy_event_handler()
   } else {
      model.gh_operations_menu_displayed = false
      $("#gh_operations_div .menu_item").remove()
   }
 })
 
+function add_gh_ops_copy_event_handler() {
+   
 $("#gh_ops_copy").click(function(event) {
   event.preventDefault()
   var html_code = '<hr>'
@@ -73,6 +81,8 @@ $("#gh_ops_copy").click(function(event) {
    
   $("#gh_operations_div").append(html_code)
 })
+   
+}
 
 ////////////////////////////////
 function getTreeCb(error, result, response) {
