@@ -62,7 +62,7 @@ $("#gh_operations_button").click(function() {
 
 $("#gh_ops_copy").click(function(event) {
   event.preventDefault()
-  var html_code += '<hr>'
+  var html_code = '<hr>'
   html_code += '<h2>Copy files between repos.</h2>'
   html_code += 'Github destination repo. name : <input id="dest_repo_name" > <br />'
   //html_code += 'Github API personal access token : <input id="gh_pat" > <br />'
