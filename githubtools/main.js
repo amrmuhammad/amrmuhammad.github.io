@@ -46,7 +46,11 @@ html_code += '<hr>'
 $('#app').append(html_code)
 ////////////////////////////////////
 var model = {
-   gh_operations_menu_displayed : false
+  gh_operations_menu_displayed : false,
+   
+  current_user : { 
+  }
+
 }
 
 $("#gh_operations_button").click(function() {
@@ -72,14 +76,21 @@ $("#gh_ops_copy").click(function(event) {
   event.preventDefault()
   var html_code = '<hr>'
   html_code += '<h2>Copy files between repos.</h2>'
+   html_code += 'Github destination username : <input id="dest_username" > <br />'
   html_code += 'Github destination repo. name : <input id="dest_repo_name" > <br />'
-  //html_code += 'Github API personal access token : <input id="gh_pat" > <br />'
+  html_code += 'Github destination API personal access token : <input id="dest_gh_pat" > <br />'
+  html_code += 'Github source username : <input id="source_username" > <br />'
+  html_code += 'Github source repo. name : <input id="source_repo_name" > <br />'
   html_code += '<button id="gh_ops_copy_dest_repo_ok">ok</button>'
   html_code += '<br /> <br />'
   html_code += '<hr>'
   
    
   $("#gh_operations_div").append(html_code)
+   
+  $("#dest_username).val(model.cuurent_user.gh_username)
+  $("#dest_gh_pat).val(model.current_user.gh_pat)
+    
 })
    
 }
@@ -108,6 +119,9 @@ var gh = undefined
 
 $('#gh_pat_ok').click(function() {
 
+  model.current_user.gh_username = $("#gh_username").val()
+  model.current_user.gh_pat = $("#gh_pat").val()
+     
   // basic auth
   gh = new GitHub({
      //username: 'FOO',
