@@ -88,8 +88,8 @@ $("#gh_ops_copy").click(function(event) {
    
   $("#gh_operations_div").append(html_code)
    
-  $("#dest_username).val(model.cuurent_user.gh_username)
-  $("#dest_gh_pat).val(model.current_user.gh_pat)
+  $("#dest_username").val(model.cuurent_user.gh_username)
+  $("#dest_gh_pat").val(model.current_user.gh_pat)
     
 })
    
