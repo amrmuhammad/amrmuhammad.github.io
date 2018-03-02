@@ -94,21 +94,13 @@ function gh_ops_copy_menu_item_click_handler(event) {
 }
 
 //////////////////////////////////
+function gh_ops_copy_button_click_handler() {
 
-function add_gh_ops_copy_event_handler() {
-   
-  $("#gh_ops_copy_menu_item").click(gh_ops_copy_menu_item_click_handler)
-   
-  ///////////////////////
-
-  $("#gh_ops_copy_button").click(function() {
-  
   var html_code = '<div id="gh_copy_repos_trees_div">'
   html_code += '</div>'
-     
-  $("gh_current_operation_div").val(html_code)
-     
-$('#gh_copy_repos_trees_div').jstree({ 
+  $("#gh_current_operation_div").val(html_code)
+   
+  $('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
    {      
     'data' : 
@@ -123,10 +115,22 @@ $('#gh_copy_repos_trees_div').jstree({
         }       
      ]     
    }   
-});
-     
-  })
-/////////////////////////////////
+
+  });
+
+   
+}
+
+///////////////////////////////////
+
+function add_gh_ops_copy_event_handler() {
+   
+  $("#gh_ops_copy_menu_item").click(gh_ops_copy_menu_item_click_handler)
+   
+  ///////////////////////
+
+  $("#gh_ops_copy_button").click(gh_ops_copy_button_click_handler)
+  ////////////////////////
    
 }
 
