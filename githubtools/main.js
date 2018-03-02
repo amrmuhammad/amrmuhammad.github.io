@@ -92,6 +92,24 @@ $("#gh_ops_copy").click(function(event) {
   $("#dest_gh_pat").val(model.current_user.gh_pat)
     
 })
+////////////////////////////////////
+$('#container').jstree({ 
+  'core' : 
+   {      
+    'data' : 
+     [ 
+        { 
+          "text" : "Root node", 
+          "children" : 
+          [  
+            { "text" : "Child node 1" },    
+            { "text" : "Child node 2" }        
+          ]        
+        }       
+     ]     
+   }   
+});
+/////////////////////////////////
    
 }
 
