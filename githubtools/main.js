@@ -40,6 +40,8 @@ html_code += '<hr>'
 html_code += '<div id="gh_operations_div">'
 html_code += '<button id="gh_operations_button">Operations</button> <br />'
 html_code += '</div>'
+html_code += '<div id="gh_current_operation_div">'
+html_code += '</div>'
 html_code += '<hr>'
 
 ////////////////////////////////////
@@ -56,7 +58,9 @@ var model = {
 $("#gh_operations_button").click(function() {
   if(model.gh_operations_menu_displayed === false) {
     model.gh_operations_menu_displayed = true
-    var html_code = '<a href="" id="gh_ops_copy" class="menu_item">Copy files/folders between repositories</a>'
+    var html_code = '<div id="gh_operations_menu_div">'
+    html_code += '<a href="" id="gh_ops_copy" class="menu_item">Copy files/folders between repositories</a>'
+    html_code += '</div>'
     $("#gh_operations_div").append(html_code)
      
      // we can not add event handlers except after
@@ -66,7 +70,7 @@ $("#gh_operations_button").click(function() {
     add_gh_ops_copy_event_handler()
   } else {
      model.gh_operations_menu_displayed = false
-     $("#gh_operations_div .menu_item").remove()
+     $("#gh_operations_menu_div").remove()
   }
 })
 
@@ -81,19 +85,24 @@ $("#gh_ops_copy").click(function(event) {
   html_code += 'Github destination API personal access token : <input id="dest_gh_pat" > <br />'
   html_code += 'Github source username : <input id="source_username" > <br />'
   html_code += 'Github source repo. name : <input id="source_repo_name" > <br />'
-  html_code += '<button id="gh_ops_copy_dest_repo_ok">ok</button>'
+  html_code += '<button id="gh_ops_copy_button">Copy</button>'
   html_code += '<br /> <br />'
-  html_code += '<hr>'
+  //html_code += '<hr>'
   
    
-  $("#gh_operations_div").append(html_code)
+  $("#gh_current_operation_div").append(html_code)
    
   $("#dest_username").val(model.cuurent_user.gh_username)
   $("#dest_gh_pat").val(model.current_user.gh_pat)
     
 })
 ////////////////////////////////////
-$('#container').jstree({ 
+  $("#gh_ops_copy_button").click(function() {
+  
+  var html_code = '<div id="gh_copy_repos_trees_div">'
+  html_code += '</div>'
+     
+$('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
    {      
     'data' : 
@@ -109,6 +118,8 @@ $('#container').jstree({
      ]     
    }   
 });
+     
+  })
 /////////////////////////////////
    
 }
