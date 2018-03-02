@@ -59,7 +59,7 @@ $("#gh_operations_button").click(function() {
   if(model.gh_operations_menu_displayed === false) {
     model.gh_operations_menu_displayed = true
     var html_code = '<div id="gh_operations_menu_div">'
-    html_code += '<a href="" id="gh_ops_copy" class="menu_item">Copy files/folders between repositories</a>'
+    html_code += '<a href="" id="gh_ops_copy_menu_item" class="menu_item">Copy files/folders between repositories</a>'
     html_code += '</div>'
     $("#gh_operations_div").append(html_code)
      
@@ -73,14 +73,12 @@ $("#gh_operations_button").click(function() {
      $("#gh_operations_menu_div").remove()
   }
 })
-
-function add_gh_ops_copy_event_handler() {
-   
-$("#gh_ops_copy").click(function(event) {
+/////////////////////////////////
+function gh_ops_copy_menu_item_click_handler(event) {
   event.preventDefault()
   var html_code = '<hr>'
   html_code += '<h2>Copy files between repos.</h2>'
-   html_code += 'Github destination username : <input id="dest_username" > <br />'
+  html_code += 'Github destination username : <input id="dest_username" > <br />'
   html_code += 'Github destination repo. name : <input id="dest_repo_name" > <br />'
   html_code += 'Github destination API personal access token : <input id="dest_gh_pat" > <br />'
   html_code += 'Github source username : <input id="source_username" > <br />'
@@ -88,19 +86,27 @@ $("#gh_ops_copy").click(function(event) {
   html_code += '<button id="gh_ops_copy_button">Copy</button>'
   html_code += '<br /> <br />'
   //html_code += '<hr>'
-  
-   
+
   $("#gh_current_operation_div").append(html_code)
-   
   $("#dest_username").val(model.cuurent_user.gh_username)
   $("#dest_gh_pat").val(model.current_user.gh_pat)
-    
-})
-////////////////////////////////////
+
+}
+
+//////////////////////////////////
+
+function add_gh_ops_copy_event_handler() {
+   
+  $("#gh_ops_copy_menu_item").click(gh_ops_copy_menu_item_click_handler)
+   
+  ///////////////////////
+
   $("#gh_ops_copy_button").click(function() {
   
   var html_code = '<div id="gh_copy_repos_trees_div">'
   html_code += '</div>'
+     
+  $("gh_current_operation_div").val(html_code)
      
 $('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
