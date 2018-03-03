@@ -120,12 +120,12 @@ function gh_ops_copy_button_click_handler() {
   log('jstree: <br />' + JSON.stringify($.jstree))
   
   var credentials = {
-     gh_username : $('#source_username').val()
+     gh_username : $('#source_username').val(),
      gh_pat : $('#dest_gh_pat').val()
   }
   
   var repo_params = {
-     username : $('#source_username').val()
+     username : $('#source_username').val(),
      repo_name : $('#source_repo_name').val()
   }
    
