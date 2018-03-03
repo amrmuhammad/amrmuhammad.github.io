@@ -119,12 +119,12 @@ function gh_ops_copy_button_click_handler() {
   
   log('jstree: <br />' + JSON.stringify($.jstree))
   
-  credentials = {
+  var credentials = {
      gh_username : $('#source_username').val()
      gh_pat : $('#dest_gh_pat').val()
   }
   
-  repo_params = {
+  var repo_params = {
      username : $('#source_username').val()
      repo_name : $('#source_repo_name').val()
   }
@@ -157,7 +157,7 @@ function fetch_source_repo_contents(credentials, repo_params) {
   //model.current_user.gh_pat = credentials.gh_pat
 
   // basic auth
-  gh = new GitHub({
+  var gh = new GitHub({
      //username: 'FOO',
      //password: 'NotFoo'
      /* also acceptable:
