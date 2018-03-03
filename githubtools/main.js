@@ -96,9 +96,13 @@ function gh_ops_copy_menu_item_click_handler(event) {
 //////////////////////////////////
 function gh_ops_copy_button_click_handler() {
 
+  log('gh_ops_copy_button_click_handler')
+   
   var html_code = '<div id="gh_copy_repos_trees_div">'
   html_code += '</div>'
-  $("#gh_current_operation_div").val(html_code)
+  $("#gh_current_operation_div").append(html_code)
+  
+  log(JSON.stringify($.jstree))
    
   $('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
