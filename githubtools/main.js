@@ -11,8 +11,9 @@ var jsTree = require('../js/jstree/v3.3.5/dist/jstree.min.js')
 ///////////
 
 var separator = '<br />*******<br />*******<br />'
+
 function log(text) {
-   $('#app').append(text + separator)
+   $('#debug_div').append(text + separator)
 }
 
 ///////////
@@ -47,6 +48,9 @@ html_code += '<hr>'
 ////////////////////////////////////
 $('#app').append(html_code)
 ////////////////////////////////////
+$('#app').append('<div id="debug_div"></div>')
+////////////////////////////////////
+
 var model = {
   gh_operations_menu_displayed : false,
    
@@ -80,7 +84,7 @@ $("#gh_operations_button").click(function() {
 /////////////////////////////////
 function gh_ops_copy_menu_item_click_handler(event) {
   
-  log('gh_ops_copy_menu_item_click_handler')
+  //log('gh_ops_copy_menu_item_click_handler')
   
   event.preventDefault()
   var html_code = '<hr>'
@@ -106,13 +110,14 @@ function gh_ops_copy_menu_item_click_handler(event) {
 //////////////////////////////////
 function gh_ops_copy_button_click_handler() {
 
-  log('gh_ops_copy_button_click_handler')
+  //log('gh_ops_copy_button_click_handler')
    
-  var html_code = '<div id="gh_copy_repos_trees_div">'
+  var html_code = '<hr>'
+  html_code += '<div id="gh_copy_repos_trees_div">'
   html_code += '</div>'
   $("#gh_current_operation_div").append(html_code)
   
-  log(JSON.stringify($.jstree))
+  log('jstree: <br />' + JSON.stringify($.jstree))
    
   $('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
