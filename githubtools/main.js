@@ -34,7 +34,7 @@ var html_code = ""
 ///////////////////////////////////
 html_code += 'Github username : <input id="gh_username" > <br />'
 html_code += 'Github API personal access token : <input id="gh_pat" > <br />'
-$("#gh_ops_copy_button").click(gh_ops_copy_button_click_handler)html_code += '<button id="gh_pat_ok">ok</button>'
+html_code += '<button id="gh_pat_ok">ok</button>'
 html_code += '<br /> <br />'
 html_code += '<hr>'
 html_code += '<div id="gh_operations_div">'
