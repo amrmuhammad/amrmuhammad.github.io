@@ -79,6 +79,9 @@ $("#gh_operations_button").click(function() {
 })
 /////////////////////////////////
 function gh_ops_copy_menu_item_click_handler(event) {
+  
+  log('gh_ops_copy_menu_item_click_handler')
+  
   event.preventDefault()
   var html_code = '<hr>'
   html_code += '<h2>Copy files between repos.</h2>'
