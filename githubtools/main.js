@@ -93,8 +93,8 @@ function gh_ops_copy_menu_item_click_handler(event) {
 
   $("#gh_current_operation_div").append(html_code)
    
-  $("#dest_username").val(model.cuurent_user.gh_username)
-  $("#dest_gh_pat").val(model.current_user.gh_pat)
+  //$("#dest_username").val(model.cuurent_user.gh_username)
+  //$("#dest_gh_pat").val(model.current_user.gh_pat)
    
   $("#gh_ops_copy_button").click(gh_ops_copy_button_click_handler)
 
