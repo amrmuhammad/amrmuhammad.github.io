@@ -34,7 +34,7 @@ var html_code = ""
 ///////////////////////////////////
 html_code += 'Github username : <input id="gh_username" > <br />'
 html_code += 'Github API personal access token : <input id="gh_pat" > <br />'
-html_code += '<button id="gh_pat_ok">ok</button>'
+$("#gh_ops_copy_button").click(gh_ops_copy_button_click_handler)html_code += '<button id="gh_pat_ok">ok</button>'
 html_code += '<br /> <br />'
 html_code += '<hr>'
 html_code += '<div id="gh_operations_div">'
@@ -54,6 +54,8 @@ var model = {
   }
 
 }
+//////////////////////////////////////
+
 
 $("#gh_operations_button").click(function() {
   if(model.gh_operations_menu_displayed === false) {
@@ -67,7 +69,9 @@ $("#gh_operations_button").click(function() {
      // the element was added to DOM
      // as the jquery selector won't find
      // any matching elements
-    add_gh_ops_copy_event_handler()
+     
+     $("#gh_ops_copy_menu_item").click(gh_ops_copy_menu_item_click_handler)     
+     
   } else {
      model.gh_operations_menu_displayed = false
      $("#gh_operations_menu_div").remove()
@@ -88,8 +92,11 @@ function gh_ops_copy_menu_item_click_handler(event) {
   //html_code += '<hr>'
 
   $("#gh_current_operation_div").append(html_code)
+   
   $("#dest_username").val(model.cuurent_user.gh_username)
   $("#dest_gh_pat").val(model.current_user.gh_pat)
+   
+  $("#gh_ops_copy_button").click(gh_ops_copy_button_click_handler)
 
 }
 
