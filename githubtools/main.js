@@ -118,6 +118,18 @@ function gh_ops_copy_button_click_handler() {
   $("#gh_current_operation_div").append(html_code)
   
   log('jstree: <br />' + JSON.stringify($.jstree))
+  
+  credentials = {
+     gh_username : $('#source_username').val()
+     gh_pat : $('#dest_gh_pat').val()
+  }
+  
+  repo_params = {
+     username : $('#source_username').val()
+     repo_name : $('#source_repo_name').val()
+  }
+   
+  fetch_source_repo_contents(credentials, repo_params)
    
   $('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
@@ -139,7 +151,40 @@ function gh_ops_copy_button_click_handler() {
 
    
 }
+///////////////////////////////////
+function fetch_source_repo_contents(credentials, repo_params) {
+  //model.current_user.gh_username = credentials.gh_username
+  //model.current_user.gh_pat = credentials.gh_pat
 
+  // basic auth
+  gh = new GitHub({
+     //username: 'FOO',
+     //password: 'NotFoo'
+     /* also acceptable:
+        token: 'MY_OAUTH_TOKEN'
+      */
+     username : credentials.gh_username,
+     password : undefined,
+     token : credentials.gh_pat
+  })
+
+  log(gh.__auth.username + '<br />')
+  log(gh.__auth.token + '<br />')
+
+  var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
+
+  var sourceRepo = gh.getRepo(repo_params.username, repo_params.repo_name)
+
+  log(sourceRepo.__fullname + '<br />')
+
+  sourceRepo.getContents('master', '', false, function(error, result, response) {
+
+    log('getContents CB func called' + '<br />')
+
+    log(JSON.stringify(result) + '<br />')
+
+  })
+}
 ///////////////////////////////////
 
 function add_gh_ops_copy_event_handler() {
