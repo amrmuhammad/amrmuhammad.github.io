@@ -130,11 +130,14 @@ function gh_ops_copy_button_click_handler() {
   }
    
   var fetched_data = fetch_source_repo_contents(credentials, repo_params)
+  log('fetched_data: <br />' + JSON.stringify(fetched_data))
   var tree_nodes = []
   
   feched_data.forEach(function(item, index, arrayObj) {
      tree_nodes[index] = { "text" : item.name}
   })
+  
+  log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
    
   $('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
