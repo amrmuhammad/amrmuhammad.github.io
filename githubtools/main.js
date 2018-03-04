@@ -129,12 +129,18 @@ function gh_ops_copy_button_click_handler() {
      repo_name : $('#source_repo_name').val()
   }
    
-  fetch_source_repo_contents(credentials, repo_params)
+  var fetched_data = fetch_source_repo_contents(credentials, repo_params)
+  var tree_nodes = []
+  
+  feched_data.forEach(function(item, index, arrayObj) {
+     tree_nodes[index] = { "text" : item.name}
+  })
    
   $('#gh_copy_repos_trees_div').jstree({ 
   'core' : 
    {      
-    'data' : 
+    'data' : tree_nodes
+      /*
      [ 
         { 
           "text" : "Root node", 
@@ -145,6 +151,7 @@ function gh_ops_copy_button_click_handler() {
           ]        
         }       
      ]     
+     */
    }   
 
   });
@@ -177,13 +184,18 @@ function fetch_source_repo_contents(credentials, repo_params) {
 
   log(sourceRepo.__fullname + '<br />')
 
+  var fetced_data = undefined
+  
   sourceRepo.getContents('master', '', false, function(error, result, response) {
 
     log('getContents CB func called' + '<br />')
 
     log(JSON.stringify(result) + '<br />')
 
+    fetched_data = result
   })
+   
+  return fetched_data
 }
 ///////////////////////////////////
 
