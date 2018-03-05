@@ -130,7 +130,7 @@ function gh_ops_copy_button_click_handler() {
   }
    
   var request_promise = fetch_source_repo_contents(credentials, repo_params)
-  fetched_dats.then((response) => {
+  request_promise.then((response) => {
       
      
     var fetched_data = response.data
