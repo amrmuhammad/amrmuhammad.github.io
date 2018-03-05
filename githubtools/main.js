@@ -195,12 +195,12 @@ function fetch_source_repo_contents(credentials, repo_params) {
 
     log(JSON.stringify(result) + '<br />')
 
-    fetched_data = result
+    this.fetched_data = result
   })
    
-  log('fetched_data: <br />' + JSON.stringify(fetched_data))
+  log('fetched_data: <br />' + JSON.stringify(sourceRepo.fetched_data))
    
-  return fetched_data
+  return sourceRepo.fetched_data
 }
 ///////////////////////////////////
 
