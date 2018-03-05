@@ -187,7 +187,7 @@ function fetch_source_repo_contents(credentials, repo_params) {
 
   log(sourceRepo.__fullname + '<br />')
 
-  var fetced_data = undefined
+  var fetched_data = undefined
   
   sourceRepo.getContents('master', '', false, function(error, result, response) {
 
@@ -197,6 +197,8 @@ function fetch_source_repo_contents(credentials, repo_params) {
 
     fetched_data = result
   })
+   
+  log('fetched_data: <br />' + JSON.stringify(fetched_data))
    
   return fetched_data
 }
