@@ -163,7 +163,7 @@ function gh_ops_copy_button_click_handler() {
 
      });
 
-  }
+  })
    
 }
 ///////////////////////////////////
