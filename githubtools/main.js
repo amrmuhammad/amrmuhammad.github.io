@@ -137,7 +137,7 @@ function gh_ops_copy_button_click_handler() {
     log('fetched_data: <br />' + JSON.stringify(response.data))
     var tree_nodes = []
   
-    feched_data.forEach(function(item, index, arrayObj) {
+    fetched_data.forEach(function(item, index, arrayObj) {
       tree_nodes[index] = { "text" : item.name}
     })
   
@@ -202,9 +202,11 @@ function fetch_source_repo_contents(credentials, repo_params) {
 
     //this.fetched_data = result
   })
+  /*
   .then((response) => {
     log('fetched_data: <br />' + JSON.stringify(response.data))
   })
+  */
    
   return request_promise
 }
