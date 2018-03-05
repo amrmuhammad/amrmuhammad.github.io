@@ -129,19 +129,23 @@ function gh_ops_copy_button_click_handler() {
      repo_name : $('#source_repo_name').val()
   }
    
-  var fetched_data = fetch_source_repo_contents(credentials, repo_params)
-  log('fetched_data: <br />' + JSON.stringify(fetched_data))
-  var tree_nodes = []
+  var request_promise = fetch_source_repo_contents(credentials, repo_params)
+  fetched_dats.then((response) => {
+      
+     
+    var fetched_data = response.data
+    log('fetched_data: <br />' + JSON.stringify(response.data))
+    var tree_nodes = []
   
-  feched_data.forEach(function(item, index, arrayObj) {
-     tree_nodes[index] = { "text" : item.name}
-  })
+    feched_data.forEach(function(item, index, arrayObj) {
+      tree_nodes[index] = { "text" : item.name}
+    })
   
-  log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
+    log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
    
-  $('#gh_copy_repos_trees_div').jstree({ 
-  'core' : 
-   {      
+    $('#gh_copy_repos_trees_div').jstree({ 
+    'core' : 
+     {      
     'data' : tree_nodes
       /*
      [ 
@@ -155,10 +159,11 @@ function gh_ops_copy_button_click_handler() {
         }       
      ]     
      */
-   }   
+     }   
 
-  });
+     });
 
+  }
    
 }
 ///////////////////////////////////
@@ -189,18 +194,19 @@ function fetch_source_repo_contents(credentials, repo_params) {
 
   var fetched_data = undefined
   
-  sourceRepo.getContents('master', '', false, function(error, result, response) {
+  var request_promise = sourceRepo.getContents('master', '', false, function(error, result, response) {
 
     log('getContents CB func called' + '<br />')
 
     log(JSON.stringify(result) + '<br />')
 
-    this.fetched_data = result
+    //this.fetched_data = result
+  })
+  .then((response) => {
+    log('fetched_data: <br />' + JSON.stringify(response.data))
   })
    
-  log('fetched_data: <br />' + JSON.stringify(sourceRepo.fetched_data))
-   
-  return sourceRepo.fetched_data
+  return request_promise
 }
 ///////////////////////////////////
 
