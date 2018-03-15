@@ -108,6 +108,33 @@ function gh_ops_copy_menu_item_click_handler(event) {
 }
 
 //////////////////////////////////
+function update_js_tree(tree_params) {
+  $('#gh_copy_repos_trees_div').jstree({ 
+    'core' : 
+     {      
+    'data' : tree_params.tree_nodes
+
+      /*
+     [ 
+        { 
+          "text" : "Root node", 
+          "children" : 
+          [  
+            { "text" : "Child node 1" },    
+            { "text" : "Child node 2" }        
+          ]        
+        }       
+
+     ]     
+
+     */
+
+     }   
+
+   });
+}
+//////////////////////////////////
+
 function gh_ops_copy_button_click_handler() {
 
   //log('gh_ops_copy_button_click_handler')
@@ -126,7 +153,9 @@ function gh_ops_copy_button_click_handler() {
   
   var repo_params = {
      username : $('#source_username').val(),
-     repo_name : $('#source_repo_name').val()
+     repo_name : $('#source_repo_name').val(),
+     path_within_repo : ''
+     
   }
    
   var request_promise = fetch_source_repo_contents(credentials, repo_params)
@@ -143,25 +172,11 @@ function gh_ops_copy_button_click_handler() {
   
     log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
    
-    $('#gh_copy_repos_trees_div').jstree({ 
-    'core' : 
-     {      
-    'data' : tree_nodes
-      /*
-     [ 
-        { 
-          "text" : "Root node", 
-          "children" : 
-          [  
-            { "text" : "Child node 1" },    
-            { "text" : "Child node 2" }        
-          ]        
-        }       
-     ]     
-     */
-     }   
-
-     });
+    var tree_params = {
+       tree_nodes : tree_nodes
+    }
+    
+    update_js_tree(tree_params)
 
   })
    
@@ -194,7 +209,7 @@ function fetch_source_repo_contents(credentials, repo_params) {
 
   var fetched_data = undefined
   
-  var request_promise = sourceRepo.getContents('master', '', false, function(error, result, response) {
+  var request_promise = sourceRepo.getContents('master', repo_params.path_within_repo, false, function(error, result, response) {
 
     log('getContents CB func called' + '<br />')
 
