@@ -132,6 +132,16 @@ function update_js_tree(tree_params) {
      }   
 
    });
+   
+  $('gh_copy_repos_trees_div').jstree({
+    'core' : 
+     {
+       'data' : function(obj, callback) {
+          callback.call(this, ['root1', 'root2'])
+       }
+     }
+  })
+  
 }
 //////////////////////////////////
 
