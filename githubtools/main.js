@@ -152,11 +152,16 @@ function process_fetched_source_repo_data(fetched_data) {
 
     log('fetched_data: <br />' + JSON.stringify(fetched_data))
 
+  ///////////////////////////
     var tree_nodes = []
-
+   
     fetched_data.forEach(function(item, index, arrayObj) {
 
       tree_nodes[index] = { "text" : item.name}
+      
+      if(item.type === 'file') {
+         
+      }
 
     })
     log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
@@ -168,6 +173,61 @@ function process_fetched_source_repo_data(fetched_data) {
     }
     update_js_tree(tree_params)
 }
+//////////////////////////////////
+class CopyOpProcessor {
+  
+   
+///////////////////////////////////
+
+  fetch_source_repo_contents(credentials, repo_params) {
+
+    //model.current_user.gh_username = credentials.gh_username
+    //model.current_user.gh_pat = credentials.gh_pat
+    // basic auth
+
+    var gh = new GitHub({
+      //username: 'FOO',
+      //password: 'NotFoo'
+      /* also acceptable:
+        token: 'MY_OAUTH_TOKEN'
+      */
+      username : credentials.gh_username,
+
+      password : undefined,
+
+      token : credentials.gh_pat
+
+    })
+
+   log(gh.__auth.username + '<br />')
+
+   log(gh.__auth.token + '<br />')
+
+   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
+
+   var sourceRepo = gh.getRepo(repo_params.username, repo_params.repo_name)
+
+   log(sourceRepo.__fullname + '<br />')
+
+   var fetched_data = undefined
+
+   var request_promise = sourceRepo.getContents('master', repo_params.path_within_repo, false, function(error, result, response) {
+
+     log('getContents CB func called' + '<br />')
+
+     log(JSON.stringify(result) + '<br />')
+
+  })
+
+  return request_promise
+
+  } // end of function fetch_source_repo_contents
+  //////////////////////////////////
+   
+   
+   
+} // end of class CopyOpProcessor
+
 //////////////////////////////////
 function gh_ops_copy_button_click_handler() {
 
