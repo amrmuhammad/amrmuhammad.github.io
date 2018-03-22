@@ -147,7 +147,28 @@ function update_js_tree(tree_params) {
   
 }
 //////////////////////////////////
+function process_fetched_source_repo_data(fetched_data) {
+   
 
+    log('fetched_data: <br />' + JSON.stringify(fetched_data))
+
+    var tree_nodes = []
+
+    fetched_data.forEach(function(item, index, arrayObj) {
+
+      tree_nodes[index] = { "text" : item.name}
+
+    })
+    log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
+
+    var tree_params = {
+
+       tree_nodes : tree_nodes
+
+    }
+    update_js_tree(tree_params)
+}
+//////////////////////////////////
 function gh_ops_copy_button_click_handler() {
 
   //log('gh_ops_copy_button_click_handler')
@@ -174,22 +195,7 @@ function gh_ops_copy_button_click_handler() {
   var request_promise = fetch_source_repo_contents(credentials, repo_params)
   request_promise.then((response) => {
       
-     
-    var fetched_data = response.data
-    log('fetched_data: <br />' + JSON.stringify(response.data))
-    var tree_nodes = []
-  
-    fetched_data.forEach(function(item, index, arrayObj) {
-      tree_nodes[index] = { "text" : item.name}
-    })
-  
-    log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
-   
-    var tree_params = {
-       tree_nodes : tree_nodes
-    }
-    
-    update_js_tree(tree_params)
+    process_fetched_source_repo_data(response.data)
 
   })
    
