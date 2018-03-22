@@ -205,13 +205,11 @@ class CopyOpProcessor {
 
    var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 
-   var sourceRepo = gh.getRepo(repo_params.username, repo_params.repo_name)
+   this.__sourceRepo = gh.getRepo(repo_params.username, repo_params.repo_name)
 
-   log(sourceRepo.__fullname + '<br />')
+   log(this.__sourceRepo.__fullname + '<br />')
 
-   var fetched_data = undefined
-
-   var request_promise = sourceRepo.getContents('master', repo_params.path_within_repo, false, function(error, result, response) {
+   var request_promise = this.__sourceRepo.getContents('master', repo_params.path_within_repo, false, function(error, result, response) {
 
      log('getContents CB func called' + '<br />')
 
@@ -224,7 +222,37 @@ class CopyOpProcessor {
   } // end of function fetch_source_repo_contents
   //////////////////////////////////
    
-   
+//////////////////////////////////
+
+  process_fetched_source_repo_data(fetched_data) {
+
+    log('fetched_data: <br />' + JSON.stringify(fetched_data))
+
+    ///////////////////////////
+    var tree_nodes = []
+    fetched_data.forEach(function(item, index, arrayObj) {
+      tree_nodes[index] = { "text" : item.name}
+
+      ////
+      if(item.type === 'file') {
+         item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
+         })
+
+      }
+      ////
+    })
+
+    log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
+
+    var tree_params = {
+       tree_nodes : tree_nodes
+
+    }
+    update_js_tree(tree_params)
+
+  } // end of function process_fetched_source_repo_data
+
+  //////////////////////////////////
    
 } // end of class CopyOpProcessor
 
