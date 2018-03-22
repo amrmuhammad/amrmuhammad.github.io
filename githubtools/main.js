@@ -94,6 +94,7 @@ function gh_ops_copy_menu_item_click_handler(event) {
   html_code += 'Github destination API personal access token : <input id="dest_gh_pat" > <br />'
   html_code += 'Github source username : <input id="source_username" > <br />'
   html_code += 'Github source repo. name : <input id="source_repo_name" > <br />'
+  html_code += 'Path within source repo : <input id="path_within_source_repo" > <br />'
   html_code += '<button id="gh_ops_copy_button">Copy</button>'
   html_code += '<br /> <br />'
   //html_code += '<hr>'
@@ -133,6 +134,7 @@ function update_js_tree(tree_params) {
 
    });
    
+  /*
   $('gh_copy_repos_trees_div').jstree({
     'core' : 
      {
@@ -141,6 +143,7 @@ function update_js_tree(tree_params) {
        }
      }
   })
+  */
   
 }
 //////////////////////////////////
@@ -164,7 +167,7 @@ function gh_ops_copy_button_click_handler() {
   var repo_params = {
      username : $('#source_username').val(),
      repo_name : $('#source_repo_name').val(),
-     path_within_repo : ''
+     path_within_repo : $('#path_within_source_repo').val()
      
   }
    
