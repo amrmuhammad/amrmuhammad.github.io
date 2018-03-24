@@ -278,7 +278,7 @@ class CopyOpProcessor {
     log(this.__destRepo.__fullname + '<br />')
 
     /////
-    fetched_data.forEach(function(item, index, arrayObj) {
+    this.__fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
 
