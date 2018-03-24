@@ -275,10 +275,20 @@ class CopyOpProcessor {
 
     this.__destRepo = gh.getRepo(repo_params.username, repo_params.repo_name)
 
-    log(this.__sourceRepo.__fullname + '<br />')
+    log(this.__destRepo.__fullname + '<br />')
 
-    var request_promise = this.__destRepo.createBlob(blob, function(error, result, response) {
-    }
+    /////
+    fetched_data.forEach(function(item, index, arrayObj) {
+
+      if(item.type === 'file') {
+
+        var request_promise = this.__destRepo.createBlob(item.blob, function(error, result, response) {
+        })
+
+      }
+
+    })
+    /////
                                                      
   }
    
