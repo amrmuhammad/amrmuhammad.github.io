@@ -242,6 +242,8 @@ class CopyOpProcessor {
       ////
     })
 
+    this.__fetched_data = fetched_data
+    ///////////////////////////////
     log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
 
     var tree_params = {
@@ -252,6 +254,34 @@ class CopyOpProcessor {
 
   } // end of function process_fetched_source_repo_data
 
+  copy_fetched_data_to_dest_repo(credentials, repo_params) {
+     
+    var gh = new GitHub({
+
+      //username: 'FOO',
+      //password: 'NotFoo'
+      /* also acceptable:
+        token: 'MY_OAUTH_TOKEN'
+      */
+      username : credentials.gh_username,
+      password : undefined,
+      token : credentials.gh_pat
+    })
+
+    log(gh.__auth.username + '<br />')
+    log(gh.__auth.token + '<br />')
+
+    var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
+
+    this.__destRepo = gh.getRepo(repo_params.username, repo_params.repo_name)
+
+    log(this.__sourceRepo.__fullname + '<br />')
+
+    var request_promise = this.__destRepo.createBlob(blob, function(error, result, response) {
+    }
+                                                     
+  }
+   
   //////////////////////////////////
    
 } // end of class CopyOpProcessor
