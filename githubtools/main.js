@@ -177,7 +177,7 @@ function process_fetched_source_repo_data(fetched_data) {
 class CopyOpProcessor {
   
    
-///////////////////////////////////
+  ///////////////////////////////////
 
   fetch_source_repo_contents(credentials, repo_params) {
 
@@ -222,7 +222,7 @@ class CopyOpProcessor {
   } // end of function fetch_source_repo_contents
   //////////////////////////////////
    
-//////////////////////////////////
+  //////////////////////////////////
 
   process_fetched_source_repo_data(fetched_data) {
 
@@ -325,6 +325,18 @@ function gh_ops_copy_button_click_handler() {
   var request_promise = processor.fetch_source_repo_contents(credentials, repo_params)
   request_promise.then((response) => {
       
+    credentials = {
+      gh_username : $('#dest_username').val(),
+      gh_pat : $('#dest_gh_pat').val()
+    }
+
+    repo_params = {
+      username : $('#dest_username').val(),
+      repo_name : $('#dest_repo_name').val(),
+      path_within_repo : $('#path_within_dest_repo').val()
+
+    }
+    
     processor.process_fetched_source_repo_data(response.data)
     processor.copy_fetched_data_to_dest_repo(credentials, repo_params)
 
