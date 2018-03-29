@@ -299,7 +299,7 @@ class CopyOpProcessor {
 //////////////////////////////////
 function gh_ops_copy_button_click_handler() {
 
-  //log('gh_ops_copy_button_click_handler')
+  //log('gh_ops_opy_button_click_handler')
    
   var html_code = '<hr>'
   html_code += '<div id="gh_copy_repos_trees_div">'
@@ -320,10 +320,13 @@ function gh_ops_copy_button_click_handler() {
      
   }
    
-  var request_promise = fetch_source_repo_contents(credentials, repo_params)
+  var processor = new CopyOpProcessor()
+  
+  var request_promise = processor.fetch_source_repo_contents(credentials, repo_params)
   request_promise.then((response) => {
       
-    process_fetched_source_repo_data(response.data)
+    processor.process_fetched_source_repo_data(response.data)
+    processor.copy_fetched_data_to_dest_repo(credentials, repo_params)
 
   })
    
