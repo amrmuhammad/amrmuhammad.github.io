@@ -232,16 +232,19 @@ class CopyOpProcessor {
 
     ///////////////////////////
     var tree_nodes = []
+    
     fetched_data.forEach(function(item, index, arrayObj) {
+       
       tree_nodes[index] = { "text" : item.name}
 
       ////
+       /*
       if(item.type === 'file') {
          item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
            log('*** getBlob ')
          })
 
-      }
+      }*/
       ////
     })
 
