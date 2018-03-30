@@ -226,7 +226,9 @@ class CopyOpProcessor {
 
   process_fetched_source_repo_data(fetched_data) {
 
-    log('fetched_data: <br />' + JSON.stringify(fetched_data))
+    log('CopyOpProcessor::process_fetched_source_repo_data')
+     
+    log('*** fetched_data: <br />' + JSON.stringify(fetched_data))
 
     ///////////////////////////
     var tree_nodes = []
@@ -236,6 +238,7 @@ class CopyOpProcessor {
       ////
       if(item.type === 'file') {
          item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
+           log('*** getBlob ')
          })
 
       }
