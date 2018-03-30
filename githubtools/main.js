@@ -255,6 +255,7 @@ class CopyOpProcessor {
   } // end of function process_fetched_source_repo_data
 
   copy_fetched_data_to_dest_repo(credentials, repo_params) {
+    log('CopyOpProcessor::copy_fetched_data_to_dest_repo') 
      
     var gh = new GitHub({
 
@@ -281,7 +282,7 @@ class CopyOpProcessor {
     this.__fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
-
+        log('*** created a blob for sha' + item.sha)
         var request_promise = this.__destRepo.createBlob(item.blob, function(error, result, response) {
         })
 
@@ -290,7 +291,7 @@ class CopyOpProcessor {
     })
     /////
                                                      
-  }
+  } // end of function copy_fetched_data_to_dest_repo
    
   //////////////////////////////////
    
