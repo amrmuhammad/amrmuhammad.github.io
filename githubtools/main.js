@@ -247,12 +247,16 @@ class CopyOpProcessor {
            
              log('*** getBlob ')
            
-           }).catch(function(e) {
-             log(JSON.stringify(e))
+           })
+           .then(function(value) {
+             log('.then() called')
+           })
+           .catch(function(e) {
+             log('.catch() called' + JSON.stringify(e))
            })
             
          } catch(e) {
-           log(JSON.stringify(e))
+           log('catch block' + JSON.stringify(e))
          }
 
       }
