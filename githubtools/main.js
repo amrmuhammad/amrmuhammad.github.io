@@ -242,11 +242,16 @@ class CopyOpProcessor {
       if(item.type === 'file') {
         log(item.sha)
         
-        item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
+         try {
+           item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
            
-          log('*** getBlob ')
+             log('*** getBlob ')
            
-        })
+           })
+            
+         } catch(e) {
+            
+         }
 
       }
       ////
