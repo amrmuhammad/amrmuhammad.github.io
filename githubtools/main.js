@@ -250,7 +250,7 @@ class CopyOpProcessor {
            })
             
          } catch(e) {
-            
+           log(JSON.stringify(e))
          }
 
       }
@@ -298,8 +298,14 @@ class CopyOpProcessor {
 
       if(item.type === 'file') {
         log('*** created a blob for sha' + item.sha)
-        var request_promise = this.__destRepo.createBlob(item.blob, function(error, result, response) {
-        })
+         
+        try {
+          var request_promise = this.__destRepo.createBlob(item.blob, function(error, result, response) {
+          })
+          
+        } catch(e) {
+          log(JSON.stringify(e))
+        }
 
       }
 
