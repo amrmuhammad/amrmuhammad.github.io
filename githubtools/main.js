@@ -243,7 +243,7 @@ class CopyOpProcessor {
         log(item.sha)
         
          try {
-           item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
+           /*item.blob =*/ this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
            
              log('*** getBlob ')
            
