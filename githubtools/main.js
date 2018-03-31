@@ -229,7 +229,7 @@ class CopyOpProcessor {
     log('CopyOpProcessor::process_fetched_source_repo_data')
      
     log('*** fetched_data: <br />' + JSON.stringify(fetched_data))
-
+    log(JSON.stringify(this.__sourceRepo))
     ///////////////////////////
     var tree_nodes = []
     
@@ -238,13 +238,17 @@ class CopyOpProcessor {
       tree_nodes[index] = { "text" : item.name}
 
       ////
-       /*
+      
       if(item.type === 'file') {
-         item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
-           log('*** getBlob ')
-         })
+        log(item.sha)
+        
+        item.blob = this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
+           
+          log('*** getBlob ')
+           
+        })
 
-      }*/
+      }
       ////
     })
 
