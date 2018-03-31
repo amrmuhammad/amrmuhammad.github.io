@@ -247,6 +247,8 @@ class CopyOpProcessor {
            
              log('*** getBlob ')
            
+           }).catch(function(e) {
+             log(JSON.stringify(e))
            })
             
          } catch(e) {
