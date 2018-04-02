@@ -826,3 +826,17 @@ Any copyright is dedicated to the Public Domain. http://creativecommons.org/publ
 
 
 ///////////////////////////////////////////
+
+For portions of the code that make use of 
+Addons downloads.download():
+
+
+<a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/downloads/download"> Add-ons downloads.download() </a> by <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/downloads/download$history"> Mozilla Contributors</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5.</a>
+
+Code samples used from the above webpage are available in the public domain (CC0):
+
+Any copyright is dedicated to the Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
+
+
+///////////////////////////////////////////
+
