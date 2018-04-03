@@ -127,7 +127,7 @@ $('#gh_pat_ok').click(function() {
 
    destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
    }) 
-   */
+   
    
 })
 
