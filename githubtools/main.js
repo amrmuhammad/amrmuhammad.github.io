@@ -126,7 +126,16 @@ $('#gh_pat_ok').click(function() {
 
 
     destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
-   }) 
+    }).then((response) => {
+      log('wrieFile success')
+      log(JSON.stringify(response))
+    }, (error) => {
+      log('writeFile failure')
+      log(JSON.stringify(error))
+    }).catch(function (e) {
+      log('.catch() called')
+      log(JSON.stringify(e))
+    })
    
    
 })
