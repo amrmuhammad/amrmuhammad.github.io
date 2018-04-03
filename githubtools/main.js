@@ -119,7 +119,7 @@ download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'})
 */
 
 //////////////////////////
-
+/*
 function applyRequestHeaders(req, headers) {
   if (typeof headers === 'object') {
     Object.keys(headers).forEach((key) => {
@@ -174,7 +174,7 @@ download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'})
     console.log('file blob', blob); 
 
   })
-
+*/
 //////////////////////////
 var model = {
   gh_operations_menu_displayed : false,
