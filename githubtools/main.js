@@ -90,8 +90,9 @@ req.onload = function (oEvent){
 //req.addEventListener('abort', reject);
 req.send();
 ///////
-/*
+
 $('#gh_pat_ok').click(function() {
+   
     var gh = new GitHub({
 
       //username: 'FOO',
@@ -125,11 +126,11 @@ $('#gh_pat_ok').click(function() {
 
 
    destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
-}) 
+   }) 
    
    
 }
-*/
+
 ///////////////////////////////////
 
 
