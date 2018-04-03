@@ -58,13 +58,15 @@ function applyRequestHeaders(req, headers) {
   }
 }
 
-var url = 
+var fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
+
+var url = fileUrl
     
 const req = new XMLHttpRequest();
 req.open('GET', url, true);
 //req.withCredentials = withCredentials || credentials === 'include';
 req.responseType = 'blob';
-applyRequestHeaders(req, headers);
+//applyRequestHeaders(req, headers);
 req.addEventListener('load', () => {
   const ok = req.status >= 200 && req.status < 300;
   rerurn {body: req.response, status: req.status};
