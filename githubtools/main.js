@@ -73,6 +73,7 @@ req.onload = function (oEvent){
    
   var blob = req.response
   log(JSON.stringify(blob))
+  log(JSON.stringify(req.status))
 }
 /*
 -    req.addEventListener('progress', (ev) => {
