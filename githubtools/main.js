@@ -123,9 +123,9 @@ $('#gh_pat_ok').click(function() {
     destRepo = gh.getRepo("amrmuhammad", "amrmuhammad.github.io")
 
     log(destRepo.__fullname + '<br />')
-
+/*
     try {
-    destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
+    destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", {}, function(error, result, response) {
     }).then( function(response){
       log('wrieFile success')
       log(JSON.stringify(response))
@@ -140,6 +140,36 @@ $('#gh_pat_ok').click(function() {
     } catch(e){
        log('catch block')
     }
+   */
+   var branch = '',
+       path = "testWriteFile.js",
+       content = textRes,
+       message= "Github.bundle.js",
+       options = {},
+       cb = function(error, result, response){
+       }
+   
+     if (typeof {} === 'function') {
+         cb = options;
+         options = {};
+      }
+      let filePath = path ? encodeURI(path) : '';
+      let shouldEncode = options.encode !== false;
+      let commit = {
+         branch,
+         message,
+         author: options.author,
+         committer: options.committer,
+         content: shouldEncode ? Base64.encode(content) : content,
+      };
+
+      return this.getSha(branch, filePath)
+         .then((response) => {
+            commit.sha = response.data.sha;
+            return this._request('PUT', `/repos/${this.__fullname}/contents/${filePath}`, commit, cb);
+         }, () => {
+            return this._request('PUT', `/repos/${this.__fullname}/contents/${filePath}`, commit, cb);
+});
    
 })
 
