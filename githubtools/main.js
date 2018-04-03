@@ -97,9 +97,11 @@ downloading.then(function(id){
 })
 */
 /////////////////////////
-/*
-var xhrFile = require('../mgcrea/js-xhr-file/src/index.js');
 
+var xhrFile = require('../mgcrea/js-xhr-file/src/index.js');
+log(xhrFile)
+
+/*
 const fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 
 const onProgress = (ev) => { 
