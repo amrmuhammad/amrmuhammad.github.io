@@ -97,6 +97,7 @@ downloading.then(function(id){
 })
 */
 /////////////////////////
+/*
 import {download} from '../mgcrea/js-xhr-file/src/index.js'
 //var xhrFile = require('../mgcrea/js-xhr-file/src/index.js');
 log(JSON.stringify(download))
@@ -108,17 +109,73 @@ const onProgress = (ev) => {
    if (ev.lengthComputable) { 
       const progress = Math.floor(100 * ev.loaded / ev.total);
       console.log(`progress=${progress}%`); 
-   } 
+   }
 }; 
 
 download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'}) 
   .then((blob) => { 
     console.log('file blob', blob); 
   })
-  
+*/
+
 //////////////////////////
 
+function applyRequestHeaders(req, headers) {
+  if (typeof headers === 'object') {
+    Object.keys(headers).forEach((key) => {
+      req.setRequestHeader(key, headers[key]);
+    });
+  }
+}
 
+const download = (
+  url,
+  {headers, responseType = 'blob', credentials = false, withCredentials = false, onProgress} = {}
+) =>
+  new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open('GET', url, true);
+    req.withCredentials = withCredentials || credentials === 'include';
+    req.responseType = responseType;
+    applyRequestHeaders(req, headers);
+    req.addEventListener('load', () => {
+      const ok = req.status >= 200 && req.status < 300;
+      resolve({body: req.response, status: req.status, ok});
+    });
+    req.addEventListener('progress', (ev) => {
+      if (onProgress) {
+        onProgress(ev);
+      }
+    });
+    req.addEventListener('error', reject);
+    req.addEventListener('abort', reject);
+    req.send();
+  });
+
+const onProgress = (ev) => { 
+
+   if (ev.lengthComputable) { 
+
+      const progress = Math.floor(100 * ev.loaded / ev.total);
+
+      console.log(`progress=${progress}%`); 
+
+   } 
+
+}; 
+
+const fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
+
+
+download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'}) 
+
+  .then((blob) => { 
+
+    console.log('file blob', blob); 
+
+  })
+
+//////////////////////////
 var model = {
   gh_operations_menu_displayed : false,
    
