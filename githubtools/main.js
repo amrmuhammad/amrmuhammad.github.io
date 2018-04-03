@@ -68,10 +68,11 @@ $('#app').append('<div id="debug_div"></div>')
 ////////////////////////////////////
 
 ///////////
+log('hello browser')
 
 log(JSON.stringify(browser))
 log(JSON.stringify(browser.downloads.download))
-
+/*
 var downloadUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 
 var downloading = browser.downloads.download({
@@ -93,6 +94,7 @@ downloading.then(function(id){
   log(`Download failed : ${error}`)
 
 })
+*/
 /////////////////////////
 
 
