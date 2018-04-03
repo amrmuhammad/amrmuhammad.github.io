@@ -97,6 +97,7 @@ downloading.then(function(id){
 })
 */
 /////////////////////////
+/*
 var xhrFile = require('../mgcrea/js-xhr-file/src/index.js');
 
 const fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
@@ -112,6 +113,7 @@ xhrFile.download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'})
   .then((blob) => { 
     console.log('file blob', blob); 
   })
+  */
 //////////////////////////
 
 
