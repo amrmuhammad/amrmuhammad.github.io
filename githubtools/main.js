@@ -50,6 +50,17 @@ $('#app').append(html_code)
 ////////////////////////////////////
 $('#app').append('<div id="debug_div"></div>')
 ////////////////////////////////////
+function applyRequestHeaders(req, headers) {
+  if (typeof headers === 'object') {
+    Object.keys(headers).forEach((key) => {
+      req.setRequestHeader(key, headers[key]);
+    });
+  }
+}
+
+///////////////////////////////////
+
+
 
 var model = {
   gh_operations_menu_displayed : false,
