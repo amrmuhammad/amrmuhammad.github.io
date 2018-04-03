@@ -113,7 +113,7 @@ $('#gh_pat_ok').click(function() {
       token : $("#gh_pat").val()
 
     })
-/*
+
     log(gh.__auth.username + '<br />')
 
     log(gh.__auth.token + '<br />')
@@ -129,7 +129,7 @@ $('#gh_pat_ok').click(function() {
    }) 
    */
    
-}
+})
 
 ///////////////////////////////////
 
