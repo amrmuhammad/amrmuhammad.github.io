@@ -90,6 +90,7 @@ req.onload = function (oEvent){
 //req.addEventListener('abort', reject);
 req.send();
 ///////
+/*
 $('#gh_pat_ok').click(function() {
     var gh = new GitHub({
 
@@ -97,18 +98,18 @@ $('#gh_pat_ok').click(function() {
       //password: 'NotFoo'
 
 
-      /* also acceptable:
+      //also acceptable:
 
-        token: 'MY_OAUTH_TOKEN'
+      // token: 'MY_OAUTH_TOKEN'
 
 
-      */
+      //
 
-      username : $('gh_username').val(),
+      username : $('#gh_username').val(),
 
       password : undefined,
 
-      token : $("gh_pat").val()
+      token : $("#gh_pat").val()
 
     })
 
@@ -118,16 +119,17 @@ $('#gh_pat_ok').click(function() {
 
     var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 
-    __destRepo = gh.getRepo("amrmuhammad", "amrmuhammad.github.io")
+    destRepo = gh.getRepo("amrmuhammad", "amrmuhammad.github.io")
 
     log(this.__destRepo.__fullname + '<br />')
 
 
-__destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
+   destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
 }) 
    
    
 }
+*/
 ///////////////////////////////////
 
 
