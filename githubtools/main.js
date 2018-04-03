@@ -141,6 +141,9 @@ $('#gh_pat_ok').click(function() {
        log('catch block')
     }
    */
+   
+   log('1')
+   
    var branch = '',
        path = "testWriteFile.js",
        content = textRes,
@@ -148,6 +151,8 @@ $('#gh_pat_ok').click(function() {
        options = {},
        cb = function(error, result, response){
        }
+   
+   log('2')
    
      log(JSON.stringify(GitHub.Repository.Base64))
    
