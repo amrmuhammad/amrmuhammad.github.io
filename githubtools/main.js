@@ -65,13 +65,13 @@ var url = fileUrl
 var req = new XMLHttpRequest();
 req.open('GET', url, true);
 //req.withCredentials = withCredentials || credentials === 'include';
-req.responseType = 'blob';
+req.responseType = 'text';
 //applyRequestHeaders(req, headers);
 req.onload = function (oEvent){
   //const ok = req.status >= 200 && req.status < 300;
   //return {body: req.response, status: req.status};
    
-  var blob = req.response
+  var blob = req.responseText
   log(JSON.stringify(blob))
   log(JSON.stringify(req.status))
 }
