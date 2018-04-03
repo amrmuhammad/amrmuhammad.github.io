@@ -58,6 +58,28 @@ function applyRequestHeaders(req, headers) {
   }
 }
 
+var url = 
+    
+const req = new XMLHttpRequest();
+req.open('GET', url, true);
+//req.withCredentials = withCredentials || credentials === 'include';
+req.responseType = 'blob';
+applyRequestHeaders(req, headers);
+req.addEventListener('load', () => {
+  const ok = req.status >= 200 && req.status < 300;
+  rerurn {body: req.response, status: req.status};
+});
+/*
+-    req.addEventListener('progress', (ev) => {
+-      if (onProgress) {
+-        onProgress(ev);
+-      }
+-    });
+*/
+//req.addEventListener('error', reject);
+//req.addEventListener('abort', reject);
+req.send();
+
 ///////////////////////////////////
 
 
