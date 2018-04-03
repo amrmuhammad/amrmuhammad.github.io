@@ -17,6 +17,20 @@ function log(text) {
 }
 
 ///////////
+var downloadUrl = ''
+var downloading = browser.downloads.download({
+  url : ,
+  filename : Github.bundle.js,
+  conflictAction : 'uniquify'
+})
+
+downloading.then(function(id){
+  log(`Started downloading : ${id}`)
+}, function(error){
+  log(`Download failed : ${error}`)
+})
+///////////
+
 /*
 var githubAuth = new ClientOAuth2({ 
    clientId: 'abc', 
