@@ -17,10 +17,10 @@ function log(text) {
 }
 
 ///////////
-var downloadUrl = ''
+var downloadUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 var downloading = browser.downloads.download({
-  url : ,
-  filename : Github.bundle.js,
+  url : downloadUrl,
+  filename : 'GitHub.bundle.js',
   conflictAction : 'uniquify'
 })
 
