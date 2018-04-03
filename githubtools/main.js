@@ -97,11 +97,11 @@ downloading.then(function(id){
 })
 */
 /////////////////////////
+import {download} from '../mgcrea/js-xhr-file/src/index.js'
+//var xhrFile = require('../mgcrea/js-xhr-file/src/index.js');
+log(JSON.stringify(download))
 
-var xhrFile = require('../mgcrea/js-xhr-file/src/index.js');
-log(xhrFile)
 
-/*
 const fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 
 const onProgress = (ev) => { 
@@ -111,11 +111,11 @@ const onProgress = (ev) => {
    } 
 }; 
 
-xhrFile.download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'}) 
+download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'}) 
   .then((blob) => { 
     console.log('file blob', blob); 
   })
-  */
+  
 //////////////////////////
 
 
