@@ -69,7 +69,7 @@ req.responseType = 'blob';
 //applyRequestHeaders(req, headers);
 req.addEventListener('load', () => {
   const ok = req.status >= 200 && req.status < 300;
-  rerurn {body: req.response, status: req.status};
+  return {body: req.response, status: req.status};
 });
 /*
 -    req.addEventListener('progress', (ev) => {
