@@ -61,7 +61,9 @@ function applyRequestHeaders(req, headers) {
 var fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 
 var url = fileUrl
-    
+
+var textRes;
+
 var req = new XMLHttpRequest();
 req.open('GET', url, true);
 //req.withCredentials = withCredentials || credentials === 'include';
@@ -74,6 +76,8 @@ req.onload = function (oEvent){
   var blob = req.responseText
   log(JSON.stringify(blob))
   log(JSON.stringify(req.status))
+   
+  textRes = blob
 }
 /*
 -    req.addEventListener('progress', (ev) => {
@@ -85,6 +89,42 @@ req.onload = function (oEvent){
 //req.addEventListener('error', reject);
 //req.addEventListener('abort', reject);
 req.send();
+///////
+
+    var gh = new GitHub({
+
+      //username: 'FOO',
+      //password: 'NotFoo'
+
+
+      /* also acceptable:
+
+        token: 'MY_OAUTH_TOKEN'
+
+
+      */
+
+      username : $('gh_username').val(),
+
+      password : undefined,
+
+      token : $("gh_pat").val()
+
+    })
+
+    log(gh.__auth.username + '<br />')
+
+    log(gh.__auth.token + '<br />')
+
+    var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
+
+    __destRepo = gh.getRepo("amrmuhammad", "amrmuhammad.github.io")
+
+    log(this.__destRepo.__fullname + '<br />')
+
+
+__destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
+}) 
 
 ///////////////////////////////////
 
