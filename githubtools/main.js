@@ -122,10 +122,10 @@ $('#gh_pat_ok').click(function() {
 
     destRepo = gh.getRepo("amrmuhammad", "amrmuhammad.github.io")
 
-    log(this.__destRepo.__fullname + '<br />')
+    log(destRepo.__fullname + '<br />')
 
 
-   destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
+    destRepo.writeFile("", 'testwritefile.js', textRes, "Github.bundle.js", null, function(error, result, response) {
    }) 
    
    
