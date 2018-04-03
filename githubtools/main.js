@@ -17,6 +17,7 @@ function log(text) {
 }
 
 ///////////
+/*
 var downloadUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 var downloading = browser.downloads.download({
   url : downloadUrl,
@@ -29,6 +30,7 @@ downloading.then(function(id){
 }, function(error){
   log(`Download failed : ${error}`)
 })
+*/
 ///////////
 
 /*
