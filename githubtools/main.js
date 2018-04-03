@@ -65,6 +65,35 @@ $('#app').append(html_code)
 $('#app').append('<div id="debug_div"></div>')
 ////////////////////////////////////
 
+///////////
+
+log(JSON.stringify(browser))
+log(JSON.stringify(browser.downloads.download))
+
+var downloadUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
+
+var downloading = browser.downloads.download({
+
+  url : downloadUrl,
+
+  filename : 'GitHub.bundle.js',
+
+  conflictAction : 'uniquify'
+})
+
+log(JSON.stringify(downloading))
+
+downloading.then(function(id){
+
+  log(`Started downloading : ${id}`)
+
+}, function(error){
+  log(`Download failed : ${error}`)
+
+})
+/////////////////////////
+
+
 var model = {
   gh_operations_menu_displayed : false,
    
@@ -85,6 +114,7 @@ $("#gh_operations_button").click(function() {
      
      // we can not add event handlers except after
      // the element was added to DOM
+     
      // as the jquery selector won't find
      // any matching elements
      
