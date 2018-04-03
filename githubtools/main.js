@@ -68,11 +68,12 @@ $('#app').append('<div id="debug_div"></div>')
 ////////////////////////////////////
 
 ///////////
+/*
 log('hello browser')
 
 log(JSON.stringify(browser))
 log(JSON.stringify(browser.downloads.download))
-/*
+
 var downloadUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 
 var downloading = browser.downloads.download({
@@ -96,6 +97,22 @@ downloading.then(function(id){
 })
 */
 /////////////////////////
+var xhrFile = require('../mgcrea/js-xhr-file/src/index.js');
+
+const fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
+
+const onProgress = (ev) => { 
+   if (ev.lengthComputable) { 
+      const progress = Math.floor(100 * ev.loaded / ev.total);
+      console.log(`progress=${progress}%`); 
+   } 
+}; 
+
+xhrFile.download(fileUrl, {onProgress, headers: {['X-Foo']: 'bar'}) 
+  .then((blob) => { 
+    console.log('file blob', blob); 
+  })
+//////////////////////////
 
 
 var model = {
