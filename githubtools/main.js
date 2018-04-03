@@ -149,6 +149,8 @@ $('#gh_pat_ok').click(function() {
        cb = function(error, result, response){
        }
    
+     log(JSON.stringify(GitHub.Repository.Base64))
+   
      if (typeof {} === 'function') {
          cb = options;
          options = {};
