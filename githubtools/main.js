@@ -67,10 +67,12 @@ req.open('GET', url, true);
 //req.withCredentials = withCredentials || credentials === 'include';
 req.responseType = 'blob';
 //applyRequestHeaders(req, headers);
-req.addEventListener('load', () => {
-  const ok = req.status >= 200 && req.status < 300;
-  return {body: req.response, status: req.status};
-});
+req.onload = function (oEvent){
+  //const ok = req.status >= 200 && req.status < 300;
+  //return {body: req.response, status: req.status};
+   
+  var blob = req.response
+}
 /*
 -    req.addEventListener('progress', (ev) => {
 -      if (onProgress) {
