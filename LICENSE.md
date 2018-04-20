@@ -918,7 +918,7 @@ For portions of the code that make use of
 XMLHttpRequest:
 
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/"> Using XMLHttpRequest </a> by <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/$history"> Mozilla Contributors</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5.</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest"> Using XMLHttpRequest </a> by <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest$history"> Mozilla Contributors</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5.</a>
 
 
 Code samples used from the above webpage that were added
