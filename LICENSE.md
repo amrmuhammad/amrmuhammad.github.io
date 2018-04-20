@@ -886,7 +886,7 @@ Any copyright is dedicated to the Public Domain. http://creativecommons.org/publ
 
 ///////////////////////////////////////////
 
-For portions of the code that make use of js-xhr-file
+For portions of the code that make use of js-xhr-file https://github.com/mgcrea/js-xhr-file
 
 The MIT License
 
