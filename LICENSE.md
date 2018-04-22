@@ -1028,5 +1028,5 @@ Stackoverflow Link that was useful in understanding:
 https://stackoverflow.com/questions/11620698/how-to-trigger-a-file-download-when-clicking-an-html-button-or-javascript
 
 
-- user contributions licensed under <a href="">cc by-sa 3.0</a> with <a href="">attribution required</a>.
+- user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">cc by-sa 3.0</a> with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/">attribution required</a>.
 
