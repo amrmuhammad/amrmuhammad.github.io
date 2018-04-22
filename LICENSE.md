@@ -1031,6 +1031,6 @@ https://stackoverflow.com/questions/11620698/how-to-trigger-a-file-download-when
 - user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">cc by-sa 3.0</a> with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/">attribution required</a>.
 
 
-- Question author by: brentonstrine (User profile: https://stackoverflow.com/users/925897/brentonstrine )
+- Question asked by: brentonstrine (User profile: https://stackoverflow.com/users/925897/brentonstrine )
 - Question edited by: Brett DeWoody (User profile: https://stackoverflow.com/users/438581/brett-dewoody )
 
