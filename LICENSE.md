@@ -1024,6 +1024,9 @@ Any copyright is dedicated to the Public Domain. http://creativecommons.org/publ
 
 Stackoverflow Link that was useful in understanding:
 
-How to trigger a file download when clicking an HTML button or JavaScript
+- How to trigger a file download when clicking an HTML button or JavaScript
 https://stackoverflow.com/questions/11620698/how-to-trigger-a-file-download-when-clicking-an-html-button-or-javascript
+
+
+- user contributions licensed under <a href="">cc by-sa 3.0</a> with <a href="">attribution required</a>.
 
