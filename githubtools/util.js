@@ -4,7 +4,15 @@
    modified;
    For licensing, see mgcrea/js-xhr-file/LICENSE.md
    
+   Modifications were inspired and based upon code
+   from:
    
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest"> Using XMLHttpRequest </a> 
+by <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest$history"> Mozilla Contributors</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5.</a>
+
+   from the section 'handling binary data'
+   ;
+   For licensing, see LICENSE/LICENSE-2.md
    */
 
 function applyRequestHeaders(req, headers) {
