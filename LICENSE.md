@@ -1034,3 +1034,5 @@ https://stackoverflow.com/questions/11620698/how-to-trigger-a-file-download-when
 - Question asked by: brentonstrine (User profile: https://stackoverflow.com/users/925897/brentonstrine )
 - Question edited by: Brett DeWoody (User profile: https://stackoverflow.com/users/438581/brett-dewoody )
 
+- The answer by user: Delconis (User profile: https://stackoverflow.com/users/1794919/delconis )
+  was useful and inspired the use of Filesaver.js library
