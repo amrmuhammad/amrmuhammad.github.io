@@ -1,6 +1,6 @@
 
 /* The following code was copied
-   from mgcrea/js-xhr-filr/src/index.js and
+   from mgcrea/js-xhr-file/src/index.js and
    modified;
    For licensing, see mgcrea/js-xhr-file/LICENSE.md
    
