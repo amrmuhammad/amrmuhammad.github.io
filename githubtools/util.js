@@ -1,4 +1,11 @@
 
+/* The following code was copied
+   from mgcrea/js-xhr-filr/src/index.js and
+   modified;
+   For licensing, see mgcrea/js-xhr-file/LICENSE.md
+   
+   
+   */
 
 function applyRequestHeaders(req, headers) {
   if (typeof headers === 'object') {
@@ -29,7 +36,7 @@ req.onload = function (oEvent){
   
   // The use of FileSaver.js was inspired by
   // this Stackoverflow question https://stackoverflow.com/questions/11620698/how-to-trigger-a-file-download-when-clicking-an-html-button-or-javascript
-  // For details see the file LICENSE-1   
+  // For details see the file LICENSE/LICENSE-1.md 
    
   // Code copied from FileSaver.js README file and modified
   var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.js'); 
