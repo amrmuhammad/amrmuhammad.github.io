@@ -1039,7 +1039,7 @@ https://stackoverflow.com/questions/11620698/how-to-trigger-a-file-download-when
 
 
 ////////////////////////
-For portions of the code that use FileSaver.js
+For portions of the code that use FileSaver.js https://github.com/eligrey/FileSaver.js
 
 The MIT License
 
