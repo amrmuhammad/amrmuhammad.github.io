@@ -71,13 +71,13 @@ req.onload = function (oEvent){
 }
 
 
-req.addEventListener('progress', function(event) {
+req.addEventListener('progress', function (progressEvent) {
   log('request progress')
 });
 
-req.addEventListener('error', function(event) {
+req.addEventListener('error', function (errorEvent) {
 });
-req.addEventListener('abort', function(event) {
+req.addEventListener('abort', function (abortEvent) {
 });
 
 req.send();
