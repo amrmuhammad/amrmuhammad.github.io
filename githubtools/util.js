@@ -70,7 +70,7 @@ req.onload = function (oEvent){
    
 }
 
-
+/*
 req.addEventListener('progress', function (progressEvent) {
   log('request progress')
 });
@@ -79,6 +79,7 @@ req.addEventListener('error', function (errorEvent) {
 });
 req.addEventListener('abort', function (abortEvent) {
 });
+*/
 
 req.send();
 /////////////////////////////////////////////////////////
