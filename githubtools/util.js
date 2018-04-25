@@ -35,7 +35,7 @@ function applyRequestHeaders(req, headers) {
     });
   }
 }
-
+*/
 var fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 
 var url = fileUrl
@@ -46,7 +46,10 @@ var req = new XMLHttpRequest()
 req.open('GET', url, true)
 //req.withCredentials = withCredentials || credentials === 'include';
 req.responseType = 'text'
-//applyRequestHeaders(req, headers);
+
+log(JSON.stringify(req))
+/*
+//applyRequestHeaders(req, headers)
 req.onload = function (oEvent){
   //const ok = req.status >= 200 && req.status < 300;
   //return {body: req.response, status: req.status};
