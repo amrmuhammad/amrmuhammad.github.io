@@ -61,7 +61,11 @@ req.onload = function (oEvent){
    
   // Code copied from FileSaver.js README file and modified
   var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.js'); 
+  log(JSON.stringify(FileSaver))
+   
   var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"});
+  log(JSON.stringify(blob))
+   
   FileSaver.saveAs(blob, "GitHub.bundle.js");
    
 }
