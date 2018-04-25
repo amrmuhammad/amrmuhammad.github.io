@@ -70,15 +70,15 @@ req.onload = function (oEvent){
    
 }
 
-/*
--    req.addEventListener('progress', (ev) => {
--      if (onProgress) {
--        onProgress(ev);
--      }
--    });
-*/
-//req.addEventListener('error', reject);
-//req.addEventListener('abort', reject);
+
+req.addEventListener('progress', function(event) {
+  log('request progress')
+});
+
+req.addEventListener('error', function(event) {
+});
+req.addEventListener('abort', function(event) {
+});
 
 req.send();
 /////////////////////////////////////////////////////////
