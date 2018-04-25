@@ -27,7 +27,7 @@ by <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Usin
    For licensing, see LICENSE/LICENSE-2.md
    */
 /*******************************************************/
-/*
+
 function applyRequestHeaders(req, headers) {
   if (typeof headers === 'object') {
     Object.keys(headers).forEach((key) => {
@@ -65,7 +65,7 @@ req.onload = function (oEvent){
   FileSaver.saveAs(blob, "GitHub.bundle.js");
    
 }
-*/
+
 /*
 -    req.addEventListener('progress', (ev) => {
 -      if (onProgress) {
@@ -76,7 +76,7 @@ req.onload = function (oEvent){
 //req.addEventListener('error', reject);
 //req.addEventListener('abort', reject);
 
-//req.send();
+req.send();
 /////////////////////////////////////////////////////////
 
 log('End of util.js')
