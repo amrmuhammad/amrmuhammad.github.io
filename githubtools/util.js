@@ -1,4 +1,9 @@
+function log(text) {
+   $('#debug_div').append(text + separator)
+}
 
+log('Beginning of util.js')
+/*********************************************************/
 /* The following code was copied
    from mgcrea/js-xhr-file/src/index.js and
    modified;
@@ -14,7 +19,7 @@ by <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Usin
    ;
    For licensing, see LICENSE/LICENSE-2.md
    */
-
+/*******************************************************/
 function applyRequestHeaders(req, headers) {
   if (typeof headers === 'object') {
     Object.keys(headers).forEach((key) => {
@@ -62,3 +67,6 @@ req.onload = function (oEvent){
 //req.addEventListener('error', reject);
 //req.addEventListener('abort', reject);
 req.send();
+/////////////////////////////////////////////////////////
+
+log('End of util.js')
