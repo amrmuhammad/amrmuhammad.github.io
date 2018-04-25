@@ -51,11 +51,11 @@ $('#app').append(html_code)
 $('#app').append('<div id="debug_div"></div>')
 
 ////////////////////////////////////
-/*
-log('Before require util.js')
-var GitHubToolsUtil = require('./util.js')
-log('After require util.js')
-*/
+
+log('Before require util.js'):
+var GitHubToolsUtil = require('./util.js');
+log('After require util.js');
+
 ///////
 
 
