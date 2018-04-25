@@ -42,10 +42,10 @@ var url = fileUrl
 
 var textRes;
 
-var req = new XMLHttpRequest();
-req.open('GET', url, true);
+var req = new XMLHttpRequest()
+req.open('GET', url, true)
 //req.withCredentials = withCredentials || credentials === 'include';
-req.responseType = 'text';
+req.responseType = 'text'
 //applyRequestHeaders(req, headers);
 req.onload = function (oEvent){
   //const ok = req.status >= 200 && req.status < 300;
@@ -60,13 +60,13 @@ req.onload = function (oEvent){
   // For details see the file LICENSE/LICENSE-1.md 
    
   // Code copied from FileSaver.js README file and modified
-  var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.js'); 
+  var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.js')
   log(JSON.stringify(FileSaver))
    
-  var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"});
+  var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"})
   log(JSON.stringify(blob))
    
-  FileSaver.saveAs(blob, "GitHub.bundle.js");
+  FileSaver.saveAs(blob, "GitHub.bundle.js")
    
 }
 
@@ -81,7 +81,7 @@ req.addEventListener('abort', function (abortEvent) {
 });
 */
 
-req.send();
+req.send()
 /////////////////////////////////////////////////////////
 
 log('End of util.js')
