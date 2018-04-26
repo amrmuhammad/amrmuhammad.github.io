@@ -49,8 +49,11 @@ req.responseType = 'text'
 
 log('XmlHttpRequest:')
 log(JSON.stringify(req))
-/*
+log(JSON.stringify(req.prototype))
+
+
 //applyRequestHeaders(req, headers)
+/*
 req.onload = function (oEvent){
   //const ok = req.status >= 200 && req.status < 300;
   //return {body: req.response, status: req.status};
@@ -85,7 +88,8 @@ req.addEventListener('abort', function (abortEvent) {
 });
 */
 
-//req.send()
+req.send()
+
 /////////////////////////////////////////////////////////
 
 log('End of util.js')
