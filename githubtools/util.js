@@ -40,13 +40,14 @@ var fileUrl = 'https://unpkg.com/github-api@3.0.0/dist/GitHub.bundle.js'
 
 var url = fileUrl
 
-var textRes;
+var textRes
 
 var req = new XMLHttpRequest()
 req.open('GET', url, true)
 //req.withCredentials = withCredentials || credentials === 'include';
 req.responseType = 'text'
 
+log('XmlHttpRequest:')
 log(JSON.stringify(req))
 /*
 //applyRequestHeaders(req, headers)
