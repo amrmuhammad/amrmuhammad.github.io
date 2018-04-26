@@ -55,7 +55,7 @@ log(JSON.stringify(req.prototype))
 
 
 //applyRequestHeaders(req, headers)
-/*
+
 req.onload = function (oEvent){
   //const ok = req.status >= 200 && req.status < 300;
   //return {body: req.response, status: req.status};
@@ -78,7 +78,8 @@ req.onload = function (oEvent){
   FileSaver.saveAs(blob, "GitHub.bundle.js")
    
 }
-*/
+
+
 /*
 req.addEventListener('progress', function (progressEvent) {
   log('request progress')
