@@ -69,6 +69,7 @@ req.addEventListener('load', function (loadEvent) {
   // For details see the file LICENSE/LICENSE-1.md 
    
   // Code copied from FileSaver.js README file and modified
+  /*
   var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.js')
   log(JSON.stringify(FileSaver))
    
@@ -76,7 +77,7 @@ req.addEventListener('load', function (loadEvent) {
   log(JSON.stringify(blob))
    
   FileSaver.saveAs(blob, "GitHub.bundle.js")
-   
+   */
 });
 
 
