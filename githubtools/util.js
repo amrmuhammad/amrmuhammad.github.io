@@ -49,6 +49,8 @@ req.responseType = 'text'
 
 log('XmlHttpRequest:')
 log(JSON.stringify(req))
+
+log('req.prototype:')
 log(JSON.stringify(req.prototype))
 
 
