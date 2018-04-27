@@ -12,4 +12,4 @@ function log(text) {
 
 //////////////////////////////////////////////// 
 
-log('Beginning of FileSaver.debug.js') */
+log('Beginning of FileSaver.debug.js') 
