@@ -71,7 +71,7 @@ req.addEventListener('load', function (loadEvent) {
   // Code copied from FileSaver.js README file and modified
   
   //var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.debug.js')
-  var FileSaver = require('./FileSaver.debug.js')
+  //var FileSaver = require('./FileSaver.debug.js')
    
   //log(JSON.stringify(FileSaver))
   /*
@@ -80,7 +80,7 @@ req.addEventListener('load', function (loadEvent) {
    
   FileSaver.saveAs(blob, "GitHub.bundle.js")
    */
-  //var FileSaver = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
+  var FileSaver2 = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
  
    
 });
