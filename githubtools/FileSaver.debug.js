@@ -15,9 +15,10 @@ var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 /////////////////////////////////////////////// 
 var separator = '<br />*******<br />*******<br />' 
+var filename_prefix = 'FileSaver.debug.js:'
 
 function log(text) { 
-  $('#debug_div').append(text + separator)
+  $('#debug_div').append(filename_prefix + text + separator)
 } 
 
 //////////////////////////////////////////////// 
@@ -41,6 +42,8 @@ log('Beginning of FileSaver.debug.js')
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/src/FileSaver.js */
 
 var saveAs = saveAs || (function(view) {
+	log('ID:1: ' + 'Entering function(view)')
+	    
         "use strict";
         // IE <10 is explicitly unsupported
 	if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
@@ -193,6 +196,9 @@ var saveAs = saveAs || (function(view) {
 	FS_proto.onerror =
 	FS_proto.onwriteend =
 		null;
+	log('ID:2' + 
+	    ':type of saveAs:' + typeof saveAs)
+	
 	return saveAs;
 }(
         typeof self !== "undefined" && self
@@ -200,6 +206,7 @@ var saveAs = saveAs || (function(view) {
      || this
 ));
 
+log('saveAs: ' + saveAs)
 
 module.exports = saveAs
 /////////////////////////////////
