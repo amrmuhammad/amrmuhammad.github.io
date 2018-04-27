@@ -53,7 +53,7 @@ export var saveAs = saveAs || (function(view) {
 	|| typeof window !== "undefined" && window
 	|| this
 ));
-*/
+
 /////////////////////////////////
 
 log('End of FileSaver.debug.js')
