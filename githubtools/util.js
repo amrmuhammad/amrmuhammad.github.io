@@ -2,10 +2,10 @@ var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 ///////////////////////////////////////////////
 var separator = '<br />*******<br />*******<br />'
-
+var filename_prefix = 'util.js: '
 
 function log(text) {
-   $('#debug_div').append(text + separator)
+   $('#debug_div').append(filename_prefix + text + separator)
 }
 ////////////////////////////////////////////////
 
@@ -73,11 +73,11 @@ req.addEventListener('load', function (loadEvent) {
   //var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.debug.js')
   var FileSaver = require('./FileSaver.debug.js');
    
-  log('FileSaver : ' + JSON.stringify(FileSaver))
-   
+  log('type of FileSaver : ' + typeof FileSaver)
+  log('FileSaver:' + FileSaver)
   
   var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"})
-  log('blob : ' + JSON.stringify(blob))
+  log('blob : ' + blob)
    
   FileSaver.saveAs(blob, "GitHub.bundle.js")
   
