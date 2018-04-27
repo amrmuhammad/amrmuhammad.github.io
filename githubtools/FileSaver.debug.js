@@ -1,4 +1,14 @@
 
+
+////////////////////////////////////////////////
+
+/*
+  Author : Amr Muhammad
+  This file is a copy of FileSaver.js
+  with some modifications;
+  mainly adding debugging code
+*/
+
  
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js') 
 
