@@ -200,6 +200,8 @@ var saveAs = saveAs || (function(view) {
      || this
 ));
 
+
+module.exports = saveAs
 /////////////////////////////////
 
 log('End of FileSaver.debug.js')
