@@ -105,6 +105,7 @@ var saveAs = saveAs || (function(view) {
 			return blob;
 		}
 		, FileSaver = function(blob, name, no_auto_bom) {
+			log('ID: 3: Entering FileSaver function')
 			if (!no_auto_bom) {
 				blob = auto_bom(blob);
 			}
@@ -119,6 +120,8 @@ var saveAs = saveAs || (function(view) {
 				}
 				// on any filesys errors revert to saving with object URLs
 				, fs_error = function() {
+					log('ID:6 : Entering fs_error function')
+					
 					if ((is_chrome_ios || (force && is_safari)) && view.FileReader) {
 						// Safari doesn't allow downloading of blob urls
 						var reader = new FileReader();
@@ -136,11 +139,14 @@ var saveAs = saveAs || (function(view) {
 					}
 					// don't create more object URLs than needed
 					if (!object_url) {
+						log('ID: 7: Will create object_url')
 						object_url = get_URL().createObjectURL(blob);
 					}
 					if (force) {
+						log('ID: 8: force is true')
 						view.location.href = object_url;
-					} else {
+					} else { 
+						log('ID: 9: view.open')
 						var opened = view.open(object_url, "_blank");
 						if (!opened) {
 							// Apple does not allow window.open, see https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/WorkingwithWindowsandTabs/WorkingwithWindowsandTabs.html
@@ -154,6 +160,7 @@ var saveAs = saveAs || (function(view) {
 			;
 			filesaver.readyState = filesaver.INIT;
 			if (can_use_save_link) {
+				log('ID:4 : can_use_save_link')
 				object_url = get_URL().createObjectURL(blob);
 				setImmediate(function() {
 					save_link.href = object_url;
@@ -165,6 +172,7 @@ var saveAs = saveAs || (function(view) {
 				}, 0);
 				return;
 			}
+			log('ID: 5: will call fs_error ')
 			fs_error();
 		}
 		, FS_proto = FileSaver.prototype
