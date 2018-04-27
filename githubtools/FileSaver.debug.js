@@ -33,21 +33,8 @@ log('Beginning of FileSaver.debug.js')
  * License: MIT
  *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
  */
- 
-/*
-export var saveAs = saveAs || (function(view) {
-	"use strict";
-	// IE <10 is explicitly unsupported
-	if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
-		return;
-	}
-  
-}(
-	   typeof self !== "undefined" && self
-	|| typeof window !== "undefined" && window
-	|| this
-));
-*/
+ /////////////////////////////////
+
 /////////////////////////////////
 
 log('End of FileSaver.debug.js')
