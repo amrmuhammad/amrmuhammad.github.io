@@ -70,7 +70,9 @@ req.addEventListener('load', function (loadEvent) {
    
   // Code copied from FileSaver.js README file and modified
   
-  var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.debug.js')
+  //var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.debug.js')
+  var FileSaver = require('./FileSaver.debug.js')
+   
   //log(JSON.stringify(FileSaver))
   /*
   var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"})
