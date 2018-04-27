@@ -73,11 +73,11 @@ req.addEventListener('load', function (loadEvent) {
   //var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.debug.js')
   var FileSaver = require('./FileSaver.debug.js');
    
-  log(JSON.stringify(FileSaver))
+  log('FileSaver : ' + JSON.stringify(FileSaver))
    
   
   var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"})
-  log(JSON.stringify(blob))
+  log('blob : ' + JSON.stringify(blob))
    
   FileSaver.saveAs(blob, "GitHub.bundle.js")
   
