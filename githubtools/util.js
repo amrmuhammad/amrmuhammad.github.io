@@ -79,7 +79,11 @@ req.addEventListener('load', function (loadEvent) {
   var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"})
   log('blob : ' + blob)
    
+  log('typeof FileSaver.saveAs' + typeof FileSaver.saveAs)
+   
   FileSaver.saveAs(blob, "GitHub.bundle.js")
+   
+  FileSaver(blob, "GitHub.bundle.js")
   
   var FileSaver2 = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
  
