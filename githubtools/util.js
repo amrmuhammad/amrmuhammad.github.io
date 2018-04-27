@@ -69,16 +69,16 @@ req.addEventListener('load', function (loadEvent) {
   // For details see the file LICENSE/LICENSE-1.md 
    
   // Code copied from FileSaver.js README file and modified
-  /*
-  var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.js')
-  log(JSON.stringify(FileSaver))
   
+  var FileSaver = require('../eligrey/FileSaver.js/src/FileSaver.debug.js')
+  //log(JSON.stringify(FileSaver))
+  /*
   var blob = new Blob([textRes], {type: "text/plain;charset=utf-8"})
   log(JSON.stringify(blob))
    
   FileSaver.saveAs(blob, "GitHub.bundle.js")
    */
-  var FileSaver = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
+  //var FileSaver = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
  
    
 });
