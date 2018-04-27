@@ -40,6 +40,18 @@ log('Beginning of FileSaver.debug.js')
 
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/src/FileSaver.js */
 
+var saveAs = saveAs || (function(view) {
+        "use strict";
+        // IE <10 is explicitly unsupported
+
+        if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
+                return;
+        }
+}(
+      typeof self !== "undefined" && self
+   || typeof window !== "undefined" && window
+   || this
+));
 
 /////////////////////////////////
 
