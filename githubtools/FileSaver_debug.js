@@ -1,3 +1,7 @@
+
+
+///////////////////////////////////
+
 /*
   Author : Amr Muhammad
   This file is a copy of FileSaver.js
@@ -5,7 +9,7 @@
   mainly adding debugging code
 */
 
-/*
+
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 ///////////////////////////////////////////////
@@ -18,7 +22,7 @@ function log(text) {
 ////////////////////////////////////////////////
 
 log('Beginning of FileSaver.debug.js')
-*/
+
 
 /* FileSaver.js
  * A saveAs() FileSaver implementation.
@@ -29,6 +33,8 @@ log('Beginning of FileSaver.debug.js')
  * License: MIT
  *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
  */
+
+
 
 /*global self */
 /*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
@@ -205,5 +211,5 @@ export var saveAs = saveAs || (function(view) {
 */
 /////////////////////////////////
 
-//log('End of FileSaver.debug.js')
+log('End of FileSaver.debug.js')
 
