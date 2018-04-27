@@ -23,3 +23,37 @@ function log(text) {
 //////////////////////////////////////////////// 
 
 log('Beginning of FileSaver.debug.js') 
+
+/* FileSaver.js
+ * A saveAs() FileSaver implementation.
+ * 1.3.8
+ * 2018-03-22 14:03:47
+ *
+ * By Eli Grey, https://eligrey.com
+ * License: MIT
+ *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
+ */
+
+
+
+/*global self */
+/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
+
+/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/src/FileSaver.js */
+
+export var saveAs = saveAs || (function(view) {
+	"use strict";
+	// IE <10 is explicitly unsupported
+	if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
+		return;
+	}
+  
+}(
+	   typeof self !== "undefined" && self
+	|| typeof window !== "undefined" && window
+	|| this
+));
+*/
+/////////////////////////////////
+
+log('End of FileSaver.debug.js')
