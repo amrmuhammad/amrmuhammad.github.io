@@ -5,6 +5,7 @@
   mainly adding debugging code
 */
 
+/*
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 ///////////////////////////////////////////////
@@ -17,7 +18,7 @@ function log(text) {
 ////////////////////////////////////////////////
 
 log('Beginning of FileSaver.debug.js')
-
+*/
 
 /* FileSaver.js
  * A saveAs() FileSaver implementation.
@@ -204,5 +205,5 @@ export var saveAs = saveAs || (function(view) {
 */
 /////////////////////////////////
 
-log('End of FileSaver.debug.js')
+//log('End of FileSaver.debug.js')
 
