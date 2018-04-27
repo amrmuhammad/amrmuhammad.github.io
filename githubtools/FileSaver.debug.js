@@ -38,6 +38,8 @@ log('Beginning of FileSaver.debug.js')
 /*global self */
 /*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
 
+/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/src/FileSaver.js */
+
 
 /////////////////////////////////
 
