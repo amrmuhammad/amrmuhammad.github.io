@@ -216,7 +216,16 @@ var saveAs = saveAs || (function(view) {
 
 log('saveAs: ' + saveAs)
 
-module.exports = saveAs
+/* The following code 
+   was copied from FileSaver.min.js
+   linked to from index.xhtml
+   in the demo folder
+   */
+
+"undefined"!=typeof module &&
+module.exports ? module.exports.saveAs=saveAs :
+"undefined"!=typeof define &&null!== define &&null! ==define.amd && define([],function(){return saveAs});
+
 /////////////////////////////////
 
 log('End of FileSaver.debug.js')
