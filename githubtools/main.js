@@ -339,6 +339,7 @@ class CopyOpProcessor {
     log(JSON.stringify(this.__sourceRepo))
     ///////////////////////////
     var tree_nodes = []
+    var sourceRepo = this.__sourceRepo
     
     fetched_data.forEach(function(item, index, arrayObj) {
        
@@ -350,7 +351,7 @@ class CopyOpProcessor {
         log(item.sha)
         
          try {
-             item.blob = __sourceRepo.getBlob(item.sha, function(error, result, response) {
+             item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
            
              log('*** getBlob ' + item.blob)
            
