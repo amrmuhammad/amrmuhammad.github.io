@@ -83,9 +83,9 @@ req.addEventListener('load', function (loadEvent) {
    
   FileSaver.saveAs(blob, "GitHub.bundle.js")
    
-  FileSaver(blob, "GitHub.bundle.js")
+  //FileSaver(blob, "GitHub.bundle.js")
   
-  var FileSaver2 = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
+  //var FileSaver2 = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
  
    
 });
