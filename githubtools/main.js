@@ -350,16 +350,16 @@ class CopyOpProcessor {
         log(item.sha)
         
          try {
-           /*item.blob =*/ this.__sourceRepo.getBlob(item.sha, function(error, result, response) {
+             item.blob = __sourceRepo.getBlob(item.sha, function(error, result, response) {
            
-             log('*** getBlob ')
+             log('*** getBlob ' + item.blob)
            
            })
            .then(function(value) {
              log('.then() called')
            })
            .catch(function(e) {
-             log('.catch() called' + JSON.stringify(e))
+             log('.catch() called' + e)
            })
             
          } catch(e) {
