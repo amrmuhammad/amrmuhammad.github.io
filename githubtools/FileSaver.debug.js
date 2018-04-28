@@ -222,9 +222,12 @@ log('saveAs: ' + saveAs)
    in the demo folder
    */
 
-"undefined"!=typeof module &&
-module.exports ? module.exports.saveAs=saveAs :
-"undefined"!=typeof define &&null!== define &&null! ==define.amd && define([],function(){return saveAs});
+if (("undefined" != typeof module) && module.exports ) {
+	log('ID:10:module.exports.saveAs')
+	module.exports.saveAs = saveAs 
+} else if (("undefined"!=typeof define) && null !== define && null !== define.amd ) {
+	define([],function(){return saveAs});
+}
 
 /////////////////////////////////
 
