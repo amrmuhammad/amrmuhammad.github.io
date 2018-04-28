@@ -58,7 +58,8 @@ function execute_util_code() {
 
   log('After require util.js')
 }
-execute_util_code()
+
+//execute_util_code()
 
 ///////
 
@@ -362,7 +363,7 @@ class CopyOpProcessor {
            })
             
          } catch(e) {
-           log('catch block' + JSON.stringify(e))
+           log('catch block:' + e)
          }
 
       }
