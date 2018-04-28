@@ -222,13 +222,14 @@ log('saveAs: ' + saveAs)
    in the demo folder
    */
 
+/*
 if (("undefined" != typeof module) && module.exports ) {
 	log('ID:10:module.exports.saveAs')
 	module.exports.saveAs = saveAs 
 } else if (("undefined"!=typeof define) && null !== define && null !== define.amd ) {
 	define([],function(){return saveAs});
 }
-
+*/
 /////////////////////////////////
 
 log('End of FileSaver.debug.js')
