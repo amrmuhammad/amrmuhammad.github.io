@@ -7,9 +7,12 @@
   font-size: 24px;
   font-weight: bold;
   text-align: center;
+  
+}
+
+#top_header_sitename {
   position: relative;
   top: 30px;
-  
 }
 
 
