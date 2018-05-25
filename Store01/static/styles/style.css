@@ -6,3 +6,8 @@
   color: #ffffff;
   
 }
+
+
+ul {
+  list-style-type: none;
+}
