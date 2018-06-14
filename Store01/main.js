@@ -27,3 +27,26 @@ $('#app').append(html_code)
 $('#app').append('<div id="debug_div"></div>')
 
 ////////////////////////////////////
+
+$("#sell_your_products_link").click(sell_your_products_link_click_handler)     
+     
+/////////////////////////////////
+function sell_your_products_link_click_handler(event) {
+  
+  event.preventDefault()
+   
+  var html_code = 'Product type: '
+  
+  html_code += '<select id="product_type_select_box">'
+  html_code += '<option>T-shirt</option>'
+  html_code += '<option>Jeans</option>'
+  html_code += '</select>'
+
+  html_code += '<br /> <br />'
+   
+  $('#app').append(html_code)  
+
+}
+
+///////////////////////////////////
+
