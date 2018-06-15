@@ -45,6 +45,19 @@ function sell_your_products_link_click_handler(event) {
   html_code += '<br /> <br />'
    
   $('#app').append(html_code)  
+   
+  var product_type = $("#product_type_select_box").val()
+  
+  if (product_type === "T-shirt") {
+     html_code = "Product dimensions: "
+     html_code += "T-shirt width: "
+     html_code += '<input id="t_shirt_width_input" >'
+     html_code += "T-shirt length: "    
+     html_code += '<input id="t_shirt_length_input" >'
+     
+  } else if (product_type === "Jeans") {
+     
+  }
 
 }
 
