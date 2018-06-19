@@ -55,7 +55,16 @@ function sell_your_products_link_click_handler(event) {
      html_code += "T-shirt length: "    
      html_code += '<input id="t_shirt_length_input" >'
      
+     $('#app').append(html_code)
+     
   } else if (product_type === "Jeans") {
+    html_code = "Product dimensions: "
+    html_code += "Jeans Waist size: "
+    html_code += '<input id="jeans_waist_size_input" >'
+    html_code += "Jeans length: "    
+    html_code += '<input id="jeans_length_input" >'
+
+    $('#app').append(html_code)
      
   }
 
