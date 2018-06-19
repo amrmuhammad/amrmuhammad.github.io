@@ -48,16 +48,24 @@ function sell_your_products_link_click_handler(event) {
    
   var product_type = $("#product_type_select_box").val()
   
-  if (product_type === "T-shirt") {
+  product_type_select_box_change_handler_helper(product_type) 
+
+}
+
+///////////////////////////////////
+function product_type_select_box_change_handler_helper(product_type) {
+   
+   if (product_type === "T-shirt") {
      html_code = "Product dimensions: "
      html_code += "T-shirt width: "
      html_code += '<input id="t_shirt_width_input" >'
      html_code += "T-shirt length: "    
      html_code += '<input id="t_shirt_length_input" >'
-     
+
      $('#app').append(html_code)
-     
+
   } else if (product_type === "Jeans") {
+
     html_code = "Product dimensions: "
     html_code += "Jeans Waist size: "
     html_code += '<input id="jeans_waist_size_input" >'
@@ -65,10 +73,21 @@ function sell_your_products_link_click_handler(event) {
     html_code += '<input id="jeans_length_input" >'
 
     $('#app').append(html_code)
-     
-  }
 
+  }
 }
 
-///////////////////////////////////
+$('#product_type_select_box').change(product_type_select_box_change_handler)
+
+function product_type_select_box_change_handler(event) {
+   
+
+  var product_type = $("#product_type_select_box").val()
+
+  product_type_select_box_change_handler_helper(product_type) 
+   
+}
+//////////////////////////////////
+
+
 
