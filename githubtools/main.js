@@ -199,6 +199,7 @@ function gh_ops_copy_menu_item_click_handler(event) {
   html_code += 'Github destination username : <input id="dest_username" > <br />'
   html_code += 'Github destination repo. name : <input id="dest_repo_name" > <br />'
   html_code += 'Github destination API personal access token : <input id="dest_gh_pat" > <br />'
+  html_code += 'Path within dest repo : <input id="path_within_dest_repo" > <br />'
   html_code += 'Github source username : <input id="source_username" > <br />'
   html_code += 'Github source repo. name : <input id="source_repo_name" > <br />'
   html_code += 'Path within source repo : <input id="path_within_source_repo" > <br />'
@@ -418,7 +419,7 @@ class CopyOpProcessor {
           })
           
         } catch(e) {
-          log(JSON.stringify(e))
+          log('catch block:' + e)
         }
 
       }
