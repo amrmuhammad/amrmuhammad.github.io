@@ -349,19 +349,19 @@ class CopyOpProcessor {
       ////
       
       if(item.type === 'file') {
-        log(item.sha)
+        log('item.sha' + item.sha)
         
          try {
              item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
            
-             log('*** getBlob ' + item.blob)
+             log('sourceRepo.getBlob : ' + item.blob)
            
            })
            .then(function(value) {
-             log('.then() called')
+             log('.then() called, value: ' + value)
            })
            .catch(function(e) {
-             log('.catch() called' + e)
+             log('.catch() called, e: ' + e)
            })
             
          } catch(e) {
@@ -409,13 +409,15 @@ class CopyOpProcessor {
     log(this.__destRepo.__fullname + '<br />')
 
     /////
+    var destRepo = this.__destRepo
+    
     this.__fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
-        log('*** created a blob for sha' + item.sha)
+        log('item.sha' + item.sha)
          
         try {
-          var request_promise = this.__destRepo.createBlob(item.blob, function(error, result, response) {
+          var request_promise = destRepo.createBlob(item.blob, function(error, result, response) {
           })
           
         } catch(e) {
