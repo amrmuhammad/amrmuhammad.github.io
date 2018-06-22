@@ -331,7 +331,70 @@ class CopyOpProcessor {
   //////////////////////////////////
    
   //////////////////////////////////
+  process_fetched_source_repo_data_helper(fetched_data, tree_nodes) {
+     
+     
+    var sourceRepo = this.__sourceRepo
+    var fetchedBlobCount = 0
+    
+    fetched_data.forEach(function(item, index, arrayObj) {
 
+
+      tree_nodes[index] = { "text" : item.name}
+
+      ////
+
+      if(item.type === 'file') {
+
+        log('item.sha' + item.sha)
+
+         try {
+
+             item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
+
+             log('sourceRepo.getBlob : ' + JSON.stringify(item.blob))
+
+
+           })
+
+           .then(function(value) {
+
+             log('.then() called, value: ' + value)
+             item.blob = value
+             log('item.blob: ' + JSON.stringify(item.blob))
+                
+             fetchedBlobCount = fetchedBlobCount + 1
+                
+             if(fetchedBlobCount === fetched_data.length) {
+                
+                var promise = new Promise  (function(resolve, reject) {
+                   resolve(fetchedBlobCount)
+                })
+                return promise
+             }
+
+           })
+
+           .catch(function(e) {
+
+             log('.catch() called, e: ' + e)
+
+           })
+
+         } catch(e) {
+
+           log('catch block:' + e)
+
+         }
+
+      }
+
+      ////
+
+    })
+  }
+  //////////////////////////////////
+   
   process_fetched_source_repo_data(fetched_data) {
 
     log('CopyOpProcessor::process_fetched_source_repo_data')
@@ -340,37 +403,8 @@ class CopyOpProcessor {
     log(JSON.stringify(this.__sourceRepo))
     ///////////////////////////
     var tree_nodes = []
-    var sourceRepo = this.__sourceRepo
     
-    fetched_data.forEach(function(item, index, arrayObj) {
-       
-      tree_nodes[index] = { "text" : item.name}
-
-      ////
-      
-      if(item.type === 'file') {
-        log('item.sha' + item.sha)
-        
-         try {
-             item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
-           
-             log('sourceRepo.getBlob : ' + item.blob)
-           
-           })
-           .then(function(value) {
-             log('.then() called, value: ' + value)
-           })
-           .catch(function(e) {
-             log('.catch() called, e: ' + e)
-           })
-            
-         } catch(e) {
-           log('catch block:' + e)
-         }
-
-      }
-      ////
-    })
+    var fetchedBlobsPromise = this.process_fetched_source_repo_data_helper(fetched_data, tree_nodes)
 
     this.__fetched_data = fetched_data
     ///////////////////////////////
