@@ -459,7 +459,19 @@ class CopyOpProcessor {
 
     /////
     var destRepo = this.__destRepo
-    
+    var requestPromise = destRepo.getRef("heads/master", null)
+    var refData = undefined
+    requestPromise.then(function(value) {
+      refData = value
+      var commitSha = refData.object.sha
+      var getCommitPromise = destRepo.getCommit(commitSha, null)
+      
+      getCommitPromise.then(function(value) {
+        var commitData = value
+        var commitTreeSha = commitData.tree.sha
+      })
+    })
+     
     this.__fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
