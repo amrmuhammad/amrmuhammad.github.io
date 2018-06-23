@@ -337,6 +337,15 @@ class CopyOpProcessor {
     var sourceRepo = this.__sourceRepo
     var fetchedBlobCount = 0
     
+ 
+
+    var promise = new Promise  (function(resolve, reject) {
+
+   
+
+    
+
+    
     fetched_data.forEach(function(item, index, arrayObj) {
 
 
@@ -350,10 +359,9 @@ class CopyOpProcessor {
 
          try {
 
-             item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
+           item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
 
              log('sourceRepo.getBlob : ' + JSON.stringify(item.blob))
-
 
            })
 
@@ -367,10 +375,10 @@ class CopyOpProcessor {
                 
              if(fetchedBlobCount === fetched_data.length) {
                 
-                var promise = new Promise  (function(resolve, reject) {
-                   resolve(fetchedBlobCount)
-                })
-                return promise
+             
+               resolve(fetchedBlobCount)
+                
+             
              }
 
            })
@@ -391,8 +399,13 @@ class CopyOpProcessor {
 
       ////
 
-    })
-  }
+    }) // Array forEach loop
+      
+    }) // promise constructor
+    
+    return promise
+    
+  }// end of function
   //////////////////////////////////
    
   process_fetched_source_repo_data(fetched_data) {
@@ -415,6 +428,8 @@ class CopyOpProcessor {
 
     }
     update_js_tree(tree_params)
+    
+    return fetchedBlobsPromise
 
   } // end of function process_fetched_source_repo_data
 
@@ -510,9 +525,14 @@ function gh_ops_copy_button_click_handler() {
 
     }
     
-    processor.process_fetched_source_repo_data(response.data)
-    processor.copy_fetched_data_to_dest_repo(credentials, repo_params)
+    var fetchedBlobsPromise = processor.process_fetched_source_repo_data(response.data)
+    
+    fetchedBlobsPromise.then(function(value) {
+    
+      processor.copy_fetched_data_to_dest_repo(credentials, repo_params)
 
+    })
+    
   })
    
 }
