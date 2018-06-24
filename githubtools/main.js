@@ -495,6 +495,12 @@ class CopyOpProcessor {
           var request_promise = destRepo.createBlob(item.blob, function(error, result, response) {
           })
           .then(function(value) {
+	    var blobData = value
+	    var createdBlobSha = blobData.sha
+	    
+	    treeObj.sha = createdBlobSha
+		  
+	    //destRepo.createTree
              
           })
           
