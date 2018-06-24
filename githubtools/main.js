@@ -469,17 +469,35 @@ class CopyOpProcessor {
       getCommitPromise.then(function(value) {
         var commitData = value
         var commitTreeSha = commitData.tree.sha
+        
+        copy_data_helper()
       })
     })
-     
+    
+    function copy_data_helper() {
+       
     this.__fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
         log('item.sha' + item.sha)
          
         try {
+           
+          var treeObj = {
+	
+	          path : "test/lib/cmaps/" + item.name,
+	          mode : "100644",
+	          type : "blob",
+	          sha : undefined
+	
+	        }
+           
           var request_promise = destRepo.createBlob(item.blob, function(error, result, response) {
           })
+          .then(function(value) {
+             
+          })
+          
           
         } catch(e) {
           log('catch block:' + e)
@@ -488,6 +506,8 @@ class CopyOpProcessor {
       }
 
     })
+    
+    } // copy_data_helper
     /////
                                                      
   } // end of function copy_fetched_data_to_dest_repo
