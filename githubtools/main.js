@@ -462,20 +462,36 @@ class CopyOpProcessor {
     var requestPromise = destRepo.getRef("heads/master", null)
     var refData = undefined
     requestPromise.then(function(value) {
+	    
+      
       refData = value
       var commitSha = refData.object.sha
+      
+      log("getRef .then() called" + JSON.stringify(refData))
+	    
       var getCommitPromise = destRepo.getCommit(commitSha, null)
       
       getCommitPromise.then(function(value) {
         var commitData = value
         var commitTreeSha = commitData.tree.sha
         
+	log("getCommit .then() called" + JSON.stringify(commitData))
+	
         copy_data_helper(commitTreeSha, commitSha)
       })
+      .catch(function(e) {
+        log("getCommit .catch() called: " + e)
+      })
+	    
+    })
+    .catch(function(e) {
+      log("getRef .catch() called" + e)
     })
     
     function copy_data_helper(commitTreeSha, commitSha) {
     
+    log("copy_data_helper")
+	    
     var baseTreeSha = commitTreeSha
     var baseCommitSha = commitSha
     
