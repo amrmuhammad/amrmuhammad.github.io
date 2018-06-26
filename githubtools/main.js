@@ -196,8 +196,8 @@ function gh_ops_copy_menu_item_click_handler(event) {
   event.preventDefault()
   var html_code = '<hr>'
   html_code += '<h2>Copy files between repos.</h2>'
-  html_code += 'Github destination username : <input id="dest_username" > <br />'
-  html_code += 'Github destination repo. name : <input id="dest_repo_name" > <br />'
+  html_code += 'Github destination username : <input id="dest_username" value="amrmuhammad"> <br />'
+  html_code += 'Github destination repo. name : <input id="dest_repo_name" value="amrmuhammad.github.io"> <br />'
   html_code += 'Github destination API personal access token : <input id="dest_gh_pat" > <br />'
   html_code += 'Path within dest repo : <input id="path_within_dest_repo" > <br />'
   html_code += 'Github source username : <input id="source_username" > <br />'
@@ -465,7 +465,7 @@ class CopyOpProcessor {
 	    
       
       refData = value
-      var commitSha = refData.object.sha
+      var commitSha = undefined //refData.object.sha
       
       log("getRef .then() called" + JSON.stringify(refData))
 	    
