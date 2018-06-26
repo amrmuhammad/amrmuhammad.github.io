@@ -470,13 +470,14 @@ class CopyOpProcessor {
         var commitData = value
         var commitTreeSha = commitData.tree.sha
         
-        copy_data_helper(commitTreeSha)
+        copy_data_helper(commitTreeSha, commitSha)
       })
     })
     
-    function copy_data_helper(commitTreeSha) {
+    function copy_data_helper(commitTreeSha, commitSha) {
     
     var baseTreeSha = commitTreeSha
+    var baseCommitSha = commitSha
     
     this.__fetched_data.forEach(function(item, index, arrayObj) {
 
@@ -500,12 +501,32 @@ class CopyOpProcessor {
 	    var blobData = value
 	    var createdBlobSha = blobData.sha
 	    
+	    log("createdBlobSha: " + createdBlobSha)
+		  
 	    treeObj.sha = createdBlobSha
 		  
 	    destRepo.createTree(treeObj, baseTreeSha, null)
             .then(function(value) {
 	      var treeData = value
-	      destRepo.vreateCommit(treeData.sha)
+	      
+	      log("createdTreeSha :" + treeData.sha)
+		    
+	      baseTreeSha = treeData.sha
+	      destRepo.commit(baseCommitSha, treeData.sha, "update " + item.name, null)
+              .then(function(value) {
+	        var commitData = value
+		
+		log("new commit sha: " + commitData.sha)
+		      
+		baseCommitSha = commitData.sha
+		destRepo.updateHead("refs/heads/master", commitData.sha, false, null)
+		.then(function(value) {
+			
+                  log("updated Head")
+			
+		})
+		
+	      })
 	    })
              
           })
