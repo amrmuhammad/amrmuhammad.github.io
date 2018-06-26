@@ -465,7 +465,7 @@ class CopyOpProcessor {
 	    
       
       refData = value
-      var commitSha = undefined //refData.object.sha
+      var commitSha = refData.data.object.sha
       
       log("getRef .then() called" + JSON.stringify(refData))
 	    
