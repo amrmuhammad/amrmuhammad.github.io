@@ -369,7 +369,7 @@ class CopyOpProcessor {
 
              log('.then() called, value: ' + value)
              item.blob = value
-             log('item.blob: ' + JSON.stringify(item.blob))
+             //log('item.blob: ' + JSON.stringify(item.blob))
                 
              fetchedBlobCount = fetchedBlobCount + 1
                 
@@ -470,12 +470,14 @@ class CopyOpProcessor {
         var commitData = value
         var commitTreeSha = commitData.tree.sha
         
-        copy_data_helper()
+        copy_data_helper(commitTreeSha)
       })
     })
     
-    function copy_data_helper() {
-       
+    function copy_data_helper(commitTreeSha) {
+    
+    var baseTreeSha = commitTreeSha
+    
     this.__fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
@@ -500,7 +502,11 @@ class CopyOpProcessor {
 	    
 	    treeObj.sha = createdBlobSha
 		  
-	    //destRepo.createTree
+	    destRepo.createTree(treeObj, baseTreeSha, null)
+            .then(function(value) {
+	      var treeData = value
+	      destRepo.vreateCommit(treeData.sha)
+	    })
              
           })
           
