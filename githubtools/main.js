@@ -461,6 +461,8 @@ class CopyOpProcessor {
     var destRepo = this.__destRepo
     var requestPromise = destRepo.getRef("heads/master", null)
     var refData = undefined
+    var fetched_data = this.__fetched_data
+    
     requestPromise.then(function(value) {
 	    
       
@@ -477,7 +479,7 @@ class CopyOpProcessor {
         
 	log("getCommit .then() called" + JSON.stringify(commitData))
 	
-        this.copy_data_helper(commitTreeSha, commitSha)
+        copy_data_helper(fetched_data, commitTreeSha, commitSha)
       })
       .catch(function(e) {
         log("getCommit .catch() called: " + e)
@@ -487,16 +489,16 @@ class CopyOpProcessor {
     .catch(function(e) {
       log("getRef .catch() called" + e)
     })
-  } // copy_fetched_data_to_dest_repo
+  
 	
-  copy_data_helper(commitTreeSha, commitSha) {
+    function copy_data_helper(fetched_data, commitTreeSha, commitSha) {
     
     log("copy_data_helper")
 	    
     var baseTreeSha = commitTreeSha
     var baseCommitSha = commitSha
     
-    this.__fetched_data.forEach(function(item, index, arrayObj) {
+    fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
         log('item.sha' + item.sha)
@@ -557,10 +559,10 @@ class CopyOpProcessor {
 
     })
     
-  } // copy_data_helper
-  /////
+    } // copy_data_helper
+    /////
                                                     
-   
+  } // copy_data_to_dest_repo 
   //////////////////////////////////
    
 } // end of class CopyOpProcessor
