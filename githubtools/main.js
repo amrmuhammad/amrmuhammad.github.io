@@ -473,7 +473,7 @@ class CopyOpProcessor {
       
       getCommitPromise.then(function(value) {
         var commitData = value
-        var commitTreeSha = commitData.tree.sha
+        var commitTreeSha = undefined //commitData.tree.sha
         
 	log("getCommit .then() called" + JSON.stringify(commitData))
 	
