@@ -477,7 +477,7 @@ class CopyOpProcessor {
         
 	log("getCommit .then() called" + JSON.stringify(commitData))
 	
-        copy_data_helper(commitTreeSha, commitSha)
+        this.copy_data_helper(commitTreeSha, commitSha)
       })
       .catch(function(e) {
         log("getCommit .catch() called: " + e)
@@ -487,8 +487,9 @@ class CopyOpProcessor {
     .catch(function(e) {
       log("getRef .catch() called" + e)
     })
-    
-    function copy_data_helper(commitTreeSha, commitSha) {
+  } // copy_fetched_data_to_dest_repo
+	
+  copy_data_helper(commitTreeSha, commitSha) {
     
     log("copy_data_helper")
 	    
@@ -525,17 +526,17 @@ class CopyOpProcessor {
             .then(function(value) {
 	      var treeData = value
 	      
-	      log("createdTreeSha :" + treeData.sha)
+	      log("createdTreeSha :" + treeData.data.sha)
 		    
-	      baseTreeSha = treeData.sha
-	      destRepo.commit(baseCommitSha, treeData.sha, "update " + item.name, null)
+	      baseTreeSha = treeData.data.sha
+	      destRepo.commit(baseCommitSha, treeData.data.sha, "update " + item.name, null)
               .then(function(value) {
 	        var commitData = value
 		
-		log("new commit sha: " + commitData.sha)
+		log("new commit sha: " + commitData.data.sha)
 		      
-		baseCommitSha = commitData.sha
-		destRepo.updateHead("refs/heads/master", commitData.sha, false, null)
+		baseCommitSha = commitData.data.sha
+		destRepo.updateHead("refs/heads/master", commitData.data.sha, false, null)
 		.then(function(value) {
 			
                   log("updated Head")
@@ -556,10 +557,9 @@ class CopyOpProcessor {
 
     })
     
-    } // copy_data_helper
-    /////
-                                                     
-  } // end of function copy_fetched_data_to_dest_repo
+  } // copy_data_helper
+  /////
+                                                    
    
   //////////////////////////////////
    
