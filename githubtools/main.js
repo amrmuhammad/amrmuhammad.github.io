@@ -317,13 +317,18 @@ class CopyOpProcessor {
 
    log(this.__sourceRepo.__fullname + '<br />')
 
-   var request_promise = this.__sourceRepo.getContents('master', repo_params.path_within_repo, false, function(error, result, response) {
+   var request_promise = this.__sourceRepo.getContents
+     ('master', repo_params.path_within_repo, false, 
+     function(error, result, response) {
 
-     log('getContents CB func called' + '<br />')
+       log('getContents CB func called' + '<br />')
 
-     log(JSON.stringify(result) + '<br />')
+       log('getContents response:' + JSON.stringify(response))
 
-  })
+       log(JSON.stringify(result) + '<br />')
+
+    }
+  )
 
   return request_promise
 
