@@ -321,6 +321,8 @@ class CopyOpProcessor {
      ('master', repo_params.path_within_repo, false, 
      function(error, result, response) {
 
+       log('getContents error: ' + error + JSON.stringify(error))
+	     
        log('getContents CB func called' + '<br />')
 
        log('getContents response:' + JSON.stringify(response))
