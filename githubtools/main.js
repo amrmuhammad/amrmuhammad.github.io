@@ -343,7 +343,20 @@ class CopyOpProcessor {
 
   } // end of function fetch_source_repo_contents
   //////////////////////////////////
-   
+  
+  get_no_of_file_items(fetched_data) {
+	  
+    var no_of_file_items = 0
+	  
+    fetched_data.forEach(function(item, index, arrayObj) {
+
+      if(item.type === 'file') {
+        no_of_file_items = no_of_file_items + 1
+      }
+    })
+	    
+    return no_of_file_items
+  }
   //////////////////////////////////
   process_fetched_source_repo_data_helper(fetched_data, tree_nodes) {
      
@@ -351,14 +364,10 @@ class CopyOpProcessor {
     var sourceRepo = this.__sourceRepo
     var fetchedBlobCount = 0
     
- 
-
-    var promise = new Promise  (function(resolve, reject) {
-
-   
-
+    var no_of_file_items = this.get_no_of_file_items(fetched_data)
     
 
+    var promise = new Promise  (function(resolve, reject) {
     
     fetched_data.forEach(function(item, index, arrayObj) {
 
@@ -382,17 +391,15 @@ class CopyOpProcessor {
            .then(function(value) {
 
              log('.then() called, value: ' + value)
-             item.blob = value
+             item.blob = value.data
              log('item.blob: ' + JSON.stringify(item.blob))
                 
              fetchedBlobCount = fetchedBlobCount + 1
                 
-             if(fetchedBlobCount === fetched_data.length) {
+             if(fetchedBlobCount === no_of_file_items) {
                 
-             
                resolve(fetchedBlobCount)
                 
-             
              }
 
            })
@@ -528,6 +535,8 @@ class CopyOpProcessor {
 	
 	        }
            
+	  log('item.blob: ' + JSON.stringify(item.blob))
+		
           var request_promise = destRepo.createBlob(item.blob, function(error, result, response) {
           })
           .then(function(value) {
