@@ -311,6 +311,13 @@ class CopyOpProcessor {
 
    log(gh.__auth.token + '<br />')
 
+   var rate_limit = gh.getRateLimit()
+   
+   var rate_limit_promise = rate_limit.getRateLimit(null)
+   rate_limit_promise.then(function(response) {
+     log('ratelimit response:' + JSON.stringify(response))
+   })
+	  
    var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
 
    this.__sourceRepo = gh.getRepo(repo_params.username, repo_params.repo_name)
