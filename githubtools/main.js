@@ -564,14 +564,28 @@ class CopyOpProcessor {
 		destRepo.updateHead("refs/heads/master", commitData.data.sha, false, null)
 		.then(function(value) {
 			
-                  log("updated Head")
+                  log("updateHead .then() called")
 			
+		})
+		.catch(function(e) {
+		  log("updateHead .catch() called : " + e)
 		})
 		
 	      })
+	      .catch(function(e) {
+	        log('commit .catch() called ' + e)
+	      })
+		    
+	    })
+            .catch(function(e) {
+              log('createTree .catch() called' + e)
 	    })
              
           })
+	  .catch(function(e) {
+	    log('createBlob .catch() called :' + e)
+	  })
+	  
           
           
         } catch(e) {
