@@ -622,6 +622,9 @@ function gh_ops_copy_button_click_handler() {
       processor.copy_fetched_data_to_dest_repo(credentials, repo_params)
 
     })
+    .catch(function(e) {
+      log('fetch_source_repo_contents promise .catch called: ' + e)
+    })
     
   })
    
