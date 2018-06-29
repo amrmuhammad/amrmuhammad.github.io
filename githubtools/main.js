@@ -546,6 +546,9 @@ class CopyOpProcessor {
 	    log("createdBlobSha: " + createdBlobSha)
 		  
 	    treeObj.sha = createdBlobSha
+		 
+            log('baseTreeSha :' + baseTreeSha)
+            log('treeObj: ' + JSON.stringify(treeObj))
 		  
 	    destRepo.createTree(treeObj, baseTreeSha, null)
             .then(function(value) {
@@ -578,7 +581,8 @@ class CopyOpProcessor {
 		    
 	    })
             .catch(function(e) {
-              log('createTree .catch() called' + e)
+              log('createTree .catch() called' + e + 
+	        JSON.stringify(e))
 	    })
              
           })
