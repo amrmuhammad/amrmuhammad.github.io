@@ -546,7 +546,8 @@ class CopyOpProcessor {
 	    log("createdBlobSha: " + createdBlobSha)
 		  
 	    treeObj.sha = createdBlobSha
-		 
+
+	    treeObj = [treeObj]
             log('baseTreeSha :' + baseTreeSha)
             log('treeObj: ' + JSON.stringify(treeObj))
 		  
