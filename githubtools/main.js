@@ -535,7 +535,7 @@ class CopyOpProcessor {
 	
 	        }
            
-	  log('item.blob: ' + JSON.stringify(item.blob))
+	//  log('item.blob: ' + JSON.stringify(item.blob))
 		
           var request_promise = destRepo.createBlob(item.blob, function(error, result, response) {
           })
