@@ -565,7 +565,7 @@ class CopyOpProcessor {
 		log("new commit sha: " + commitData.data.sha)
 		      
 		baseCommitSha = commitData.data.sha
-		destRepo.updateHead("refs/heads/master", commitData.data.sha, false, null)
+		destRepo.updateHead("heads/master", commitData.data.sha, false, null)
 		.then(function(value) {
 			
                   log("updateHead .then() called")
