@@ -392,7 +392,7 @@ class CopyOpProcessor {
 
              log('.then() called, value: ' + value)
              item.blob = value.data
-             log('item.blob: ' + JSON.stringify(item.blob))
+             //log('item.blob: ' + JSON.stringify(item.blob))
                 
              fetchedBlobCount = fetchedBlobCount + 1
                 
