@@ -572,7 +572,8 @@ class CopyOpProcessor {
 			
 		})
 		.catch(function(e) {
-		  log("updateHead .catch() called : " + e)
+		  log("updateHead .catch() called : " + e
+		    + ' ' + JSON.stringify(e))
 		})
 		
 	      })
