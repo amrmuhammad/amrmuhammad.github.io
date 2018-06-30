@@ -500,7 +500,7 @@ class CopyOpProcessor {
         
 	log("getCommit .then() called" + JSON.stringify(commitData))
 	
-        copy_data_helper(fetched_data, commitTreeSha, commitSha)
+        copy_data_helper(repo_params.path_within_repo, fetched_data, commitTreeSha, commitSha)
       })
       .catch(function(e) {
         log("getCommit .catch() called: " + e)
@@ -512,7 +512,7 @@ class CopyOpProcessor {
     })
   
 	
-    function copy_data_helper(fetched_data, commitTreeSha, commitSha) {
+    function copy_data_helper(path_within_repo, fetched_data, commitTreeSha, commitSha) {
     
     log("copy_data_helper")
 	    
@@ -528,7 +528,7 @@ class CopyOpProcessor {
            
           var treeObj = {
 	
-	          path : "test/lib/cmaps/" + item.name,
+	          path : path_within_repo + item.name,
 	          mode : "100644",
 	          type : "blob",
 	          sha : undefined
