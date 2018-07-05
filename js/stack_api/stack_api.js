@@ -30,9 +30,9 @@ class SE {
     * Create a new SE.
     * @param {Requestable.auth} [auth] - the credentials to authenticate to SE. If auth is
     *                                  not provided requests will be made unauthenticated
-    * @param {string} [apiBase=https://api.github.com] - the base Github API URL
+    * @param {string} [apiBase=https://api.stackexchange.com/2.2/] - the base Stack Exhange API URL
     */
-   constructor(auth, apiBase = 'https://api.github.com') {
+   constructor(auth, apiBase = 'https://api.stackexchange.com/2.2/') {
       this.__apiBase = apiBase;
       this.__auth = auth || {};
    }
