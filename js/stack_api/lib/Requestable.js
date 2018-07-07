@@ -1,3 +1,11 @@
+// This file is MIT licensed, see amrmuhammad.github.io/LICENSE.md for details
+
+
+// The code for this file is based on
+// https://github.com/amrmuhammad/amrmuhammad.github.io/blob/master/github-tools/GitHubJS/lib/Requestable.js
+
+// with the following license:
+
 /**
  * @file
  * @copyright  2016 Yahoo Inc.
@@ -6,10 +14,23 @@
  */
 
 import axios from 'axios';
-import debug from 'debug';
-import {Base64} from 'js-base64';
+//import debug from 'debug';
+//import {Base64} from 'js-base64';
 
-const log = debug('github:request');
+var this_repo_path = 'https://amrmuhammad.github.io'
+
+var $ = require(this_repo_path + '/math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
+var Base64 = require(this_repo_path + '/js/js-base64/v2.4.5/base64.js').Base64
+
+///////////
+
+var separator = '<br />*******<br />*******<br />'
+
+function log(text) {
+   $('#requestable_js_debug_div').append(text + separator)
+}
+
+/////////////////^
 
 /**
  * The error structure returned when a network call fails
