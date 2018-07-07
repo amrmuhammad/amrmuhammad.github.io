@@ -620,16 +620,21 @@ class CopyOpProcessor {
 	  
     var fetched_data = this.__fetched_data
     
-    fetched_data.forEach(function(item, index, arrayObj) {
+    fetched_data.forEach(async function(item, index, arrayObj) {
 
       if(item.type === 'file') {
         var file_path = path_within_repo + item.name
-        this.__destRepo.writeFile('master', file_path, 
-	  item.blob, 'update ' + item.name, 
-	  {encode : true})
-	.then(function(response) {
+	try {
+          var response = await this.__destRepo.writeFile('master', file_path, 
+	    item.blob, 'update ' + item.name, 
+	    {encode : true})
+	
 	  
-	})
+	  log('File: ' + item.name + ' successfully written ' 
+	    + 'in destination Repo at' + file_path)
+	} catch(e) {
+	  log('writeFile failed:' + e)
+	}
 	      
       }
 	    
