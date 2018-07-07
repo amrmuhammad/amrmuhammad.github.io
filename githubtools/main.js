@@ -369,7 +369,7 @@ class CopyOpProcessor {
 
     var promise = new Promise  (function(resolve, reject) {
     
-    fetched_data.forEach(function(item, index, arrayObj) {
+    fetched_data.forEach(async function(item, index, arrayObj) {
 
 
       tree_nodes[index] = { "text" : item.name}
@@ -382,7 +382,7 @@ class CopyOpProcessor {
 
          try {
 
-           item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
+           item.blob = await sourceRepo.getBlob(item.sha, function(error, result, response) {
 
              log('sourceRepo.getBlob : ' + JSON.stringify(item.blob))
 
@@ -484,7 +484,7 @@ class CopyOpProcessor {
     var refData = undefined
     var fetched_data = this.__fetched_data
     
-    requestPromise.then(function(value) {
+    requestPromise.then(async function(value) {
 	    
       
       refData = value
@@ -492,9 +492,9 @@ class CopyOpProcessor {
       
       log("getRef .then() called" + JSON.stringify(refData))
 	    
-      var getCommitPromise = destRepo.getCommit(commitSha, null)
+      var getCommitPromise = await destRepo.getCommit(commitSha, null)
       
-      getCommitPromise.then(function(value) {
+      getCommitPromise.then(async function(value) {
         var commitData = value
         var commitTreeSha = commitData.data.tree.sha
         
@@ -512,14 +512,14 @@ class CopyOpProcessor {
     })
   
 	
-    function copy_data_helper(path_within_repo, fetched_data, commitTreeSha, commitSha) {
+    async function copy_data_helper(path_within_repo, fetched_data, commitTreeSha, commitSha) {
     
     log("copy_data_helper")
 	    
     var baseTreeSha = commitTreeSha
     var baseCommitSha = commitSha
     
-    fetched_data.forEach(function(item, index, arrayObj) {
+    fetched_data.forEach(async function(item, index, arrayObj) {
 
       if(item.type === 'file') {
         log('item.sha' + item.sha)
@@ -537,9 +537,9 @@ class CopyOpProcessor {
            
 	//  log('item.blob: ' + JSON.stringify(item.blob))
 		
-          var request_promise = destRepo.createBlob(item.blob, function(error, result, response) {
+          var request_promise = await destRepo.createBlob(item.blob, function(error, result, response) {
           })
-          .then(function(value) {
+          .then(async function(value) {
 	    var blobData = value
 	    var createdBlobSha = blobData.data.sha
 	    
@@ -551,22 +551,26 @@ class CopyOpProcessor {
             log('baseTreeSha :' + baseTreeSha)
             log('treeObj: ' + JSON.stringify(treeObj))
 		  
-	    destRepo.createTree(treeObj, baseTreeSha, null)
-            .then(function(value) {
+	    var req_promise = await destRepo.createTree(treeObj, baseTreeSha, null)
+	    req_promise
+            .then(async function(value) {
 	      var treeData = value
 	      
 	      log("createdTreeSha :" + treeData.data.sha)
 		    
 	      baseTreeSha = treeData.data.sha
-	      destRepo.commit(baseCommitSha, treeData.data.sha, "update " + item.name, null)
-              .then(function(value) {
+	      var req_promise = await destRepo.commit(baseCommitSha, treeData.data.sha, "update " + item.name, null)
+	      req_promise
+              .then(async function(value) {
 	        var commitData = value
 		
 		log("new commit sha: " + commitData.data.sha)
 		      
 		baseCommitSha = commitData.data.sha
-		destRepo.updateHead("heads/master", commitData.data.sha, true, null)
-		.then(function(value) {
+		      
+		var req_promise = await destRepo.updateHead("heads/master", commitData.data.sha, true, null)
+		req_promise
+		.then(async function(value) {
 			
                   log("updateHead .then() called")
 			
