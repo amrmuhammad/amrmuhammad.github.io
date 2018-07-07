@@ -13,7 +13,12 @@ https://softwareengineering.stackexchange.com/questions/204410/how-are-gpl-compa
 
 - Question edited by: Robert Harvey (User profile: https://softwareengineering.stackexchange.com/users/1204/robert-harvey )
 
-- The answer by user: GlenH7 (User profile: https://softwareengineering.stackexchange.com/users/53019/glenh7 )
-  was useful.
+- Answer provided by user: GlenH7 (User profile: https://softwareengineering.stackexchange.com/users/53019/glenh7 )
+
+- Answer provided by user: Steven Burnap (User profile: https://softwareengineering.stackexchange.com/users/53141/steven-burnap )
+
+- Answer edited by user: Maximus Minimus (User profile: https://softwareengineering.stackexchange.com/users/54247/maximus-minimus )
+
+- Answer provided by user: Bennett McElwee (User profile: https://softwareengineering.stackexchange.com/users/255883/bennett-mcelwee )
 
 ////////////////////////
