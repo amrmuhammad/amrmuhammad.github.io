@@ -20,7 +20,7 @@ are available under the MIT license:
 The MIT License (MIT)
 
 
-Copyright (c) Apr 9, 2018, 9:12:33 AM martian2049 (<a href="https://developer.mozilla.org/en-US/profiles/martian2049">MDN profile </a>)
+Copyright (c) Jun 14, 2018, 12:20:14 AM user_ (<a href="https://developer.mozilla.org/en-US/profiles/user_">MDN profile </a>)
 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
