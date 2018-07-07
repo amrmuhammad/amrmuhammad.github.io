@@ -479,7 +479,7 @@ class CopyOpProcessor {
     log(this.__destRepo.__fullname + '<br />')
 
     /////
-    write_files_contents()
+    write_files_contents(repo_params.path_within_repo)
     /////
     var destRepo = this.__destRepo
     var requestPromise = destRepo.getRef("heads/master", null)
@@ -614,7 +614,7 @@ class CopyOpProcessor {
   } // copy_data_to_dest_repo 
   //////////////////////////////////
   
-  write_files_contents() {
+  write_files_contents(path_within_repo) {
 	  
     log('CopyOpProcessor::write_files_contents')
 	  
@@ -623,8 +623,14 @@ class CopyOpProcessor {
     fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
-
-        this.__destRepo.writeFile()
+        var file_path = path_within_repo + item.name
+        this.__destRepo.writeFile('master', file_path, 
+	  item.blob, 'update ' + item.name, 
+	  {encode : true})
+	.then(function(response) {
+	  
+	})
+	      
       }
 	    
     }
