@@ -637,7 +637,10 @@ class CopyOpProcessor {
 	  log('File: ' + item.name + ' successfully written ' 
 	    + 'in destination Repo at' + file_path)
 	} catch(e) {
-	  log('writeFile failed:' + e)
+	  log('writeFile failed: \n' + 
+	      e +
+	      'Error object: ' + JSON.stringify(e)
+	     )
 	}
 	      
       }
