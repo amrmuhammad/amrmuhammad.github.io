@@ -479,7 +479,7 @@ class CopyOpProcessor {
     log(this.__destRepo.__fullname + '<br />')
 
     /////
-    write_files_contents(repo_params.path_within_repo)
+    this.write_files_contents(repo_params.path_within_repo)
     /////
   } //copy_fetched_data_to_dest_repo
 
