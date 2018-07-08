@@ -28,6 +28,15 @@ var githubAuth = new ClientOAuth2({
 
 })
 */
+//////////////////////////////////
+// code copied from 
+// https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+////////////////////
 
 
 var html_code = ""
@@ -636,6 +645,8 @@ class CopyOpProcessor {
 	  
 	  log('File: ' + item.name + ' successfully written ' 
 	    + 'in destination Repo at' + file_path)
+		
+	  await sleep(5000) // sleep 5 seconds
 	} catch(e) {
 	  log('writeFile failed: \n' + 
 	      e +
