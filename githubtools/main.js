@@ -641,7 +641,7 @@ class CopyOpProcessor {
 	      
       }
 	    
-    }
+    }) // forEach
         
   } // write_files_contents
    
