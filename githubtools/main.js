@@ -369,7 +369,7 @@ class CopyOpProcessor {
 
     var promise = new Promise  (function(resolve, reject) {
     
-    fetched_data.forEach(async function(item, index, arrayObj) {
+    fetched_data.forEach( function(item, index, arrayObj) {
 
 
       tree_nodes[index] = { "text" : item.name}
@@ -382,7 +382,7 @@ class CopyOpProcessor {
 
          try {
 
-           item.blob = await sourceRepo.getBlob(item.sha, function(error, result, response) {
+           item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
 
              log('sourceRepo.getBlob : ' + JSON.stringify(item.blob))
 
@@ -696,7 +696,7 @@ function gh_ops_copy_button_click_handler() {
 
     })
     .catch(function(e) {
-      log('fetch_source_repo_contents promise .catch called: ' + e)
+      log('process_fetched_source_repo_data promise .catch called: ' + e)
     })
     
   })
