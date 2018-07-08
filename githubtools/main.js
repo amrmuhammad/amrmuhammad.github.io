@@ -646,7 +646,7 @@ class CopyOpProcessor {
 	  log('File: ' + item.name + ' successfully written ' 
 	    + 'in destination Repo at' + file_path)
 		
-	  await sleep(5000) // sleep 5 seconds
+	  await sleep(30000) // sleep 30 seconds
 	} catch(e) {
 	  log('writeFile failed: \n' + 
 	      e +
