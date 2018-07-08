@@ -652,11 +652,11 @@ class CopyOpProcessor {
 	  log('File: ' + item.name + ' successfully written ' 
 	    + 'in destination Repo at' + file_path)
 		
-	  await sleep(45000) // sleep 45 seconds
-          for (var i=0; i<30000; i++) {
-           var j= 0
-	   j = j + 1
-	  }
+	  await sleep(5000) // sleep 5 seconds
+          //for (var i=0; i<30000; i++) {
+          //var j= 0
+	  //j = j + 1
+	  //}
 		
 	} catch(e) {
 	  log('writeFile failed: \n' + 
