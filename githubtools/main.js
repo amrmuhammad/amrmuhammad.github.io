@@ -32,6 +32,9 @@ var githubAuth = new ClientOAuth2({
 // code copied from 
 // https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 
+// see https://github.com/amrmuhammad/amrmuhammad.github.io/blob/master/LICENSE/stackoverflow/LICENSE-what-is-the-javascript-version-of-sleep.md
+// for license 
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -626,15 +629,18 @@ class CopyOpProcessor {
   } // write_file_contents_manually
   //////////////////////////////////
   
-  write_files_contents(path_within_repo) {
+  async write_files_contents(path_within_repo) {
 	  
     log('CopyOpProcessor::write_files_contents')
 	  
     var fetched_data = this.__fetched_data
     var destRepo = this.__destRepo
     
-    fetched_data.forEach(async function(item, index, arrayObj) {
-
+    try {
+    for (var i=0; i<fetched_data.length; i++) {
+    //fetched_data.forEach(async function(item, index, arrayObj) {
+      var item = fetched_data[i]
+    
       if(item.type === 'file') {
         var file_path = path_within_repo + item.name
 	try {
@@ -661,7 +667,12 @@ class CopyOpProcessor {
 	      
       }
 	    
-    }) // forEach
+    } // for loop
+    } catch(e) {
+      log(e)
+    }
+	  
+    //}) // forEach
         
   } // write_files_contents
    
