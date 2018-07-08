@@ -481,6 +481,9 @@ class CopyOpProcessor {
     /////
     write_files_contents(repo_params.path_within_repo)
     /////
+  } //copy_fetched_data_to_dest_repo
+
+  write_file_contents_manually() {
     var destRepo = this.__destRepo
     var requestPromise = destRepo.getRef("heads/master", null)
     var refData = undefined
@@ -611,7 +614,7 @@ class CopyOpProcessor {
     } // copy_data_helper
     /////
                                                     
-  } // copy_data_to_dest_repo 
+  } // write_file_contents_manually
   //////////////////////////////////
   
   write_files_contents(path_within_repo) {
