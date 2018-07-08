@@ -622,13 +622,14 @@ class CopyOpProcessor {
     log('CopyOpProcessor::write_files_contents')
 	  
     var fetched_data = this.__fetched_data
+    var destRepo = this.__destRepo
     
     fetched_data.forEach(async function(item, index, arrayObj) {
 
       if(item.type === 'file') {
         var file_path = path_within_repo + item.name
 	try {
-          var response = await this.__destRepo.writeFile('master', file_path, 
+          var response = await destRepo.writeFile('master', file_path, 
 	    item.blob, 'update ' + item.name, 
 	    {encode : true})
 	
