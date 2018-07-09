@@ -25,7 +25,7 @@
 /**
  * SE encapsulates the functionality to create various API wrapper objects.
  */
-class SE {
+class SE extends Requestable {
    /**
     * Create a new SE.
     * @param {Requestable.auth} [auth] - the credentials to authenticate to SE. If auth is
@@ -36,5 +36,15 @@ class SE {
       this.__apiBase = apiBase;
       this.__auth = auth || {};
    }
+   
+   
+
+   getQuestionById(id, options, cb) {
+      
+      return this._request('GET', 
+        `/questions/{${id}}?order=desc&sort=activity&site=stackoverflow`, 
+        null, cb);
+   }
+   
   
 }
