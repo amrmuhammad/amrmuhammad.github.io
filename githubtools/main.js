@@ -49,12 +49,21 @@ html_code += 'Github username : <input id="gh_username" > <br />'
 html_code += 'Github API personal access token : <input id="gh_pat" > <br />'
 html_code += '<button id="gh_pat_ok">ok</button>'
 html_code += '<br /> <br />'
+///////
 html_code += '<hr>'
+///////
+html_code += 'Settings file: <br />'
+html_code += '<input type="file" id="app_settings_file_input">'
+///////
+html_code += '<hr />'
+////////
 html_code += '<div id="gh_operations_div">'
 html_code += '<button id="gh_operations_button">Operations</button> <br />'
 html_code += '</div>'
+///////
 html_code += '<div id="gh_current_operation_div">'
 html_code += '</div>'
+////////
 html_code += '<hr>'
 
 ////////////////////////////////////
