@@ -83,7 +83,8 @@ function execute_util_code() {
 //execute_util_code()
 
 ///////
-
+require('./event_handlers.js')
+////////
 
 
 $('#gh_pat_ok').click(function() {
