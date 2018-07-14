@@ -23,6 +23,8 @@
  
  
  $('#app_settings_file_input').change(function() {
+  
+  var file_list = $('#app_settings_file_input').get(0).files
  })
  
  
