@@ -334,3 +334,7 @@ function callbackErrorOrThrow(cb, path) {
       }
    };
 }
+
+
+module.exports.Requestable = Requestable
+
