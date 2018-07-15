@@ -19,7 +19,7 @@
 //import Gist from './Gist';
 
 
-
+var Requestable = require('./lib/Requestable.js')
 
 
 /**
