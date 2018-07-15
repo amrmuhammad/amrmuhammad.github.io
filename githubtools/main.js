@@ -137,6 +137,8 @@ $('#gh_pat_ok').click(function() {
        log('catch block')
     }
    */
+	
+   /*
    
    log('1')
    
@@ -172,7 +174,8 @@ $('#gh_pat_ok').click(function() {
             return this._request('PUT', `/repos/${this.__fullname}/contents/${filePath}`, commit, cb);
          }, () => {
             return this._request('PUT', `/repos/${this.__fullname}/contents/${filePath}`, commit, cb);
-});
+         });
+     */
    
 })
 
@@ -184,6 +187,9 @@ var model = {
   gh_operations_menu_displayed : false,
    
   current_user : { 
+  },
+	
+  app_settings : {
   }
 
 }
@@ -689,10 +695,20 @@ class CopyOpProcessor {
 } // end of class CopyOpProcessor
 
 //////////////////////////////////
+function update_settings() {
+
+  var sett = model.app_settings.copy_op = {}
+  sett.dest_username = $('#dest_username').val()
+  
+}
+//////////////////////////////////
+
 function gh_ops_copy_button_click_handler() {
 
   //log('gh_ops_opy_button_click_handler')
-   
+
+  update_settings()
+	
   var html_code = '<hr>'
   html_code += '<div id="gh_copy_repos_trees_div">'
   html_code += '</div>'
