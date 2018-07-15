@@ -48,3 +48,14 @@ class SE extends Requestable {
    
   
 }
+
+class App {
+   
+   main() {
+      var se = new SE({})
+      var se.getQuestionById("", null, null)
+      
+   }
+}
+
+
