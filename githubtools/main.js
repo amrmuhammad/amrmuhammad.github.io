@@ -699,6 +699,12 @@ function update_settings() {
 
   var sett = model.app_settings.copy_op = {}
   sett.dest_username = $('#dest_username').val()
+  sett.dest_repo_name = $('#dest_repo_name').val()
+  sett.path_within_dest_repo = $('#path_within_dest_repo').val()
+  sett.source_username = $('#source_username').val()
+  sett.source_repo_name = $('#source_repo_name').val()
+  sett.path_within_source_repo = $('#path_within_source_repo').val()
+	
   
 }
 //////////////////////////////////
