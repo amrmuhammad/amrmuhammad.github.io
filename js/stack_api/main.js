@@ -1,7 +1,7 @@
 
 
 var $ = require('../../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
-var stack_api = require('./stack_api.js')
+//var stack_api = require('./stack_api.js')
 
 ///////////
 
