@@ -59,3 +59,7 @@ class App {
 }
 
 
+module.exports.SE = SE
+
+
+
