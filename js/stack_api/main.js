@@ -42,7 +42,7 @@ $('#generate_attr_button').click(async function() {
    var q_id = $('#se_quesion_id_input').val()
    var se = new stack_api({})
    
-   var response = await se.getQuestionById(q_id)
+   var response = await se.getQuestionById(q_id, null, null)
    
    log(response)
    
