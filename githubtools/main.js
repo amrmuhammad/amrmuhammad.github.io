@@ -706,7 +706,13 @@ function update_settings() {
   sett.source_repo_name = $('#source_repo_name').val()
   sett.path_within_source_repo = $('#path_within_source_repo').val()
 	
+  var FileSaver = require('./FileSaver.debug.js');
   
+  var blob = new Blob([JSON.stringify(sett)], {type: "text/plain;charset=utf-8"})
+   
+   
+  FileSaver.saveAs(blob, "githubtools.copyop.settings.json")
+
 }
 //////////////////////////////////
 
