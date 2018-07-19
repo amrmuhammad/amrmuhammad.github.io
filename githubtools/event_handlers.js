@@ -1,4 +1,6 @@
- $('#gh_pat_ok').click(function() {
+var model = require('./model.js')
+
+$('#gh_pat_ok').click(function() {
    var gh = new GitHub({ 
    //username: 'FOO', 
    //password: 'NotFoo' 
@@ -29,6 +31,8 @@
   
   var file_reader = new FileReader()
   file_reader.onload() = function(event) {
+   
+    model.app_settings = JSON.parse(file_reader.result)
   }
   
   file_reader.readAsText(file)
