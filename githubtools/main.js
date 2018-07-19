@@ -8,6 +8,8 @@ var GitHub = require('../github-tools/GitHubJS/dist/GitHub.bundle.min.js');
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 var jsTree = require('../js/jstree/v3.3.5/dist/jstree.min.js')
+
+var model = require('./model.js')
 ///////////
 
 var separator = '<br />*******<br />*******<br />'
