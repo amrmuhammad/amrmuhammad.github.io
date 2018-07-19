@@ -25,6 +25,14 @@
  $('#app_settings_file_input').change(function() {
   
   var file_list = $('#app_settings_file_input').get(0).files
+  var file = file_list[0]
+  
+  var file_reader = new FileReader()
+  file_reader.onload() = function(event) {
+  }
+  
+  file_reader.readAsText(file)
+  
  })
  
  
