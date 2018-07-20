@@ -375,6 +375,7 @@ class CopyOpProcessor {
   //////////////////////////////////
   
   get_no_of_file_items(fetched_data) {
+    log('CopyOpProcessor::get_no_of_file_items')
 	  
     var no_of_file_items = 0
 	  
@@ -389,7 +390,8 @@ class CopyOpProcessor {
   }
   //////////////////////////////////
   process_fetched_source_repo_data_helper(fetched_data, tree_nodes) {
-     
+    log('CopyOpProcessor::process_fetched_source_repo_data_helper')
+	
      
     var sourceRepo = this.__sourceRepo
     var fetchedBlobCount = 0
@@ -722,6 +724,7 @@ function gh_ops_copy_button_click_handler() {
 
   //log('gh_ops_opy_button_click_handler')
 
+  try {
   update_settings()
 	
   var html_code = '<hr>'
@@ -772,6 +775,10 @@ function gh_ops_copy_button_click_handler() {
     })
     
   })
+	  
+  } catch(e) {
+    log(JSON.stringify(e))
+  }
    
 }
 ///////////////////////////////////
