@@ -1,5 +1,7 @@
 
+function() {
 
+'use strict'
 
 //var ClientOAuth2 = require('client-oauth2')
 
@@ -379,6 +381,10 @@ class CopyOpProcessor {
 	  
     var no_of_file_items = 0
 	  
+    if(!fetched_data isinstanceof(Array)) {
+      fetched_data = [fetched_data]
+    }
+	  
     fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
@@ -469,6 +475,8 @@ class CopyOpProcessor {
     log(JSON.stringify(this.__sourceRepo))
     ///////////////////////////
     var tree_nodes = []
+    
+    
     
     var fetchedBlobsPromise = this.process_fetched_source_repo_data_helper(fetched_data, tree_nodes)
 
@@ -949,3 +957,6 @@ clayreimann.listStarredRepos(function(err, repos) {
 //sourceRepo.getContents('master', '', false, function(error, result, response) {
 //  $('body').append(result)
 //})
+
+}()
+
