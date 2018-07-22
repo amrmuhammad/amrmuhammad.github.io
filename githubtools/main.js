@@ -381,7 +381,7 @@ class CopyOpProcessor {
 	  
     var no_of_file_items = 0
 	  
-    if(!fetched_data isinstanceof(Array)) {
+    if(! (fetched_data instanceof(Array)) ) {
       fetched_data = [fetched_data]
     }
 	  
