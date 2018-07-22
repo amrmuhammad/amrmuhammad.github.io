@@ -1,5 +1,5 @@
 
-function() {
+(function() {
 
 'use strict'
 
@@ -958,5 +958,5 @@ clayreimann.listStarredRepos(function(err, repos) {
 //  $('body').append(result)
 //})
 
-}()
+})();
 
