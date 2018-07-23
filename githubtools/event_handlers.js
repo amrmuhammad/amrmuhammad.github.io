@@ -33,6 +33,16 @@ $('#gh_pat_ok').click(function() {
   file_reader.onload() = function(event) {
    
     model.app_settings = JSON.parse(file_reader.result)
+     
+  var sett = model.app_settings.copy_op
+  $('#dest_gh_pat').val(sett.dest_gh_pat)
+  $('#dest_username').val(sett.dest_username)
+  $('#dest_repo_name').val(sett.dest_repo_name)
+  $('#path_within_dest_repo').val(sett.path_within_dest_repo)
+  $('#source_username').val(sett.source_username)
+  $('#source_repo_name').val(sett.source_repo_name)
+  $('#path_within_source_repo').val(sett.path_within_source_repo)
+
   }
   
   file_reader.readAsText(file)
