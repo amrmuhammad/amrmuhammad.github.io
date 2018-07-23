@@ -783,6 +783,7 @@ function gh_ops_copy_button_click_handler() {
       log('process_fetched_source_repo_data promise .catch called: ' 
 	  + e
 	  + JSON.stringify(e)
+	  + e.lineNumber
 	 )
     })
     
