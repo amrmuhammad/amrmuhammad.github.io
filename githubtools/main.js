@@ -186,7 +186,7 @@ $('#gh_pat_ok').click(function() {
 ///////////////////////////////////
 
 
-
+/*
 var model = {
   gh_operations_menu_displayed : false,
    
@@ -196,7 +196,8 @@ var model = {
   app_settings : {
   }
 
-}
+*/
+	
 //////////////////////////////////////
 
 
@@ -720,7 +721,7 @@ function save_settings() {
 	
   var FileSaver = require('./FileSaver.debug.js');
   
-  var blob = new Blob([JSON.stringify(sett)], {type: "text/plain;charset=utf-8"})
+  var blob = new Blob([JSON.stringify(model.app_settings)], {type: "text/plain;charset=utf-8"})
    
    
   FileSaver.saveAs(blob, "githubtools.copyop.settings.json")
