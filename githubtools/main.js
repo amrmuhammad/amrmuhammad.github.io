@@ -380,6 +380,8 @@ class CopyOpProcessor {
   get_no_of_file_items(fetched_data) {
     log('CopyOpProcessor::get_no_of_file_items')
 	  
+    try {
+	    
     var no_of_file_items = 0
 	  
     if(! (fetched_data instanceof(Array)) ) {
@@ -392,7 +394,12 @@ class CopyOpProcessor {
         no_of_file_items = no_of_file_items + 1
       }
     })
-	    
+    } catch(e) {
+      log('get_no_of_file_items catch block:'
+	  + e
+	  )
+    }
+	  
     return no_of_file_items
   }
   //////////////////////////////////
