@@ -707,7 +707,7 @@ class CopyOpProcessor {
 } // end of class CopyOpProcessor
 
 //////////////////////////////////
-function update_settings() {
+function save_settings() {
 
   var sett = model.app_settings.copy_op = {}
   sett.dest_gh_pat = $('#dest_gh_pat').val()
@@ -733,7 +733,7 @@ function gh_ops_copy_button_click_handler() {
   //log('gh_ops_opy_button_click_handler')
 
   try {
-  update_settings()
+  save_settings()
 	
   var html_code = '<hr>'
   html_code += '<div id="gh_copy_repos_trees_div">'
@@ -779,7 +779,10 @@ function gh_ops_copy_button_click_handler() {
 
     })
     .catch(function(e) {
-      log('process_fetched_source_repo_data promise .catch called: ' + e)
+      log('process_fetched_source_repo_data promise .catch called: ' 
+	  + e
+	  + JSON.stringify(e)
+	 )
     })
     
   })
