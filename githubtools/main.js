@@ -326,6 +326,8 @@ class CopyOpProcessor {
     //model.current_user.gh_pat = credentials.gh_pat
     // basic auth
 
+    this.__fetched_source_repo_params = repo_params
+    
     var gh = new GitHub({
       //username: 'FOO',
       //password: 'NotFoo'
@@ -399,6 +401,24 @@ class CopyOpProcessor {
 	  
     return no_of_file_items
   }
+  
+  //////
+  read_file_from_gh(item) {
+	  
+    var file_path = ""
+    if (this.__fetched_data.type = "file") {
+      file_path = this.__fetched_source_repo_params.path_within_repo
+    } else {
+      file_path = this.__fetched_source_repo_params.path_within_repo
+	    + item.name
+    }
+    var req_promise = this.sourveRepo.getContents
+      ('master', file_path, true, null)
+    .then( (response) => {
+    })
+    
+  }
+	
   //////////////////////////////////
   process_fetched_source_repo_data_helper(fetched_data, tree_nodes) {
     log('CopyOpProcessor::process_fetched_source_repo_data_helper')
@@ -409,7 +429,8 @@ class CopyOpProcessor {
     
     var no_of_file_items = this.get_no_of_file_items(fetched_data)
     
-
+    var fetched_data = fetched_data.gh_fetched_data
+    
     var promise = new Promise  (function(resolve, reject) {
     
     fetched_data.forEach( function(item, index, arrayObj) {
@@ -425,6 +446,8 @@ class CopyOpProcessor {
 
          try {
 
+	   var read_file = this.read_file_from_gh(item)
+		 
            item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
 
              log('sourceRepo.getBlob : ' + JSON.stringify(item.blob))
@@ -484,6 +507,19 @@ class CopyOpProcessor {
     if(! (this.__fetched_data instanceof(Array)) ) {
       this.__fetched_data = [this.__fetched_data]
     }
+    ///////////////////////////
+    this.__fetched_data = {
+      gh_fetched_data : this.__fetched_data
+    }
+    ////////
+    if (this.__fetched_data.gh_fetched_data.length === 1) {
+      // then we fetched a file
+      this.__fetched_data.type = "file"
+      
+    } else {
+      this.__fetched_data.type = "directory"
+    }
+	  
     ///////////////////////////
     var tree_nodes = []
     
