@@ -407,6 +407,8 @@ class CopyOpProcessor {
   //////
   async read_file_from_gh(item) {
 	  
+    log('read_file_from_gh')
+	  
     var file_path = ""
     if (this.__fetched_data.type === "file") {
       file_path = this.__fetched_source_repo_params.path_within_repo
@@ -429,27 +431,28 @@ class CopyOpProcessor {
 
   async read_blob_from_gh(item) {
 	
+    log('read_blob_from_gh')
+	  
     var sourceRepo = this.__sourceRepo
     
-    var response = await sourceRepo.getBlob(item.sha, function(error, result, response) {
+    try {
+	    
+      // await throws rejected value if promise is rejected
+      var response = await sourceRepo.getBlob(item.sha, null)
 
-      log('sourceRepo.getBlob response : ' + JSON.stringify(response))
 
-    })
-    .then(function(response) {
-
-       log('.then() called, response: ' + response)
-       item.blob = response.data
-       //log('item.blob: ' + JSON.stringify(item.blob))
+     log('read_blob_from_gh response: ' + response)
+     item.blob = response.data
+     //log('item.blob: ' + JSON.stringify(item.blob))
                
 
-     })
+    } catch(err) {
 
-     .catch(function(e) {
+        log('catch block, error: ' + err)
 
-        log('.catch() called, e: ' + e)
-
-      })
+    }
+	  
+    return item.blob
 
   }
 	
@@ -482,33 +485,16 @@ class CopyOpProcessor {
 
 	   var read_file = this.read_file_from_gh(item)
 		 
-           item.blob = sourceRepo.getBlob(item.sha, function(error, result, response) {
-
-             log('sourceRepo.getBlob : ' + JSON.stringify(item.blob))
-
-           })
-
-           .then(function(value) {
-
-             log('.then() called, value: ' + value)
-             item.blob = value.data
-             //log('item.blob: ' + JSON.stringify(item.blob))
+         //  var read_blob = this.read_blob_from_gh(item)
+	   
+           fetchedBlobCount = fetchedBlobCount + 1
                 
-             fetchedBlobCount = fetchedBlobCount + 1
+           if(fetchedBlobCount === no_of_file_items) {
                 
-             if(fetchedBlobCount === no_of_file_items) {
+             resolve(fetchedBlobCount)
                 
-               resolve(fetchedBlobCount)
-                
-             }
+           }
 
-           })
-
-           .catch(function(e) {
-
-             log('.catch() called, e: ' + e)
-
-           })
 
          } catch(e) {
 
@@ -554,8 +540,8 @@ class CopyOpProcessor {
       this.__fetched_data.type = "directory"
 	    
       //fix directory path if it does not end with a slash
-      if(! (this.__fetched_source_repo_params.endswith('/')) ) {
-        this.__fetched_source_repo_params += '/'
+      if(! (this.__fetched_source_repo_params.path_within_repo.endswith('/')) ) {
+        this.__fetched_source_repo_params.path_within_repo += '/'
       }
     }
 	  
@@ -586,6 +572,8 @@ class CopyOpProcessor {
   copy_fetched_data_to_dest_repo(credentials, repo_params) {
     log('CopyOpProcessor::copy_fetched_data_to_dest_repo') 
      
+    this.dest_repo_params = repo_params	  
+
     var gh = new GitHub({
 
       //username: 'FOO',
@@ -752,6 +740,15 @@ class CopyOpProcessor {
 	  
     var fetched_data = this.__fetched_data
     var destRepo = this.__destRepo
+   
+    //var file_path = ""
+   // var path_within_source_repo = this.__fetched_source_repo_params.path_within_repo
+    
+   if( 
+       ( ! (this.dest_repo_params.path_within_repo.endswith('/')) )
+     ) {
+     this.dest_repo_params.path_within_repo += '/'
+   }
     
     try {
     for (var i=0; i<fetched_data.length; i++) {
@@ -759,10 +756,14 @@ class CopyOpProcessor {
       var item = fetched_data[i]
     
       if(item.type === 'file') {
-        var file_path = path_within_repo + item.name
+        var file_path = this.dest_repo_params.path_within_repo + 
+	    this.__fetched_source_repo_params.path_within_repo + 
+	    item.name
+	
 	try {
+	
           var response = await destRepo.writeFile('master', file_path, 
-	    item.blob, 'update ' + item.name, 
+	    item.file, 'update ' + item.name, 
 	    {encode : true})
 	
 	  
