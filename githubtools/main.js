@@ -403,19 +403,25 @@ class CopyOpProcessor {
   }
   
   //////
-  read_file_from_gh(item) {
+  async read_file_from_gh(item) {
 	  
     var file_path = ""
-    if (this.__fetched_data.type = "file") {
+    if (this.__fetched_data.type === "file") {
       file_path = this.__fetched_source_repo_params.path_within_repo
     } else {
       file_path = this.__fetched_source_repo_params.path_within_repo
 	    + item.name
     }
-    var req_promise = this.sourveRepo.getContents
+
+    
+    var response  await this.sourceRepo.getContents
       ('master', file_path, true, null)
-    .then( (response) => {
-    })
+    
+    item.file = response.data
+    item.file = base64.decode(item.file)
+    
+    
+    return item.file
     
   }
 	
@@ -518,8 +524,15 @@ class CopyOpProcessor {
       
     } else {
       this.__fetched_data.type = "directory"
+	    
+      //fix directory path if it does not end with a slash
+      if(! (this.__fetched_source_repo_params.endswith('/')) ) {
+        this.__fetched_source_repo_params += '/'
+      }
     }
 	  
+    ///////////////////////////
+    
     ///////////////////////////
     var tree_nodes = []
     
