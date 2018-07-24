@@ -428,6 +428,29 @@ class CopyOpProcessor {
   }
 
   async read_blob_from_gh(item) {
+	
+    var sourceRepo = this.__sourceRepo
+    
+    var response = await sourceRepo.getBlob(item.sha, function(error, result, response) {
+
+      log('sourceRepo.getBlob response : ' + JSON.stringify(response))
+
+    })
+    .then(function(response) {
+
+       log('.then() called, response: ' + response)
+       item.blob = response.data
+       //log('item.blob: ' + JSON.stringify(item.blob))
+               
+
+     })
+
+     .catch(function(e) {
+
+        log('.catch() called, e: ' + e)
+
+      })
+
   }
 	
   //////////////////////////////////
