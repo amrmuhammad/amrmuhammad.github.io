@@ -420,7 +420,7 @@ class CopyOpProcessor {
     }
 
     
-    var response  await this.sourceRepo.getContents
+    var response  = await this.sourceRepo.getContents
       ('master', file_path, true, null)
     
     item.file = response.data
