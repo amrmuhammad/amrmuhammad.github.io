@@ -384,10 +384,7 @@ class CopyOpProcessor {
 	    
     var no_of_file_items = 0
 	  
-    if(! (fetched_data instanceof(Array)) ) {
-      fetched_data = [fetched_data]
-    }
-	  
+	    
     fetched_data.forEach(function(item, index, arrayObj) {
 
       if(item.type === 'file') {
@@ -481,14 +478,21 @@ class CopyOpProcessor {
      
     log('*** fetched_data: <br />' + JSON.stringify(fetched_data))
     log(JSON.stringify(this.__sourceRepo))
+	
+    this.__fetched_data = fetched_data
+    //handle the case of one item returned instead of an array
+    if(! (this.__fetched_data instanceof(Array)) ) {
+      this.__fetched_data = [this.__fetched_data]
+    }
     ///////////////////////////
     var tree_nodes = []
     
     
     
-    var fetchedBlobsPromise = this.process_fetched_source_repo_data_helper(fetched_data, tree_nodes)
+    var fetchedBlobsPromise = this.process_fetched_source_repo_data_helper
+      (this.__fetched_data, tree_nodes)
 
-    this.__fetched_data = fetched_data
+    
     ///////////////////////////////
     log('tree_nodes: <br />' + JSON.stringify(tree_nodes))
 
