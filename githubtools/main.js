@@ -11,6 +11,8 @@ var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 var jsTree = require('../js/jstree/v3.3.5/dist/jstree.min.js')
 
+var repo_utils = require('../js/repo_utils.js')
+
 var model = require('./model.js')
 ///////////
 
@@ -418,11 +420,14 @@ class CopyOpProcessor {
       ('master', file_path, true, null)
     
     item.file = response.data
-    item.file = base64.decode(item.file)
+    item.file = Base64.decode(item.file)
     
     
     return item.file
     
+  }
+
+  async read_blob_from_gh(item) {
   }
 	
   //////////////////////////////////
