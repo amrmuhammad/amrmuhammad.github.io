@@ -13,6 +13,8 @@ var jsTree = require('../js/jstree/v3.3.5/dist/jstree.min.js')
 
 var repo_utils = require('../js/repo_utils.js')
 
+var polyfills = require('./polyfills.js')
+
 var model = require('./model.js')
 ///////////
 
@@ -540,7 +542,7 @@ class CopyOpProcessor {
       this.__fetched_data.type = "directory"
 	    
       //fix directory path if it does not end with a slash
-      if(! (this.__fetched_source_repo_params.path_within_repo.endswith('/')) ) {
+      if(! (this.__fetched_source_repo_params.path_within_repo.endsWith('/')) ) {
         this.__fetched_source_repo_params.path_within_repo += '/'
       }
     }
@@ -745,7 +747,7 @@ class CopyOpProcessor {
    // var path_within_source_repo = this.__fetched_source_repo_params.path_within_repo
     
    if( 
-       ( ! (this.dest_repo_params.path_within_repo.endswith('/')) )
+       ( ! (this.dest_repo_params.path_within_repo.endsWith('/')) )
      ) {
      this.dest_repo_params.path_within_repo += '/'
    }
