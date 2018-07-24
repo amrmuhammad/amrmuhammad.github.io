@@ -11,7 +11,7 @@ var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 var jsTree = require('../js/jstree/v3.3.5/dist/jstree.min.js')
 
-var repo_utils = require('../js/repo_utils.js')
+//var repo_utils = require('../js/repo_utils.js')
 
 var polyfills = require('./polyfills.js')
 
