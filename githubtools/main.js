@@ -757,8 +757,11 @@ class CopyOpProcessor {
     
       if(item.type === 'file') {
         var file_path = this.dest_repo_params.path_within_repo + 
-	    this.__fetched_source_repo_params.path_within_repo + 
-	    item.name
+	    this.__fetched_source_repo_params.path_within_repo 
+	
+	if (this.__fetched_data.type === "directory") {
+          file_path += item.name
+	}
 	
 	try {
 	
