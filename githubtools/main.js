@@ -756,7 +756,7 @@ class CopyOpProcessor {
 	  
     log('CopyOpProcessor::write_files_contents')
 	  
-    var fetched_data = this.__fetched_data
+    var fetched_data = this.__fetched_data.gh_fetched_data
     var destRepo = this.__destRepo
    
     //var file_path = ""
