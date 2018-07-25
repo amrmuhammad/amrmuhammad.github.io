@@ -476,13 +476,14 @@ class CopyOpProcessor {
     var sourceRepo = this.__sourceRepo
     var fetchedBlobCount = 0
     
-    var no_of_file_items = this.get_no_of_file_items(fetched_data)
+    var no_of_file_items = this.get_no_of_file_items
+      (fetched_data.gh_fetched_data)
     
-    var fetched_data = fetched_data.gh_fetched_data
+    var read_file_from_gh = this.read_file_from_gh
     
     var promise = new Promise  (function(resolve, reject) {
     
-    fetched_data.forEach( function(item, index, arrayObj) {
+    fetched_data.gh_fetched_data.forEach( function(item, index, arrayObj) {
 
 
       tree_nodes[index] = { "text" : item.name}
@@ -495,7 +496,7 @@ class CopyOpProcessor {
 
          try {
 
-	   var read_file = this.read_file_from_gh(item)
+	   var read_file = read_file_from_gh(item)
 		 
          //  var read_blob = this.read_blob_from_gh(item)
 	   
