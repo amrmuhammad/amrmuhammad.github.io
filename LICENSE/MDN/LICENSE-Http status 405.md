@@ -21,7 +21,7 @@ are available under the MIT license:
 The MIT License (MIT)
 
 
-Copyright (c) Jun 20, 2018, 11:17:41 AM xuxintao (<a href="https://developer.mozilla.org/en-US/profiles/xuxintao">MDN profile </a>)
+Copyright (c) Dec14, 2017, 5:50:45 AM OnKar316 (<a href="https://developer.mozilla.org/en-US/profiles/OnKar316">MDN profile </a>)
 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
