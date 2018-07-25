@@ -553,7 +553,12 @@ class CopyOpProcessor {
       this.__fetched_data.type = "directory"
 	    
       //fix directory path if it does not end with a slash
-      if(! (this.__fetched_source_repo_params.path_within_repo.endsWith('/')) ) {
+      if(
+	  (this.__fetched_source_repo_params.path_within_repo !== "")
+	  &&
+	  (! (this.__fetched_source_repo_params.path_within_repo.endsWith('/')))
+	      
+        ) {
         this.__fetched_source_repo_params.path_within_repo += '/'
       }
     }
@@ -763,6 +768,8 @@ class CopyOpProcessor {
    // var path_within_source_repo = this.__fetched_source_repo_params.path_within_repo
     
    if( 
+       ( this.dest_repo_params.path_within_repo !== "")
+       &&
        ( ! (this.dest_repo_params.path_within_repo.endsWith('/')) )
      ) {
      this.dest_repo_params.path_within_repo += '/'
