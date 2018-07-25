@@ -585,6 +585,7 @@ class CopyOpProcessor {
   copy_fetched_data_to_dest_repo(credentials, repo_params) {
     log('CopyOpProcessor::copy_fetched_data_to_dest_repo') 
      
+    try {
     this.dest_repo_params = repo_params	  
 
     var gh = new GitHub({
@@ -610,6 +611,10 @@ class CopyOpProcessor {
 
     /////
     this.write_files_contents(repo_params.path_within_repo)
+    } catch(err) {
+      log(err + JSON.stringify(err))
+    }
+	  
     /////
   } //copy_fetched_data_to_dest_repo
 
