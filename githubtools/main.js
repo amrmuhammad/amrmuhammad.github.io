@@ -433,7 +433,7 @@ class CopyOpProcessor {
     var response  = await this.sourceRepo.getContents
       ('master', file_path, true, null)
     
-    item.file = response.data
+    item.file = response.data.content
     item.file = Base64.decode(item.file)
     
     
@@ -498,6 +498,7 @@ class CopyOpProcessor {
 
 	   var read_file = read_file_from_gh(item)
 		 
+	   log('read_file: ' + read_file)
          //  var read_blob = this.read_blob_from_gh(item)
 	   
            fetchedBlobCount = fetchedBlobCount + 1
