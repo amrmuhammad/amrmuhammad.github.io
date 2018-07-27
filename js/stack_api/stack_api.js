@@ -33,6 +33,7 @@ class SE extends Requestable {
     * @param {string} [apiBase=https://api.stackexchange.com/2.2/] - the base Stack Exhange API URL
     */
    constructor(auth, apiBase = 'https://api.stackexchange.com/2.2/') {
+      super(auth, apiBase)
       this.__apiBase = apiBase;
       this.__auth = auth || {};
    }
