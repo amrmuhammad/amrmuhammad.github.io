@@ -20,12 +20,6 @@ try {
 
 ///////////
 
-var separator = '<br />*******<br />*******<br />'
-
-function log(text) {
-   $('#debug_div').append(text + separator)
-}
-
 ///////////
 
 
