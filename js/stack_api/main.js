@@ -56,7 +56,7 @@ $('#generate_attr_button').click(function() {
    
    try {
    var q_id = $('#se_quesion_id_input').val()
-   var se = new stack_api({})
+   var se = new stack_api.SE({})
    
    var response = undefined
        
