@@ -53,7 +53,7 @@ class App {
    
    main() {
       var se = new SE({})
-      var se.getQuestionById("", null, null)
+      se.getQuestionById("", null, null)
       
    }
 }
