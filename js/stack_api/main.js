@@ -1,7 +1,22 @@
 
 
+///////////
+
+var separator = '<br />*******<br />*******<br />'
+
+function log(text, debug_div) {
+   var div = debug_div !== undefined ? debug_div : '#debug_div'
+   $(div).append(text + separator)
+}
+///////////
+
 var $ = require('../../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
-//var stack_api = require('./stack_api.js')
+
+try {
+  var stack_api = require('./stack_api.js')
+} catch(err) {
+   log(err + JSON.stringify(err))
+}
 
 ///////////
 
