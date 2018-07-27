@@ -496,7 +496,13 @@ class CopyOpProcessor {
 
          try {
 
-	   var read_file = read_file_from_gh(item)
+	   var read_file = undefined
+           // read_file_from_gh returns a promise
+	   // since it is async function
+	   var read_file_p = read_file_from_gh(item)
+	   read_file_p.then((file) => {
+	     read_file = file
+	   
 		 
 	   log('read_file: ' + read_file)
          //  var read_blob = this.read_blob_from_gh(item)
@@ -508,7 +514,8 @@ class CopyOpProcessor {
              resolve(fetchedBlobCount)
                 
            }
-
+		   
+	   })
 
          } catch(e) {
 
