@@ -52,6 +52,9 @@ $('#app').append('<div id="debug_div"></div>')
 
 $('#generate_attr_button').click(function() {
 
+   log('generate_attr_button click handler')
+   
+   try {
    var q_id = $('#se_quesion_id_input').val()
    var se = new stack_api({})
    
@@ -65,6 +68,16 @@ $('#generate_attr_button').click(function() {
      log(JSON.stringify(response))
    
    })
+   .catch((err) => {
+      log(err)
+      
+      log(JSON.stringify(err))
+   })
+   
+   } catch(err) {
+      log(err)
+      log(JSON.stringify(err))
+   }
    
 })
 
