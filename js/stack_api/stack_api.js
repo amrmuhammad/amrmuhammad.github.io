@@ -70,7 +70,7 @@ class SE extends Requestable {
       log('id' + id)
       
       return this._request('GET', 
-        `/questions/{${id}}?order=desc&sort=activity&site=stackoverflow`, 
+        `/questions/${id}?order=desc&sort=activity&site=stackoverflow`, 
         null, cb);
    }
    
