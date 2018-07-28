@@ -1,4 +1,20 @@
+////////////////////////////////////
 
+47
+
+$('#app').append('<div id="debug_div"></div>')
+
+48
+
+​
+
+49
+
+////////////////////////////////////
+
+50
+
+​
 
 ///////////
 
@@ -9,7 +25,23 @@ function log(text, debug_div) {
    $(div).append(text + separator)
 }
 ///////////
+////////////////////////////////////
 
+47
+
+$('#app').append('<div id="debug_div"></div>')
+
+48
+
+​
+
+49
+
+////////////////////////////////////
+
+50
+
+​
 var $ = require('../../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
 
 try {
@@ -47,8 +79,9 @@ $('#app').append(html_code)
 $('#app').append('<div id="debug_div"></div>')
 
 ////////////////////////////////////
+$('#app').append('<div id="requestable_js_debug_div"></div>')
 
-
+////////////////////////////////////
 
 $('#generate_attr_button').click(function() {
 
