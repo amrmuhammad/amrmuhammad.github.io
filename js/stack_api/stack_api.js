@@ -17,8 +17,31 @@
 /* eslint valid-jsdoc: ["error", {"requireReturnDescription": false}] */
 
 //import Gist from './Gist';
+///////////
 
 
+var $ = require('../../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
+
+var escapeHtml = require('../component/escape-html/v1.0.3/index.js')
+
+///////////
+
+var separator = '<br />*******<br />*******<br />'
+
+var Log = {
+   f_name : undefined
+}
+
+function log(text, debug_div) {
+   var div = debug_div !== undefined ? debug_div : '#stack_api_debug_div'
+   
+   var escapedString = escapeHtml(text)
+   $(div).append('In function: ' + Log.f_name + '<br />'
+                 escapedString + separator)
+}
+///////////
+
+/////////
 var Requestable = require('./lib/Requestable.js')
 
 
@@ -42,7 +65,10 @@ class SE extends Requestable {
 
    getQuestionById(id, options, cb) {
       
+      Log.f_name = 'getQuestionById'
+      
       log('id' : id)
+      
       return this._request('GET', 
         `/questions/{${id}}?order=desc&sort=activity&site=stackoverflow`, 
         null, cb);
