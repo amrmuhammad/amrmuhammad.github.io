@@ -56,7 +56,7 @@ $('#generate_attr_button').click(function() {
    log('generate_attr_button click handler')
    
    try {
-   var q_id = $('#se_quesion_id_input').val()
+   var q_id = $('#se_question_id_input').val()
    
    log('q_id' + q_id)
       
