@@ -36,7 +36,7 @@ function log(text, debug_div) {
    var div = debug_div !== undefined ? debug_div : '#stack_api_debug_div'
    
    var escapedString = escapeHtml(text)
-   $(div).append('In function: ' + Log.f_name + '<br />'
+   $(div).append('In function: ' + Log.f_name + '<br />' +
                  escapedString + separator)
 }
 ///////////
