@@ -63,19 +63,19 @@ $('#generate_attr_button').click(function() {
    se.getQuestionById(q_id, null, null)
    .then((response) => {
    
-     log(response)
+     log('.then' + response)
    
      log(JSON.stringify(response))
    
    })
    .catch((err) => {
-      log(err)
+      log('.catch' + err)
       
       log(JSON.stringify(err))
    })
    
    } catch(err) {
-      log(err)
+      log('catch block' + err)
       log(JSON.stringify(err))
    }
    
