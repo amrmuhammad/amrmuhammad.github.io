@@ -43,6 +43,8 @@ html_code += '<hr>'
 $('#app').append(html_code)
 ////////////////////////////////////
 $('#app').append('<div id="debug_div"></div>')
+////////////////////////////////////
+$('#app').append('<div id="stack_api_debug_div"></div>')
 
 ////////////////////////////////////
 $('#app').append('<div id="requestable_js_debug_div"></div>')
