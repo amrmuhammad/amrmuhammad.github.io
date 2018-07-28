@@ -67,7 +67,7 @@ class SE extends Requestable {
       
       Log.f_name = 'getQuestionById'
       
-      log('id' : id)
+      log('id' + id)
       
       return this._request('GET', 
         `/questions/{${id}}?order=desc&sort=activity&site=stackoverflow`, 
