@@ -32,7 +32,7 @@ class SE extends Requestable {
     *                                  not provided requests will be made unauthenticated
     * @param {string} [apiBase=https://api.stackexchange.com/2.2/] - the base Stack Exhange API URL
     */
-   constructor(auth, apiBase = 'https://api.stackexchange.com/2.2/') {
+   constructor(auth, apiBase = 'https://api.stackexchange.com/2.2') {
       super(auth, apiBase)
       this.__apiBase = apiBase;
       this.__auth = auth || {};
@@ -42,6 +42,7 @@ class SE extends Requestable {
 
    getQuestionById(id, options, cb) {
       
+      log('id' : id)
       return this._request('GET', 
         `/questions/{${id}}?order=desc&sort=activity&site=stackoverflow`, 
         null, cb);
