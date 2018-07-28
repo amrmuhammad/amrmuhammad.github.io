@@ -69,7 +69,7 @@ $('#generate_attr_button').click(function() {
    
    })
    .catch((err) => {
-      log('.catch' + err)
+      log('.catch' + err + err.Stack)
       
       log(JSON.stringify(err))
    })
