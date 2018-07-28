@@ -44,6 +44,8 @@ class ResponseError extends Error {
     * @param {Object} response - the object returned by Axios
     */
    constructor(message, path, response) {
+      log('ResponseError constructor')
+      
       super(message);
       this.path = path;
       this.request = response.config;
@@ -176,6 +178,9 @@ class Requestable {
     * @return {Promise} - the Promise for the http request
     */
    _request(method, path, data, cb, raw) {
+      
+      log('_request function')
+      
       const url = this.__getURL(path);
 
       const AcceptHeader = (data || {}).AcceptHeader;
@@ -316,6 +321,8 @@ function getNextPage(linksHeader = '') {
 
 function callbackErrorOrThrow(cb, path) {
    return function handler(object) {
+      log('callbackErrorOrThrow handler')
+      
       let error;
       if (object.hasOwnProperty('config')) {
          const {response: {status, statusText}, config: {method, url}} = object;
