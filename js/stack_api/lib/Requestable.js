@@ -115,13 +115,14 @@ class Requestable {
    __getRequestHeaders(raw, AcceptHeader) {
       let headers = {
          'Content-Type': 'application/json;charset=UTF-8',
-         'Accept': 'application/vnd.github.' + (AcceptHeader || this.__AcceptHeader),
+        // 'Accept': 'application/vnd.github.' + (AcceptHeader || this.__AcceptHeader),
+         'Accept' : 'application/json',
       };
 
-      if (raw) {
-         headers.Accept += '.raw';
-      }
-      headers.Accept += '+json';
+      //if (raw) {
+      //   headers.Accept += '.raw';
+     // }
+    //  headers.Accept += '+json';
 
       if (this.__authorizationHeader) {
          headers.Authorization = this.__authorizationHeader;
