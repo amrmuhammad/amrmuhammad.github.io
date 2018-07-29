@@ -41,6 +41,14 @@ https://stackapps.com/questions/2491/support-cross-origin-resource-sharing
 
 
 
+https://meta.stackexchange.com/questions/306534/respond-correctly-to-cors-options-preflight-requests-to-the-api
+
+
+
+
+
+
+
 
 
 
