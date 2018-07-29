@@ -325,6 +325,8 @@ function callbackErrorOrThrow(cb, path) {
       
       let error;
       if (object.hasOwnProperty('config')) {
+         log('object: ' + object + JSON.stringify(object))
+         
          const {response: {status, statusText}, config: {method, url}} = object;
          let message = (`${status} error making request ${method} ${url}: "${statusText}"`);
          error = new ResponseError(message, path, object);
