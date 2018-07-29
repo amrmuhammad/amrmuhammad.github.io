@@ -45,6 +45,9 @@ https://meta.stackexchange.com/questions/306534/respond-correctly-to-cors-option
 
 
 
+https://stackoverflow.com/questions/32281960/option-preflight-to-stackexchange-api-responds-with-bad-request
+
+
 
 
 
