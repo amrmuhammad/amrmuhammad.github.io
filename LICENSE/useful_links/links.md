@@ -36,6 +36,12 @@ https://stackoverflow.com/questions/48908228/how-to-use-await-in-a-foreach-loop-
 
 
 
+https://stackapps.com/questions/2491/support-cross-origin-resource-sharing
+
+
+
+
+
 
 
 
