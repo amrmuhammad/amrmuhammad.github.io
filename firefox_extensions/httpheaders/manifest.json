@@ -1,0 +1,15 @@
+
+{
+  "manifest_version": 2, 
+  "name": "HttpHeaders",
+  "version": "1.0",
+  "description": "Capture Http Headers",
+  
+  "content_scripts": 
+  [ {
+    "matches": ["*://*.mozilla.org/*"], 
+  
+    "js": ["httpheaders.js"]
+  } ]
+  
+}
