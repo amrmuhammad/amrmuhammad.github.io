@@ -58,6 +58,20 @@ https://stackoverflow.com/questions/4553690/retrieve-json-with-stackoverflow-api
 
 
 
+https://stackoverflow.com/questions/34930771/why-is-this-undefined-inside-class-method-when-using-promises
+
+
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+
+
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+
 
 
 
