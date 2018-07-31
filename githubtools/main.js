@@ -443,7 +443,7 @@ class CopyOpProcessor {
     
     log('file_path: ' + file_path)
     
-    var response  = await this.sourceRepo.getContents
+    var response  = await this.__sourceRepo.getContents
       ('master', file_path, true, null)
     
     log('response: <br>' + JSON.stringify(response))
