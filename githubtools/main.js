@@ -13,14 +13,24 @@ var jsTree = require('../js/jstree/v3.3.5/dist/jstree.min.js')
 
 //////////////
 
+var escapeHtml = require('../js/component/escape-html/v1.0.3/index.js')
+
+///////////
+
 var separator = '<br />*******<br />*******<br />'
 
-function log(text, debug_div) {
-
-   var div = debug_div === undefined ? "#debug_div" : debug_div
-   $(div).append(text + separator)
-
+var Log = {
+   f_name : undefined
 }
+
+function log(text, debug_div) {
+   var div = debug_div !== undefined ? debug_div : '#stack_api_debug_div'
+   
+   var escapedString = escapeHtml(text)
+   $(div).append('In function: ' + Log.f_name + '<br />' +
+                 escapedString + separator)
+}
+
 //////////////
 try {
 var repo_utils = require('../js/repo_utils.js')
@@ -418,7 +428,8 @@ class CopyOpProcessor {
   
   //////
   async read_file_from_gh(item) {
-	  
+	 
+    Log.f_name = 'read_file_from_gh'
     log('read_file_from_gh')
 	  
     var file_path = ""
@@ -433,6 +444,8 @@ class CopyOpProcessor {
     var response  = await this.sourceRepo.getContents
       ('master', file_path, true, null)
     
+    log('response: <br>' + JSON.stringify(response))
+	  
     item.file = response.data.content
     item.file = Base64.decode(item.file)
     
@@ -766,7 +779,8 @@ class CopyOpProcessor {
   //////////////////////////////////
   
   async write_files_contents(path_within_repo) {
-	  
+    
+    Log.f_name = 'write_files_contents'
     log('CopyOpProcessor::write_files_contents')
 	  
     var fetched_data = this.__fetched_data.gh_fetched_data
@@ -788,6 +802,8 @@ class CopyOpProcessor {
     //fetched_data.forEach(async function(item, index, arrayObj) {
       var item = fetched_data[i]
     
+      log('item:  ' + JSON.stringify(item))
+      
       if(item.type === 'file') {
         var file_path = this.dest_repo_params.path_within_repo + 
 	    this.__fetched_source_repo_params.path_within_repo 
