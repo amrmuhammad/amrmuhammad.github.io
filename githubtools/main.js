@@ -441,6 +441,8 @@ class CopyOpProcessor {
     }
 
     
+    log('file_path: ' + file_path)
+    
     var response  = await this.sourceRepo.getContents
       ('master', file_path, true, null)
     
@@ -483,6 +485,7 @@ class CopyOpProcessor {
 	
   //////////////////////////////////
   process_fetched_source_repo_data_helper(fetched_data, tree_nodes) {
+    
     log('CopyOpProcessor::process_fetched_source_repo_data_helper')
 	
      
@@ -528,7 +531,10 @@ class CopyOpProcessor {
                 
            }
 		   
+	   }).catch((err) => {
+	     log('err:' + err)
 	   })
+	   
 
          } catch(e) {
 
