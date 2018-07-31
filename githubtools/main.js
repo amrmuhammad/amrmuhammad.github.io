@@ -496,6 +496,7 @@ class CopyOpProcessor {
       (fetched_data.gh_fetched_data)
     
     var read_file_from_gh = this.read_file_from_gh
+    read_file_from_gh = read_file_from_gh.bind(this)
     
     var promise = new Promise  (function(resolve, reject) {
     
