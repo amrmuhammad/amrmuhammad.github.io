@@ -1,4 +1,4 @@
-For portiins of the code that use 
+For portions of the code that use 
 
 octokit/rest.js:
 
