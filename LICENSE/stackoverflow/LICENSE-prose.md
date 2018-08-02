@@ -1,5 +1,11 @@
 
-For portions of the code that use prose/prose:
+For portions of the code that use prose/prose:  
+
+
+https://github.com/prose/prose
+
+
+
 
 Copyright (c) 2013, Development Seed All rights reserved.
 
