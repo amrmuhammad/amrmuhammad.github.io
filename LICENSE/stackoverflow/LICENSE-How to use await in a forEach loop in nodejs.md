@@ -11,8 +11,7 @@ https://stackoverflow.com/questions/48908228/how-to-use-await-in-a-foreach-loop-
   
 - Question asked by user: Alavi1412 (User profile: https://stackoverflow.com/users/6914106/alavi1412 )
 
-- Useful Answer provided by user: Bergi (User profile: https://stackoverflow.com/users/1048572/bergi )
+- Useful Answer provided by user: Sergii Vorobei (User profile: https://stackoverflow.com/users/3975711/sergii-vorobei )
 
-- Useful Answer provided by user: Matt (User profile: https://stackoverflow.com/users/8285970/matt )
 
 ////////////////////////
