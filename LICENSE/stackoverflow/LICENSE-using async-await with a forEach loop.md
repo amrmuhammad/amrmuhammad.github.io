@@ -13,6 +13,6 @@ https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-lo
 
 - Useful Answer provided by user: Bergi (User profile: https://stackoverflow.com/users/1048572/bergi )
 
-- Useful Answer peovided by user: Matt (User profile: https://stackoverflow.com/users/8285970/matt )
+- Useful Answer provided by user: Matt (User profile: https://stackoverflow.com/users/8285970/matt )
 
 ////////////////////////
