@@ -38,12 +38,13 @@ https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-lo
 https://stackoverflow.com/questions/48908228/how-to-use-await-in-a-foreach-loop-in-nodejs
 
 
----
+
 
 
 https://stackapps.com/questions/2491/support-cross-origin-resource-sharing
 
 
+---
 
 
 https://meta.stackexchange.com/questions/306534/respond-correctly-to-cors-options-preflight-requests-to-the-api
