@@ -448,8 +448,8 @@ class CopyOpProcessor {
     
     log('response: <br>' + JSON.stringify(response))
 	  
-    item.file = response.data
-   // item.file = repo_utils.Base64.decode(item.file)
+    item.file = response.data.content
+    item.file = repo_utils.Base64.decode(item.file)
     
     
     return item.file
