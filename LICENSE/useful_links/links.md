@@ -44,11 +44,12 @@ https://stackoverflow.com/questions/48908228/how-to-use-await-in-a-foreach-loop-
 https://stackapps.com/questions/2491/support-cross-origin-resource-sharing
 
 
----
+
 
 
 https://meta.stackexchange.com/questions/306534/respond-correctly-to-cors-options-preflight-requests-to-the-api
 
+---
 
 
 https://stackoverflow.com/questions/32281960/option-preflight-to-stackexchange-api-responds-with-bad-request
