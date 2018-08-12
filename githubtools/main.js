@@ -812,7 +812,7 @@ class CopyOpProcessor {
     //fetched_data.forEach(async function(item, index, arrayObj) {
       var item = fetched_data[i]
     
-      log('item:  ' + JSON.stringify(item))
+      //log('item:  ' + JSON.stringify(item))
       
       if(item.type === 'file') {
         var file_path = this.dest_repo_params.path_within_repo + 
