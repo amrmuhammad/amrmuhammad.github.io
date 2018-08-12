@@ -563,19 +563,22 @@ class CopyOpProcessor {
     log('*** fetched_data: <br />' + JSON.stringify(fetched_data))
     log(JSON.stringify(this.__sourceRepo))
 	
-    this.__fetched_data = fetched_data
+    //this.__fetched_data = fetched_data
     //handle the case of one item returned instead of an array
-    if(! (this.__fetched_data instanceof(Array)) ) {
-      this.__fetched_data = [this.__fetched_data]
-    }
+    //if(! (this.__fetched_data instanceof(Array)) ) {
+    //  this.__fetched_data = [this.__fetched_data]
+    //}
     ///////////////////////////
     this.__fetched_data = {
-      gh_fetched_data : this.__fetched_data
+      gh_fetched_data : fetched_data
     }
     ////////
-    if (this.__fetched_data.gh_fetched_data.length === 1) {
+    if ( !(this.__fetched_data.gh_fetched_data instanceof(Array)) ) {
       // then we fetched a file
       this.__fetched_data.type = "file"
+      this.__fetched_data.gh_fetched_data
+        = [this.__fetched_data.gh_fetched_data]
+	  
       
     } else {
       this.__fetched_data.type = "directory"
