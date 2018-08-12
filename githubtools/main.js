@@ -446,7 +446,7 @@ class CopyOpProcessor {
     var response  = await this.__sourceRepo.getContents
       ('master', file_path, false, null)
     
-    log('response: <br>' + JSON.stringify(response))
+    //log('response: <br>' + JSON.stringify(response))
 	  
     item.file = response.data.content
     item.file = repo_utils.Base64.decode(item.file)
@@ -521,7 +521,7 @@ class CopyOpProcessor {
 	     read_file = file
 	   
 		 
-	   log('read_file: ' + read_file)
+	   //log('read_file: ' + read_file)
          //  var read_blob = this.read_blob_from_gh(item)
 	   
            fetchedBlobCount = fetchedBlobCount + 1
