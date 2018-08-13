@@ -387,13 +387,13 @@ class CopyOpProcessor {
      ('master', repo_params.path_within_repo, false, 
      function(error, result, response) {
 
-       log('getContents error: ' + error + JSON.stringify(error))
+      // log('getContents error: ' + error + JSON.stringify(error))
 	     
-       log('getContents CB func called' + '<br />')
+     //  log('getContents CB func called' + '<br />')
 
-       log('getContents response:' + JSON.stringify(response))
+     //  log('getContents response:' + JSON.stringify(response))
 
-       log(JSON.stringify(result) + '<br />')
+     //  log(JSON.stringify(result) + '<br />')
 
     }
   )
@@ -450,7 +450,8 @@ class CopyOpProcessor {
 	  
     item.file = response.data.content
     item.file = repo_utils.Base64.decode(item.file)
-    
+	  
+    item.file_contents_sha = repo_utils.sha256(item.file)
     
     return item.file
     
@@ -494,6 +495,9 @@ class CopyOpProcessor {
     
     var no_of_file_items = this.get_no_of_file_items
       (fetched_data.gh_fetched_data)
+    
+    this.no_of_file_items = no_of_file_items
+	  
     
     var read_file_from_gh = this.read_file_from_gh
     read_file_from_gh = read_file_from_gh.bind(this)
@@ -824,19 +828,18 @@ class CopyOpProcessor {
 	
 	try {
 	
-          var response = await destRepo.writeFile('master', file_path, 
+          var response = await destRepo.writeFile
+	    ('master', file_path, 
 	    item.file, 'update ' + item.name, 
-	    {encode : true})
+	    {encode : true}
+	    )
 	
 	  
 	  log('File: ' + item.name + ' successfully written ' 
-	    + 'in destination Repo at' + file_path)
+	    + 'in destination Repo at : ' + file_path)
 		
-	  await sleep(5000) // sleep 5 seconds
-          //for (var i=0; i<30000; i++) {
-          //var j= 0
-	  //j = j + 1
-	  //}
+	  await sleep(3000) // sleep 3 seconds
+         
 		
 	} catch(e) {
 	  log('writeFile failed: \n' + 
