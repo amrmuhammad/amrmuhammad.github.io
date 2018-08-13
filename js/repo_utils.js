@@ -6,7 +6,10 @@ var this_repo_path = 'https://amrmuhammad.github.io'
 var Base64 = require('./js-base64/v2.4.5/base64.js')
 Base64 = Base64.Base64
 
-
+var sha256 = require('./emn178/js-sha256/v0.9.0/build/sha256.min.js')
+sha256 = sha256.sha256
+  
 module.exports = {
-  Base64 : Base64
+  Base64 : Base64,
+  sha256 : sha256
 }
