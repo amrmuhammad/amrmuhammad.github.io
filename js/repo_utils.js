@@ -8,8 +8,11 @@ Base64 = Base64.Base64
 
 var sha256 = require('./emn178/js-sha256/v0.9.0/build/sha256.min.js')
 sha256 = sha256.sha256
+
+var eruda = require('./liriliri/eruda/v1.5.0/dist/eruda.min.js')
   
 module.exports = {
   Base64 : Base64,
-  sha256 : sha256
+  sha256 : sha256,
+  eruda : eruda
 }
