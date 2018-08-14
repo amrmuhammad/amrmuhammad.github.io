@@ -19,7 +19,6 @@
 
 Console for Mobile Browsers.
 
-![Eruda](http://7xn2zy.com1.z0.glb.clouddn.com/eruda_screenshot4.jpg)
 
 ## Why
 
