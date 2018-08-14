@@ -68,8 +68,14 @@ function sleep(ms) {
 }
 
 ////////////////////
-
-
+// Mobile devtools
+var mobile_devtools = repo_utils.eruda
+mobile_devtools.init()
+mobile_devtools.show()
+	
+////////////////////
+	
+	
 var html_code = ""
 
 ///////////////////////////////////
