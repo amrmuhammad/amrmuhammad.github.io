@@ -12,7 +12,6 @@
 [![Test coverage][codecov-image]][codecov-url]
 [![License][license-image]][npm-url]
 
-[gitter-image]: https://badges.gitter.im/liriliri/eruda.svg
 [gitter-url]: https://gitter.im/liriliri/eruda?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [npm-image]: https://img.shields.io/npm/v/eruda.svg
 [npm-url]: https://npmjs.org/package/eruda
