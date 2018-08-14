@@ -1,8 +1,4 @@
-<a href="https://eruda.liriliri.io/" target="_blank">
-    <img src="http://7xn2zy.com1.z0.glb.clouddn.com/github_eruda2.jpg">
-</a>
 
-[中文](doc/README_CN.md)
 
 # Eruda
 
