@@ -28,7 +28,6 @@ https://medium.com/m/global-identity?redirectUrl=https%3A%2F%2Fcodeburst.io%2Fja
 
 
 
-
 https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
 
 
@@ -78,6 +77,27 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+
+
+
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/console
+
+
+
+
+
+
+
+https://console.spec.whatwg.org/
+
+
+
+
+
+
 
 
 
