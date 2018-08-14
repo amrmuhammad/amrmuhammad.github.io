@@ -69,7 +69,7 @@ function sleep(ms) {
 
 ////////////////////
 // Mobile devtools
-var mobile_devtools = repo_utils.eruda
+var mobile_devtools = repo_utils.mobile_dt
 mobile_devtools.init()
 mobile_devtools.show()
 	
