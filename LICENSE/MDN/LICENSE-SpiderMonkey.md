@@ -7,14 +7,10 @@ For portions of the code that make use of
 SpiderMonkey:
 
 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey" >
-
-Array
-
+SpiderMonkey
 </a> by 
 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey$history" >
-
 Mozilla Contributors
-
 </a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC-BY-SA 2.5.</a>
 
 
@@ -29,7 +25,7 @@ are available under the MIT license:
 The MIT License (MIT)
 
 
-Copyright (c) Jun 20, 2018, 11:17:41 AM xuxintao (<a href="https://developer.mozilla.org/en-US/profiles/xuxintao">MDN profile </a>)
+Copyright (c) Apr 18, 2018, 5:16:15 AM slokhorst (<a href="https://developer.mozilla.org/en-US/profiles/slokhorst">MDN profile </a>)
 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
