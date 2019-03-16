@@ -1,1 +1,67 @@
 
+
+ 
+<!DOCTYPE html>
+
+
+<html>
+  
+  <head>
+    <meta name="viewport"
+          content="user-scalable=no; initial-scale=1; maximum-scale=1">
+    
+    <title> وظائف بالساعه في مصر </title>
+    
+    <h1>  
+      وظائف بالساعه في مصر
+    </h1>
+   
+  </head>
+
+  <body>
+    
+    <div id="app">
+      
+    </div>
+    <!-- 
+    <ul>
+      
+      <li>
+        Matrix Size: 
+        rows
+        <input type="text" value="2">
+        X
+        columns
+        <input type="text" value="2">
+      </li>
+      
+    </ul>
+    -->
+    
+    <!-- 
+      bluebird library is a promise fill
+      which is required before loading
+      Systemjs
+    --> 
+      
+  <script src="https://amrmuhammad.github.io/math/0.2/js/lib/bluebird/v3_5_0/bluebird.min.js">
+  </script>
+    
+    
+  <script src="https://amrmuhammad.github.io/js/systemjs/systemjs/v0.21.4/dist/system.js">
+  </script>
+    
+    
+    
+    <script>  
+      
+      SystemJS.config(
+        { baseURL: './' }
+      ); 
+      
+      SystemJS.import('js/main.js');
+    </script>
+    
+  </body>
+  
+</html>
