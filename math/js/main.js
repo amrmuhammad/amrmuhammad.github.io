@@ -96,7 +96,7 @@ function add_css_experimenting_section(html_code) {
   return html_code
   
 }
-//html_code = add_css_experimenting_section(html_code)
+html_code = add_css_experimenting_section(html_code)
 //////////////////////////
 // Attach elements to DOM
 $("#app").append(html_code)
