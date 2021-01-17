@@ -3,6 +3,8 @@
 
 'use strict'
 
+/*
+
 //var Vue = require('./lib/vuejs/v2_2_3/vue.js')
 var $ = require('./lib/jquery/v3_2_1/jquery.min.js')
 
@@ -33,6 +35,7 @@ var repo_utils = require('../js/repo_utils.js')
 ///////////
 
 ///////////
+*/
 
 //////////////////////////////////
 // code copied from 
@@ -46,10 +49,6 @@ function sleep(ms) {
 }
 */
 ////////////////////
-// Mobile devtools
-var mobile_devtools = repo_utils.mobile_dt
-mobile_devtools.init()
-mobile_devtools.show()
 	
 ////////////////////
 
