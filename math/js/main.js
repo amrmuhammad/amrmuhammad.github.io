@@ -6,87 +6,11 @@
 //var Vue = require('./lib/vuejs/v2_2_3/vue.js')
 var $ = require('./lib/jquery/v3_2_1/jquery.min.js')
 
-alert('123')
-
-//////////////
-
-// var escapeHtml = require('../../js/component/escape-html/v1.0.3/index.js')
-
-///////////
-
-var separator = '<br />*******<br />*******<br />'
-
-function log(text, debug_div) {
-   var div = debug_div !== undefined ? debug_div : '#debug_div'
-   
-   var escapedString = escapeHtml(text)
-   $(div).append('<br />' +
-                 escapedString + separator)
-}
-
-//////////////
-
-log("1")
-
-try {
-var repo_utils = require('../js/repo_utils.js')
-
-} catch(err) {
-  log(err + JSON.stringify(err), '#app' )
-}
-///////////
-
-///////////
-
-
-//////////////////////////////////
-// code copied from 
-// https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
-
-// see https://github.com/amrmuhammad/amrmuhammad.github.io/blob/master/LICENSE/stackoverflow/LICENSE-what-is-the-javascript-version-of-sleep.md
-// for license 
-/*
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-*/
-////////////////////
-	
+////
 ////////////////////
 
-/////////////////////
-/*
-Vue.component('matrix', {
-  template: '<div id="matrix1" > ' +
-              '<template v-for="1 to rows">' +
-              '<tr>' +
-                '<template v-for="1 to cols">' +
-                '<td>' +
-                '<input type="text">' +
-                '</td>' +
-              '</tr>' +
-              '</template' +
-            '</div>',
-  
-  data: function() {
-    return {
-      message: 'hello',
-      rows : 3,
-      cols : 3
-    }
-  }
-})
-
-
-/////////////////////
-var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
-})
-/////////////////////
-*/
+///////////////////
+              
 
 var rows = 3
 var cols = 3
