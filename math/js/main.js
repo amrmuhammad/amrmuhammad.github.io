@@ -27,10 +27,6 @@ function log(text, debug_div) {
 try {
 var repo_utils = require('../js/repo_utils.js')
 
-var polyfills = require('./polyfills.js')
-
-var model = require('./model.js')
-
 } catch(err) {
   log(err + JSON.stringify(err), '#app' )
 }
