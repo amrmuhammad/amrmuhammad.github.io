@@ -56,9 +56,7 @@ function add_css_experimenting_section(html_code) {
 
   html_code += '<div id="css_exp_section">'
 
-  for(i=0; i<$('body').length; i++) {
-    
-  }
+
 
   html_code += 'Element id # : <input id="elem_id" type="text">'
   html_code += '<br />'
