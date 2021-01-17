@@ -8,6 +8,15 @@ var $ = require('./lib/jquery/v3_2_1/jquery.min.js')
 
 ////
 ////////////////////
+///////////
+
+var separator = '<br />*******<br />*******<br />'
+
+function log(text, debug_div) {
+   var div = debug_div !== undefined ? debug_div : '#debug_div'
+   $(div).append(text + separator)
+}
+///////////
 
 ///////////////////
               
