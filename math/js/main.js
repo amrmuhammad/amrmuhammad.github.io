@@ -11,7 +11,7 @@ var $ = require('./lib/jquery/v3_2_1/jquery.min.js')
 
 //////////////
 
-var escapeHtml = require('../js/component/escape-html/v1.0.3/index.js')
+var escapeHtml = require('../../js/component/escape-html/v1.0.3/index.js')
 
 ///////////
 
