@@ -338,3 +338,4 @@ $("#multiply_matrices_button").click(function() {
 //$("#app").append(html_code)
 
 
+})();
