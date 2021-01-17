@@ -1,7 +1,61 @@
 
+(function() {
+
+'use strict'
 
 //var Vue = require('./lib/vuejs/v2_2_3/vue.js')
 var $ = require('./lib/jquery/v3_2_1/jquery.min.js')
+
+
+//////////////
+
+var escapeHtml = require('../js/component/escape-html/v1.0.3/index.js')
+
+///////////
+
+var separator = '<br />*******<br />*******<br />'
+
+function log(text, debug_div) {
+   var div = debug_div !== undefined ? debug_div : '#debug_div'
+   
+   var escapedString = escapeHtml(text)
+   $(div).append('<br />' +
+                 escapedString + separator)
+}
+
+//////////////
+try {
+var repo_utils = require('../js/repo_utils.js')
+
+var polyfills = require('./polyfills.js')
+
+var model = require('./model.js')
+
+} catch(err) {
+  log(err + JSON.stringify(err), '#app' )
+}
+///////////
+
+///////////
+
+//////////////////////////////////
+// code copied from 
+// https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+
+// see https://github.com/amrmuhammad/amrmuhammad.github.io/blob/master/LICENSE/stackoverflow/LICENSE-what-is-the-javascript-version-of-sleep.md
+// for license 
+/*
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+*/
+////////////////////
+// Mobile devtools
+var mobile_devtools = repo_utils.mobile_dt
+mobile_devtools.init()
+mobile_devtools.show()
+	
+////////////////////
 
 /////////////////////
 /*
