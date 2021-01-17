@@ -3,7 +3,7 @@
 
 'use strict'
 
-/*
+
 
 //var Vue = require('./lib/vuejs/v2_2_3/vue.js')
 var $ = require('./lib/jquery/v3_2_1/jquery.min.js')
@@ -26,6 +26,9 @@ function log(text, debug_div) {
 }
 
 //////////////
+
+log("1")
+
 try {
 var repo_utils = require('../js/repo_utils.js')
 
@@ -35,7 +38,7 @@ var repo_utils = require('../js/repo_utils.js')
 ///////////
 
 ///////////
-*/
+
 
 //////////////////////////////////
 // code copied from 
