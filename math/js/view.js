@@ -32,7 +32,6 @@ html_code += '<button id="multiply_matrices_button">Multiply matrices</button>'
 html_code += '<br /> <br />'
 html_code += construct_matrix("matrix3", "Result matrix:")
 ///////////////////////////////////
-$("app").append(html_code)
 ///////////////////////////
 function init_css()
 {
