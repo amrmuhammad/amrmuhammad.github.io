@@ -61,20 +61,7 @@ function add_css_experimenting_section(html_code) {
 // Attach elements to DOM
 $("#app").append(html_code)
 ///////////////////////////
-function init_css()
-{
-  $(".matrix_element").css("width", "30%")
-  $(".matrix_element").css("height", "40px")
-  $(".matrix_element").css("margin", "2px")
-  
-  $("#multiply_matrices_button").css("width", "40%")
-  $("#multiply_matrices_button").css("height", "30px")
-  $("#multiply_matrices_button").css("left-margin", "30%")
-  $("#multiply_matrices_button").css("right-margin", "30%")
-  $("#multiply_matrices_button").css("background-color", "#000076ee")
-  $("#multiply_matrices_button").css("color", "#ffffff")
-}
-init_css()
+
 //////////////////////////
 // Attach event handlers to
 // DOM elements
