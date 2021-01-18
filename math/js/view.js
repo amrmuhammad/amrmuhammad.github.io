@@ -39,6 +39,8 @@ function init_css()
 {
   $("#matrix1").css("width", "100%")
 
+  $("#matrix1").css("position", "relative")
+
   $("#matrix2").css("width", "100%")
 
   $(".matrix_element").css("width", "20%")
