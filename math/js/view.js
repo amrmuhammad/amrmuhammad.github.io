@@ -35,6 +35,8 @@ html_code += construct_matrix("matrix3", "Result matrix:")
 ///////////////////////////
 function init_css()
 {
+  $("#matrix1").css("width1", "100%")
+
   $(".matrix_element").css("width", "33%")
   $(".matrix_element").css("height", "40px")
   $(".matrix_element").css("margin", "2px")
