@@ -19,7 +19,7 @@ function log(text, debug_div) {
 ///////////
 
 ///////////////////
-bar view = require('./view.js')             
+var view = require('./view.js')             
 var html_code = view.matrices_view
 ///////////////////////////////
 ///////////////////////////////////
