@@ -32,7 +32,21 @@ html_code += '<button id="multiply_matrices_button">Multiply matrices</button>'
 html_code += '<br /> <br />'
 html_code += construct_matrix("matrix3", "Result matrix:")
 ///////////////////////////////////
-
+///////////////////////////
+function init_css()
+{
+  $(".matrix_element").css("width", "30%")
+  $(".matrix_element").css("height", "40px")
+  $(".matrix_element").css("margin", "2px")
+  
+  $("#multiply_matrices_button").css("width", "80%")
+  $("#multiply_matrices_button").css("height", "30px")
+  $("#multiply_matrices_button").css("left-margin", "30%")
+  $("#multiply_matrices_button").css("right-margin", "30%")
+  $("#multiply_matrices_button").css("background-color", "#000076ee")
+  $("#multiply_matrices_button").css("color", "#ffffff")
+}
+init_css()
 
 module.exports = {
   matrices_view : html_code
