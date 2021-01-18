@@ -43,7 +43,7 @@ function init_css()
 
   $("#matrix2").css("width", "100%")
 
-  $(".matrix_element").css("width", "20%")
+  $(".matrix_element").css("width", "33%")
   $(".matrix_element").css("height", "40px")
   $(".matrix_element").css("margin", "2px")
   
