@@ -44,7 +44,7 @@ function init_css()
   $("#matrix2").css("padding", "5%") 
 
   $("#matrix3").css("width", "100%")
-  $("#marrix3").css("padding", "5%") 
+  $("#matrix3").css("padding", "5%") 
 
   // $("#matrix1").css("position", "relative")
   // $("#matrix2").css("width", "100%")
