@@ -37,7 +37,7 @@ $("#app").append(html_code)
 ///////////////////////////
 function init_css()
 {
-  $("#matrix1").css("width", "100%")
+  //$("#matrix1").css("width", "100%")
 
   // $("#matrix1").css("position", "relative")
   // $("#matrix2").css("width", "100%")
@@ -46,7 +46,7 @@ function init_css()
 
   // $(".matrix_element").css("position", "relative")
 
- // $(".matrix_element").css("width", "40px")
+  $(".matrix_element").css("width", "100px")
   //$(".matrix_element").css("height", "40px")
   //$(".matrix_element").css("margin", "2px")
   
