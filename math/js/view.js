@@ -44,7 +44,7 @@ function init_css()
   // $("#matrix2").css("position", "relative")
 
 
-  $(".matrix_element").css("position", "relative")
+  // $(".matrix_element").css("position", "relative")
 
   $(".matrix_element").css("width", "33%")
   $(".matrix_element").css("height", "40px")
