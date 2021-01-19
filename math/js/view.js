@@ -46,9 +46,9 @@ function init_css()
 
   // $(".matrix_element").css("position", "relative")
 
-  $(".matrix_element").css("width", "33%")
-  //$(".matrix_element").css("height", "40px")
-  //$(".matrix_element").css("margin", "2px")
+  $(".matrix_element").css("width", "30%")
+  $(".matrix_element").css("height", "40px")
+  $(".matrix_element").css("margin", "2px")
   
   $("#multiply_matrices_button").css("width", "80%")
   $("#multiply_matrices_button").css("height", "30px")
