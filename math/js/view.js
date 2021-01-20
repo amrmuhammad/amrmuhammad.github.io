@@ -38,7 +38,7 @@ $("#app").append(html_code)
 function init_css()
 {
   $("#matrix1").css("width", "100%")
-  $("#matrix1").css("padding", "2%")
+  $("#matrix1").css("padding", "2px")
   //$("#matrix1").css("border-color", "black")
 
   $("#matrix1").css("border", "1px solid")
