@@ -37,18 +37,18 @@ $("#app").append(html_code)
 ///////////////////////////
 function init_css()
 {
-  $("#matrix1").css("width", "100%")
+  $("#matrix1").css("width", "90%")
   $("#matrix1").css("padding", "5%")
   //$("#matrix1").css("border-color", "black")
 
   $("#matrix1").css("border", "1px solid")
   $("#matrix1").css("margin", "0")
 
-  //$("#matrix2").css("width", "100%")
+  //$("#matrix2").css("width", "90%")
  // $("#matrix2").css("padding", "5%")
 
  
-  $("#matrix2").css("width", "100%")
+  $("#matrix2").css("width", "90%")
   $("#matrix2").css("padding", "5%")
   //$("#matrix2").css("border-color", "black")
 
@@ -59,7 +59,7 @@ function init_css()
   //$("#matrix3").css("padding", "5%") 
 
 
-  $("#matrix3").css("width", "100%")
+  $("#matrix3").css("width", "90%")
   $("#matrix3").css("padding", "5%")
   //$("#matrix3").css("border-color", "black")
 
