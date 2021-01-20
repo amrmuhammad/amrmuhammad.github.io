@@ -58,7 +58,7 @@ function init_css()
 
   $(".matrix_element").css("width", "25%")
   $(".matrix_element").css("height", "40px")
-  $(".matrix_element").css("margin", "5px")
+  $(".matrix_element").css("margin", "5%")
   
   $("#multiply_matrices_button").css("width", "90%")
   $("#multiply_matrices_button").css("height", "50px")
