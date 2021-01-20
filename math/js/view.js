@@ -39,7 +39,9 @@ function init_css()
 {
   $("#matrix1").css("width", "100%")
   $("#matrix1").css("padding", "5%")
-  $("#matrix1").css("border-color", "black")
+  //$("#matrix1").css("border-color", "black")
+
+  $("#matrix1").css("border", "1rem solid")
 
   $("#matrix2").css("width", "100%")
   $("#matrix2").css("padding", "5%") 
