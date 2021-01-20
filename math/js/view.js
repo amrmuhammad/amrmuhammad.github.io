@@ -57,10 +57,10 @@ function init_css()
   $(".matrix_element").css("height", "40px")
   $(".matrix_element").css("margin", "5px")
   
-  $("#multiply_matrices_button").css("width", "90%")
+  $("#multiply_matrices_button").css("width", "100%")
   $("#multiply_matrices_button").css("height", "50px")
   $("#multiply_matrices_button").css("margin", "5%")
-  $("#multiply_matrices_button").css("right-margin", "30%")
+  //$("#multiply_matrices_button").css("right-margin", "30%")
   $("#multiply_matrices_button").css("background-color", "#000076ee")
   $("#multiply_matrices_button").css("color", "#ffffff")
 }
