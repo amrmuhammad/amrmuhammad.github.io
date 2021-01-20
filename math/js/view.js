@@ -38,7 +38,7 @@ $("#app").append(html_code)
 function init_css()
 {
   $("#matrix1").css("width", "100%")
-  $("#matrix1").css("padding", "5%")
+  $("#matrix1").css("padding", "2%")
   //$("#matrix1").css("border-color", "black")
 
   $("#matrix1").css("border", "1rem solid")
@@ -58,7 +58,7 @@ function init_css()
 
   $(".matrix_element").css("width", "25%")
   $(".matrix_element").css("height", "40px")
-  $(".matrix_element").css("margin", "1em")
+  $(".matrix_element").css("margin", "2px")
   
   $("#multiply_matrices_button").css("width", "90%")
   $("#multiply_matrices_button").css("height", "50px")
