@@ -37,20 +37,25 @@ $("#app").append(html_code)
 ///////////////////////////
 function init_css_matrix(matrix_id) {
 
-  $("#matrix1").css("width", "90%")
-  $("#matrix1").css("padding", "5%")
-  $("#matrix1").css("padding-top", "1%")
+  $("#" + matrix_id).css("width", "90%")
+  $("#" + matrix_id).css("padding", "5%")
+  $("#" + matrix_id).css("padding-top", "1%")
 
-  $("#matrix1").css("border", "1px solid")
-  $("#matrix1").css("margin", "0")
-  $("#matrix1").css("background-color", "#1e81b0")
-  $("#matrix1 div").css("color", "#76b5c5")
-  $("#matrix1 div").css("font-weight", "bold")
-  $("#matrix1 div").css("font-size", "2em")
+  $("#" + matrix_id).css("border", "1px solid")
+  $("#" + matrix_id).css("margin", "0")
+  $("#" + matrix_id).css("background-color", "#1e81b0")
+  $("#" + matrix_id + " div").css("color", "#76b5c5")
+  $("#" + matrix_id + " div").css("font-weight", "bold")
+  $("#" + matrix_id + " div").css("font-size", "2em")
 
 }
 function init_css()
 {
+  init_css_matrix("matrix1")
+  init_css_matrix("matrix2")
+  init_css_matrix("matrix3")
+/*
+
   $("#matrix1").css("width", "90%")
   $("#matrix1").css("padding", "5%")
   $("#matrix1").css("padding-top", "1%")
@@ -80,6 +85,7 @@ function init_css()
   // $("#matrix2").css("width", "100%")
   // $("#matrix2").css("position", "relative")
 
+*/
 
   // $(".matrix_element").css("position", "relative")
 
