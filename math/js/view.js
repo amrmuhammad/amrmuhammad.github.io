@@ -54,38 +54,7 @@ function init_css()
   init_css_matrix("matrix1")
   init_css_matrix("matrix2")
   init_css_matrix("matrix3")
-/*
 
-  $("#matrix1").css("width", "90%")
-  $("#matrix1").css("padding", "5%")
-  $("#matrix1").css("padding-top", "1%")
-
-  $("#matrix1").css("border", "1px solid")
-  $("#matrix1").css("margin", "0")
-  $("#matrix1").css("background-color", "#1e81b0")
-  $("#matrix1 div").css("color", "#76b5c5")
-  $("#matrix1 div").css("font-weight", "bold")
-  $("#matrix1 div").css("font-size", "2em")
-
-  $("#matrix2").css("width", "90%")
-  $("#matrix2").css("padding", "5%")
-  $("#matrix2").css("border", "1px solid")
-  $("#matrix2").css("margin", "0")
-  $("#matrix2").css("background-color", "#1e81b0")
-
-
-  $("#matrix3").css("width", "90%")
-  $("#matrix3").css("padding", "5%")
-  //$("#matrix3").css("border-color", "black")
-
-  $("#matrix3").css("border", "1px solid")
-  $("#matrix3").css("margin", "0")
-
-  // $("#matrix1").css("position", "relative")
-  // $("#matrix2").css("width", "100%")
-  // $("#matrix2").css("position", "relative")
-
-*/
 
   // $(".matrix_element").css("position", "relative")
 
