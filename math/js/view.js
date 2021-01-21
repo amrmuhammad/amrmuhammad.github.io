@@ -24,17 +24,31 @@ function construct_matrix(matrix_id, matrix_label)
   return html_code
 }
 
-html_code += construct_matrix("matrix1", "First matrix:")
+html_code += construct_matrix("matrix1", "First matrix")
 html_code += '<br />'
-html_code += construct_matrix("matrix2", "Second matrix:")
+html_code += construct_matrix("matrix2", "Second matrix")
 html_code += '<br /> <br  />'
 html_code += '<button id="multiply_matrices_button">Multiply matrices</button>'  
 html_code += '<br /> <br />'
-html_code += construct_matrix("matrix3", "Result matrix:")
+html_code += construct_matrix("matrix3", "Result matrix")
 ///////////////////////////////////
 //  Should append to DOM before applying css
 $("#app").append(html_code)
 ///////////////////////////
+function init_css_matrix(matrix_id) {
+
+  $("#matrix1").css("width", "90%")
+  $("#matrix1").css("padding", "5%")
+  $("#matrix1").css("padding-top", "1%")
+
+  $("#matrix1").css("border", "1px solid")
+  $("#matrix1").css("margin", "0")
+  $("#matrix1").css("background-color", "#1e81b0")
+  $("#matrix1 div").css("color", "#76b5c5")
+  $("#matrix1 div").css("font-weight", "bold")
+  $("#matrix1 div").css("font-size", "2em")
+
+}
 function init_css()
 {
   $("#matrix1").css("width", "90%")
