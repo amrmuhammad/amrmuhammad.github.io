@@ -44,7 +44,7 @@ function init_css()
   $("#matrix1").css("border", "1px solid")
   $("#matrix1").css("margin", "0")
   $("#matrix1").css("background-color", "#1e81b0")
-  $("#matrix1 div").css("color", "#e28743")
+  $("#matrix1 div").css("color", "#76b5c5")
   $("#matrix1 div").css("font-weight", "bold")
   $("#matrix1 div").css("font-size", "2em")
 
