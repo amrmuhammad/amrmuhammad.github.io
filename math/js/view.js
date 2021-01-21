@@ -49,7 +49,7 @@ function init_css()
   $("#matrix2").css("padding", "5%")
   $("#matrix2").css("border", "1px solid")
   $("#matrix2").css("margin", "0")
-  $("#matrix2").css("background-color", "#abdbe3")
+  $("#matrix2").css("background-color", "#1e81b0")
 
 
   $("#matrix3").css("width", "90%")
