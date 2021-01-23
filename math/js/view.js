@@ -37,7 +37,7 @@ $("#app").append(html_code)
 ///////////////////////////
 function init_css_matrix(matrix_id) {
 
-  $("#" + matrix_id).css("width", "90%")
+  $("#" + matrix_id).css("width", "100%")
   $("#" + matrix_id).css("padding", "5%")
   $("#" + matrix_id).css("padding-top", "1%")
 
