@@ -53,7 +53,7 @@ function init_css()
 {
   $("body").css("margin", "0")
   $("body").css("width", "100%")
-  $("#app").css("width", "100%")
+  $("#app").css("width", "50%")
   $("#app").css("margin", "0")
   
   
