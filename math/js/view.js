@@ -52,6 +52,8 @@ function init_css_matrix(matrix_id) {
 function init_css()
 {
   $("#app").css("width", "100%")
+  $("#app").css("margin", "0")
+  
   
   init_css_matrix("matrix1")
   init_css_matrix("matrix2")
