@@ -59,6 +59,13 @@ function init_css()
   $("#app").css("margin", "0")
   
   
+  let query = window.matchMedia("(min-width : 601px)")
+  if (query.matches) {
+    // if the page is wider than 600px
+  } else {
+    // if the page is narower than 601px
+  }
+  
   init_css_matrix("matrix1")
   init_css_matrix("matrix2")
   init_css_matrix("matrix3")
