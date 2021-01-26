@@ -50,6 +50,8 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id + " div").css("color", "#76b5c5")
   $("#" + matrix_id + " div").css("font-weight", "bold")
   $("#" + matrix_id + " div").css("font-size", "2em")
+  
+  $("#" + matrix_id + " input").css("border-radius", "10px")
 
 }
 function init_css()
