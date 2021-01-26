@@ -51,7 +51,7 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id + " div").css("font-weight", "bold")
   $("#" + matrix_id + " div").css("font-size", "2em")
   
-  //$("#" + matrix_id + " input").css("border-radius", "10px")
+  $("#" + matrix_id + " input").css("background-color", "#eab676")
 
 }
 function init_css()
