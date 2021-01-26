@@ -44,7 +44,7 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id).css("border", "1px solid")
   //$("#" + matrix_id).css("border-radius", "10px")
   $("#" + matrix_id).css("margin", "0")
-  $("#" + matrix_id).css("background-color", "#1e81b0")
+  $("#" + matrix_id).css("background-color", "#e28743")
   
   
   $("#" + matrix_id + " div").css("color", "#76b5c5")
