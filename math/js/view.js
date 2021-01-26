@@ -54,6 +54,7 @@ function init_css()
   $("body").css("margin", "0")
   $("body").css("width", "100%")
   //$("body").css("overflow-x", "hidden")
+  $("body").css("min-width", "250px")
   
   $("#app").css("width", "100%")
   $("#app").css("margin", "0")
