@@ -85,9 +85,6 @@ function init_css()
   init_css_matrix("matrix2")
   init_css_matrix("matrix3")
 
-
-  // $(".matrix_element").css("position", "relative")
-
   
   $("#multiply_matrices_button").css("width", "90%")
   $("#multiply_matrices_button").css("height", "50px")
@@ -95,7 +92,12 @@ function init_css()
   //$("#multiply_matrices_button").css("right-margin", "30%")
   $("#multiply_matrices_button").css("background-color", "#000076ee")
   $("#multiply_matrices_button").css("color", "#ffffff")
+  
+  $("#multiply_matrices_button").css("font-weight", "bold")
+  $("#multiply_matrices_button").css("font-size", "1em")
 }
+
+
 init_css()
 
 module.exports = {
