@@ -46,7 +46,7 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id).css("margin", "0")
   
   //https://www.canva.com/colors/color-wheel/
-  $("#" + matrix_id).css("background-color", "#C73859")
+  $("#" + matrix_id).css("background-color", "#25C4DA")
   
   
   $("#" + matrix_id + " div").css("color", "#76b5c5")
@@ -54,7 +54,7 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id + " div").css("font-size", "2em")
   
   //https://www.canva.com/colors/color-wheel/
-  $("#" + matrix_id + " input").css("background-color", "#38C7A6")
+  $("#" + matrix_id + " input").css("background-color", "#A0D3E4")
 
 }
 function init_css()
