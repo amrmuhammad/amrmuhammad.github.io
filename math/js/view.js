@@ -57,7 +57,7 @@ function init_css_matrix(matrix_id) {
   //$("#" + matrix_id + " input").css("background-color", "#ffffff")
   
   https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
-  //$("#" + matrix_id + " input").css("border-style", "none")
+  $("#" + matrix_id + " input").css("border-style", "none")
 
 }
 function init_css()
