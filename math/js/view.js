@@ -53,12 +53,12 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id + " div").css("font-weight", "bold")
   $("#" + matrix_id + " div").css("font-size", "2em")
   
-  //https://www.canva.com/colors/color-wheel/
-  //$("#" + matrix_id + " input").css("background-color", "#ffffff")
   
-  https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
-  $("#" + matrix_id + " input").css("border-style", "none")
+  $(".matrix_element").css("border", "1px solid")
 
+  $(".matrix_element").css("width", "25%")
+  $(".matrix_element").css("height", "40px")
+  $(".matrix_element").css("margin", "2px")
 }
 function init_css()
 {
@@ -88,9 +88,6 @@ function init_css()
 
   // $(".matrix_element").css("position", "relative")
 
-  $(".matrix_element").css("width", "25%")
-  $(".matrix_element").css("height", "40px")
-  $(".matrix_element").css("margin", "2px")
   
   $("#multiply_matrices_button").css("width", "90%")
   $("#multiply_matrices_button").css("height", "50px")
