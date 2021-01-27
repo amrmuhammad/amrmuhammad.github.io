@@ -94,7 +94,7 @@ function init_css()
   $("#multiply_matrices_button").css("color", "#ffffff")
   
   $("#multiply_matrices_button").css("font-weight", "bold")
-  $("#multiply_matrices_button").css("font-size", "1em")
+  $("#multiply_matrices_button").css("font-size", "1.5em")
 }
 
 
