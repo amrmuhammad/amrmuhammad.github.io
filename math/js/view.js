@@ -54,7 +54,7 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id + " div").css("font-size", "2em")
   
   //https://www.canva.com/colors/color-wheel/
-  $("#" + matrix_id + " input").css("background-color", "#A0D3E4")
+  $("#" + matrix_id + " input").css("background-color", "#25C4D8")
 
 }
 function init_css()
