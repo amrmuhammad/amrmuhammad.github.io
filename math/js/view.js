@@ -89,7 +89,9 @@ function init_css()
   init_css_matrix("matrix2")
   init_css_matrix("matrix3")
 
-  
+
+  $("#multiply_matrices_button").css({"position": "relative", 
+                                      "left": "20%"})
   $("#multiply_matrices_button").css("width", "90%")
   $("#multiply_matrices_button").css("height", "50px")
   $("#multiply_matrices_button").css("margin", "5px")
