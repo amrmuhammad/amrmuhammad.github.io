@@ -45,6 +45,9 @@ function init_css_matrix(matrix_id) {
   //$("#" + matrix_id).css("border-radius", "10px")
   $("#" + matrix_id).css("margin", "0")
   
+  https://developer.mozilla.org/en-US/docs/Web/CSS/left
+  $("#" + matrix_id).css({"left": "20%" })
+  
   //https://www.canva.com/colors/color-wheel/
   $("#" + matrix_id).css("background-color", "#ffffff")
   
