@@ -54,7 +54,10 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id + " div").css("font-size", "2em")
   
   //https://www.canva.com/colors/color-wheel/
-  $("#" + matrix_id + " input").css("background-color", "#ffffff")
+  //$("#" + matrix_id + " input").css("background-color", "#ffffff")
+  
+  https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
+  //$("#" + matrix_id + " input").css("border-style", "none")
 
 }
 function init_css()
