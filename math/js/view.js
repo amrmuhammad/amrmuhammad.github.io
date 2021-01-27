@@ -46,7 +46,8 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id).css("margin", "0")
   
   https://developer.mozilla.org/en-US/docs/Web/CSS/left
-  $("#" + matrix_id).css({"left": "20%" })
+  $("#" + matrix_id).css({"position": "relative"
+                         "left": "20%"})
   
   //https://www.canva.com/colors/color-wheel/
   $("#" + matrix_id).css("background-color", "#ffffff")
