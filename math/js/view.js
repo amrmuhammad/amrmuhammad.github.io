@@ -35,7 +35,7 @@ html_code += construct_matrix("matrix3", "Result matrix")
 //  Should append to DOM before applying css
 $("#app").append(html_code)
 ///////////////////////////
-function init_css_matrix(matrix_id) {
+function init_css_matrix(matrix_id, is_page_gt600) {
 
   $("#" + matrix_id).css("width", "100%")
   $("#" + matrix_id).css("padding", "5%")
@@ -44,11 +44,12 @@ function init_css_matrix(matrix_id) {
   $("#" + matrix_id).css("border", "1px solid")
   //$("#" + matrix_id).css("border-radius", "10px")
   $("#" + matrix_id).css("margin", "0")
-  
-  https://developer.mozilla.org/en-US/docs/Web/CSS/left
-  $("#" + matrix_id).css({"position": "relative", 
-                         "left": "20%"})
-  
+
+  if (is_page_gt600 == true) {
+    //https://developer.mozilla.org/en-US/docs/Web/CSS/left
+    $("#" + matrix_id).css({"position": "relative", 
+                           "left": "20%"})
+  }
   //https://www.canva.com/colors/color-wheel/
   $("#" + matrix_id).css("background-color", "#ffffff")
   
@@ -85,9 +86,9 @@ function init_css()
 
   }
   
-  init_css_matrix("matrix1")
-  init_css_matrix("matrix2")
-  init_css_matrix("matrix3")
+  init_css_matrix("matrix1", query.matches)
+  init_css_matrix("matrix2", query.matches)
+  init_css_matrix("matrix3", query.matches)
 
 
   $("#multiply_matrices_button").css({"position": "relative", 
