@@ -98,7 +98,7 @@ function init_css()
   //}
   //$("#multiply_matrices_button").css({"position": "relative", 
   //                                  "left": "20%"})
-  $("#multiply_matrices_button").css("width", "90%")
+  $("#multiply_matrices_button").css("width", "95%")
   $("#multiply_matrices_button").css("height", "50px")
   $("#multiply_matrices_button").css("margin", "5px")
   //$("#multiply_matrices_button").css("right-margin", "30%")
