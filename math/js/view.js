@@ -91,13 +91,13 @@ function init_css()
   init_css_matrix("matrix2", query.matches)
   init_css_matrix("matrix3", query.matches)
 
-  if (is_page_gt600 == true) {
+  //if (is_page_gt600 == true) {
     //https://developer.mozilla.org/en-US/docs/Web/CSS/left
-    $("#multiply_matrices_button").css({"position": "relative", 
-                           "left": "20%"})
-  }
-  $("#multiply_matrices_button").css({"position": "relative", 
-                                      "left": "20%"})
+    //$("#multiply_matrices_button").css({"position": "relative", 
+    //                     "left": "20%"})
+  //}
+  //$("#multiply_matrices_button").css({"position": "relative", 
+  //                                  "left": "20%"})
   $("#multiply_matrices_button").css("width", "90%")
   $("#multiply_matrices_button").css("height", "50px")
   $("#multiply_matrices_button").css("margin", "5px")
