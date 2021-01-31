@@ -45,11 +45,12 @@ function init_css_matrix(matrix_id, is_page_gt600) {
   //$("#" + matrix_id).css("border-radius", "10px")
   $("#" + matrix_id).css("margin", "0")
 
-  if (is_page_gt600 == true) {
+  //if (is_page_gt600 == true) {
     //https://developer.mozilla.org/en-US/docs/Web/CSS/left
-    $("#" + matrix_id).css({"position": "relative", 
-                           "left": "20%"})
-  }
+    //$("#" + matrix_id).css({"position": "relative", 
+    //                       "left": "20%"})
+  //}
+
   //https://www.canva.com/colors/color-wheel/
   $("#" + matrix_id).css("background-color", "#ffffff")
   
