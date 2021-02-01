@@ -109,8 +109,8 @@ function init_css()
   $("#multiply_matrices_button").css("font-weight", "700")
   $("#multiply_matrices_button").css("font-size", "1.3em")
   
-  $("#multiply_matrices_button").css({"font-style" : "normal";
-                                      "letter-spacing" : "0.097em" ;
+  $("#multiply_matrices_button").css({"font-style" : "normal",
+                                      "letter-spacing" : "0.097em" 
                                      })
   
   
