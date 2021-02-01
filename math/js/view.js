@@ -43,7 +43,7 @@ function init_css_matrix(matrix_id, is_page_gt600) {
 
   $("#" + matrix_id).css("border", "1px solid")
   //$("#" + matrix_id).css("border-radius", "10px")
-  $("#" + matrix_id).css("margin", "0")
+  $("#" + matrix_id).css("margin", "5px")
 
   //if (is_page_gt600 == true) {
     //https://developer.mozilla.org/en-US/docs/Web/CSS/left
@@ -80,7 +80,7 @@ function init_css()
   let query = window.matchMedia("(min-width : 601px)")
   if (query.matches) {
     // if the page is wider than 600px
-    $("#app").css("width", "30%")
+    $("#app").css("width", "33%")
   } else {
     // if the page is narower than 601px
     
@@ -98,15 +98,21 @@ function init_css()
   //}
   //$("#multiply_matrices_button").css({"position": "relative", 
   //                                  "left": "20%"})
-  $("#multiply_matrices_button").css("width", "95%")
+  
+  $("#multiply_matrices_button").css("width", "109%")
   $("#multiply_matrices_button").css("height", "50px")
   $("#multiply_matrices_button").css("margin", "5px")
   //$("#multiply_matrices_button").css("right-margin", "30%")
   $("#multiply_matrices_button").css("background-color", "#000076ee")
   $("#multiply_matrices_button").css("color", "#ffffff")
   
-  $("#multiply_matrices_button").css("font-weight", "bold")
-  $("#multiply_matrices_button").css("font-size", "1.5em")
+  $("#multiply_matrices_button").css("font-weight", "700")
+  $("#multiply_matrices_button").css("font-size", "1.3em")
+  
+  $("#multiply_matrices_button").css({"font-style" : "normal";
+                                      "letter-spacing" : "0.097em" )
+  
+  
 }
 
 
