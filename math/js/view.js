@@ -24,6 +24,8 @@ function construct_matrix(matrix_id, matrix_label)
   return html_code
 }
 
+html_code += '<div id="page_column_#1">'
+
 html_code += construct_matrix("matrix1", "First matrix")
 html_code += '<br />'
 html_code += construct_matrix("matrix2", "Second matrix")
@@ -31,6 +33,14 @@ html_code += '<br /> <br  />'
 html_code += '<button id="multiply_matrices_button">Multiply matrices</button>'  
 html_code += '<br /> <br />'
 html_code += construct_matrix("matrix3", "Result matrix")
+
+html_code += '</div>'
+
+html_code += '<div id="page_column_#2">'
+html_code += '</div>'
+
+html_code += '<div id="page_column_#3">'
+html_code += '</div>'
 ///////////////////////////////////
 //  Should append to DOM before applying css
 $("#app").append(html_code)
@@ -112,6 +122,11 @@ function init_css()
   //$("#multiply_matrices_button").css({"font-style" : "normal",
    //                                   "letter-spacing" : "0.097em" 
    //                                  })
+  
+  $("#page_column_#1").css("margin", "auto")
+  $("#page_column_#1").css("width", "50%")
+  $("#page_column_#1").css("border", "3px solid green")
+  $("#page_column_#1").css("padding", "10px")
   
   
 }
