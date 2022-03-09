@@ -22,6 +22,15 @@
     <script id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
     </script>
+    
+    <script
+      window.MathJax = {
+        loader: {load: ['[tex]/mathtools']},
+        tex: {packages: {'[+]': ['mathtools']}
+      }
+};
+   </script>
+    
   </head>
 
   <body>
@@ -30,7 +39,7 @@
       
     </div>
     
-    
+ <!--   
  \[
  \require{mathtools}   
  \begin{matrix}
@@ -43,8 +52,9 @@
   2 & -4
  \end{matrix*}
  \]  
-    
- <!--  
+ -->
+ 
+   
  \[
  \usepackage{mathtools}   
  \begin{matrix}
@@ -57,7 +67,7 @@
   2 & -4
  \end{matrix*}
  \]   
- --> 
+  
     <!--
     
     When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
