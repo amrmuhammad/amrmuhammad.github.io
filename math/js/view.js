@@ -36,10 +36,10 @@ html_code += construct_matrix("matrix3", "Result matrix")
 
 html_code += '</div>'
 
-html_code += '<div id="page_column_#2">'
+html_code += '<div id="page_column_#2"> aaa'
 html_code += '</div>'
 
-html_code += '<div id="page_column_#3">'
+html_code += '<div id="page_column_#3"> bbb'
 html_code += '</div>'
 ///////////////////////////////////
 //  Should append to DOM before applying css
