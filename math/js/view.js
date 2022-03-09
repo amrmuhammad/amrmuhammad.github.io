@@ -82,9 +82,9 @@ function init_css()
   $("body").css("width", "100%")
   //$("body").css("overflow-x", "hidden")
   
-  $("#app").css("width", "100%")
-  $("#app").css("margin", "0")
-  $("#app").css("min-width", "250px")
+  $("#page_column_#1").css("width", "100%")
+  $("#page_column_#1").css("margin", "0")
+  $("#page_column_#1").css("min-width", "250px")
   
   
   let query = window.matchMedia("(min-width : 601px)")
@@ -123,10 +123,10 @@ function init_css()
    //                                   "letter-spacing" : "0.097em" 
    //                                  })
   
-  $("#page_column_#1").css("margin", "auto")
-  $("#page_column_#1").css("width", "50%")
-  $("#page_column_#1").css("border", "3px solid green")
-  $("#page_column_#1").css("padding", "10px")
+  $("#page_column_#2").css("margin", "auto")
+  $("#page_column_#2").css("width", "50%")
+  $("#page_column_#2").css("border", "3px solid green")
+  $("#page_column_#2").css("padding", "10px")
   
   
 }
