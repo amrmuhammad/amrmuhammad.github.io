@@ -90,7 +90,7 @@ function init_css()
   let query = window.matchMedia("(min-width : 601px)")
   if (query.matches) {
     // if the page is wider than 600px
-    $("#app").css("width", "33%")
+    $("#page_column_#1").css("width", "33%")
   } else {
     // if the page is narower than 601px
     
