@@ -129,7 +129,7 @@ function init_css()
    //                                   "letter-spacing" : "0.097em" 
    //                                  })
   
-  $("#page_column_2").css("margin", "auto")
+  //$("#page_column_2").css("margin", "auto")
   //$("#page_column_2").css("width", "50%")
   $("#page_column_2").css("border", "3px solid green")
   $("#page_column_2").css("padding", "10px")
