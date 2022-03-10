@@ -82,9 +82,9 @@ function init_css()
   $("body").css("width", "100%")
   //$("body").css("overflow-x", "hidden")
   
-  $("#page_column_#1").css("width", "100%")
-  $("#page_column_#1").css("margin", "0")
-  $("#page_column_#1").css("min-width", "250px")
+  $("#page_column_1").css("width", "100%")
+  $("#page_column_1").css("margin", "0")
+  $("#page_column_1").css("min-width", "250px")
   
   
   let query = window.matchMedia("(min-width : 601px)")
