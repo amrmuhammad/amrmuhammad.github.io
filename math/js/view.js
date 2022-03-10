@@ -90,7 +90,13 @@ function init_css()
   let query = window.matchMedia("(min-width : 601px)")
   if (query.matches) {
     // if the page is wider than 600px
-    $("#page_column_1").css("width", "33%")
+    
+    $("#app").css("display", "flex")
+    $("#page_column_1").css("flex", "33%")
+    $("#page_column_2").css("flex", "33%")
+    $("#page_column_3").css("flex", "33%")
+    //$("#page_column_1").css("width", "33%")
+    
   } else {
     // if the page is narower than 601px
     
@@ -127,6 +133,8 @@ function init_css()
   $("#page_column_2").css("width", "50%")
   $("#page_column_2").css("border", "3px solid green")
   $("#page_column_2").css("padding", "10px")
+  
+  
   
   
 }
