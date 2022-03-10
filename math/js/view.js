@@ -24,7 +24,7 @@ function construct_matrix(matrix_id, matrix_label)
   return html_code
 }
 
-html_code += '<div id="page_column_#1">'
+html_code += '<div id="page_column_1">'
 
 html_code += construct_matrix("matrix1", "First matrix")
 html_code += '<br />'
@@ -36,10 +36,10 @@ html_code += construct_matrix("matrix3", "Result matrix")
 
 html_code += '</div>'
 
-html_code += '<div id="page_column_#2"> aaa'
+html_code += '<div id="page_column_2"> aaa'
 html_code += '</div>'
 
-html_code += '<div id="page_column_#3"> bbb'
+html_code += '<div id="page_column_3"> bbb'
 html_code += '</div>'
 ///////////////////////////////////
 //  Should append to DOM before applying css
@@ -90,7 +90,7 @@ function init_css()
   let query = window.matchMedia("(min-width : 601px)")
   if (query.matches) {
     // if the page is wider than 600px
-    $("#page_column_#1").css("width", "33%")
+    $("#page_column_1").css("width", "33%")
   } else {
     // if the page is narower than 601px
     
@@ -123,10 +123,10 @@ function init_css()
    //                                   "letter-spacing" : "0.097em" 
    //                                  })
   
-  $("#page_column_#2").css("margin", "auto")
-  $("#page_column_#2").css("width", "50%")
-  $("#page_column_#2").css("border", "3px solid green")
-  $("#page_column_#2").css("padding", "10px")
+  $("#page_column_2").css("margin", "auto")
+  $("#page_column_2").css("width", "50%")
+  $("#page_column_2").css("border", "3px solid green")
+  $("#page_column_2").css("padding", "10px")
   
   
 }
