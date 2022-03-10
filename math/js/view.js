@@ -92,9 +92,9 @@ function init_css()
     // if the page is wider than 600px
     
     $("#app").css("display", "flex")
-    $("#page_column_1").css("flex", "33%")
-    $("#page_column_2").css("flex", "33%")
-    $("#page_column_3").css("flex", "33%")
+    $("#page_column_1").css("flex", "33.33%")
+    $("#page_column_2").css("flex", "33.33%")
+    $("#page_column_3").css("flex", "33.33%")
     //$("#page_column_1").css("width", "33%")
     
   } else {
@@ -134,7 +134,8 @@ function init_css()
   $("#page_column_2").css("border", "3px solid green")
   $("#page_column_2").css("padding", "10px")
   
-  
+  $("#page_column_3").css("border", "3px solid green")
+  //$("#page_column_3").css("padding", "10px")
   
   
 }
