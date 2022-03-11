@@ -53,7 +53,7 @@ function init_css_matrix(matrix_id, is_page_gt600) {
 
   $("#" + matrix_id).css("border", "1px solid")
   //$("#" + matrix_id).css("border-radius", "10px")
-  $("#" + matrix_id).css("margin", "5px")
+  //$("#" + matrix_id).css("margin", "5px")
 
   //if (is_page_gt600 == true) {
     //https://developer.mozilla.org/en-US/docs/Web/CSS/left
