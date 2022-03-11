@@ -142,18 +142,6 @@ function init_css()
   //$("#page_column_2").css("margin", "auto")
   //$("#page_column_2").css("width", "50%")
   
-  $("#page_column_1").css("border", "3px solid green")
-  $("#page_column_1").css("padding", "10px")
-  $("#page_column_1").css("margin", "5px")
-
-  
-  $("#page_column_2").css("border", "3px solid green")
-  $("#page_column_2").css("padding", "10px")
-  $("#page_column_2").css("margin", "5px")
-  
-  $("#page_column_3").css("border", "3px solid green")
-  $("#page_column_3").css("padding", "10px")
-  $("#page_column_3").css("margin", "5px")
   
 }
 
