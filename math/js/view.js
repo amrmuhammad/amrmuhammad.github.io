@@ -83,7 +83,7 @@ function init_css()
   //$("body").css("overflow-x", "hidden")
   
   $("#page_column_1").css("width", "100%")
-  $("#page_column_1").css("margin", "0")
+  $("#page_column_1").css("margin", "5px")
   $("#page_column_1").css("min-width", "250px")
   
   
@@ -115,7 +115,7 @@ function init_css()
   //$("#multiply_matrices_button").css({"position": "relative", 
   //                                  "left": "20%"})
   
-  $("#multiply_matrices_button").css("width", "109%")
+  $("#multiply_matrices_button").css("width", "100%")
   $("#multiply_matrices_button").css("height", "50px")
   $("#multiply_matrices_button").css("margin", "5px")
   //$("#multiply_matrices_button").css("right-margin", "30%")
@@ -133,15 +133,17 @@ function init_css()
   //$("#page_column_2").css("width", "50%")
   
   $("#page_column_1").css("border", "3px solid green")
-  //$("#page_column_1").css("padding", "10px")
+  $("#page_column_1").css("padding", "10px")
+  $("#page_column_1").css("margin", "5px")
 
   
   $("#page_column_2").css("border", "3px solid green")
   $("#page_column_2").css("padding", "10px")
+  $("#page_column_2").css("margin", "5px")
   
   $("#page_column_3").css("border", "3px solid green")
-  //$("#page_column_3").css("padding", "10px")
-  
+  $("#page_column_3").css("padding", "10px")
+  $("#page_column_3").css("margin", "5px")
   
 }
 
