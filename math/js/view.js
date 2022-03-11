@@ -82,10 +82,20 @@ function init_css()
   $("body").css("width", "100%")
   //$("body").css("overflow-x", "hidden")
   
-  $("#page_column_1").css("width", "100%")
-  $("#page_column_1").css("margin", "5px")
-  $("#page_column_1").css("min-width", "250px")
+  //$("#page_column_1").css("min-width", "250px")
   
+  $("#page_column_1").css("border", "3px solid green")
+  $("#page_column_1").css("padding", "10px")
+  $("#page_column_1").css("margin", "5px")
+
+  
+  $("#page_column_2").css("border", "3px solid green")
+  $("#page_column_2").css("padding", "10px")
+  $("#page_column_2").css("margin", "5px")
+  
+  $("#page_column_3").css("border", "3px solid green")
+  $("#page_column_3").css("padding", "10px")
+  $("#page_column_3").css("margin", "5px")
   
   let query = window.matchMedia("(min-width : 601px)")
   if (query.matches) {
