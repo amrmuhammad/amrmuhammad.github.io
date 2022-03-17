@@ -47,7 +47,7 @@ $("#app").append(html_code)
 ///////////////////////////
 function init_css_matrix(matrix_id, is_page_gt600) {
 
-  $("#" + matrix_id).css("width", "90%")
+  $("#" + matrix_id).css("width", "80%")
   $("#" + matrix_id).css("padding", "5%")
   $("#" + matrix_id).css("padding-top", "1%")
 
