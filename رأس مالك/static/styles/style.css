@@ -15,6 +15,10 @@
   top: 30px;
 }
 
+#top_header_وصف_لموقع_رأس مالك {
+  position: relative;
+  top: 60px;
+}
 
 ul {
   list-style-type: none;
