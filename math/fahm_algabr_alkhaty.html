@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجبر الخطي المرئي - تعلم بالمشاهدة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .vector-animation {
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        .transform-animation {
+            transition: transform 1s ease-in-out;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        /* RTL specific styles */
+        body {
+            text-align: right;
+        }
+        
+        .list-arabic {
+            list-style-type: arabic-indic;
+        }
+        
+        .transform-origin-rtl {
+            transform-origin: right center;
+        }
+        
+        .scrollbar-rtl::-webkit-scrollbar {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans" dir="rtl">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <div class="bg-blue-600 text-white p-2 rounded-lg">
+                    <i class="fas fa-calculator text-xl"></i>
+                </div>
+                <h1 class="text-xl font-bold text-gray-800">الجبر الخطي المرئي</h1>
+            </div>
+            <div class="hidden md:flex space-x-8 space-x-reverse">
+                <a href="#vectors" class="nav-link text-gray-700 hover:text-blue-600 font-medium">المتجهات</a>
+                <a href="#matrices" class="nav-link text-gray-700 hover:text-blue-600 font-medium">المصفوفات</a>
+                <a href="#transformations" class="nav-link text-gray-700 hover:text-blue-600 font-medium">التحويلات</a>
+                <a href="#applications" class="nav-link text-gray-700 hover:text-blue-600 font-medium">التطبيقات</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#vectors" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">المتجهات</a>
+            <a href="#matrices" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">المصفوفات</a>
+            <a href="#transformations" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">التحويلات</a>
+            <a href="#applications" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">التطبيقات</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl font-bold mb-4">فهم الجبر الخطي <span class="text-yellow-300">بالمشاهدة</span></h1>
+                <p class="text-xl mb-6">تعلم المفاهيم الأساسية في الجبر الخطي من خلال شرح تفاعلي ورسوم متحركة توضيحية</p>
+                <div class="flex space-x-4 space-x-reverse">
+                    <a href="#vectors" class="bg-white text-blue-600 hover:bg-gray-100 font-medium py-2 px-6 rounded-lg transition duration-200">
+                        ابدأ التعلم
+                    </a>
+                    <a href="#intro" class="bg-transparent border-2 border-white hover:bg-blue-600 font-medium py-2 px-6 rounded-lg transition duration-200">
+                        مقدمة
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64">
+                    <div id="hero-vector-1" class="absolute top-0 left-0 w-16 h-16 bg-yellow-400 rounded-full transform translate-x-20 translate-y-10"></div>
+                    <div id="hero-vector-2" class="absolute top-0 left-0 w-16 h-16 bg-red-500 rounded-full transform translate-x-32 translate-y-20"></div>
+                    <div id="hero-matrix" class="absolute bottom-0 right-0 w-32 h-32 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg grid grid-cols-3 grid-rows-3 gap-1 p-2">
+                        <!-- Matrix cells -->
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                        <div class="bg-white bg-opacity-70 rounded-sm"></div>
+                    </div>
+                    <div id="hero-transformation" class="absolute bottom-10 left-10 w-20 h-20 bg-green-400 rounded-lg transform rotate-45 origin-center transform-origin-rtl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="intro" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">ما هو الجبر الخطي؟</h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <p class="text-gray-700 text-lg mb-6">
+                        الجبر الخطي هو فرع من الرياضيات يدرس الفضاءات المتجهية، والتحويلات الخطية بينها، وأنظمة المعادلات الخطية. وهو أساسي في العديد من مجالات الرياضيات التطبيقية والفيزياء والهندسة وعلوم الحاسوب.
+                    </p>
+                    <ul class="list-arabic pr-5 space-y-2 text-gray-700">
+                        <li>دراسة المتجهات والعمليات عليها</li>
+                        <li>دراسة المصفوفات وخصائصها</li>
+                        <li>التحويلات الخطية والهندسة</li>
+                        <li>حل أنظمة المعادلات الخطية</li>
+                        <li>التطبيقات في الرسوميات والذكاء الاصطناعي</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64">
+                        <canvas id="introChart" width="300" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="concept-card bg-blue-50 rounded-xl p-6 shadow-md transition duration-300">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-arrow-up text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">المتجهات</h3>
+                    <p class="text-gray-600">كميات لها مقدار واتجاه، تستخدم لتمثيل القوى، السرعات، وغيرها في الفضاء متعدد الأبعاد.</p>
+                </div>
+                
+                <div class="concept-card bg-purple-50 rounded-xl p-6 shadow-md transition duration-300">
+                    <div class="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-table text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">المصفوفات</h3>
+                    <p class="text-gray-600">مصفوفات من الأعداد تمثل تحويلات خطية أو تخزن معاملات أنظمة المعادلات الخطية.</p>
+                </div>
+                
+                <div class="concept-card bg-green-50 rounded-xl p-6 shadow-md transition duration-300">
+                    <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-project-diagram text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">التحويلات</h3>
+                    <p class="text-gray-600">عمليات مثل التدوير، القياس، الانعكاس التي تحول المتجهات والمصفوفات بطرق محددة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vectors Section -->
+    <section id="vectors" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">المتجهات في الجبر الخطي</h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">ما هو المتجه؟</h3>
+                    <p class="text-gray-700 mb-6">
+                        المتجه هو كمية رياضية لها مقدار واتجاه. في الفضاء الثنائي الأبعاد، يمكن تمثيل المتجه بسهم من نقطة الأصل إلى النقطة (x,y). في الفضاء الثلاثي الأبعاد، نضيف إحداثية z.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                        <div class="flex items-center space-x-2 space-x-reverse mb-2">
+                            <div class="w-4 h-4 bg-blue-600 rounded-full"></div>
+                            <span class="font-medium">المتجه في 2D: <span class="font-mono">v = (x, y)</span></span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <div class="w-4 h-4 bg-blue-600 rounded-full"></div>
+                            <span class="font-medium">المتجه في 3D: <span class="font-mono">v = (x, y, z)</span></span>
+                        </div>
+                    </div>
+                    <button id="play-vector-animation" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition duration-200">
+                        شاهد الرسوم المتحركة
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full h-64 bg-white rounded-xl shadow-md p-4">
+                        <canvas id="vectorCanvas" width="500" height="300"></canvas>
+                        <div id="vector-coords" class="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-2 rounded-lg shadow-sm text-sm font-mono">
+                            v = (3, 2)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-plus text-green-600"></i>
+                        </div>
+                        جمع المتجهات
+                    </h3>
+                    <p class="text-gray-600 mb-4">جمع متجهين يتم عن طريق جمع عناصرهما المتناظرة. هندسياً، نضع ذيل المتجه الثاني عند رأس المتجه الأول.</p>
+                    <div class="flex justify-center">
+                        <div class="relative w-48 h-32">
+                            <canvas id="vectorAdditionCanvas" width="200" height="150"></canvas>
+                        </div>
+                    </div>
+                    <button id="play-addition-animation" class="mt-4 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
+                        عرض الجمع
+                    </button>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-arrows-alt-v text-purple-600"></i>
+                        </div>
+                        الضرب القياسي
+                    </h3>
+                    <p class="text-gray-600 mb-4">ضرب متجه بكمية قياسية يغير طوله دون تغيير اتجاهه (إلا إذا كان السالب يعكس الاتجاه).</p>
+                    <div class="flex justify-center">
+                        <div class="relative w-48 h-32">
+                            <canvas id="vectorScalingCanvas" width="200" height="150"></canvas>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <button id="scale-up" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
+                            تكبير (×2)
+                        </button>
+                        <button id="scale-down" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
+                            تصغير (×0.5)
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">الضرب النقطي للمتجهات</h3>
+                        <p class="text-gray-600 mb-4">
+                            الضرب النقطي (أو الضرب القياسي) هو عملية بين متجهين تعطي كمية قياسية. تحسب بضرب العناصر المتناظرة وجمع النتائج.
+                        </p>
+                        <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                            <p class="font-mono text-gray-700">a · b = a₁b₁ + a₂b₂ + ... + aₙbₙ</p>
+                        </div>
+                        <p class="text-gray-600">
+                            الضرب النقطي يرتبط بزاوية بين المتجهين: a · b = |a||b|cosθ
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 bg-gray-50 flex items-center justify-center p-6">
+                        <div class="relative w-full h-64">
+                            <canvas id="dotProductCanvas" width="400" height="300"></canvas>
+                            <div id="dot-product-result" class="absolute bottom-4 right-4 bg-white px-3 py-2 rounded-lg shadow-sm text-sm font-mono">
+                                a · b = 0
+                            </div>
+                            <div id="angle-display" class="absolute top-4 right-4 bg-white px-3 py-2 rounded-lg shadow-sm text-sm font-mono">
+                                θ = 90°
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matrices Section -->
+    <section id="matrices" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">المصفوفات والعمليات عليها</h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-600">ما هي المصفوفة؟</h3>
+                    <p class="text-gray-700 mb-6">
+                        المصفوفة هي ترتيب مستطيل للأعداد في صفوف وأعمدة. تستخدم لتمثيل التحويلات الخطية، تخزين معاملات أنظمة المعادلات، وغيرها من التطبيقات.
+                    </p>
+                    <div class="bg-purple-50 p-4 rounded-lg mb-6">
+                        <p class="font-mono text-purple-800 text-center">
+                            [ a₁₁ a₁₂ a₁₃ ]<br>
+                            [ a₂₁ a₂₂ a₂₃ ]<br>
+                            [ a₃₁ a₃₂ a₃₃ ]
+                        </p>
+                    </div>
+                    <p class="text-gray-600">
+                        المصفوفة ذات m صف و n عمود تسمى مصفوفة m×n. المصفوفة المربعة لها نفس عدد الصفوف والأعمدة.
+                    </p>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-gray-50 rounded-xl shadow-md p-6 w-full">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="font-medium text-gray-700">مصفوفة عشوائية 3×3</h4>
+                            <button id="generate-matrix" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-1 px-3 rounded-lg text-sm transition duration-200">
+                                توليد مصفوفة
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2" id="random-matrix">
+                            <div class="bg-white p-3 rounded text-center font-mono">1</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">0</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">0</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">0</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">1</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">0</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">0</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">0</div>
+                            <div class="bg-white p-3 rounded text-center font-mono">1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gray-50 rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">ضرب المصفوفات</h3>
+                    <p class="text-gray-600 mb-4">
+                        ضرب المصفوفات ليس عملية تبديلية. لضرب مصفوفتين A و B، عدد أعمدة A يجب أن يساوي عدد صفوف B.
+                    </p>
+                    <div class="bg-white p-4 rounded-lg mb-4">
+                        <p class="font-mono text-center text-sm">
+                            C[i][j] = Σ A[i][k] × B[k][j]
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="relative w-full h-48">
+                            <canvas id="matrixMultiplicationCanvas" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                    <button id="play-multiplication-animation" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                        عرض عملية الضرب
+                    </button>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">المحدد والمعكوس</h3>
+                    <p class="text-gray-600 mb-4">
+                        محدد المصفوفة المربعة هو قيمة قياسية تحدد خصائص مهمة مثل إمكانية عكس المصفوفة.
+                    </p>
+                    <div class="bg-white p-4 rounded-lg mb-4">
+                        <p class="font-mono text-center text-sm">
+                            لمصفوفة 2×2: det(A) = ad - bc<br>
+                            [ a b ]<br>
+                            [ c d ]
+                        </p>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        المصفوفة المعكوسة A⁻¹ تحقق A × A⁻¹ = I (مصفوفة الوحدة). لا يوجد معكوس إذا كان المحدد صفراً.
+                    </p>
+                    <div class="flex justify-center space-x-4 space-x-reverse">
+                        <button id="calculate-determinant" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
+                            حساب المحدد
+                        </button>
+                        <button id="calculate-inverse" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
+                            حساب المعكوس
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 rounded-xl shadow-md overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-800">أنظمة المعادلات الخطية</h3>
+                        <p class="text-blue-700 mb-4">
+                            يمكن تمثيل نظام المعادلات الخطية في صورة مصفوفية: Ax = b، حيث:
+                        </p>
+                        <ul class="list-arabic pr-5 space-y-2 text-blue-700 mb-4">
+                            <li>A مصفوفة المعاملات</li>
+                            <li>x متجه المجهولات</li>
+                            <li>b متجه الثوابت</li>
+                        </ul>
+                        <p class="text-blue-700">
+                            يمكن حل النظام بإيجاد معكوس A (إذا وجد) ثم حساب x = A⁻¹b، أو باستخدام طريقة الحذف لجاوسي.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 bg-white flex items-center justify-center p-6">
+                        <div class="w-full">
+                            <div class="grid grid-cols-3 gap-2 mb-4">
+                                <input type="number" class="bg-gray-100 p-2 rounded text-center" value="2" placeholder="a">
+                                <input type="number" class="bg-gray-100 p-2 rounded text-center" value="1" placeholder="b">
+                                <input type="number" class="bg-gray-100 p-2 rounded text-center" value="8" placeholder="c">
+                                <input type="number" class="bg-gray-100 p-2 rounded text-center" value="1" placeholder="d">
+                                <input type="number" class="bg-gray-100 p-2 rounded text-center" value="-1" placeholder="e">
+                                <input type="number" class="bg-gray-100 p-2 rounded text-center" value="3" placeholder="f">
+                            </div>
+                            <button id="solve-equations" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                                حل النظام
+                            </button>
+                            <div id="equation-solution" class="mt-4 p-3 bg-blue-100 rounded-lg text-center font-mono hidden">
+                                الحل: x = 2, y = 1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformations Section -->
+    <section id="transformations" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">التحويلات الخطية</h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-semibold mb-4 text-green-600">التحويلات الخطية في الجبر الخطي</h3>
+                    <p class="text-gray-700 mb-6">
+                        التحويل الخطي هو دالة بين فضاءين متجهين تحافظ على عمليات الجمع والضرب القياسي. يمكن تمثيل أي تحويل خطي بمصفوفة.
+                    </p>
+                    <div class="bg-green-50 p-4 rounded-lg mb-6">
+                        <p class="font-mono text-green-800">
+                            T(u + v) = T(u) + T(v)<br>
+                            T(cu) = cT(u)
+                        </p>
+                    </div>
+                    <p class="text-gray-600">
+                        أمثلة على التحويلات الخطية: التدوير، القياس، الانعكاس، والإسقاط.
+                    </p>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full h-64 bg-white rounded-xl shadow-md p-4">
+                        <canvas id="transformationCanvas" width="500" height="300"></canvas>
+                        <div class="absolute bottom-4 left-4 bg-white bg-opacity-90 px-3 py-2 rounded-lg shadow-sm">
+                            <select id="transformation-type" class="bg-transparent border-none text-sm focus:ring-0">
+                                <option value="identity">تحويل محايد</option>
+                                <option value="rotation">تدوير</option>
+                                <option value="scaling">قياس</option>
+                                <option value="shear">قص</option>
+                                <option value="reflection">انعكاس</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">مصفوفات التحويل الأساسية</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-redo text-blue-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700">مصفوفة التدوير</h4>
+                                <p class="text-gray-600 text-sm">
+                                    تدوير المتجهات بزاوية θ عكس عقارب الساعة:<br>
+                                    <span class="font-mono">
+                                        [ cosθ -sinθ ]<br>
+                                        [ sinθ cosθ ]
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-expand-alt text-purple-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700">مصفوفة القياس</h4>
+                                <p class="text-gray-600 text-sm">
+                                    تغيير حجم المتجهات بعوامل sx و sy:<br>
+                                    <span class="font-mono">
+                                        [ sx 0 ]<br>
+                                        [ 0 sy ]
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-red-100 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fas fa-cut text-red-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700">مصفوفة القص</h4>
+                                <p class="text-gray-600 text-sm">
+                                    قص المتجهات بعامل k:<br>
+                                    <span class="font-mono">
+                                        [ 1 k ]<br>
+                                        [ 0 1 ]
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">تكوين التحويلات</h3>
+                    <p class="text-gray-600 mb-4">
+                        يمكن تكوين تحويلات متعددة عن طريق ضرب مصفوفاتها. الترتيب مهم لأن ضرب المصفوفات ليس تبديلياً.
+                    </p>
+                    <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                        <p class="font-mono text-center text-sm">
+                            T = T₂ ∘ T₁ ← M = M₂ × M₁
+                        </p>
+                    </div>
+                    <div class="flex justify-center space-x-4 space-x-reverse">
+                        <button id="apply-rotation" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
+                            تدوير ثم قياس
+                        </button>
+                        <button id="apply-scaling" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
+                            قياس ثم تدوير
+                        </button>
+                    </div>
+                    <div class="mt-4 text-center text-sm text-gray-500">
+                        لاحظ الفرق في النتيجة عند تغيير ترتيب التحويلات
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">التحويلات في الفضاء الثلاثي الأبعاد</h3>
+                        <p class="text-gray-600 mb-4">
+                            في 3D، نستخدم مصفوفات 4×4 لتمثيل التحويلات الخطية والانزياح (الذي ليس تحويلاً خطياً). هذا مفيد في رسوميات الحاسوب.
+                        </p>
+                        <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                            <p class="font-mono text-center text-sm">
+                                مصفوفة التدوير حول المحور X:<br>
+                                [ 1 0 0 0 ]<br>
+                                [ 0 cosθ -sinθ 0 ]<br>
+                                [ 0 sinθ cosθ 0 ]<br>
+                                [ 0 0 0 1 ]
+                            </p>
+                        </div>
+                        <p class="text-gray-600">
+                            التحويلات في 3D تستخدم في الألعاب، المحاكاة، والتصميم بمساعدة الحاسوب (CAD).
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 bg-gray-50 flex items-center justify-center p-6">
+                        <div class="relative w-full h-64">
+                            <canvas id="3dTransformationCanvas" width="400" height="300"></canvas>
+                            <div class="absolute top-4 right-4 bg-white bg-opacity-90 px-3 py-2 rounded-lg shadow-sm text-sm">
+                                <div class="flex space-x-2 space-x-reverse">
+                                    <button id="rotate-x" class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs">
+                                        X
+                                    </button>
+                                    <button id="rotate-y" class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs">
+                                        Y
+                                    </button>
+                                    <button id="rotate-z" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs">
+                                        Z
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section id="applications" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">تطبيقات الجبر الخطي</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-indigo-50 rounded-xl shadow-md overflow-hidden transform transition hover:scale-105 duration-300">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-robot text-indigo-600 text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-indigo-800">تعلم الآلة والذكاء الاصطناعي</h3>
+                        <p class="text-indigo-700">
+                            الجبر الخطي أساسي في خوارزميات تعلم الآلة مثل الانحدار الخطي، PCA، والشبكات العصبية. تمثل البيانات والوزنات كمصفوفات ومتجهات.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-pink-50 rounded-xl shadow-md overflow-hidden transform transition hover:scale-105 duration-300">
+                    <div class="h-48 bg-pink-100 flex items-center justify-center">
+                        <i class="fas fa-gamepad text-pink-600 text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-pink-800">رسوميات الحاسوب والألعاب</h3>
+                        <p class="text-pink-700">
+                            التحويلات الخطية تستخدم لتدوير ونقل وتحجيم النماذج ثلاثية الأبعاد. مصفوفات التحكم في العرض تمثل الكاميرا والمشهد.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-teal-50 rounded-xl shadow-md overflow-hidden transform transition hover:scale-105 duration-300">
+                    <div class="h-48 bg-teal-100 flex items-center justify-center">
+                        <i class="fas fa-atom text-teal-600 text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-teal-800">ميكانيكا الكم والفيزياء</h3>
+                        <p class="text-teal-700">
+                            الحالات الكمية تمثل بمتجهات في فضاء هلبرت. المراصد تمثل بمؤثرات خطية، والقيم الذاتية تمثل القياسات الممكنة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl shadow-md overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-4">الجبر الخطي في حياتنا اليومية</h3>
+                        <p class="mb-6">
+                            من تصفية نتائج البحث في جوجل إلى ضغط الصور، ومن تشفير البيانات إلى تحليل الشبكات الاجتماعية، الجبر الخطي موجود في كل مكان حولنا.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>محركات البحث تستخدم جبر المصفوفات لترتيب الصفحات</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>تشفير البيانات يعتمد على خصائص المصفوفات</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>تحليل الصور يستخدم تحلل المصفوفات</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 bg-white bg-opacity-20 flex items-center justify-center p-8 backdrop-filter backdrop-blur-sm">
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="bg-white bg-opacity-70 p-4 rounded-lg text-center">
+                                <i class="fas fa-search text-blue-600 text-2xl mb-2"></i>
+                                <p class="text-xs font-medium">محركات البحث</p>
+                            </div>
+                            <div class="bg-white bg-opacity-70 p-4 rounded-lg text-center">
+                                <i class="fas fa-lock text-blue-600 text-2xl mb-2"></i>
+                                <p class="text-xs font-medium">التشفير</p>
+                            </div>
+                            <div class="bg-white bg-opacity-70 p-4 rounded-lg text-center">
+                                <i class="fas fa-image text-blue-600 text-2xl mb-2"></i>
+                                <p class="text-xs font-medium">معالجة الصور</p>
+                            </div>
+                            <div class="bg-white bg-opacity-70 p-4 rounded-lg text-center">
+                                <i class="fas fa-network-wired text-blue-600 text-2xl mb-2"></i>
+                                <p class="text-xs font-medium">تحليل الشبكات</p>
+                            </div>
+                            <div class="bg-white bg-opacity-70 p-4 rounded-lg text-center">
+                                <i class="fas fa-chart-line text-blue-600 text-2xl mb-2"></i>
+                                <p class="text-xs font-medium">الاقتصاد</p>
+                            </div>
+                            <div class="bg-white bg-opacity-70 p-4 rounded-lg text-center">
+                                <i class="fas fa-dna text-blue-600 text-2xl mb-2"></i>
+                                <p class="text-xs font-medium">البيولوجيا</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">الجبر الخطي المرئي</h3>
+                    <p class="text-gray-400">
+                        منصة تعليمية تهدف إلى تبسيط مفاهيم الجبر الخطي من خلال الشرح المرئي والرسوم المتحركة التفاعلية.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#vectors" class="text-gray-400 hover:text-white transition">المتجهات</a></li>
+                        <li><a href="#matrices" class="text-gray-400 hover:text-white transition">المصفوفات</a></li>
+                        <li><a href="#transformations" class="text-gray-400 hover:text-white transition">التحويلات</a></li>
+                        <li><a href="#applications" class="text-gray-400 hover:text-white transition">التطبيقات</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">موارد إضافية</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">كتب مقترحة</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">دورات تعليمية</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">أدوات تفاعلية</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">أسئلة شائعة</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">تواصل معنا</h3>
+                    <div class="flex space-x-4 space-x-reverse mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        اشترك في نشرتنا البريدية لتلقي آخر التحديثات والمواد التعليمية الجديدة.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 الجبر الخطي المرئي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Hero animation
+            setTimeout(() => {
+                document.getElementById('hero-vector-1').classList.add('animate-pulse');
+                document.getElementById('hero-vector-2').classList.add('animate-pulse');
+                document.getElementById('hero-matrix').classList.add('animate-pulse');
+                document.getElementById('hero-transformation').classList.add('animate-spin', 'slow');
+            }, 500);
+            
+            // Intro chart
+            const introCtx = document.getElementById('introChart').getContext('2d');
+            const introChart = new Chart(introCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['المتجهات', 'المصفوفات', 'التحويلات', 'التطبيقات'],
+                    datasets: [{
+                        data: [30, 30, 25, 15],
+                        backgroundColor: [
+                            '#3B82F6',
+                            '#8B5CF6',
+                            '#10B981',
+                            '#F59E0B'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            rtl: true,
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    family: 'Tajawal, sans-serif'
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    }
+                }
+            });
+            
+            // Vector canvas
+            const vectorCanvas = document.getElementById('vectorCanvas');
+            const vectorCtx = vectorCanvas.getContext('2d');
+            
+            function drawVector(ctx, x, y, color, label) {
+                const centerX = vectorCanvas.width / 2;
+                const centerY = vectorCanvas.height / 2;
+                
+                ctx.clearRect(0, 0, vectorCanvas.width, vectorCanvas.height);
+                
+                // Draw grid
+                ctx.strokeStyle = '#E5E7EB';
+                ctx.lineWidth = 1;
+                
+                // Vertical lines
+                for (let i = 0; i <= vectorCanvas.width; i += 50) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, 0);
+                    ctx.lineTo(i, vectorCanvas.height);
+                    ctx.stroke();
+                }
+                
+                // Horizontal lines
+                for (let j = 0; j <= vectorCanvas.height; j += 50) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, j);
+                    ctx.lineTo(vectorCanvas.width, j);
+                    ctx.stroke();
+                }
+                
+                // Draw axes
+                ctx.strokeStyle = '#9CA3AF';
+                ctx.lineWidth = 2;
+                
+                // X axis
+                ctx.beginPath();
+                ctx.moveTo(0, centerY);
+                ctx.lineTo(vectorCanvas.width, centerY);
+                ctx.stroke();
+                
+                // Y axis
+                ctx.beginPath();
+                ctx.moveTo(centerX, 0);
+                ctx.lineTo(centerX, vectorCanvas.height);
+                ctx.stroke();
+                
+                // Draw vector
+                ctx.strokeStyle = color;
+                ctx.fillStyle = color;
+                ctx.lineWidth = 3;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(centerX + x * 30, centerY - y * 30);
+                ctx.stroke();
+                
+                // Draw arrowhead
+                const angle = Math.atan2(-y, x);
+                ctx.beginPath();
+                ctx.moveTo(centerX + x * 30, centerY - y * 30);
+                ctx.lineTo(centerX + x * 30 - 10 * Math.cos(angle - Math.PI/6), centerY - y * 30 + 10 * Math.sin(angle - Math.PI/6));
+                ctx.lineTo(centerX + x * 30 - 10 * Math.cos(angle + Math.PI/6), centerY - y * 30 + 10 * Math.sin(angle + Math.PI/6));
+                ctx.closePath();
+                ctx.fill();
+                
+                // Update coordinates display
+                document.getElementById('vector-coords').textContent = `v = (${x}, ${y})`;
+            }
+            
+            // Initial vector
+            drawVector(vectorCtx, 3, 2, '#3B82F6');
+            
+            // Vector animation
+            document.getElementById('play-vector-animation').addEventListener('click', function() {
+                const vectors = [
+                    {x: 3, y: 2},
+                    {x: -2, y: 4},
+                    {x: -1, y: -3},
+                    {x: 5, y: 1},
+                    {x: 3, y: 2}
+                ];
+                
+                let currentIndex = 0;
+                const animation = setInterval(() => {
+                    if (currentIndex < vectors.length) {
+                        const vector = vectors[currentIndex];
+                        drawVector(vectorCtx, vector.x, vector.y, '#3B82F6');
+                        currentIndex++;
+                    } else {
+                        clearInterval(animation);
+                    }
+                }, 1000);
+            });
+            
+            // Vector addition canvas
+            const vectorAdditionCanvas = document.getElementById('vectorAdditionCanvas');
+            const vectorAdditionCtx = vectorAdditionCanvas.getContext('2d');
+            
+            function drawVectorAddition(v1, v2, showResult) {
+                const centerX = vectorAdditionCanvas.width / 2;
+                const centerY = vectorAdditionCanvas.height / 2;
+                
+                vectorAdditionCtx.clearRect(0, 0, vectorAdditionCanvas.width, vectorAdditionCanvas.height);
+                
+                // Draw grid
+                vectorAdditionCtx.strokeStyle = '#E5E7EB';
+                vectorAdditionCtx.lineWidth = 1;
+                
+                // Vertical lines
+                for (let i = 0; i <= vectorAdditionCanvas.width; i += 25) {
+                    vectorAdditionCtx.beginPath();
+                    vectorAdditionCtx.moveTo(i, 0);
+                    vectorAdditionCtx.lineTo(i, vectorAdditionCanvas.height);
+                    vectorAdditionCtx.stroke();
+                }
+                
+                // Horizontal lines
+                for (let j = 0; j <= vectorAdditionCanvas.height; j += 25) {
+                    vectorAdditionCtx.beginPath();
+                    vectorAdditionCtx.moveTo(0, j);
+                    vectorAdditionCtx.lineTo(vectorAdditionCanvas.width, j);
+                    vectorAdditionCtx.stroke();
+                }
+                
+                // Draw axes
+                vectorAdditionCtx.strokeStyle = '#9CA3AF';
+                vectorAdditionCtx.lineWidth = 1;
+                
+                // X axis
+                vectorAdditionCtx.beginPath();
+                vectorAdditionCtx.moveTo(0, centerY);
+                vectorAdditionCtx.lineTo(vectorAdditionCanvas.width, centerY);
+                vectorAdditionCtx.stroke();
+                
+                // Y axis
+                vectorAdditionCtx.beginPath();
+                vectorAdditionCtx.moveTo(centerX, 0);
+                vectorAdditionCtx.lineTo(centerX, vectorAdditionCanvas.height);
+                vectorAdditionCtx.stroke();
+                
+                // Draw vector v1
+                vectorAdditionCtx.strokeStyle = '#3B82F6';
+                vectorAdditionCtx.fillStyle = '#3B82F6';
+                vectorAdditionCtx.lineWidth = 2;
+                
+                vectorAdditionCtx.beginPath();
+                vectorAdditionCtx.moveTo(centerX, centerY);
+                vectorAdditionCtx.lineTo(centerX + v1.x * 15, centerY - v1.y * 15);
+                vectorAdditionCtx.stroke();
+                
+                // Draw arrowhead for v1
+                const angle1 = Math.atan2(-v1.y, v1.x);
+                vectorAdditionCtx.beginPath();
+                vectorAdditionCtx.moveTo(centerX + v1.x * 15, centerY - v1.y * 15);
+                vectorAdditionCtx.lineTo(centerX + v1.x * 15 - 6 * Math.cos(angle1 - Math.PI/6), centerY - v1.y * 15 + 6 * Math.sin(angle1 - Math.PI/6));
+                vectorAdditionCtx.lineTo(centerX + v1.x * 15 - 6 * Math.cos(angle1 + Math.PI/6), centerY - v1.y * 15 + 6 * Math.sin(angle1 + Math.PI/6));
+                vectorAdditionCtx.closePath();
+                vectorAdditionCtx.fill();
+                
+                // Draw vector v2
+                vectorAdditionCtx.strokeStyle = '#10B981';
+                vectorAdditionCtx.fillStyle = '#10B981';
+                
+                vectorAdditionCtx.beginPath();
+                vectorAdditionCtx.moveTo(centerX, centerY);
+                vectorAdditionCtx.lineTo(centerX + v2.x * 15, centerY - v2.y * 15);
+                vectorAdditionCtx.stroke();
+                
+                // Draw arrowhead for v2
+                const angle2 = Math.atan2(-v2.y, v2.x);
+                vectorAdditionCtx.beginPath();
+                vectorAdditionCtx.moveTo(centerX + v2.x * 15, centerY - v2.y * 15);
+                vectorAdditionCtx.lineTo(centerX + v2.x * 15 - 6 * Math.cos(angle2 - Math.PI/6), centerY - v2.y * 15 + 6 * Math.sin(angle2 - Math.PI/6));
+                vectorAdditionCtx.lineTo(centerX + v2.x * 15 - 6 * Math.cos(angle2 + Math.PI/6), centerY - v2.y * 15 + 6 * Math.sin(angle2 + Math.PI/6));
+                vectorAdditionCtx.closePath();
+                vectorAdditionCtx.fill();
+                
+                // Draw vector addition (result)
+                if (showResult) {
+                    const resultX = v1.x + v2.x;
+                    const resultY = v1.y + v2.y;
+                    
+                    // Draw v2 starting from v1's tip (parallelogram method)
+                    vectorAdditionCtx.strokeStyle = '#10B981';
+                    vectorAdditionCtx.setLineDash([2, 2]);
+                    vectorAdditionCtx.beginPath();
+                    vectorAdditionCtx.moveTo(centerX + v1.x * 15, centerY - v1.y * 15);
+                    vectorAdditionCtx.lineTo(centerX + (v1.x + v2.x) * 15, centerY - (v1.y + v2.y) * 15);
+                    vectorAdditionCtx.stroke();
+                    vectorAdditionCtx.setLineDash([]);
+                    
+                    // Draw the result vector
+                    vectorAdditionCtx.strokeStyle = '#EF4444';
+                    vectorAdditionCtx.fillStyle = '#EF4444';
+                    vectorAdditionCtx.lineWidth = 3;
+                    
+                    vectorAdditionCtx.beginPath();
+                    vectorAdditionCtx.moveTo(centerX, centerY);
+                    vectorAdditionCtx.lineTo(centerX + resultX * 15, centerY - resultY * 15);
+                    vectorAdditionCtx.stroke();
+                    
+                    // Draw arrowhead for result
+                    const angleResult = Math.atan2(-resultY, resultX);
+                    vectorAdditionCtx.beginPath();
+                    vectorAdditionCtx.moveTo(centerX + resultX * 15, centerY - resultY * 15);
+                    vectorAdditionCtx.lineTo(centerX + resultX * 15 - 8 * Math.cos(angleResult - Math.PI/6), centerY - resultY * 15 + 8 * Math.sin(angleResult - Math.PI/6));
+                    vectorAdditionCtx.lineTo(centerX + resultX * 15 - 8 * Math.cos(angleResult + Math.PI/6), centerY - resultY * 15 + 8 * Math.sin(angleResult + Math.PI/6));
+                    vectorAdditionCtx.closePath();
+                    vectorAdditionCtx.fill();
+                }
+            }
+            
+            // Initial vectors
+            const v1 = {x: 2, y: 1};
+            const v2 = {x: 1, y: 3};
+            drawVectorAddition(v1, v2, false);
+            
+            // Vector addition animation
+            document.getElementById('play-addition-animation').addEventListener('click', function() {
+                drawVectorAddition(v1, v2, false);
+                
+                setTimeout(() => {
+                    // Move v2 to tip of v1
+                    drawVectorAddition(v1, v2, true);
+                }, 1000);
+            });
+            
+            // Vector scaling canvas
+            const vectorScalingCanvas = document.getElementById('vectorScalingCanvas');
+            const vectorScalingCtx = vectorScalingCanvas.getContext('2d');
+            let currentScale = 1;
+            const originalVector = {x: 2, y: 1};
+            
+            function drawScaledVector(scale) {
+                const centerX = vectorScalingCanvas.width / 2;
+                const centerY = vectorScalingCanvas.height / 2;
+                
+                vectorScalingCtx.clearRect(0, 0, vectorScalingCanvas.width, vectorScalingCanvas.height);
+                
+                // Draw grid
+                vectorScalingCtx.strokeStyle = '#E5E7EB';
+                vectorScalingCtx.lineWidth = 1;
+                
+                // Vertical lines
+                for (let i = 0; i <= vectorScalingCanvas.width; i += 25) {
+                    vectorScalingCtx.beginPath();
+                    vectorScalingCtx.moveTo(i, 0);
+                    vectorScalingCtx.lineTo(i, vectorScalingCanvas.height);
+                    vectorScalingCtx.stroke();
+                }
+                
+                // Horizontal lines
+                for (let j = 0; j <= vectorScalingCanvas.height; j += 25) {
+                    vectorScalingCtx.beginPath();
+                    vectorScalingCtx.moveTo(0, j);
+                    vectorScalingCtx.lineTo(vectorScalingCanvas.width, j);
+                    vectorScalingCtx.stroke();
+                }
+                
+                // Draw axes
+                vectorScalingCtx.strokeStyle = '#9CA3AF';
+                vectorScalingCtx.lineWidth = 1;
+                
+                // X axis
+                vectorScalingCtx.beginPath();
+                vectorScalingCtx.moveTo(0, centerY);
+                vectorScalingCtx.lineTo(vectorScalingCanvas.width, centerY);
+                    vectorScalingCtx.stroke();
+                
+                // Y axis
+                vectorScalingCtx.beginPath();
+                vectorScalingCtx.moveTo(centerX, 0);
+                vectorScalingCtx.lineTo(centerX, vectorScalingCanvas.height);
+                vectorScalingCtx.stroke();
+                
+                // Draw original vector (gray)
+                vectorScalingCtx.strokeStyle = '#9CA3AF';
+                vectorScalingCtx.fillStyle = '#9CA3AF';
+                vectorScalingCtx.lineWidth = 1;
+                vectorScalingCtx.setLineDash([2, 2]);
+                
+                vectorScalingCtx.beginPath();
+                vectorScalingCtx.moveTo(centerX, centerY);
+                vectorScalingCtx.lineTo(centerX + originalVector.x * 15, centerY - originalVector.y * 15);
+                vectorScalingCtx.stroke();
+                
+                // Draw arrowhead for original
+                const angle1 = Math.atan2(-originalVector.y, originalVector.x);
+                vectorScalingCtx.beginPath();
+                vectorScalingCtx.moveTo(centerX + originalVector.x * 15, centerY - originalVector.y * 15);
+                vectorScalingCtx.lineTo(centerX + originalVector.x * 15 - 6 * Math.cos(angle1 - Math.PI/6), centerY - originalVector.y * 15 + 6 * Math.sin(angle1 - Math.PI/6));
+                vectorScalingCtx.lineTo(centerX + originalVector.x * 15 - 6 * Math.cos(angle1 + Math.PI/6), centerY - originalVector.y * 15 + 6 * Math.sin(angle1 + Math.PI/6));
+                vectorScalingCtx.closePath();
+                vectorScalingCtx.fill();
+                
+                vectorScalingCtx.setLineDash([]);
+                
+                // Draw scaled vector
+                const scaledX = originalVector.x * scale;
+                const scaledY = originalVector.y * scale;
+                
+                vectorScalingCtx.strokeStyle = '#8B5CF6';
+                vectorScalingCtx.fillStyle = '#8B5CF6';
+                vectorScalingCtx.lineWidth = 2;
+                
+                vectorScalingCtx.beginPath();
+                vectorScalingCtx.moveTo(centerX, centerY);
+                vectorScalingCtx.lineTo(centerX + scaledX * 15, centerY - scaledY * 15);
+                vectorScalingCtx.stroke();
+                
+                // Draw arrowhead for scaled
+                const angleScaled = Math.atan2(-scaledY, scaledX);
+                vectorScalingCtx.beginPath();
+                vectorScalingCtx.moveTo(centerX + scaledX * 15, centerY - scaledY * 15);
+                vectorScalingCtx.lineTo(centerX + scaledX * 15 - 8 * Math.cos(angleScaled - Math.PI/6), centerY - scaledY * 15 + 8 * Math.sin(angleScaled - Math.PI/6));
+                vectorScalingCtx.lineTo(centerX + scaledX * 15 - 8 * Math.cos(angleScaled + Math.PI/6), centerY - scaledY * 15 + 8 * Math.sin(angleScaled + Math.PI/6));
+                vectorScalingCtx.closePath();
+                vectorScalingCtx.fill();
+                
+                // Display scale factor
+                vectorScalingCtx.font = '12px Arial';
+                vectorScalingCtx.fillStyle = '#6B7280';
+                vectorScalingCtx.fillText(`عامل القياس: ${scale.toFixed(1)}`, 10, 20);
+            }
+            
+            // Initial draw
+            drawScaledVector(currentScale);
+            
+            // Scale up button
+            document.getElementById('scale-up').addEventListener('click', function() {
+                currentScale *= 2;
+                drawScaledVector(currentScale);
+            });
+            
+            // Scale down button
+            document.getElementById('scale-down').addEventListener('click', function() {
+                currentScale *= 0.5;
+                drawScaledVector(currentScale);
+            });
+            
+            // Dot product canvas
+            const dotProductCanvas = document.getElementById('dotProductCanvas');
+            const dotProductCtx = dotProductCanvas.getContext('2d');
+            let angle = Math.PI / 2; // 90 degrees
+            
+            function drawDotProduct(a, b, theta) {
+                const centerX = dotProductCanvas.width / 2;
+                const centerY = dotProductCanvas.height / 2;
+                
+                dotProductCtx.clearRect(0, 0, dotProductCanvas.width, dotProductCanvas.height);
+                
+                // Draw grid
+                dotProductCtx.strokeStyle = '#E5E7EB';
+                dotProductCtx.lineWidth = 1;
+                
+                // Vertical lines
+                for (let i = 0; i <= dotProductCanvas.width; i += 50) {
+                    dotProductCtx.beginPath();
+                    dotProductCtx.moveTo(i, 0);
+                    dotProductCtx.lineTo(i, dotProductCanvas.height);
+                    dotProductCtx.stroke();
+                }
+                
+                // Horizontal lines
+                for (let j = 0; j <= dotProductCanvas.height; j += 50) {
+                    dotProductCtx.beginPath();
+                    dotProductCtx.moveTo(0, j);
+                    dotProductCtx.lineTo(dotProductCanvas.width, j);
+                    dotProductCtx.stroke();
+                }
+                
+                // Draw axes
+                dotProductCtx.strokeStyle = '#9CA3AF';
+                dotProductCtx.lineWidth = 2;
+                
+                // X axis
+                dotProductCtx.beginPath();
+                dotProductCtx.moveTo(0, centerY);
+                dotProductCtx.lineTo(dotProductCanvas.width, centerY);
+                dotProductCtx.stroke();
+                
+                // Y axis
+                dotProductCtx.beginPath();
+                dotProductCtx.moveTo(centerX, 0);
+                dotProductCtx.lineTo(centerX, dotProductCanvas.height);
+                dotProductCtx.stroke();
+                
+                // Draw vector a
+                dotProductCtx.strokeStyle = '#3B82F6';
+                dotProductCtx.fillStyle = '#3B82F6';
+                dotProductCtx.lineWidth = 3;
+                
+                dotProductCtx.beginPath();
+                dotProductCtx.moveTo(centerX, centerY);
+                dotProductCtx.lineTo(centerX + a * 30, centerY);
+                dotProductCtx.stroke();
+                
+                // Draw arrowhead for a
+                dotProductCtx.beginPath();
+                dotProductCtx.moveTo(centerX + a * 30, centerY);
+                dotProductCtx.lineTo(centerX + a * 30 - 10, centerY - 5);
+                dotProductCtx.lineTo(centerX + a * 30 - 10, centerY + 5);
+                dotProductCtx.closePath();
+                dotProductCtx.fill();
+                
+                // Draw vector b
+                dotProductCtx.strokeStyle = '#EF4444';
+                dotProductCtx.fillStyle = '#EF4444';
+                
+                const bX = b * Math.cos(theta);
+                const bY = b * Math.sin(theta);
+                
+                dotProductCtx.beginPath();
+                dotProductCtx.moveTo(centerX, centerY);
+                dotProductCtx.lineTo(centerX + bX * 30, centerY - bY * 30);
+                dotProductCtx.stroke();
+                
+                // Draw arrowhead for b
+                const angleB = Math.atan2(-bY, bX);
+                dotProductCtx.beginPath();
+                dotProductCtx.moveTo(centerX + bX * 30, centerY - bY * 30);
+                dotProductCtx.lineTo(centerX + bX * 30 - 10 * Math.cos(angleB - Math.PI/6), centerY - bY * 30 + 10 * Math.sin(angleB - Math.PI/6));
+                dotProductCtx.lineTo(centerX + bX * 30 - 10 * Math.cos(angleB + Math.PI/6), centerY - bY * 30 + 10 * Math.sin(angleB + Math.PI/6));
+                dotProductCtx.closePath();
+                dotProductCtx.fill();
+                
+                // Draw angle arc
+                dotProductCtx.strokeStyle = '#10B981';
+                dotProductCtx.lineWidth = 2;
+                dotProductCtx.beginPath();
+                dotProductCtx.arc(centerX, centerY, 20, 0, theta, true);
+                dotProductCtx.stroke();
+                
+                // Draw angle text
+                dotProductCtx.font = '14px Arial';
+                dotProductCtx.fillStyle = '#10B981';
+                dotProductCtx.fillText(`θ`, centerX + 25 * Math.cos(theta/2), centerY - 25 * Math.sin(theta/2));
+                
+                // Calculate dot product
+                const dotProduct = a * b * Math.cos(theta);
+                
+                // Update displays
+                document.getElementById('dot-product-result').textContent = `a · b = ${dotProduct.toFixed(2)}`;
+                document.getElementById('angle-display').textContent = `θ = ${Math.round(theta * 180 / Math.PI)}°`;
+            }
+            
+            // Initial draw
+            drawDotProduct(3, 2, angle);
+            
+            // Make vectors draggable
+            let isDragging = false;
+            let dragStartX, dragStartY;
+            
+            dotProductCanvas.addEventListener('mousedown', function(e) {
+                const rect = dotProductCanvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = dotProductCanvas.width / 2;
+                const centerY = dotProductCanvas.height / 2;
+                
+                // Check if click is near vector b
+                const bX = 2 * Math.cos(angle) * 30 + centerX;
+                const bY = centerY - 2 * Math.sin(angle) * 30;
+                
+                if (Math.sqrt((x - bX) * (x - bX) + (y - bY) * (y - bY)) < 20) {
+                    isDragging = true;
+                    dragStartX = x;
+                    dragStartY = y;
+                }
+            });
+            
+            dotProductCanvas.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    const rect = dotProductCanvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = dotProductCanvas.width / 2;
+                    const centerY = dotProductCanvas.height / 2;
+                    
+                    const dx = x - centerX;
+                    const dy = centerY - y;
+                    
+                    angle = Math.atan2
+</html>
