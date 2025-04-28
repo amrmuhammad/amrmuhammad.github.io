@@ -79,6 +79,34 @@
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        /* BEGIN VECTOR ANIMATION: Embedded video styling */
+        .animation-container {
+            margin: 30px auto;
+            text-align: center;
+            max-width: 700px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .animation-container video,
+        .animation-container img {
+            border: 2px solid #333;
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.15);
+        }
+        .animation-caption {
+            margin-top: 12px;
+            font-size: 1.1em;
+            color: #222;
+            line-height: 1.4;
+            direction: rtl;
+        }
+        /* END VECTOR ANIMATION */
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen font-sans" dir="rtl">
@@ -175,7 +203,6 @@
                     <h3 class="text-xl font-semibold mb-3 text-gray-800">المتجهات</h3>
                     <p class="text-gray-600">كميات لها مقدار واتجاه، تستخدم لتمثيل القوى، السرعات، وغيرها في الفضاء متعدد الأبعاد.</p>
                 </div>
-
                 <div class="concept-card bg-purple-50 rounded-xl p-6 shadow-md transition duration-300">
                     <div class="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-table text-purple-600 text-xl"></i>
@@ -183,7 +210,6 @@
                     <h3 class="text-xl font-semibold mb-3 text-gray-800">المصفوفات</h3>
                     <p class="text-gray-600">مصفوفات من الأعداد تمثل تحويلات خطية أو تخزن معاملات أنظمة المعادلات الخطية.</p>
                 </div>
-
                 <div class="concept-card bg-green-50 rounded-xl p-6 shadow-md transition duration-300">
                     <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-project-diagram text-green-600 text-xl"></i>
@@ -229,6 +255,20 @@
                 </div>
             </div>
 
+            <!-- BEGIN VECTOR ANIMATION -->
+            <div class="animation-container my-12">
+                <h3 class="text-2xl font-bold mb-4 text-blue-700">🎬 تمثيل متحرك للمتجه (2, 3)</h3>
+                <video controls autoplay loop muted width="600" preload="metadata" aria-describedby="vector-desc">
+                    <source src="assets/videos/IntuitiveVector.mp4" type="video/mp4" />
+                    متصفحك لا يدعم عرض الفيديو.
+                </video>
+                <div id="vector-desc" class="animation-caption">
+                    يوضح هذا الفيديو كيف يتم بناء المتجه <span dir="ltr"><b>(2, 3)</b></span> خطوة بخطوة:
+                    أولاً نتحرك 2 وحدات على محور <b>x</b>، ثم 3 وحدات على محور <b>y</b>، وأخيرًا يُرسم المتجه الناتج من نقطة الأصل إلى النقطة (2, 3).
+                </div>
+            </div>
+            <!-- END VECTOR ANIMATION -->
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
@@ -239,7 +279,9 @@
                     </h3>
                     <p class="text-gray-600 mb-4">جمع متجهين يتم عن طريق جمع عناصرهما المتناظرة. هندسياً، نضع ذيل المتجه الثاني عند رأس المتجه الأول.</p>
                     <div class="flex justify-center">
-                        <div class="relative w-full h-48"> <canvas id="vectorAdditionCanvas" width="400" height="250"></canvas> </div>
+                        <div class="relative w-full h-48">
+                            <canvas id="vectorAdditionCanvas" width="400" height="250"></canvas>
+                        </div>
                     </div>
                     <button id="play-addition-animation" class="mt-4 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
                         عرض الجمع (قريباً)
@@ -255,7 +297,9 @@
                     </h3>
                     <p class="text-gray-600 mb-4">ضرب متجه بكمية قياسية يغير طوله دون تغيير اتجاهه (إلا إذا كان السالب يعكس الاتجاه).</p>
                     <div class="flex justify-center">
-                       <div class="relative w-full h-48"> <canvas id="vectorScalingCanvas" width="400" height="250"></canvas> </div>
+                        <div class="relative w-full h-48">
+                            <canvas id="vectorScalingCanvas" width="400" height="250"></canvas>
+                        </div>
                     </div>
                     <div class="flex space-x-2 space-x-reverse mt-4">
                         <button id="scale-up" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-200">
@@ -276,4 +320,23 @@
                             الضرب النقطي (أو الضرب القياسي) هو عملية بين متجهين تعطي كمية قياسية. تحسب بضرب العناصر المتناظرة وجمع النتائج.
                         </p>
                         <div class="bg-gray-50 p-4 rounded-lg mb-4">
-                            <p class="font-mono text-gray
+                            <p class="font-mono text-gray-700">a · b = a₁b₁ + a₂b₂ + ... + aₙbₙ</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex items-center justify-center bg-gray-50">
+                        <canvas id="dotProductCanvas" width="250" height="180"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ... باقي الصفحة ... -->
+
+    <footer class="bg-white mt-16 py-6 shadow-inner">
+        <div class="container mx-auto px-4 text-center text-gray-500">
+            جميع الحقوق محفوظة &copy; 2025 الجبر الخطي المرئي
+        </div>
+    </footer>
+</body>
+</html>
