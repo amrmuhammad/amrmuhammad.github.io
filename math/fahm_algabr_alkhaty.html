@@ -7,29 +7,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- MathJax for rendering LaTeX -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
+        /* أنماط الصفحة */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .fade-in {
             animation: fadeIn 0.5s ease-out forwards;
         }
-
         .vector-animation {
             transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
-
         .transform-animation {
             transition: transform 1s ease-in-out;
         }
-
         .concept-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-
         .nav-link::after {
             content: '';
             display: block;
@@ -38,49 +36,37 @@
             background: #3b82f6;
             transition: width 0.3s;
         }
-
         .nav-link:hover::after {
             width: 100%;
         }
-
         .active-nav::after {
             width: 100%;
         }
-
-        /* RTL specific styles */
         body {
             text-align: right;
         }
-
         .list-arabic {
             list-style-type: arabic-indic;
         }
-
         .transform-origin-rtl {
             transform-origin: right center;
         }
-
         .scrollbar-rtl::-webkit-scrollbar {
             direction: rtl;
         }
-
-        /* Canvas container for centering */
         .canvas-container {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
             height: 100%;
-            position: relative; /* Needed for absolute positioning of coords */
+            position: relative;
         }
-         /* Specific canvas style for vector representation section */
         #vectorCanvas {
             background-color: #fff;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        /* BEGIN VECTOR ANIMATION: أنماط الحاوية للفيديوهات */
         .animation-container {
             margin: 30px auto;
             text-align: center;
@@ -106,7 +92,29 @@
             line-height: 1.4;
             direction: rtl;
         }
-        /* END VECTOR ANIMATION */
+        /* MathJax container direction LTR for correct display */
+        .math-ltr {
+            direction: ltr;
+            text-align: left;
+            margin: 1em 0;
+            font-size: 1.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: 1em 0;
+            direction: rtl;
+            color: #333;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: right;
+        }
+        th {
+            background-color: #eee;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen font-sans" dir="rtl">
@@ -255,7 +263,7 @@
                 </div>
             </div>
 
-            <!-- BEGIN VECTOR ANIMATION: تمثيل متحرك للمتجه (2, 3) -->
+            <!-- فيديوهات تمثيل المتجهات -->
             <div class="animation-container my-12">
                 <h3 class="text-2xl font-bold mb-4 text-blue-700">🎬 تمثيل متحرك للمتجه (2, 3)</h3>
                 <video controls autoplay loop muted width="600" preload="metadata" aria-describedby="vector-desc-2-3">
@@ -267,9 +275,7 @@
                     أولاً نتحرك 2 وحدات على محور <b>x</b>، ثم 3 وحدات على محور <b>y</b>، وأخيرًا يُرسم المتجه الناتج من نقطة الأصل إلى النقطة (2, 3).
                 </div>
             </div>
-            <!-- END VECTOR ANIMATION -->
 
-            <!-- BEGIN VECTOR ANIMATION: تمثيل متحرك للمتجه (4, 6) -->
             <div class="animation-container my-12">
                 <h3 class="text-2xl font-bold mb-4 text-green-700">🎬 تمثيل متحرك للمتجه (4, 6)</h3>
                 <video controls autoplay loop muted width="600" preload="metadata" aria-describedby="vector-desc-4-6">
@@ -281,19 +287,189 @@
                     أولاً نتحرك 4 وحدات على محور <b>x</b>، ثم 6 وحدات على محور <b>y</b>، وأخيرًا يُرسم المتجه الناتج من نقطة الأصل إلى النقطة (4, 6).
                 </div>
             </div>
-            <!-- END VECTOR ANIMATION -->
 
-            <!-- باقي محتوى قسم المتجهات ... -->
+            <!-- الشرح التفصيلي مع المعادلات -->
+            <div class="bg-white rounded-xl shadow-md p-6 my-8">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">شرح شامل لمفهوم المتجهات (Vectors)</h3>
 
+                <p class="mb-4">
+                    المتجه هو كمية رياضية لها <strong>مقدار</strong> (طول) و<strong>اتجاه</strong>.<br>
+                    يُستخدم المتجه في الفيزياء والهندسة والرياضيات لتمثيل كميات مثل القوة، السرعة، الإزاحة، وغيرها.
+                </p>
+
+                <h4 class="text-xl font-semibold text-blue-600 mb-2">تمثيل المتجهات</h4>
+                <ul class="list-disc pr-6 mb-4 text-gray-700">
+                    <li>سهم فوق الحرف: <span class="math-ltr">$$\vec{v}$$</span></li>
+                    <li>خط عريض: <span class="math-ltr">$$\mathbf{v}$$</span></li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-blue-600 mb-2">تمثيل كمصفوفة عمودية بين أقواس مربعة</h4>
+                <div class="math-ltr">
+                    $$
+                    \vec{v} = \Bigl[
+                    \begin{array}{c}
+                    v_x \\
+                    v_y
+                    \end{array}
+                    \Bigr]
+                    $$
+                </div>
+                <div class="math-ltr">
+                    $$
+                    \vec{v} = \Biggl[
+                    \begin{array}{c}
+                    v_x \\
+                    v_y \\
+                    v_z
+                    \end{array}
+                    \Biggr]
+                    $$
+                </div>
+
+                <h4 class="text-xl font-semibold text-blue-600 mb-2">مكونات المتجه</h4>
+                <table class="mb-4 border w-full max-w-md text-gray-700">
+                    <thead>
+                        <tr>
+                            <th class="border px-2 py-1">الرمز</th>
+                            <th class="border px-2 py-1">الوصف</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border px-2 py-1">v<sub>x</sub></td>
+                            <td class="border px-2 py-1">المركبة على محور السينات (x)</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-2 py-1">v<sub>y</sub></td>
+                            <td class="border px-2 py-1">المركبة على محور الصادات (y)</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-2 py-1">v<sub>z</sub></td>
+                            <td class="border px-2 py-1">المركبة على محور العينات (z) (في حالة متجه ثلاثي الأبعاد)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 class="text-xl font-semibold text-blue-600 mb-2">العمليات الأساسية على المتجهات</h4>
+                <ul class="list-disc pr-6 mb-4 text-gray-700">
+                    <li>
+                        مقدار المتجه (الطول) في بعدين:
+                        <span class="math-ltr">$$|\vec{v}| = \sqrt{v_x^2 + v_y^2}$$</span>
+                    </li>
+                    <li>
+                        مقدار المتجه (الطول) في ثلاثة أبعاد:
+                        <span class="math-ltr">$$|\vec{v}| = \sqrt{v_x^2 + v_y^2 + v_z^2}$$</span>
+                    </li>
+                    <li>
+                        جمع المتجهات:
+                        <span class="math-ltr">$$\vec{a} + \vec{b} = \Bigl[
+                            \begin{array}{c}
+                            a_x + b_x \\
+                            a_y + b_y
+                            \end{array}
+                            \Bigr]$$</span>
+                    </li>
+                    <li>
+                        طرح المتجهات:
+                        <span class="math-ltr">$$\vec{a} - \vec{b} = \Bigl[
+                            \begin{array}{c}
+                            a_x - b_x \\
+                            a_y - b_y
+                            \end{array}
+                            \Bigr]$$</span>
+                    </li>
+                    <li>
+                        ضرب المتجه في عدد حقيقي:
+                        <span class="math-ltr">$$k \vec{v} = \Bigl[
+                            \begin{array}{c}
+                            k v_x \\
+                            k v_y
+                            \end{array}
+                            \Bigr]$$</span>
+                    </li>
+                    <li>
+                        الضرب الداخلي (النقطي):
+                        <span class="math-ltr">$$\vec{a} \cdot \vec{b} = a_x b_x + a_y b_y + a_z b_z$$</span>
+                    </li>
+                    <li>
+                        الضرب الاتجاهي (الخارجي) في ثلاثة أبعاد:
+                        <span class="math-ltr">$$\vec{a} \times \vec{b} = \Biggl[
+                            \begin{array}{c}
+                            a_y b_z - a_z b_y \\
+                            a_z b_x - a_x b_z \\
+                            a_x b_y - a_y b_x
+                            \end{array}
+                            \Biggr]$$</span>
+                    </li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-blue-600 mb-2">أمثلة تطبيقية</h4>
+                <ul class="list-disc pr-6 mb-4 text-gray-700">
+                    <li>
+                        متجه ثنائي الأبعاد:
+                        <span class="math-ltr">$$\vec{v} = \Bigl[
+                            \begin{array}{c}
+                            3 \\
+                            4
+                            \end{array}
+                            \Bigr]$$</span>
+                        مقدار المتجه:
+                        <span class="math-ltr">$$|\vec{v}| = \sqrt{3^2 + 4^2} = 5$$</span>
+                    </li>
+                    <li>
+                        متجه ثلاثي الأبعاد:
+                        <span class="math-ltr">$$\vec{v} = \Biggl[
+                            \begin{array}{c}
+                            1 \\
+                            2 \\
+                            2
+                            \end{array}
+                            \Biggr]$$</span>
+                        مقدار المتجه:
+                        <span class="math-ltr">$$|\vec{v}| = \sqrt{1^2 + 2^2 + 2^2} = 3$$</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 
-    <!-- باقي الصفحة ... -->
+    <section id="matrices" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">المصفوفات في الجبر الخطي</h2>
+
+            <div class="bg-white rounded-xl shadow-md p-6 my-8">
+                <h3 class="text-2xl font-bold text-purple-700 mb-4">الشرح الرياضي للمصفوفات</h3>
+                <p class="mb-4 text-gray-700">
+                    المصفوفة هي جدول مستطيل من الأعداد أو الرموز مرتبة في صفوف وأعمدة.<br>
+                    تُستخدم لتمثيل أنظمة المعادلات الخطية، التحويلات الخطية، وغيرها من العمليات في الجبر الخطي.
+                </p>
+                <div class="math-ltr">
+                    $$A = \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}$$
+                </div>
+                <h4 class="text-xl font-semibold text-purple-600 mb-2">عمليات على المصفوفات</h4>
+                <ul class="list-disc pr-6 mb-4 text-gray-700">
+                    <li>
+                        جمع المصفوفات:
+                        <span class="math-ltr">$$A + B = \begin{bmatrix} a_{11} + b_{11} & a_{12} + b_{12} \\ a_{21} + b_{21} & a_{22} + b_{22} \end{bmatrix}$$</span>
+                    </li>
+                    <li>
+                        ضرب المصفوفة في عدد حقيقي:
+                        <span class="math-ltr">$$k A = \begin{bmatrix} k a_{11} & k a_{12} \\ k a_{21} & k a_{22} \end{bmatrix}$$</span>
+                    </li>
+                    <li>
+                        ضرب مصفوفتين:
+                        <span class="math-ltr">$$AB = \begin{bmatrix} a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\ a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22} \end{bmatrix}$$</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <footer class="bg-white mt-16 py-6 shadow-inner">
         <div class="container mx-auto px-4 text-center text-gray-500">
             جميع الحقوق محفوظة &copy; 2025 الجبر الخطي المرئي
         </div>
     </footer>
+
 </body>
 </html>
