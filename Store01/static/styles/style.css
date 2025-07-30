@@ -32,8 +32,9 @@
   text-decoration: none; /* no underline */
 }
 
-
-
+#sell_your_products_link:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
 
 ul {
   list-style-type: none;
