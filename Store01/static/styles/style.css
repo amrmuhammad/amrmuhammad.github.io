@@ -33,6 +33,7 @@
 }
 
 #sell_your_products_link:hover {
+  color: #000000;
   text-decoration: underline; /* Add underline on hover */
 }
 
