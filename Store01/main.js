@@ -16,13 +16,13 @@ function log(text) {
 var html_code = ""
 
 ///////////////////////////////////
-html_code += '<hr>'
+//html_code += '<hr>'
 html_code += '<a id="sell_your_products_link" href="#">Sell your products in Store01</a>'
 html_code += '<br /> <br />'
-html_code += '<hr>'
+//html_code += '<hr>'
 
 ////////////////////////////////////
-$('#app').append(html_code)
+$('#footer').append(html_code)
 ////////////////////////////////////
 $('#app').append('<div id="debug_div"></div>')
 
