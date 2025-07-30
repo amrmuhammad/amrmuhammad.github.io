@@ -17,7 +17,7 @@ var html_code = ""
 
 ///////////////////////////////////
 //html_code += '<hr>'
-html_code += '<a id="sell_your_products_link" href="#">Sell your products in Store01</a>'
+html_code += '<a id="sell_your_products_link" href="#">Sell @ Store01</a>'
 html_code += '<br /> <br />'
 //html_code += '<hr>'
 
