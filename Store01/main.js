@@ -28,9 +28,14 @@ $('#app').append('<div id="debug_div"></div>')
 
 ////////////////////////////////////
 
-$("#sell_your_products_link").click(sell_your_products_link_click_handler)     
-     
-/////////////////////////////////
+//$("#sell_your_products_link").click(sell_your_products_link_click_handler)     
+
+// Update button opens a modal dialog
+$("#sell_your_products_link").click( () => {
+  $("#sell_dialog_box").showModal();
+});
+
+/////////////////////////////////////
 function sell_your_products_link_click_handler(event) {
   
   event.preventDefault()
