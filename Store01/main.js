@@ -33,7 +33,7 @@ $('#app').append('<div id="debug_div"></div>')
 
 // Update button opens a modal dialog
 $("#sell_your_products_link").click( () => {
-  $("#sell_dialog_box").get().showModal();
+  $("#sell_dialog_box").get(0).showModal();
 });
 
 /////////////////////////////////////
