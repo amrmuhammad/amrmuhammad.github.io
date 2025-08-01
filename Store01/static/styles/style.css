@@ -42,7 +42,7 @@ ul {
 }
 
 #sell_dialog_box::backdrop {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .tee-shirt-product-image {
