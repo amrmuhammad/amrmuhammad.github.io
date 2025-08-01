@@ -41,6 +41,10 @@ ul {
   list-style-type: none;
 }
 
+#sell_dialog_box::backdrop {
+  background-color: #000000;
+}
+
 .tee-shirt-product-image {
   margin: 10px;
   margin-bottom: 30px;
