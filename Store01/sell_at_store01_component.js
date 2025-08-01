@@ -25,13 +25,13 @@ const submitButton = $("#sell_dialog_box > #submit_btn ");
 const cancelButton = $("#sell_dialog_box > #cancel_btn");
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-$("#sell_your_products_link").click(/*todo*/) 
+//$("#sell_your_products_link").click(/*todo*/) 
 ////////////////////////////////////////////////////////////////////////////////////////////
 //dialog.returnValue = "";
 
-// Update button opens a modal dialog
-updateButton.addEventListener("click", () => {
-  dialog.showModal();
+//
+submitButton.click( () => {
+  
 });
 
 // Form cancel button closes the dialog box
