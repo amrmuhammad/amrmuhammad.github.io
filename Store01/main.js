@@ -1,6 +1,7 @@
 
 
 var $ = require('../math/0.2/js/lib/jquery/v3_2_1/jquery.min.js')
+require("./sell_at_store01_component.js")
 
 ///////////
 
