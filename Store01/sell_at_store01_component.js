@@ -7,7 +7,14 @@ var html_code = `
   <form method="dialog">
     <p>
       <label for="full_name">Full Name:</label>
-      <input type="text" name="full_name" id="full_name_input" placeholder="Enter your Full Name...">
+      <input type="text" name="full_name" id="full_name_input" placeholder="Enter your Full Name..." required>
+      
+      <label for="e_mail">E-mail</label>
+      <input type="email" name="e_mail" id="e_mail_input" placeholder="Enter your e-mail..." required>
+
+      <label for="message">Message</label>
+      <input type="text" name="message" id="message_input" placeholder="Leave your message here..." required>
+      
     </p>
     <div>
       <button id="cancel_btn" type="reset">Cancel</button>
