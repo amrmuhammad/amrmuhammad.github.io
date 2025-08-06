@@ -8,9 +8,13 @@ var html_code = `
     <p>
       <label for="full_name">Full Name:</label>
       <input type="text" name="full_name" id="full_name_input" placeholder="Enter your Full Name..." required>
+
+      <br />
       
       <label for="e_mail">E-mail</label>
       <input type="email" name="e_mail" id="e_mail_input" placeholder="Enter your e-mail..." required>
+
+      <br />
 
       <label for="message">Message</label>
       <input type="text" name="message" id="message_input" placeholder="Leave your message here..." required>
