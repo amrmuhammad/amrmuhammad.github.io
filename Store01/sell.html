@@ -477,65 +477,43 @@
     </div>
 
     <script>
-
+        
         // ⚠️ REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzRErPkZpCqYO3eh9TrbFO6guOBhmlTPvvXXjBkw3RDHhrYWaf7j6zhnAXzM9N5VGpI/exec';
-
         
-        // Add redirect timer variable at the top
-        let redirectTimer = null;
-        const REDIRECT_DELAY = 5000; // 5 seconds before redirect
-        const STORE_URL = 'https://amrmuhammad.github.io/Store01/'; // Your store URL
+        // Configuration
+        const STORE_URL = 'https://amrmuhammad.github.io/Store01/';
+        const REDIRECT_DELAY = 5000; // 5 seconds
         
+        // DOM Elements
         const form = document.getElementById('sellerForm');
         const photosInput = document.getElementById('photos');
         const previewContainer = document.getElementById('previewContainer');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
-
         const submitBtn = document.getElementById('submitBtn');
+        const responseMessage = document.getElementById('responseMessage');
         
+        // Modal Elements
+        const modal = document.getElementById('responseModal');
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const redirectInfo = document.getElementById('redirectInfo');
+        const countdownElement = document.getElementById('countdown');
+        const stayBtn = document.getElementById('stayBtn');
+        const redirectNowBtn = document.getElementById('redirectNowBtn');
+        
+        // Variables
         let selectedFiles = [];
+        let redirectTimer = null;
+        let countdownInterval = null;
         
-        // Add this function to handle the redirect //////////////////////////////////////////////////////////////
-        function startRedirectTimer() {
-            let secondsRemaining = REDIRECT_DELAY / 1000;
-    
-            // Update the success message with countdown
-            successMessage.innerHTML = `
-                ✅ Form submitted successfully! Thank you.<br>
-                <div class="redirect-notice">
-                    Redirecting to store in <span id="countdown">${secondsRemaining}</span> seconds...
-                </div>
-            `;
-    
-            // Start countdown timer
-            const countdownElement = document.getElementById('countdown');
-            const countdownInterval = setInterval(() => {
-                secondsRemaining--;
-                countdownElement.textContent = secondsRemaining;
+        // Initialize
+        window.addEventListener('DOMContentLoaded', function() {
+            // Hide inline messages
+            responseMessage.style.display = 'none';
+        });
         
-                if (secondsRemaining <= 0) {
-                    clearInterval(countdownInterval);
-                }
-            }, 1000);
-    
-            // Start redirect timer
-            redirectTimer = setTimeout(() => {
-                window.location.href = STORE_URL;
-            }, REDIRECT_DELAY);
-        }
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Add this function to cancel redirect if user interacts
-        function cancelRedirect() {
-            if (redirectTimer) {
-                clearTimeout(redirectTimer);
-                redirectTimer = null;
-                // Update message to remove countdown
-                successMessage.innerHTML = '✅ Form submitted successfully! Thank you.';
-            }
-        }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // File upload handling
         photosInput.addEventListener('change', function(e) {
             const files = Array.from(e.target.files);
             
@@ -548,7 +526,7 @@
             displayPreviews();
             photosInput.value = '';
         });
-
+        
         function displayPreviews() {
             previewContainer.innerHTML = '';
             
@@ -578,45 +556,129 @@
                 reader.readAsDataURL(file);
             });
         }
-
+        
         function removeFile(index) {
             selectedFiles.splice(index, 1);
             displayPreviews();
         }
-
+        
+        // Modal functions
+        function showModal(type, title, message, showRedirect = false) {
+            // Clear any existing timers
+            clearTimers();
+            
+            // Set modal content based on type
+            if (type === 'success') {
+                modalIcon.className = 'modal-icon success';
+                modalIcon.textContent = '✅';
+                modalIcon.style.color = '#28a745';
+                
+                if (showRedirect) {
+                    redirectInfo.style.display = 'block';
+                    startRedirectCountdown();
+                } else {
+                    redirectInfo.style.display = 'none';
+                }
+            } else {
+                modalIcon.className = 'modal-icon error';
+                modalIcon.textContent = '❌';
+                modalIcon.style.color = '#dc3545';
+                redirectInfo.style.display = 'none';
+            }
+            
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            modal.style.display = 'flex';
+            
+            // Reset form if success
+            if (type === 'success' && showRedirect) {
+                form.reset();
+                selectedFiles = [];
+                displayPreviews();
+            }
+        }
+        
+        function hideModal() {
+            modal.style.display = 'none';
+            clearTimers();
+        }
+        
+        function clearTimers() {
+            if (redirectTimer) {
+                clearTimeout(redirectTimer);
+                redirectTimer = null;
+            }
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+        }
+        
+        function startRedirectCountdown() {
+            let secondsRemaining = REDIRECT_DELAY / 1000;
+            countdownElement.textContent = secondsRemaining;
+            
+            // Update countdown every second
+            countdownInterval = setInterval(() => {
+                secondsRemaining--;
+                countdownElement.textContent = secondsRemaining;
+                
+                if (secondsRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+            
+            // Start redirect timer
+            redirectTimer = setTimeout(() => {
+                window.location.href = STORE_URL;
+            }, REDIRECT_DELAY);
+        }
+        
+        // Modal button event listeners
+        stayBtn.addEventListener('click', function() {
+            hideModal();
+        });
+        
+        redirectNowBtn.addEventListener('click', function() {
+            clearTimers();
+            window.location.href = STORE_URL;
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+        
+        // Form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Hide any previous messages
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
+        
+            // Hide any previous inline messages
             responseMessage.style.display = 'none';
-            
+        
             // Check if script URL is configured
             if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-                showMessage('Please configure the Google Apps Script URL first!', 'error');
+                showModal('error', 'Configuration Error', 'Please configure the Google Apps Script URL first!');
                 return;
             }
-
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
-            responseMessage.style.display = 'none';
-
-            
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
+        
+            // Validate required fields
             const fullName = document.getElementById('fullName').value.trim();
             const email = document.getElementById('email').value.trim();
             const apparelDescription = document.getElementById('apparelDescription').value.trim();
             
             if (!fullName || !email || !apparelDescription || selectedFiles.length === 0) {
-                errorMessage.style.display = 'block';
-                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                showModal('error', 'Missing Information', 'Please fill in all required fields and upload at least one photo.');
                 return;
             }
-            
+        
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
+        
+            // Prepare form data
             const formData = new FormData();
             formData.append('fullName', fullName);
             formData.append('email', email);
@@ -634,86 +696,53 @@
                 message: document.getElementById('message').value.trim(),
                 photoCount: selectedFiles.length
             });
-
+        
+            // Prepare data for Google Apps Script
             const data = {
                 name: formData.get('fullName'),
                 email: formData.get('email'),
                 message: formData.get('message'),
                 timestamp: new Date().toISOString()
             };
-            /////////////////////////////////////////////////////////////////////////////
+        
             try {
                 // Send data to Google Apps Script
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Required for Google Apps Script
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data)
                 });
-
-                // Note: With no-cors mode, we can't read the response
-                // So we assume success if no error was thrown
-                showMessage('✅ Form submitted successfully! Thank you.', 'success');
-                form.reset();
-
+        
+                // Show success modal with redirect
+                showModal('success', 'Submission Successful!', 
+                    'Your submission has been received! We\'ll review your apparel and get back to you soon.', 
+                    true);
+        
             } catch (error) {
                 console.error('Error:', error);
-                showMessage('❌ Error submitting form. Please try again.', 'error');
+                showModal('error', 'Submission Failed', 'Error submitting form. Please try again.');
             } finally {
                 // Re-enable button
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<span class="btn-text">Submit</span>';
+                submitBtn.textContent = 'Submit Application';
             }
-            /////////////////////////////////////////////////////////////////////////////
-            
-            successMessage.style.display = 'block';
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
-            form.reset();
-            selectedFiles = [];
-            displayPreviews();
         });
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        function showMessage(text, type) {
-            responseMessage.innerHTML = text;
+        
+        // Optional: Show success message inline for non-critical messages
+        function showInlineMessage(text, type) {
+            responseMessage.textContent = text;
             responseMessage.className = `message ${type}`;
             responseMessage.style.display = 'block';
-        
+            
             if (type === 'success') {
-                // Cancel any existing redirect timer
-                if (redirectTimer) {
-                    clearTimeout(redirectTimer);
-                    redirectTimer = null;
-                }
-                
-                // Start new redirect timer
-                startRedirectTimer();
-                
-                // Allow user to cancel redirect by clicking on the message
-                responseMessage.onclick = cancelRedirect;
-                responseMessage.style.cursor = 'pointer';
-                responseMessage.title = 'Click to stay on this page';
-            } else {
-                responseMessage.onclick = null;
-                responseMessage.style.cursor = 'default';
-                responseMessage.title = '';
-                
                 setTimeout(() => {
                     responseMessage.style.display = 'none';
-                }, 5000);
+                }, 3000);
             }
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Hide messages when page loads
-        window.addEventListener('DOMContentLoaded', function() {
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            responseMessage.style.display = 'none';
-        });
-        
+        }        
     </script>
     
     <!-- Modal for success/error messages ------------------------------------------------------------------------------------------------------------  -->
