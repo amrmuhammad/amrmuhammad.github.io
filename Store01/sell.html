@@ -300,11 +300,11 @@
             <p>Fill out the form below to list your items on our store</p>
         </div>
         
-        <div id="successMessage" class="success-message">
+        <div id="successMessage" class="message">
             Your submission has been received! We'll review your apparel and get back to you soon.
         </div>
 
-        <div id="errorMessage" class="error-message">
+        <div id="errorMessage" class="message">
             Please fill in all required fields and upload at least one photo.
         </div>
 
@@ -414,7 +414,12 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-
+            
+            // Hide any previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            responseMessage.style.display = 'none';
+            
             // Check if script URL is configured
             if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
                 showMessage('Please configure the Google Apps Script URL first!', 'error');
@@ -510,6 +515,15 @@
                 }, 5000);
             }
         }
+
+
+        // Hide messages when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            responseMessage.style.display = 'none';
+        });
+        
     </script>
 </body>
 </html>
