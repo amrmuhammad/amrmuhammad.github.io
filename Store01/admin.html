@@ -326,6 +326,10 @@
         <div id="loginError" class="error-message">Incorrect password. Please try again.</div>
         <input type="password" id="passwordInput" placeholder="Enter admin password" autocomplete="off">
         <button class="login-btn" onclick="checkPassword()">Login</button>
+        <button class="login-btn" onclick="testConnection()" style="background-color: #6c757d; margin-top: 10px;">Test Connection</button>
+        <div style="margin-top: 15px; font-size: 0.85em; color: #666; text-align: center;">
+            Having issues? Open browser console (F12) for details
+        </div>
     </div>
 
     <!-- Admin Panel -->
@@ -345,7 +349,7 @@
 
     <script>
         // ⚠️ CONFIGURATION - REPLACE THIS VALUE
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwouYhXSV2KBJ3eVy7mGvCfZLs5WjuS4Uw59PsBI7IcRPyigvwd2JgmhMT9DomN-yen4w/exec'; // Same as your sell.html form
+        const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'; // Same as your sell.html form
 
         let currentPhotoIndices = {};
         let adminPassword = null; // Stored in memory only
@@ -377,10 +381,29 @@
                 return;
             }
 
+            if (!SCRIPT_URL || SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
+                errorMsg.textContent = 'Please configure SCRIPT_URL in the code first';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            // Show loading state
+            const loginBtn = document.querySelector('.login-btn');
+            const originalText = loginBtn.textContent;
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Verifying...';
+
             // Verify password with server
             try {
-                const response = await fetch(SCRIPT_URL + '?action=verifyPassword&password=' + encodeURIComponent(password));
+                console.log('Attempting to connect to:', SCRIPT_URL);
+                const url = SCRIPT_URL + '?action=verifyPassword&password=' + encodeURIComponent(password);
+                const response = await fetch(url);
+                
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+                
                 const data = await response.json();
+                console.log('Response data:', data);
 
                 if (data.status === 'success') {
                     adminPassword = password;
@@ -394,10 +417,15 @@
                     setTimeout(() => errorMsg.style.display = 'none', 3000);
                 }
             } catch (error) {
-                console.error('Error verifying password:', error);
-                errorMsg.textContent = 'Error connecting to server. Please try again.';
+                console.error('Full error details:', error);
+                console.error('Error name:', error.name);
+                console.error('Error message:', error.message);
+                errorMsg.textContent = 'Error connecting to server: ' + error.message + '. Check console for details.';
                 errorMsg.style.display = 'block';
-                setTimeout(() => errorMsg.style.display = 'none', 3000);
+                setTimeout(() => errorMsg.style.display = 'none', 5000);
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = originalText;
             }
         }
 
@@ -417,6 +445,56 @@
             } catch (error) {
                 console.error('Error verifying stored password:', error);
                 sessionStorage.removeItem('adminPassword');
+            }
+        }
+
+        async function testConnection() {
+            const errorMsg = document.getElementById('loginError');
+            
+            if (!SCRIPT_URL || SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
+                errorMsg.textContent = '❌ SCRIPT_URL not configured. Please set it in the code.';
+                errorMsg.style.display = 'block';
+                console.error('SCRIPT_URL is not configured');
+                return;
+            }
+
+            errorMsg.textContent = '⏳ Testing connection...';
+            errorMsg.style.display = 'block';
+            errorMsg.style.color = '#007bff';
+
+            try {
+                console.log('Testing connection to:', SCRIPT_URL);
+                const testUrl = SCRIPT_URL + '?action=verifyPassword&password=test123';
+                console.log('Full URL:', testUrl);
+                
+                const response = await fetch(testUrl);
+                console.log('Response received:', response);
+                console.log('Response status:', response.status);
+                console.log('Response headers:', [...response.headers.entries()]);
+                
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                errorMsg.style.color = '#28a745';
+                errorMsg.textContent = '✅ Connection successful! Script is responding. You can now login.';
+                setTimeout(() => errorMsg.style.display = 'none', 5000);
+            } catch (error) {
+                console.error('Connection test failed:', error);
+                console.error('Error type:', error.constructor.name);
+                console.error('Error details:', {
+                    name: error.name,
+                    message: error.message,
+                    stack: error.stack
+                });
+                
+                errorMsg.style.color = '#e74c3c';
+                errorMsg.textContent = '❌ Connection failed: ' + error.message;
+                errorMsg.style.display = 'block';
+                
+                // Provide specific troubleshooting advice
+                if (error.message.includes('Failed to fetch')) {
+                    alert('Connection Error!\n\nPossible causes:\n1. Google Apps Script URL is incorrect\n2. Script is not deployed as Web App\n3. Script access is not set to "Anyone"\n4. CORS issue - make sure script is deployed properly\n\nCheck browser console (F12) for more details.');
+                }
             }
         }
 
