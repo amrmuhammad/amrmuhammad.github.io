@@ -254,7 +254,21 @@
             border: 1px solid #f5c6cb;
             display: none;
         }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
 
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -329,6 +343,10 @@
     </div>
 
     <script>
+
+        // ⚠️ REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzRErPkZpCqYO3eh9TrbFO6guOBhmlTPvvXXjBkw3RDHhrYWaf7j6zhnAXzM9N5VGpI/exec';
+        
         const form = document.getElementById('sellerForm');
         const photosInput = document.getElementById('photos');
         const previewContainer = document.getElementById('previewContainer');
@@ -385,8 +403,20 @@
             displayPreviews();
         }
 
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async (e) {
             e.preventDefault();
+
+            // Check if script URL is configured
+            if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                showMessage('Please configure the Google Apps Script URL first!', 'error');
+                return;
+            }
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
+            responseMessage.style.display = 'none';
+
             
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
@@ -418,6 +448,32 @@
                 message: document.getElementById('message').value.trim(),
                 photoCount: selectedFiles.length
             });
+            /////////////////////////////////////////////////////////////////////////////
+            try {
+                // Send data to Google Apps Script
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Note: With no-cors mode, we can't read the response
+                // So we assume success if no error was thrown
+                showMessage('✅ Form submitted successfully! Thank you.', 'success');
+                form.reset();
+
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('❌ Error submitting form. Please try again.', 'error');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span class="btn-text">Submit</span>';
+            }
+            /////////////////////////////////////////////////////////////////////////////
             
             successMessage.style.display = 'block';
             successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -426,6 +482,18 @@
             selectedFiles = [];
             displayPreviews();
         });
+
+        function showMessage(text, type) {
+            responseMessage.textContent = text;
+            responseMessage.className = `message ${type}`;
+            responseMessage.style.display = 'block';
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    responseMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
     </script>
 </body>
 </html>
