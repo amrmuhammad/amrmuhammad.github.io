@@ -476,6 +476,27 @@
         
     </div>
 
+
+    <!-- Modal for success/error messages ------------------------------------------------------------------------------------------------------------  -->
+    <div id="responseModal" class="modal">
+        <div class="modal-content">
+            <div id="modalIcon" class="modal-icon success">✅</div>
+            <h2 id="modalTitle">Submission Successful!</h2>
+            <p id="modalMessage">Your submission has been received! We'll review your apparel and get back to you soon.</p>
+            
+            <div id="redirectInfo" class="modal-countdown">
+                <p>You will be redirected to the store in <span id="countdown" class="countdown-number">5</span> seconds</p>
+                <p style="font-size: 0.9em; color: #666; margin-top: 5px;">Or you can choose to stay on this page</p>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="stayBtn" class="modal-btn secondary">Stay Here</button>
+                <button id="redirectNowBtn" class="modal-btn primary">Go to Store Now</button>
+            </div>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+    
     <script>
         
         // ⚠️ REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
@@ -485,47 +506,154 @@
         const STORE_URL = 'https://amrmuhammad.github.io/Store01/';
         const REDIRECT_DELAY = 5000; // 5 seconds
         
-        // DOM Elements
-        const form = document.getElementById('sellerForm');
-        const photosInput = document.getElementById('photos');
-        const previewContainer = document.getElementById('previewContainer');
-        const submitBtn = document.getElementById('submitBtn');
-        const responseMessage = document.getElementById('responseMessage');
-        
-        // Modal Elements
-        const modal = document.getElementById('responseModal');
-        const modalIcon = document.getElementById('modalIcon');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalMessage = document.getElementById('modalMessage');
-        const redirectInfo = document.getElementById('redirectInfo');
-        const countdownElement = document.getElementById('countdown');
-        const stayBtn = document.getElementById('stayBtn');
-        const redirectNowBtn = document.getElementById('redirectNowBtn');
-        
         // Variables
         let selectedFiles = [];
         let redirectTimer = null;
         let countdownInterval = null;
         
-        // Initialize
+        // DOM Elements - will be initialized after DOM loads
+        let form, photosInput, previewContainer, submitBtn, responseMessage;
+        let modal, modalIcon, modalTitle, modalMessage, redirectInfo, countdownElement, stayBtn, redirectNowBtn;
+        
+        // Initialize everything after DOM is loaded
         window.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded - initializing elements');
+            
+            // Initialize form elements
+            form = document.getElementById('sellerForm');
+            photosInput = document.getElementById('photos');
+            previewContainer = document.getElementById('previewContainer');
+            submitBtn = document.getElementById('submitBtn');
+            responseMessage = document.getElementById('responseMessage');
+            
+            // Initialize modal elements
+            modal = document.getElementById('responseModal');
+            modalIcon = document.getElementById('modalIcon');
+            modalTitle = document.getElementById('modalTitle');
+            modalMessage = document.getElementById('modalMessage');
+            redirectInfo = document.getElementById('redirectInfo');
+            countdownElement = document.getElementById('countdown');
+            stayBtn = document.getElementById('stayBtn');
+            redirectNowBtn = document.getElementById('redirectNowBtn');
+            
+            // Check if all elements exist
+            if (!stayBtn || !redirectNowBtn) {
+                console.error('Modal elements not found! Make sure modal HTML is in the page.');
+                return;
+            }
+            
             // Hide inline messages
             responseMessage.style.display = 'none';
+            // Ensure modal is hidden on load
+            if (modal) modal.style.display = 'none';
+            
+            // Setup event listeners
+            setupEventListeners();
         });
         
-        // File upload handling
-        photosInput.addEventListener('change', function(e) {
-            const files = Array.from(e.target.files);
+        function setupEventListeners() {
+            // File upload handling
+            photosInput.addEventListener('change', function(e) {
+                const files = Array.from(e.target.files);
+                
+                files.forEach(file => {
+                    if (file.type.startsWith('image/')) {
+                        selectedFiles.push(file);
+                    }
+                });
+                
+                displayPreviews();
+                photosInput.value = '';
+            });
             
-            files.forEach(file => {
-                if (file.type.startsWith('image/')) {
-                    selectedFiles.push(file);
+            // Modal button event listeners
+            stayBtn.addEventListener('click', function() {
+                hideModal();
+            });
+            
+            redirectNowBtn.addEventListener('click', function() {
+                clearTimers();
+                window.location.href = STORE_URL;
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    hideModal();
                 }
             });
             
-            displayPreviews();
-            photosInput.value = '';
-        });
+            // Form submission
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                console.log('Form submitted');
+        
+                // Hide any previous inline messages
+                responseMessage.style.display = 'none';
+        
+                // Check if script URL is configured
+                if (!SCRIPT_URL || SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+                    console.log('Script URL not configured');
+                    showModal('error', 'Configuration Error', 'Please configure the Google Apps Script URL first!');
+                    return;
+                }
+        
+                // Validate required fields
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const apparelDescription = document.getElementById('apparelDescription').value.trim();
+                
+                if (!fullName || !email || !apparelDescription || selectedFiles.length === 0) {
+                    console.log('Validation failed');
+                    showModal('error', 'Missing Information', 'Please fill in all required fields and upload at least one photo.');
+                    return;
+                }
+        
+                // Disable button and show loading
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
+        
+                // Prepare data for Google Apps Script
+                const data = {
+                    name: fullName,
+                    email: email,
+                    description: apparelDescription,
+                    message: document.getElementById('message').value.trim(),
+                    timestamp: new Date().toISOString(),
+                    photoCount: selectedFiles.length
+                };
+        
+                console.log('Submitting data:', data);
+        
+                try {
+                    // Send data to Google Apps Script
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+        
+                    console.log('Fetch request sent');
+                    
+                    // Since we're using no-cors mode, we can't check the response status
+                    // Assume success if no error is thrown
+                    showModal('success', 'Submission Successful!', 
+                        'Your submission has been received! We\'ll review your apparel and get back to you soon.', 
+                        true);
+        
+                } catch (error) {
+                    console.error('Error:', error);
+                    showModal('error', 'Submission Failed', 'Error submitting form. Please try again. Error: ' + error.message);
+                } finally {
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Application';
+                }
+            });
+        }
         
         function displayPreviews() {
             previewContainer.innerHTML = '';
@@ -564,6 +692,8 @@
         
         // Modal functions
         function showModal(type, title, message, showRedirect = false) {
+            console.log('Showing modal:', type, title);
+            
             // Clear any existing timers
             clearTimers();
             
@@ -633,136 +763,8 @@
                 window.location.href = STORE_URL;
             }, REDIRECT_DELAY);
         }
-        
-        // Modal button event listeners
-        stayBtn.addEventListener('click', function() {
-            hideModal();
-        });
-        
-        redirectNowBtn.addEventListener('click', function() {
-            clearTimers();
-            window.location.href = STORE_URL;
-        });
-        
-        // Close modal when clicking outside
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                hideModal();
-            }
-        });
-        
-        // Form submission
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-        
-            // Hide any previous inline messages
-            responseMessage.style.display = 'none';
-        
-            // Check if script URL is configured
-            if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-                showModal('error', 'Configuration Error', 'Please configure the Google Apps Script URL first!');
-                return;
-            }
-        
-            // Validate required fields
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const apparelDescription = document.getElementById('apparelDescription').value.trim();
-            
-            if (!fullName || !email || !apparelDescription || selectedFiles.length === 0) {
-                showModal('error', 'Missing Information', 'Please fill in all required fields and upload at least one photo.');
-                return;
-            }
-        
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
-        
-            // Prepare form data
-            const formData = new FormData();
-            formData.append('fullName', fullName);
-            formData.append('email', email);
-            formData.append('apparelDescription', apparelDescription);
-            formData.append('message', document.getElementById('message').value.trim());
-            
-            selectedFiles.forEach((file, index) => {
-                formData.append(`photo_${index}`, file);
-            });
-            
-            console.log('Form Data:', {
-                fullName,
-                email,
-                apparelDescription,
-                message: document.getElementById('message').value.trim(),
-                photoCount: selectedFiles.length
-            });
-        
-            // Prepare data for Google Apps Script
-            const data = {
-                name: formData.get('fullName'),
-                email: formData.get('email'),
-                message: formData.get('message'),
-                timestamp: new Date().toISOString()
-            };
-        
-            try {
-                // Send data to Google Apps Script
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-        
-                // Show success modal with redirect
-                showModal('success', 'Submission Successful!', 
-                    'Your submission has been received! We\'ll review your apparel and get back to you soon.', 
-                    true);
-        
-            } catch (error) {
-                console.error('Error:', error);
-                showModal('error', 'Submission Failed', 'Error submitting form. Please try again.');
-            } finally {
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Application';
-            }
-        });
-        
-        // Optional: Show success message inline for non-critical messages
-        function showInlineMessage(text, type) {
-            responseMessage.textContent = text;
-            responseMessage.className = `message ${type}`;
-            responseMessage.style.display = 'block';
-            
-            if (type === 'success') {
-                setTimeout(() => {
-                    responseMessage.style.display = 'none';
-                }, 3000);
-            }
-        }        
+    
     </script>
     
-    <!-- Modal for success/error messages ------------------------------------------------------------------------------------------------------------  -->
-    <div id="responseModal" class="modal">
-        <div class="modal-content">
-            <div id="modalIcon" class="modal-icon success">✅</div>
-            <h2 id="modalTitle">Submission Successful!</h2>
-            <p id="modalMessage">Your submission has been received! We'll review your apparel and get back to you soon.</p>
-            
-            <div id="redirectInfo" class="modal-countdown">
-                <p>You will be redirected to the store in <span id="countdown" class="countdown-number">5</span> seconds</p>
-                <p style="font-size: 0.9em; color: #666; margin-top: 5px;">Or you can choose to stay on this page</p>
-            </div>
-            
-            <div class="modal-buttons">
-                <button id="stayBtn" class="modal-btn secondary">Stay Here</button>
-                <button id="redirectNowBtn" class="modal-btn primary">Go to Store Now</button>
-            </div>
-        </div>
-    </div>
-    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
 </body>
 </html>
