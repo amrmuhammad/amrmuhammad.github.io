@@ -409,6 +409,16 @@
             }, REDIRECT_DELAY);
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Add this function to cancel redirect if user interacts
+        function cancelRedirect() {
+            if (redirectTimer) {
+                clearTimeout(redirectTimer);
+                redirectTimer = null;
+                // Update message to remove countdown
+                successMessage.innerHTML = '✅ Form submitted successfully! Thank you.';
+            }
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         photosInput.addEventListener('change', function(e) {
             const files = Array.from(e.target.files);
             
