@@ -416,7 +416,7 @@
     
     <script>
         // ⚠️ REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-cWXpLvebSh_DsMtmd8__mjjIyHqYJ-G6DrxlhFE9TqpQ2Y9k3i7dFj2ZABOiWoIH8Q/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxSYqjEfP8Z4lVSMv-0Q4kBrnukiAigxpp_Q95Gdema3vMsOsk2QgnmxEJkTFGRQlV3kQ/exec';
         
         // Configuration
         const STORE_URL = 'https://amrmuhammad.github.io/Store01/';
@@ -543,20 +543,19 @@
                     });
         
                     const photoBase64Array = await Promise.all(photoPromises);
-        
+                            
                     // Prepare data for Google Apps Script
                     const data = {
-                        name: fullName,
-                        email: email,
-                        description: apparelDescription,
-                        message: document.getElementById('message').value.trim(),
-                        photo1: photoBase64Array[0] || '',
-                        photo2: photoBase64Array[1] || '',
-                        photo3: photoBase64Array[2] || '',
-                        photo4: photoBase64Array[3] || '',
-                        photo5: photoBase64Array[4] || '',
-                        photoCount: selectedFiles.length,
-                        timestamp: new Date().toISOString()
+                      name: fullName,
+                      email: email,
+                      description: apparelDescription,
+                      message: document.getElementById('message').value.trim(),
+                      photo1: photoBase64Array[0] || '',
+                      photo2: photoBase64Array[1] || '',
+                      photo3: photoBase64Array[2] || '',
+                      photo4: photoBase64Array[3] || '',
+                      photo5: photoBase64Array[4] || '',
+                      timestamp: new Date().toISOString()
                     };
         
                     console.log('Submitting data with photos');
