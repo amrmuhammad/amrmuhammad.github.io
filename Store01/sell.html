@@ -558,19 +558,37 @@
             selectedFiles = [];
             displayPreviews();
         });
-
+        /////////////////////////////////////////////////////////////////////////////////////////////////
         function showMessage(text, type) {
-            responseMessage.textContent = text;
+            responseMessage.innerHTML = text;
             responseMessage.className = `message ${type}`;
             responseMessage.style.display = 'block';
-
+        
             if (type === 'success') {
+                // Cancel any existing redirect timer
+                if (redirectTimer) {
+                    clearTimeout(redirectTimer);
+                    redirectTimer = null;
+                }
+                
+                // Start new redirect timer
+                startRedirectTimer();
+                
+                // Allow user to cancel redirect by clicking on the message
+                responseMessage.onclick = cancelRedirect;
+                responseMessage.style.cursor = 'pointer';
+                responseMessage.title = 'Click to stay on this page';
+            } else {
+                responseMessage.onclick = null;
+                responseMessage.style.cursor = 'default';
+                responseMessage.title = '';
+                
                 setTimeout(() => {
                     responseMessage.style.display = 'none';
                 }, 5000);
             }
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Hide messages when page loads
         window.addEventListener('DOMContentLoaded', function() {
