@@ -235,24 +235,18 @@
             margin-top: 5px;
         }
 
-        .success-message {
-            background-color: #d4edda;
+        .message.success {
+            background: #d4edda;
             color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
             border: 1px solid #c3e6cb;
-            display: none;
+            display: block;
         }
 
-        .error-message {
-            background-color: #f8d7da;
+        .message.error {
+            background: #f8d7da;
             color: #721c24;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
             border: 1px solid #f5c6cb;
-            display: none;
+            display: block;
         }
         
         .loading {
@@ -340,6 +334,9 @@
 
             <button type="submit" id="submitBtn" class="submit-btn">Submit Application</button>
         </form>
+
+        <div id="responseMessage" class="message"></div>
+        
     </div>
 
     <script>
