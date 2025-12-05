@@ -393,19 +393,11 @@
             loginBtn.disabled = true;
             loginBtn.textContent = 'Verifying...';
 
-            // Verify password with server
+            // Use an iframe to bypass CORS (Google Apps Script allows iframe access)
             try {
-                console.log('Attempting to connect to:', SCRIPT_URL);
-                const url = SCRIPT_URL + '?action=verifyPassword&password=' + encodeURIComponent(password);
-                const response = await fetch(url);
+                const result = await verifyPasswordViaForm(password);
                 
-                console.log('Response status:', response.status);
-                console.log('Response ok:', response.ok);
-                
-                const data = await response.json();
-                console.log('Response data:', data);
-
-                if (data.status === 'success') {
+                if (result === 'success') {
                     adminPassword = password;
                     sessionStorage.setItem('adminPassword', password);
                     showAdminPanel();
@@ -418,15 +410,79 @@
                 }
             } catch (error) {
                 console.error('Full error details:', error);
-                console.error('Error name:', error.name);
-                console.error('Error message:', error.message);
-                errorMsg.textContent = 'Error connecting to server: ' + error.message + '. Check console for details.';
+                errorMsg.textContent = 'Error: ' + error.message;
                 errorMsg.style.display = 'block';
                 setTimeout(() => errorMsg.style.display = 'none', 5000);
             } finally {
                 loginBtn.disabled = false;
                 loginBtn.textContent = originalText;
             }
+        }
+
+        // Verify password using a hidden form submission (bypasses CORS)
+        function verifyPasswordViaForm(password) {
+            return new Promise((resolve, reject) => {
+                // Create a hidden iframe
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.name = 'password-verify-frame';
+                document.body.appendChild(iframe);
+
+                // Create a form
+                const form = document.createElement('form');
+                form.method = 'GET';
+                form.action = SCRIPT_URL;
+                form.target = 'password-verify-frame';
+
+                // Add hidden inputs
+                const actionInput = document.createElement('input');
+                actionInput.type = 'hidden';
+                actionInput.name = 'action';
+                actionInput.value = 'verifyPassword';
+                form.appendChild(actionInput);
+
+                const passwordInput = document.createElement('input');
+                passwordInput.type = 'hidden';
+                passwordInput.name = 'password';
+                passwordInput.value = password;
+                form.appendChild(passwordInput);
+
+                document.body.appendChild(form);
+
+                // Listen for iframe load
+                let timeout;
+                iframe.onload = function() {
+                    clearTimeout(timeout);
+                    try {
+                        // Try to read response from iframe
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const responseText = iframeDoc.body.textContent;
+                        const data = JSON.parse(responseText);
+                        
+                        // Cleanup
+                        document.body.removeChild(form);
+                        document.body.removeChild(iframe);
+                        
+                        resolve(data.status);
+                    } catch (error) {
+                        console.error('Error reading iframe response:', error);
+                        // Cleanup
+                        document.body.removeChild(form);
+                        document.body.removeChild(iframe);
+                        reject(new Error('Could not verify password. Please check your configuration.'));
+                    }
+                };
+
+                // Set timeout in case iframe doesn't load
+                timeout = setTimeout(() => {
+                    document.body.removeChild(form);
+                    document.body.removeChild(iframe);
+                    reject(new Error('Request timed out'));
+                }, 10000);
+
+                // Submit form
+                form.submit();
+            });
         }
 
         async function verifyAndLogin(password) {
@@ -526,9 +582,8 @@
             }
 
             try {
-                // Fetch data from Google Apps Script with password
-                const response = await fetch(SCRIPT_URL + '?action=getSubmissions&password=' + encodeURIComponent(adminPassword));
-                const data = await response.json();
+                // Load submissions via iframe (bypasses CORS)
+                const data = await loadSubmissionsViaForm(adminPassword);
 
                 if (data.status === 'success' && data.submissions && data.submissions.length > 0) {
                     displaySubmissions(data.submissions);
@@ -541,8 +596,65 @@
                 }
             } catch (error) {
                 console.error('Error loading submissions:', error);
-                container.innerHTML = '<div class="no-submissions"><h2>Error Loading Submissions</h2><p>Please make sure your Google Apps Script is properly configured and deployed.</p></div>';
+                container.innerHTML = '<div class="no-submissions"><h2>Error Loading Submissions</h2><p>' + error.message + '</p></div>';
             }
+        }
+
+        // Load submissions using iframe to bypass CORS
+        function loadSubmissionsViaForm(password) {
+            return new Promise((resolve, reject) => {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.name = 'submissions-frame';
+                document.body.appendChild(iframe);
+
+                const form = document.createElement('form');
+                form.method = 'GET';
+                form.action = SCRIPT_URL;
+                form.target = 'submissions-frame';
+
+                const actionInput = document.createElement('input');
+                actionInput.type = 'hidden';
+                actionInput.name = 'action';
+                actionInput.value = 'getSubmissions';
+                form.appendChild(actionInput);
+
+                const passwordInput = document.createElement('input');
+                passwordInput.type = 'hidden';
+                passwordInput.name = 'password';
+                passwordInput.value = password;
+                form.appendChild(passwordInput);
+
+                document.body.appendChild(form);
+
+                let timeout;
+                iframe.onload = function() {
+                    clearTimeout(timeout);
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const responseText = iframeDoc.body.textContent;
+                        const data = JSON.parse(responseText);
+                        
+                        document.body.removeChild(form);
+                        document.body.removeChild(iframe);
+                        
+                        resolve(data);
+                    } catch (error) {
+                        console.error('Error reading submissions:', error);
+                        document.body.removeChild(form);
+                        document.body.removeChild(iframe);
+                        reject(new Error('Could not load submissions. Please check your configuration.'));
+                    }
+                };
+
+                timeout = setTimeout(() => {
+                    document.body.removeChild(form);
+                    document.body.removeChild(iframe);
+                    reject(new Error('Request timed out'));
+                }, 15000);
+
+                form.submit();
+            });
         }
 
         function displaySubmissions(submissions) {
