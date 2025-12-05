@@ -447,6 +447,13 @@
                 message: document.getElementById('message').value.trim(),
                 photoCount: selectedFiles.length
             });
+
+            const data = {
+                name: formData.get('fullName'),
+                email: formData.get('email'),
+                message: formData.get('message'),
+                timestamp: new Date().toISOString()
+            };
             /////////////////////////////////////////////////////////////////////////////
             try {
                 // Send data to Google Apps Script
