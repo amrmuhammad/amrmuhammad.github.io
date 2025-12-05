@@ -715,5 +715,25 @@
         });
         
     </script>
+    
+    <!-- Modal for success/error messages ------------------------------------------------------------------------------------------------------------  -->
+    <div id="responseModal" class="modal">
+        <div class="modal-content">
+            <div id="modalIcon" class="modal-icon success">✅</div>
+            <h2 id="modalTitle">Submission Successful!</h2>
+            <p id="modalMessage">Your submission has been received! We'll review your apparel and get back to you soon.</p>
+            
+            <div id="redirectInfo" class="modal-countdown">
+                <p>You will be redirected to the store in <span id="countdown" class="countdown-number">5</span> seconds</p>
+                <p style="font-size: 0.9em; color: #666; margin-top: 5px;">Or you can choose to stay on this page</p>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="stayBtn" class="modal-btn secondary">Stay Here</button>
+                <button id="redirectNowBtn" class="modal-btn primary">Go to Store Now</button>
+            </div>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
 </body>
 </html>
