@@ -6,7 +6,706 @@
     <title>Sell Your Apparel - Store01</title>
     <style>
         * {
+            margin: 0;<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Apparel - Store01</title>
+    <style>
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .required {
+            color: #e74c3c;
+            margin-left: 3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload-container {
+            position: relative;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-label {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .file-upload-label:hover {
+            background-color: #0056b3;
+        }
+
+        .file-info {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .preview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .preview-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .preview-remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(231, 76, 60, 0.9);
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .preview-remove:hover {
+            background-color: rgba(192, 57, 43, 1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .submit-btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .helper-text {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-icon.success {
+            color: #28a745;
+        }
+        
+        .modal-icon.error {
+            color: #dc3545;
+        }
+        
+        .modal h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .modal p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .modal-countdown {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #e9ecef;
+        }
+        
+        .countdown-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+            margin: 0 5px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .modal-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 140px;
+        }
+        
+        .modal-btn.primary {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .modal-btn.primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .modal-btn.secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .modal-btn.secondary:hover {
+            background-color: #545b62;
+            transform: translateY(-2px);
+        }
+        
+        .modal-btn:active {
+            transform: translateY(0);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .preview-container {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .preview-item img {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://amrmuhammad.github.io/Store01/" class="back-link">← Back to Store</a>
+        
+        <div class="header">
+            <h1>Sell Your Apparel</h1>
+            <p>Fill out the form below to list your items on our store</p>
+        </div>
+
+        <form id="sellerForm">
+            <div class="form-group">
+                <label for="fullName">Full Name <span class="required">*</span></label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+                <div class="helper-text">We'll use this to contact you about your submission</div>
+            </div>
+
+            <div class="form-group">
+                <label for="apparelDescription">Apparel Description <span class="required">*</span></label>
+                <textarea id="apparelDescription" name="apparelDescription" required placeholder="Describe your apparel (brand, size, condition, material, etc.)"></textarea>
+                <div class="helper-text">Include details like brand, size, condition, color, and any special features</div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Additional Message</label>
+                <textarea id="message" name="message" placeholder="Any additional information you'd like to share"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Apparel Photos <span class="required">*</span></label>
+                <div class="file-upload-container">
+                    <input type="file" id="photos" name="photos" accept="image/*" multiple>
+                    <label for="photos" class="file-upload-label">Choose Photos</label>
+                    <div class="file-info">You can select multiple photos (JPG, PNG, etc.)</div>
+                </div>
+                <div id="previewContainer" class="preview-container"></div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <!-- Modal for success/error messages -->
+    <div id="responseModal" class="modal">
+        <div class="modal-content">
+            <div id="modalIcon" class="modal-icon success">✅</div>
+            <h2 id="modalTitle">Submission Successful!</h2>
+            <p id="modalMessage">Your submission has been received! We'll review your apparel and get back to you soon.</p>
+            
+            <div id="redirectInfo" class="modal-countdown">
+                <p>You will be redirected to the store in <span id="countdown" class="countdown-number">5</span> seconds</p>
+                <p style="font-size: 0.9em; color: #666; margin-top: 5px;">Or you can choose to stay on this page</p>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="stayBtn" class="modal-btn secondary">Stay Here</button>
+                <button id="redirectNowBtn" class="modal-btn primary">Go to Store Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ⚠️ REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+        const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+        
+        // Configuration
+        const STORE_URL = 'https://amrmuhammad.github.io/Store01/';
+        const REDIRECT_DELAY = 5000; // 5 seconds
+        const MAX_PHOTOS = 5;
+        const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB per photo
+        
+        // Variables
+        let selectedFiles = [];
+        let redirectTimer = null;
+        let countdownInterval = null;
+        
+        // DOM Elements
+        let form, photosInput, previewContainer, submitBtn;
+        let modal, modalIcon, modalTitle, modalMessage, redirectInfo, countdownElement, stayBtn, redirectNowBtn;
+        
+        // Initialize after DOM loads
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded - initializing elements');
+            
+            // Initialize form elements
+            form = document.getElementById('sellerForm');
+            photosInput = document.getElementById('photos');
+            previewContainer = document.getElementById('previewContainer');
+            submitBtn = document.getElementById('submitBtn');
+            
+            // Initialize modal elements
+            modal = document.getElementById('responseModal');
+            modalIcon = document.getElementById('modalIcon');
+            modalTitle = document.getElementById('modalTitle');
+            modalMessage = document.getElementById('modalMessage');
+            redirectInfo = document.getElementById('redirectInfo');
+            countdownElement = document.getElementById('countdown');
+            stayBtn = document.getElementById('stayBtn');
+            redirectNowBtn = document.getElementById('redirectNowBtn');
+            
+            // Ensure modal is hidden on load
+            if (modal) modal.style.display = 'none';
+            
+            // Setup event listeners
+            setupEventListeners();
+        });
+        
+        function setupEventListeners() {
+            // File upload handling
+            photosInput.addEventListener('change', function(e) {
+                const files = Array.from(e.target.files);
+                
+                files.forEach(file => {
+                    if (selectedFiles.length >= MAX_PHOTOS) {
+                        showModal('error', 'Too Many Photos', `Maximum ${MAX_PHOTOS} photos allowed.`);
+                        return;
+                    }
+                    
+                    if (!file.type.startsWith('image/')) {
+                        showModal('error', 'Invalid File', `${file.name} is not an image file.`);
+                        return;
+                    }
+                    
+                    if (file.size > MAX_FILE_SIZE) {
+                        showModal('error', 'File Too Large', `${file.name} is too large. Maximum size is 2MB.`);
+                        return;
+                    }
+                    
+                    selectedFiles.push(file);
+                });
+                
+                displayPreviews();
+                photosInput.value = '';
+            });
+            
+            // Modal button event listeners
+            stayBtn.addEventListener('click', function() {
+                hideModal();
+            });
+            
+            redirectNowBtn.addEventListener('click', function() {
+                clearTimers();
+                window.location.href = STORE_URL;
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    hideModal();
+                }
+            });
+            
+            // Form submission
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                console.log('Form submitted');
+        
+                // Check if script URL is configured
+                if (!SCRIPT_URL || SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
+                    console.log('Script URL not configured');
+                    showModal('error', 'Configuration Error', 'Please configure the Google Apps Script URL first!');
+                    return;
+                }
+        
+                // Validate required fields
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const apparelDescription = document.getElementById('apparelDescription').value.trim();
+                
+                if (!fullName || !email || !apparelDescription || selectedFiles.length === 0) {
+                    console.log('Validation failed');
+                    showModal('error', 'Missing Information', 'Please fill in all required fields and upload at least one photo.');
+                    return;
+                }
+        
+                // Disable button and show loading
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
+        
+                try {
+                    // Convert photos to base64
+                    const photoPromises = selectedFiles.map(file => {
+                        return new Promise((resolve) => {
+                            const reader = new FileReader();
+                            reader.onload = (e) => resolve(e.target.result);
+                            reader.readAsDataURL(file);
+                        });
+                    });
+        
+                    const photoBase64Array = await Promise.all(photoPromises);
+        
+                    // Prepare data for Google Apps Script
+                    const data = {
+                        name: fullName,
+                        email: email,
+                        description: apparelDescription,
+                        message: document.getElementById('message').value.trim(),
+                        photo1: photoBase64Array[0] || '',
+                        photo2: photoBase64Array[1] || '',
+                        photo3: photoBase64Array[2] || '',
+                        photo4: photoBase64Array[3] || '',
+                        photo5: photoBase64Array[4] || '',
+                        photoCount: selectedFiles.length,
+                        timestamp: new Date().toISOString()
+                    };
+        
+                    console.log('Submitting data with photos');
+        
+                    // Send data to Google Apps Script
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+        
+                    console.log('Fetch request sent');
+                    
+                    // Show success modal
+                    showModal('success', 'Submission Successful!', 
+                        'Your submission has been received! We\'ll review your apparel and get back to you soon.', 
+                        true);
+                    
+                    // Reset form
+                    form.reset();
+                    selectedFiles = [];
+                    displayPreviews();
+        
+                } catch (error) {
+                    console.error('Error:', error);
+                    showModal('error', 'Submission Failed', 'Error submitting form. Please try again. Error: ' + error.message);
+                } finally {
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                }
+            });
+        }
+        
+        function displayPreviews() {
+            previewContainer.innerHTML = '';
+            
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'preview-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'preview-remove';
+                    removeBtn.innerHTML = '×';
+                    removeBtn.type = 'button';
+                    removeBtn.onclick = function() {
+                        removeFile(index);
+                    };
+                    
+                    previewItem.appendChild(img);
+                    previewItem.appendChild(removeBtn);
+                    previewContainer.appendChild(previewItem);
+                };
+                
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            displayPreviews();
+        }
+        
+        // Modal functions
+        function showModal(type, title, message, showRedirect = false) {
+            console.log('Showing modal:', type, title);
+            
+            // Clear any existing timers
+            clearTimers();
+            
+            // Set modal content based on type
+            if (type === 'success') {
+                modalIcon.className = 'modal-icon success';
+                modalIcon.textContent = '✅';
+                modalIcon.style.color = '#28a745';
+                
+                if (showRedirect) {
+                    redirectInfo.style.display = 'block';
+                    startRedirectCountdown();
+                } else {
+                    redirectInfo.style.display = 'none';
+                }
+            } else {
+                modalIcon.className = 'modal-icon error';
+                modalIcon.textContent = '❌';
+                modalIcon.style.color = '#dc3545';
+                redirectInfo.style.display = 'none';
+            }
+            
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            modal.style.display = 'flex';
+        }
+        
+        function hideModal() {
+            modal.style.display = 'none';
+            clearTimers();
+        }
+        
+        function clearTimers() {
+            if (redirectTimer) {
+                clearTimeout(redirectTimer);
+                redirectTimer = null;
+            }
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+        }
+        
+        function startRedirectCountdown() {
+            let secondsRemaining = REDIRECT_DELAY / 1000;
+            countdownElement.textContent = secondsRemaining;
+            
+            // Update countdown every second
+            countdownInterval = setInterval(() => {
+                secondsRemaining--;
+                countdownElement.textContent = secondsRemaining;
+                
+                if (secondsRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+            
+            // Start redirect timer
+            redirectTimer = setTimeout(() => {
+                window.location.href = STORE_URL;
+            }, REDIRECT_DELAY);
+        }
+    </script>
+</body>
+</html>
             padding: 0;
             box-sizing: border-box;
         }
