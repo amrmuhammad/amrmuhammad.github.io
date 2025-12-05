@@ -19,7 +19,7 @@ var html_code = ""
 ///////////////////////////////////
 //html_code += '<hr>'
 //html_code += '<a id="sell_your_products_link" href="#">Sell @ Store01</a>'
-html_code += '<a href="sell.html">Sell Your Apparel @ Store01</a>'
+html_code += '<a id="sell_your_products_link" href="sell.html">Sell Your Apparel @ Store01</a>'
 html_code += '<br /> <br />'
 //html_code += '<hr>'
 
@@ -33,9 +33,9 @@ $('#app').append('<div id="debug_div"></div>')
 //$("#sell_your_products_link").click(sell_your_products_link_click_handler)     
 
 // Update button opens a modal dialog
-$("#sell_your_products_link").click( () => {
-  $("#sell_dialog_box").get(0).showModal();
-});
+//$("#sell_your_products_link").click( () => {
+//  $("#sell_dialog_box").get(0).showModal();
+//});
 
 /////////////////////////////////////
 function sell_your_products_link_click_handler(event) {
