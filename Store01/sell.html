@@ -363,6 +363,12 @@
 
         // ⚠️ REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzRErPkZpCqYO3eh9TrbFO6guOBhmlTPvvXXjBkw3RDHhrYWaf7j6zhnAXzM9N5VGpI/exec';
+
+        
+        // Add redirect timer variable at the top
+        let redirectTimer = null;
+        const REDIRECT_DELAY = 5000; // 5 seconds before redirect
+        const STORE_URL = 'https://amrmuhammad.github.io/Store01/'; // Your store URL
         
         const form = document.getElementById('sellerForm');
         const photosInput = document.getElementById('photos');
@@ -373,7 +379,36 @@
         const submitBtn = document.getElementById('submitBtn');
         
         let selectedFiles = [];
-
+        
+        // Add this function to handle the redirect //////////////////////////////////////////////////////////////
+        function startRedirectTimer() {
+            let secondsRemaining = REDIRECT_DELAY / 1000;
+    
+            // Update the success message with countdown
+            successMessage.innerHTML = `
+                ✅ Form submitted successfully! Thank you.<br>
+                <div class="redirect-notice">
+                    Redirecting to store in <span id="countdown">${secondsRemaining}</span> seconds...
+                </div>
+            `;
+    
+            // Start countdown timer
+            const countdownElement = document.getElementById('countdown');
+            const countdownInterval = setInterval(() => {
+                secondsRemaining--;
+                countdownElement.textContent = secondsRemaining;
+        
+                if (secondsRemaining <= 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+    
+            // Start redirect timer
+            redirectTimer = setTimeout(() => {
+                window.location.href = STORE_URL;
+            }, REDIRECT_DELAY);
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         photosInput.addEventListener('change', function(e) {
             const files = Array.from(e.target.files);
             
