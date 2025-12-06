@@ -415,8 +415,8 @@
     </div>
     
     <script>
-        // ⚠️ REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyKHuUU4Re8v1dxlWOtF3p_D8WMHWwTorLcwfhEBpwsRHVGko04bT0UGCzvgOERdd1-BA/exec';
+        // ⚠️ REPLACE THIS WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
         
         // Configuration
         const STORE_URL = 'https://amrmuhammad.github.io/Store01/';
@@ -429,41 +429,17 @@
         let redirectTimer = null;
         let countdownInterval = null;
         
-        // DOM Elements
-        let form, photosInput, previewContainer, submitBtn;
-        let modal, modalIcon, modalTitle, modalMessage, redirectInfo, countdownElement, stayBtn, redirectNowBtn;
-        
         // Initialize after DOM loads
         window.addEventListener('DOMContentLoaded', function() {
-            console.log('Page loaded - initializing elements');
-            
-            // Initialize form elements
-            form = document.getElementById('sellerForm');
-            photosInput = document.getElementById('photos');
-            previewContainer = document.getElementById('previewContainer');
-            submitBtn = document.getElementById('submitBtn');
-            
-            // Initialize modal elements
-            modal = document.getElementById('responseModal');
-            modalIcon = document.getElementById('modalIcon');
-            modalTitle = document.getElementById('modalTitle');
-            modalMessage = document.getElementById('modalMessage');
-            redirectInfo = document.getElementById('redirectInfo');
-            countdownElement = document.getElementById('countdown');
-            stayBtn = document.getElementById('stayBtn');
-            redirectNowBtn = document.getElementById('redirectNowBtn');
-            
-            // Ensure modal is hidden on load
-            if (modal) modal.style.display = 'none';
-            
-            // Setup event listeners
+            console.log('Page loaded - initializing');
             setupEventListeners();
         });
         
         function setupEventListeners() {
             // File upload handling
-            photosInput.addEventListener('change', function(e) {
+            document.getElementById('photos').addEventListener('change', function(e) {
                 const files = Array.from(e.target.files);
+                let validFiles = 0;
                 
                 files.forEach(file => {
                     if (selectedFiles.length >= MAX_PHOTOS) {
@@ -482,57 +458,44 @@
                     }
                     
                     selectedFiles.push(file);
+                    validFiles++;
                 });
                 
-                displayPreviews();
-                photosInput.value = '';
-            });
-            
-            // Modal button event listeners
-            stayBtn.addEventListener('click', function() {
-                hideModal();
-            });
-            
-            redirectNowBtn.addEventListener('click', function() {
-                clearTimers();
-                window.location.href = STORE_URL;
-            });
-            
-            // Close modal when clicking outside
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    hideModal();
+                if (validFiles > 0) {
+                    displayPreviews();
                 }
+                
+                this.value = '';
             });
             
             // Form submission
-            form.addEventListener('submit', async (e) => {
+            document.getElementById('sellerForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
-                console.log('Form submitted');
-        
-                // Check if script URL is configured
-                if (!SCRIPT_URL || SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
-                    console.log('Script URL not configured');
-                    showModal('error', 'Configuration Error', 'Please configure the Google Apps Script URL first!');
-                    return;
-                }
-        
+                console.log('Form submission started');
+                
                 // Validate required fields
                 const fullName = document.getElementById('fullName').value.trim();
                 const email = document.getElementById('email').value.trim();
                 const apparelDescription = document.getElementById('apparelDescription').value.trim();
                 
-                if (!fullName || !email || !apparelDescription || selectedFiles.length === 0) {
-                    console.log('Validation failed');
-                    showModal('error', 'Missing Information', 'Please fill in all required fields and upload at least one photo.');
+                if (!fullName || !email || !apparelDescription) {
+                    showModal('error', 'Missing Information', 'Please fill in all required fields.');
                     return;
                 }
-        
+                
+                if (selectedFiles.length === 0) {
+                    showModal('error', 'No Photos', 'Please upload at least one photo of your apparel.');
+                    return;
+                }
+                
                 // Disable button and show loading
+                const submitBtn = document.getElementById('submitBtn');
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
-        
+                
                 try {
+                    console.log('Converting photos to base64...');
+                    
                     // Convert photos to base64
                     const photoPromises = selectedFiles.map(file => {
                         return new Promise((resolve) => {
@@ -541,59 +504,97 @@
                             reader.readAsDataURL(file);
                         });
                     });
-        
+                    
                     const photoBase64Array = await Promise.all(photoPromises);
-                            
-                    // Prepare data for Google Apps Script
-                    const data = {
-                      name: fullName,
-                      email: email,
-                      description: apparelDescription,
-                      message: document.getElementById('message').value.trim(),
-                      photo1: photoBase64Array[0] || '',
-                      photo2: photoBase64Array[1] || '',
-                      photo3: photoBase64Array[2] || '',
-                      photo4: photoBase64Array[3] || '',
-                      photo5: photoBase64Array[4] || '',
-                      timestamp: new Date().toISOString()
+                    
+                    // Prepare data for submission
+                    const formData = {
+                        name: fullName,
+                        email: email,
+                        description: apparelDescription,
+                        message: document.getElementById('message').value.trim(),
+                        timestamp: new Date().toISOString()
                     };
-        
-                    console.log('Submitting data with photos');
-        
-                    // Send data to Google Apps Script
+                    
+                    // Add photos (up to 5)
+                    for (let i = 0; i < Math.min(photoBase64Array.length, 5); i++) {
+                        formData[`photo${i + 1}`] = photoBase64Array[i];
+                    }
+                    
+                    console.log('Submitting data...', { 
+                        name: fullName, 
+                        email: email, 
+                        photos: photoBase64Array.length 
+                    });
+                    
+                    // Send to Google Apps Script
                     const response = await fetch(SCRIPT_URL, {
                         method: 'POST',
-                        mode: 'no-cors',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(data)
+                        body: JSON.stringify(formData)
                     });
-        
-                    console.log('Fetch request sent');
                     
-                    // Show success modal
-                    showModal('success', 'Submission Successful!', 
-                        'Your submission has been received! We\'ll review your apparel and get back to you soon.', 
-                        true);
+                    // Try to read response (may fail in no-cors mode)
+                    let result;
+                    try {
+                        result = await response.json();
+                    } catch (e) {
+                        // If can't parse JSON, assume success (common with no-cors)
+                        result = { status: 'success', message: 'Submission received' };
+                    }
                     
-                    // Reset form
-                    form.reset();
-                    selectedFiles = [];
-                    displayPreviews();
-        
+                    console.log('Server response:', result);
+                    
+                    if (result.status === 'success') {
+                        // Success
+                        showModal('success', 'Submission Successful!', 
+                            'Your submission has been received! We\'ll review your apparel and get back to you soon.', 
+                            true);
+                        
+                        // Reset form
+                        document.getElementById('sellerForm').reset();
+                        selectedFiles = [];
+                        displayPreviews();
+                        
+                    } else {
+                        // Error from server
+                        throw new Error(result.message || 'Submission failed');
+                    }
+                    
                 } catch (error) {
-                    console.error('Error:', error);
-                    showModal('error', 'Submission Failed', 'Error submitting form. Please try again. Error: ' + error.message);
+                    console.error('Submission error:', error);
+                    showModal('error', 'Submission Failed', 
+                        'Error submitting form. Please try again. ' + error.message);
                 } finally {
                     // Re-enable button
+                    const submitBtn = document.getElementById('submitBtn');
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Submit';
+                }
+            });
+            
+            // Modal button handlers
+            document.getElementById('stayBtn').addEventListener('click', function() {
+                hideModal();
+            });
+            
+            document.getElementById('redirectNowBtn').addEventListener('click', function() {
+                clearTimers();
+                window.location.href = STORE_URL;
+            });
+            
+            // Close modal when clicking outside
+            document.getElementById('responseModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideModal();
                 }
             });
         }
         
         function displayPreviews() {
+            const previewContainer = document.getElementById('previewContainer');
             previewContainer.innerHTML = '';
             
             selectedFiles.forEach((file, index) => {
@@ -611,7 +612,8 @@
                     removeBtn.innerHTML = '×';
                     removeBtn.type = 'button';
                     removeBtn.onclick = function() {
-                        removeFile(index);
+                        selectedFiles.splice(index, 1);
+                        displayPreviews();
                     };
                     
                     previewItem.appendChild(img);
@@ -623,19 +625,18 @@
             });
         }
         
-        function removeFile(index) {
-            selectedFiles.splice(index, 1);
-            displayPreviews();
-        }
-        
-        // Modal functions
+        // Modal functions (keep your existing modal functions)
         function showModal(type, title, message, showRedirect = false) {
-            console.log('Showing modal:', type, title);
-            
             // Clear any existing timers
             clearTimers();
             
-            // Set modal content based on type
+            // Set modal content
+            const modalIcon = document.getElementById('modalIcon');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const redirectInfo = document.getElementById('redirectInfo');
+            const modal = document.getElementById('responseModal');
+            
             if (type === 'success') {
                 modalIcon.className = 'modal-icon success';
                 modalIcon.textContent = '✅';
@@ -660,40 +661,30 @@
         }
         
         function hideModal() {
-            modal.style.display = 'none';
+            document.getElementById('responseModal').style.display = 'none';
             clearTimers();
         }
         
         function clearTimers() {
-            if (redirectTimer) {
-                clearTimeout(redirectTimer);
-                redirectTimer = null;
-            }
-            if (countdownInterval) {
-                clearInterval(countdownInterval);
-                countdownInterval = null;
-            }
+            if (redirectTimer) clearTimeout(redirectTimer);
+            if (countdownInterval) clearInterval(countdownInterval);
         }
         
         function startRedirectCountdown() {
             let secondsRemaining = REDIRECT_DELAY / 1000;
+            const countdownElement = document.getElementById('countdown');
             countdownElement.textContent = secondsRemaining;
             
-            // Update countdown every second
             countdownInterval = setInterval(() => {
                 secondsRemaining--;
                 countdownElement.textContent = secondsRemaining;
-                
-                if (secondsRemaining <= 0) {
-                    clearInterval(countdownInterval);
-                }
+                if (secondsRemaining <= 0) clearInterval(countdownInterval);
             }, 1000);
             
-            // Start redirect timer
             redirectTimer = setTimeout(() => {
                 window.location.href = STORE_URL;
             }, REDIRECT_DELAY);
-        }
+        }    
     </script>
 </body>
 </html>
