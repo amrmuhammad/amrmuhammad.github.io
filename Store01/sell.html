@@ -415,7 +415,7 @@
     </div>
     
     <script>
-        // ⚠️ REPLACE THIS WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
+        // ⚠️ REPLACE WITH YOUR PRODUCTION WEB APP URL (ends with /exec)
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNg5SvCpbNCbRuKjLtk0Xq9wo2WddGXojnJvjxZ0LHUXk8PzsrDzFTgQ-KRDTuyyY_jQ/exec';
         
         // Configuration
@@ -439,7 +439,6 @@
             // File upload handling
             document.getElementById('photos').addEventListener('change', function(e) {
                 const files = Array.from(e.target.files);
-                let validFiles = 0;
                 
                 files.forEach(file => {
                     if (selectedFiles.length >= MAX_PHOTOS) {
@@ -458,13 +457,9 @@
                     }
                     
                     selectedFiles.push(file);
-                    validFiles++;
                 });
                 
-                if (validFiles > 0) {
-                    displayPreviews();
-                }
-                
+                displayPreviews();
                 this.value = '';
             });
             
@@ -527,22 +522,27 @@
                         photos: photoBase64Array.length 
                     });
                     
-                    // Send to Google Apps Script
+                    // ========== KEY FIX: Use text/plain Content-Type ==========
                     const response = await fetch(SCRIPT_URL, {
                         method: 'POST',
+                        // NO mode: 'no-cors' - we need to read the response
                         headers: {
-                            'Content-Type': 'application/json',
+                            'Content-Type': 'text/plain;charset=utf-8'  // CHANGED from application/json
                         },
                         body: JSON.stringify(formData)
                     });
                     
-                    // Try to read response (may fail in no-cors mode)
+                    // Read response as text first
+                    const responseText = await response.text();
+                    console.log('Raw response:', responseText);
+                    
+                    // Parse the JSON
                     let result;
                     try {
-                        result = await response.json();
-                    } catch (e) {
-                        // If can't parse JSON, assume success (common with no-cors)
-                        result = { status: 'success', message: 'Submission received' };
+                        result = JSON.parse(responseText);
+                    } catch (parseError) {
+                        console.error('Failed to parse JSON:', parseError);
+                        throw new Error('Invalid response from server');
                     }
                     
                     console.log('Server response:', result);
@@ -625,7 +625,7 @@
             });
         }
         
-        // Modal functions (keep your existing modal functions)
+        // Modal functions (keep your existing functions)
         function showModal(type, title, message, showRedirect = false) {
             // Clear any existing timers
             clearTimers();
@@ -684,7 +684,7 @@
             redirectTimer = setTimeout(() => {
                 window.location.href = STORE_URL;
             }, REDIRECT_DELAY);
-        }    
+        }
     </script>
 </body>
 </html>
