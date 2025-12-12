@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store01 Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        h1 {
+            color: #333;
+            margin: 0;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        .btn-refresh {
+            background: #28a745;
+            margin-right: 10px;
+        }
+        
+        .btn-logout {
+            background: #e74c3c;
+        }
+        
+        .submissions-list {
+            margin-top: 20px;
+        }
+        
+        .submission-card {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .seller-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .timestamp {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .submission-details {
+            margin-bottom: 15px;
+        }
+        
+        .detail-row {
+            margin-bottom: 8px;
+            display: flex;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+            min-width: 150px;
+        }
+        
+        .detail-value {
+            color: #333;
+        }
+        
+        .description-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .description-box h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .no-submissions {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+        
+        .photo-info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .photo-info h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .photo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-link {
+            display: block;
+            padding: 8px;
+            text-align: center;
+            background: #f0f0f0;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .photo-link:hover {
+            background: #e0e0e0;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 150px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Store01 - Apparel Submissions</h1>
+            <div>
+                <button class="btn btn-refresh" onclick="window.location.reload()">
+                    🔄 Refresh
+                </button>
+                <a href="<?= scriptUrl ?>" class="btn btn-logout">
+                    Logout
+                </a>
+            </div>
+        </div>
+        
+        <? if (typeof submissions === 'undefined' || !submissions || submissions.length === 0) { ?>
+            <div class="no-submissions">
+                <h2>No Submissions Yet</h2>
+                <p>Customer submissions will appear here once they start submitting apparel.</p>
+            </div>
+        <? } else { ?>
+            <div class="submissions-list">
+                <h3>Total Submissions: <?= submissions.length ?></h3>
+                
+                <? for (var i = 0; i < submissions.length; i++) { 
+                    var sub = submissions[i];
+                    
+                    // Format date
+                    var displayDate = 'Unknown date';
+                    try {
+                        if (sub['Timestamp']) {
+                            var date = new Date(sub['Timestamp']);
+                            if (!isNaN(date.getTime())) {
+                                displayDate = date.toLocaleString('en-US', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                });
+                            }
+                        }
+                    } catch (e) {
+                        displayDate = String(sub['Timestamp'] || 'Unknown date');
+                    }
+                    
+                    // Get photo count
+                    var photoCount = sub['Photo Count'] || 0;
+                    
+                    // Get photos - check for Photo 1-5 columns
+                    var photos = [];
+                    for (var p = 1; p <= 5; p++) {
+                        var photoKey = 'Photo ' + p;
+                        if (sub[photoKey] && String(sub[photoKey]).trim() !== '') {
+                            var photoValue = String(sub[photoKey]);
+                            // Check if it's a valid image (Base64 or URL)
+                            if (photoValue.indexOf('data:image') === 0 || photoValue.indexOf('http') === 0) {
+                                photos.push(photoValue);
+                            }
+                        }
+                    }
+                ?>
+                    <div class="submission-card">
+                        <div class="submission-header">
+                            <div class="seller-name">
+                                <?= sub['Seller Name'] || 'Unknown Seller' ?>
+                            </div>
+                            <div class="timestamp">
+                                <?= displayDate ?>
+                            </div>
+                        </div>
+                        
+                        <div class="submission-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Email:</span>
+                                <span class="detail-value">
+                                    <? if (sub['Email'] && String(sub['Email']).trim() !== '') { ?>
+                                        <a href="mailto:<?= sub['Email'] ?>"><?= sub['Email'] ?></a>
+                                    <? } else { ?>
+                                        Not provided
+                                    <? } ?>
+                                </span>
+                            </div>
+                            
+                            <div class="detail-row">
+                                <span class="detail-label">Photos Submitted:</span>
+                                <span class="detail-value">
+                                    <?= photoCount ?> photo(s)
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="description-box">
+                            <h4>Apparel Description</h4>
+                            <p><?= sub['Apparel Description'] || 'No description provided' ?></p>
+                        </div>
+                        
+                        <? if (sub['Additional Message'] && String(sub['Additional Message']).trim() !== '') { ?>
+                            <div class="description-box">
+                                <h4>Additional Message</h4>
+                                <p><?= sub['Additional Message'] ?></p>
+                            </div>
+                        <? } ?>
+                        
+                        <? if (photos.length > 0) { ?>
+                            <div class="photo-info">
+                                <h4>Submitted Photos (<?= photos.length ?>)</h4>
+                                <div class="photo-container">
+                                    <? for (var j = 0; j < photos.length; j++) { ?>
+                                        <div class="photo-item">
+                                            <img src="<?= photos[j] ?>" 
+                                                 alt="Photo <?= j+1 ?>"
+                                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.nextElementSibling.innerHTML='Image failed to load'; this.nextElementSibling.style.background='#fee';">
+                                            <div class="photo-placeholder" style="display: none;">
+                                                Photo <?= j+1 ?>
+                                            </div>
+                                        </div>
+                                    <? } ?>
+                                </div>
+                            </div>
+                        <? } else if (photoCount > 0) { ?>
+                            <div class="photo-info">
+                                📷 <?= photoCount ?> photo(s) were submitted but could not be displayed.
+                            </div>
+                        <? } else { ?>
+                            <div class="photo-info">
+                                📷 No photos were submitted with this listing.
+                            </div>
+                        <? } ?>
+                    </div>
+                <? } ?>
+            </div>
+        <? } ?>
+    </div>
+</body>
+</html>
