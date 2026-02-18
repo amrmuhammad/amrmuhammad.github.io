@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Introduction to Manifolds</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Same navigation as index.html -->
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">🌌 Manifolds</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="01-introduction.html" class="active">Lessons</a></li>
+                <li><a href="../exercises/index.html">Exercises</a></li>
+                <li><a href="../references/index.html">References</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="lesson-container">
+        <aside class="lesson-sidebar">
+            <h3>Lessons</h3>
+            <ul class="lesson-list">
+                <li class="active"><a href="01-introduction.html">1. Introduction</a></li>
+                <li><a href="02-topological-spaces.html">2. Topological Spaces</a></li>
+                <li><a href="03-charts-atlases.html">3. Charts & Atlases</a></li>
+                <li><a href="04-examples.html">4. Examples</a></li>
+                <li><a href="05-smooth-structures.html">5. Smooth Structures</a></li>
+                <li><a href="06-tangent-spaces.html">6. Tangent Spaces</a></li>
+                <li><a href="07-applications.html">7. Applications</a></li>
+            </ul>
+            
+            <div class="lesson-progress">
+                <h4>Your Progress</h4>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 14%"></div>
+                </div>
+                <button onclick="markComplete(1)" class="btn-complete">
+                    Mark as Complete
+                </button>
+            </div>
+        </aside>
+
+        <main class="lesson-content">
+            <h1>Lesson 1: What is a Manifold?</h1>
+            
+            <div class="learning-objectives">
+                <h2>Learning Objectives</h2>
+                <ul>
+                    <li>Understand the intuitive idea of a manifold</li>
+                    <li>Recognize common examples of manifolds</li>
+                    <li>Grasp the concept of "local Euclidean" property</li>
+                </ul>
+            </div>
+
+            <section class="content-section">
+                <h2>The Intuition</h2>
+                <p>A manifold is a space that <em>locally</em> looks like ordinary Euclidean space, but may have interesting <em>global</em> structure.</p>
+                
+                <div class="example-box">
+                    <h3>Classic Example: The Earth</h3>
+                    <p>The surface of the Earth is a 2-dimensional manifold:</p>
+                    <ul>
+                        <li>Locally, it looks like a flat plane (Euclidean ℝ²)</li>
+                        <li>Globally, it's a sphere (different topology)</li>
+                    </ul>
+                    <div class="viz-preview" id="earth-viz" style="height: 300px;"></div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Formal Definition</h2>
+                <p>An n-dimensional manifold M is a topological space such that:</p>
+                <div class="definition-box">
+                    <p>For every point p ∈ M, there exists:</p>
+                    <ul>
+                        <li>An open neighborhood U ⊂ M containing p</li>
+                        <li>An open set V ⊂ ℝⁿ</li>
+                        <li>A homeomorphism φ: U → V</li>
+                    </ul>
+                    <div class="math-display">
+                        φ: U ⟶ V ⊆ ℝⁿ
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Interactive Example: Chart on a Circle</h2>
+                <div class="interactive-demo">
+                    <canvas id="circle-chart" width="600" height="400"></canvas>
+                    <div class="demo-controls">
+                        <button onclick="animateChart()">Animate</button>
+                        <button onclick="resetChart()">Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Check Your Understanding</h2>
+                <div class="quick-quiz">
+                    <p>Which of the following are manifolds?</p>
+                    <form id="quiz1">
+                        <label>
+                            <input type="checkbox" name="q1" value="sphere"> 
+                            Surface of a sphere
+                        </label>
+                        <label>
+                            <input type="checkbox" name="q1" value="cube"> 
+                            Surface of a cube (including edges)
+                        </label>
+                        <label>
+                            <input type="checkbox" name="q1" value="line"> 
+                            A straight line
+                        </label>
+                        <label>
+                            <input type="checkbox" name="q1" value="figure8"> 
+                            Figure-8 shape (two circles touching)
+                        </label>
+                        <button type="button" onclick="checkQuiz()">Check</button>
+                    </form>
+                    <div id="quiz-feedback"></div>
+                </div>
+            </section>
+
+            <div class="lesson-navigation">
+                <a href="../index.html" class="prev-lesson">← Home</a>
+                <a href="02-topological-spaces.html" class="next-lesson">Next: Topological Spaces →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/katex.min.js"></script>
+    <script src="../assets/js/three.min.js"></script>
+    <script>
+        // Mark lesson as complete
+        function markComplete(lessonNum) {
+            let progress = JSON.parse(localStorage.getItem('manifolds-progress') || '{}');
+            progress[`lesson-${lessonNum}`] = true;
+            localStorage.setItem('manifolds-progress', JSON.stringify(progress));
+            
+            alert('Lesson marked as complete!');
+            updateProgressDisplay();
+        }
+        
+        // Circle chart visualization
+        function drawCircleChart(ctx) {
+            // Draw circle
+            ctx.beginPath();
+            ctx.arc(300, 200, 150, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            // Draw chart mapping
+            // ... additional drawing code
+        }
+        
+        // Quiz checking
+        function checkQuiz() {
+            const answers = {
+                sphere: true,
+                cube: false,
+                line: true,
+                figure8: false
+            };
+            
+            let feedback = document.getElementById('quiz-feedback');
+            let correct = true;
+            
+            // Check each answer
+            for (let [key, value] of Object.entries(answers)) {
+                let checkbox = document.querySelector(`input[value="${key}"]`);
+                if (checkbox.checked !== value) {
+                    correct = false;
+                    break;
+                }
+            }
+            
+            if (correct) {
+                feedback.innerHTML = '✅ Correct! Well done!';
+                feedback.style.color = 'var(--success)';
+            } else {
+                feedback.innerHTML = '❌ Not quite. Remember: manifolds must be locally Euclidean everywhere. The cube\'s edges and the figure-8\'s intersection point are problematic.';
+                feedback.style.color = 'var(--error)';
+            }
+        }
+        
+        // Initialize visualizations
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('circle-chart');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                drawCircleChart(ctx);
+            }
+        });
+    </script>
+</body>
+</html>
