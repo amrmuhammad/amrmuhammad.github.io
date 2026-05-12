@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Plumber</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🚰 Need a Plumber?</h1>
+    <p>Fill in the form and we’ll come to you.</p>
+
+    <!-- ⚠️ Replace the action URL with YOUR deployed web app URL -->
+    <form action="https://script.google.com/macros/s/AKfycbwepXBXHDmbXPlHX_f3OPT8j7BZETBL4672zXDFdQ53PH8SD2BJ32Mq7DZpAk8qCeLk/exec" 
+      method="POST" id="requestForm">
+      <label for="name">Full Name*</label>
+      <input type="text" id="name" name="name" required placeholder="John Doe">
+
+      <label for="phone">Phone Number*</label>
+      <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900">
+
+      <label for="address">Address*</label>
+      <input type="text" id="address" name="address" required placeholder="123 Main St, Springfield">
+
+      <label for="problem">Describe the problem*</label>
+      <textarea id="problem" name="problem" rows="4" required placeholder="Leaking pipe under the kitchen sink..."></textarea>
+
+      <button type="submit">Send Request</button>
+    </form>
+  </div>
+</body>
+</html>
